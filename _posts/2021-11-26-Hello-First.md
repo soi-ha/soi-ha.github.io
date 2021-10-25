@@ -2,6 +2,7 @@
 layout: post
 categories:
   - Hello
+title: 처음으로 작성하는 post
 tags:
   - Hello
   - First
