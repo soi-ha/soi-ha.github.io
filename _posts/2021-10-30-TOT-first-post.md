@@ -35,9 +35,9 @@ tags:
   + __여행 일지__  
   posting한 내용 카드  
   인스타그램처럼 사진 업로드를 필수적이게 하면서 제한된 글자 안에 여행 일지를 작성하도록 한다. 사진은 1개만을 업로드 할 수 있다. 글자수를 제한한 이유는 카드의 사이즈를 일정하게 만들고 싶어서 제한하였다.  
-  <img src="https://user-images.githubusercontent.com/77609591/139681836-80caea8d-06a6-4f5a-8d43-534e2745a6c2.jpg" height="250px">
-  <img src="https://user-images.githubusercontent.com/77609591/139682203-dba8ec52-6d73-4e86-94e4-c4ad0e878d5c.jpg" height="250px">
-  <img src="https://user-images.githubusercontent.com/77609591/139682269-496c654e-6515-44d8-b14d-67c53f482cd6.jpg" height="250px">
+  <img src="https://user-images.githubusercontent.com/77609591/139681836-80caea8d-06a6-4f5a-8d43-534e2745a6c2.jpg" height="50px">
+  <img src="https://user-images.githubusercontent.com/77609591/139682203-dba8ec52-6d73-4e86-94e4-c4ad0e878d5c.jpg" height="80px">
+  <img src="https://user-images.githubusercontent.com/77609591/139682269-496c654e-6515-44d8-b14d-67c53f482cd6.jpg" height="100px">
 
   ### __레이아웃__  
   나는 미술적인 감각이 zero인 사람으로... 일단 나의 나름 대로 깔끔하게 정리를 해 보았다. 그저 위에 그렸던 것을 CSS작성할 때 조금이라도.. 편하라고.. 정리했달까...   
