@@ -35,12 +35,15 @@ tags:
   + __여행 일지__  
   posting한 내용 카드  
   인스타그램처럼 사진 업로드를 필수적이게 하면서 제한된 글자 안에 여행 일지를 작성하도록 한다. 사진은 1개만을 업로드 할 수 있다. 글자수를 제한한 이유는 카드의 사이즈를 일정하게 만들고 싶어서 제한하였다.  
-  <img src="https://user-images.githubusercontent.com/77609591/139681836-80caea8d-06a6-4f5a-8d43-534e2745a6c2.jpg" height="50px">
-  <img src="https://user-images.githubusercontent.com/77609591/139682203-dba8ec52-6d73-4e86-94e4-c4ad0e878d5c.jpg" height="80px">
-  <img src="https://user-images.githubusercontent.com/77609591/139682269-496c654e-6515-44d8-b14d-67c53f482cd6.jpg" height="100px">
+  <img src="https://user-images.githubusercontent.com/77609591/139681836-80caea8d-06a6-4f5a-8d43-534e2745a6c2.jpg" height="250px">
+  <img src="https://user-images.githubusercontent.com/77609591/139682203-dba8ec52-6d73-4e86-94e4-c4ad0e878d5c.jpg" height="250px">
+  <img src="https://user-images.githubusercontent.com/77609591/139682269-496c654e-6515-44d8-b14d-67c53f482cd6.jpg" height="250px">
 
   ### __레이아웃__  
   나는 미술적인 감각이 zero인 사람으로... 일단 나의 나름 대로 깔끔하게 정리를 해 보았다. 그저 위에 그렸던 것을 CSS작성할 때 조금이라도.. 편하라고.. 정리했달까...   
   웹 페이지의 디자인은 음... 직접 만들면서 계속 변경할 것 같다! 딱히 크게 정해둔 건 없고, 여러 영상이나 사진들을 참고해서 만들 것 같다.  
   일단 생각해둔 웹 서비스의 느낌은 바다 느낌? 청량하고 힐링되는 느낌으로 만들고 싶다. 시그니쳐 색은 당연히 파랑으로 갈 것이다.  
-  ~~레이아웃 사진~~ 
+  ![레이아웃1](https://user-images.githubusercontent.com/77609591/139685145-a75b77e8-c46f-4cf6-afa2-e7824075950f.png)
+  ![레이아웃2](https://user-images.githubusercontent.com/77609591/139685178-5994beb4-f839-4d20-a2af-f5bf7d3cf77b.png)
+  ![레이아웃3](https://user-images.githubusercontent.com/77609591/139685238-ef108d80-2023-4cd3-b795-3fd3a1f38394.png)
+  ![레이아웃4](https://user-images.githubusercontent.com/77609591/139685251-8cf22ab2-a3b9-4536-93bc-cee52e070073.png)
