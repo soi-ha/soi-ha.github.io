@@ -2,6 +2,7 @@
 layout: post
 categories:
   - Project
+  - TIL
 title: "Trip Or Travel: 뼈대(HTML) 및 header 제작"
 tags:
   - TripOrTravel
