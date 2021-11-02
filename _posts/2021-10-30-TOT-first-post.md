@@ -1,12 +1,12 @@
 ---
 layout: post
 categories:
-  - Project
+  - project
 title: "Trip or Travel: 나의 첫번째 프로젝트"
 tags:
   - TripOrTravel
-  - Project
-  - sparta
+  - project
+  - 스파르타코딩클럽
 ---
 ## __나의 첫번째 프로젝트__
 ---
