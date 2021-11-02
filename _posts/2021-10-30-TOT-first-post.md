@@ -1,7 +1,7 @@
 ---
 layout: post
 categories:
-  - project
+  - Project
 title: "Trip or Travel: 나의 첫번째 프로젝트"
 tags:
   - TripOrTravel

@@ -1,7 +1,7 @@
 ---
 layout: post
 categories:
-  - project
+  - Project
 title: "Trip Or Travel: 뼈대(HTML) 및 header 제작"
 tags:
   - TripOrTravel
