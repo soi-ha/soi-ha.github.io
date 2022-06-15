@@ -38,7 +38,7 @@ ___
   - 포지션 *  
   select를 사용하여 본인의 포지션 1가지를 선택하도로 하였다.
   - 보유기술 * 
-  <img width="1512" alt="회원가입 - 보유기술 모달" src="https://user-images.githubusercontent.com/77609591/173769414-e69ae8c5-a61d-452f-938b-79b335269038.png">  
+  <img width="1512" alt="회원가입 - 보유기술 모달" src="https://user-images.githubusercontent.com/77609591/173769414-e69ae8c5-a61d-452f-938b-79b335269038.png">
   modal창을 제작하여 본인에게 해당하는 보유기술 여러가지를 선택할 수 있도록 했다.  
   보유기술 버튼 클릭시, modal창이 나오고 checkbox로 되어있는 기술 선택후 완료버튼을 누르면 modal창이 닫히면서 데이터가 넘어간다. 
   - 깃허브
