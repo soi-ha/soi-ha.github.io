@@ -2,7 +2,6 @@
 layout: post
 categories:
   - Project
-  - TIL
 title: "InQ Project Manager: 개발 동아리 2022 1학기 프로젝트"
 tags:
   - InQ
