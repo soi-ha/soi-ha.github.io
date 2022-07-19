@@ -308,4 +308,68 @@ _회원가입 페이지 모달창_
   회원의 포지션은 하나만 선택하게 했다. 개발에 있어서 필요한 포지션은 한정되어 있기 때문에 한정된 선택지 안에서 하나만 고르게 하기 위해 select 태그를 사용하였다.  
   select 태그에 id와 name을 작성한다. 하나만 선택할 것이기에 name명은 동일하다.   
   정해진 선택지는 option태그를 각각 만들어 생성한다. 이때, value속성의 값은 option 태그마다 다르다. 선택지 중, 단 하나만 선택하는 것이기 때문이다.
-  - __Modal 창__
+  - __Modal 창__  
+  각 개인이 가지고 있는 보유기술은 다양하다. 그렇기에 선택할 수 있는 갯수를 제한하지 않으려 checkbox 형태로 선택하는 방법으로 했다.  
+  그리고 여기에 더해 따로 '선택하기'버튼을 누르면 창이 하나 뜨면서 그 창에서 checkbox를 선택하게 하고 싶었다.  
+  내가 원하고자 하는 이 창을 '모달(modal)'이라고 부른다.  
+  이 모달창을 처음에는 순수 내가 만들고 싶었으나, 작동을 하지 않는 통에... bootstrap의 모달창을 가져다 사용하였다.  
+    ```html
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+        Launch demo modal
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    ```
+    해당 코드는 [bootstarap](https://getbootstrap.com/docs/4.0/components/modal/)에서 제공하는 샘플코드이다.  
+    나는 해당 코드를 바탕으로 나만의 모달창을 제작하였다.  
+    모달창 안의 내용에 checkbox를 넣었다. 상단에 닫기 버튼이 이미지로 존재하기에 하단의 닫기 버튼을 없애고 '완료'버튼 하나만을 남겨두었다. 완료버튼 클릭시 모달창이 자동으로 닫히게 하는 등의 설정을 하였다. (`data-dismiss='modal'`추가로 닫히게 하였다.)
+
+  ### __회원가입 CSS__
+  회원가입 페이지의 CSS는 크게 특징적인 것은 없다.  
+  ```css
+    /* Modal */
+    .signup .text-body .row .modal-btn .btn {
+      width: 250px;
+      padding: 10px;
+      font-size: var(--btn-font);
+    }
+    .signup .text-body .row .modal-dialog.modal-dialog-centered .modal-content .modal-header h5 {
+      padding: 12px;
+      font-weight: 700;
+      font-size: var(--large-font);
+    }
+    .signup .text-body .row .modal-dialog.modal-dialog-centered .modal-content .modal-header button span {
+      font-size: 45px;
+    }
+    .signup .text-body .row .modal-dialog.modal-dialog-centered .modal-content .modal-body {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .signup .text-body .row .modal-dialog.modal-dialog-centered .modal-content .modal-body .check-box input {
+      width: 40px;
+      height: 40px;
+      margin: 30px 8px 25px 30px;
+    }
+  ```
+  모달창 css에서 약간 애 먹은 것은 checkbox 사이즈와 정렬이 내가 생각한 것 처럼 잘 안되서 시간이 좀 걸렸다.  
+  checkbox와 그 옆의 label의 사이즈랑 위치가 동일 선상에 맞추느라 힘들었다... 각각 사이즈를 다르게 해서 맞추었다. 
