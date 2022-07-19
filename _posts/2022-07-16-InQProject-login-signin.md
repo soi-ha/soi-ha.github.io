@@ -23,47 +23,47 @@ tags:
 ### __로그인 HTML__
 
   ```html
-    <!-- Login -->
-      <section class="login">
-        <div class="inner">
+  <!-- Login -->
+    <section class="login">
+      <div class="inner">
 
-          <div class="text-title">
-            <span class="title">로그인</span>
-          </div>
-          <form action="">
-            <div class="text-body">
-              <div class="row">
-                <label for="loginId" class="sub-title">아이디</label>
-                <input type="text" id="loginId" name="loginId" required
-                      minlength="4" maxlength="15">
+        <div class="text-title">
+          <span class="title">로그인</span>
+        </div>
+        <form action="">
+          <div class="text-body">
+            <div class="row">
+              <label for="loginId" class="sub-title">아이디</label>
+              <input type="text" id="loginId" name="loginId" required
+                    minlength="4" maxlength="15">
+            </div>
+            <div class="row">
+              <label for="loginPw" class="sub-title">비밀번호</label>
+              <input type="password" id="loginPw" name="loginPw" minlength="8" required>
+            </div>
+            <div class="find-member">
+              <a href="javascript:void(0)" class="find-account">아이디 찾기</a>
+              <a href="javascript:void(0)" class="find-account">비밀번호 찾기</a>
+            </div>
+            <div class="btn-group">
+              <div class="btn-row">
+                <a href="#">
+                  <input class="bton btn--reverse" type="button" value="로그인하기">
+                </a>
               </div>
-              <div class="row">
-                <label for="loginPw" class="sub-title">비밀번호</label>
-                <input type="password" id="loginPw" name="loginPw" minlength="8" required>
-              </div>
-              <div class="find-member">
-                <a href="javascript:void(0)" class="find-account">아이디 찾기</a>
-                <a href="javascript:void(0)" class="find-account">비밀번호 찾기</a>
-              </div>
-              <div class="btn-group">
-                <div class="btn-row">
-                  <a href="#">
-                    <input class="bton btn--reverse" type="button" value="로그인하기">
-                  </a>
-                </div>
-                <div class="btn-row">
-                  <!-- 회원가입 페이지 링크 연결하기 -->
-                  <a href="#">
-                    <button class="bton btn--blue" onClick="location.href='../member/signup.html'" type="button">
-                      회원 가입하기</button>
-                  </a>
-                </div>
+              <div class="btn-row">
+                <!-- 회원가입 페이지 링크 연결하기 -->
+                <a href="#">
+                  <button class="bton btn--blue" onClick="location.href='../member/signup.html'" type="button">
+                    회원 가입하기</button>
+                </a>
               </div>
             </div>
-          </form>
+          </div>
+        </form>
 
-        </div>
-      </section>
+      </div>
+    </section>
   ```  
   - section을 만들어 login 클래스명을 부여하였다.  
   클래스 inner은 스타일을 위해 정의해둔 것으로 추후 common파일 글에 설명하도록 하겠다.  
@@ -314,62 +314,62 @@ _회원가입 페이지 모달창_
   내가 원하고자 하는 이 창을 '모달(modal)'이라고 부른다.  
   이 모달창을 처음에는 순수 내가 만들고 싶었으나, 작동을 하지 않는 통에... bootstrap의 모달창을 가져다 사용하였다.  
     ```html
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-        Launch demo modal
-      </button>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+      Launch demo modal
+    </button>
 
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>
+    </div>
     ```
     해당 코드는 [bootstarap](https://getbootstrap.com/docs/4.0/components/modal/)에서 제공하는 샘플코드이다.  
     나는 해당 코드를 바탕으로 나만의 모달창을 제작하였다.  
     모달창 안의 내용에 checkbox를 넣었다. 상단에 닫기 버튼이 이미지로 존재하기에 하단의 닫기 버튼을 없애고 '완료'버튼 하나만을 남겨두었다. 완료버튼 클릭시 모달창이 자동으로 닫히게 하는 등의 설정을 하였다. (`data-dismiss='modal'`추가로 닫히게 하였다.)
 
-  ### __회원가입 CSS__
+  ### __회원가입 CSS__  
   회원가입 페이지의 CSS는 크게 특징적인 것은 없다.  
   ```css
-    /* Modal */
-    .signup .text-body .row .modal-btn .btn {
-      width: 250px;
-      padding: 10px;
-      font-size: var(--btn-font);
-    }
-    .signup .text-body .row .modal-dialog.modal-dialog-centered .modal-content .modal-header h5 {
-      padding: 12px;
-      font-weight: 700;
-      font-size: var(--large-font);
-    }
-    .signup .text-body .row .modal-dialog.modal-dialog-centered .modal-content .modal-header button span {
-      font-size: 45px;
-    }
-    .signup .text-body .row .modal-dialog.modal-dialog-centered .modal-content .modal-body {
-      display: flex;
-      flex-wrap: wrap;
-    }
-    .signup .text-body .row .modal-dialog.modal-dialog-centered .modal-content .modal-body .check-box input {
-      width: 40px;
-      height: 40px;
-      margin: 30px 8px 25px 30px;
-    }
+  /* Modal */
+  .signup .text-body .row .modal-btn .btn {
+    width: 250px;
+    padding: 10px;
+    font-size: var(--btn-font);
+  }
+  .signup .text-body .row .modal-dialog.modal-dialog-centered .modal-content .modal-header h5 {
+    padding: 12px;
+    font-weight: 700;
+    font-size: var(--large-font);
+  }
+  .signup .text-body .row .modal-dialog.modal-dialog-centered .modal-content .modal-header button span {
+    font-size: 45px;
+  }
+  .signup .text-body .row .modal-dialog.modal-dialog-centered .modal-content .modal-body {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .signup .text-body .row .modal-dialog.modal-dialog-centered .modal-content .modal-body .check-box input {
+    width: 40px;
+    height: 40px;
+    margin: 30px 8px 25px 30px;
+  }
   ```
   모달창 css에서 약간 애 먹은 것은 checkbox 사이즈와 정렬이 내가 생각한 것 처럼 잘 안되서 시간이 좀 걸렸다.  
   checkbox와 그 옆의 label의 사이즈랑 위치가 동일 선상에 맞추느라 힘들었다... 각각 사이즈를 다르게 해서 맞추었다. 
