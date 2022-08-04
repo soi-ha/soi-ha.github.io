@@ -201,9 +201,104 @@ inner 클래스는 내가 만들 클래스이다.
 - __transition: 속성명 지속시간 타이밍함수 대기시간;__  
 `transition: .6s`  
 요소의 전환(시작과 끝)효과를 지정하는 단축 속성이다. 이때, 지속시간은 필수적으로 작성해야 하는 속성이다.  
-지속시간을 입력하면 전환 효과의 시간을 지정한다. 기본은 *0s*로 전환 효과가 없다. 지속시간을 작성할때는 원하는 시간 뒤에 *S*를 붙혀 작성한다. 이때 *S*는 second를 의미한다.  
+지속시간을 입력하면 전환 효과의 시간을 지정한다. 기본은 **0s**로 전환 효과가 없다. 지속시간을 작성할때는 원하는 시간 뒤에 **S**를 붙혀 작성한다. 이때 **S**는 second를 의미한다.  
 만약 0.5초 지속시간을 주고 싶다면 앞의 0은 생략이 가능하다. (0.5s -> .5s)  
 
 <br>
 
-### __카드 css__
+### __카드 Card__  
+
+<img width="1494" alt="홈2" src="https://user-images.githubusercontent.com/77609591/182856650-25758d2f-57ab-4b57-9e62-31196ad1cf1b.png">
+
+홈 화면과, 프로젝트 홈 화면에서 사용하는 카드에 대한 스타일을 common 파일에 작성하였다. 아직은 두 페이지에서만 사용하지만 차후 업데이트를 하게 된다면 다른 곳에서 사용가능성이 높기 때문이다. 또, 두 페이지에서 사용하는 카드의 모양이 완전히 동일하기 때문에 각 페이지의 css파일에 작성하는 것 보다는 common 파일에 작성하는 것이 더 수정에 편리할 것이라 생각이 들어 common 파일에 작성하였다. 
+```html
+<a href="#" onclick="location.href='./project/project_info.html'" class="card swiper-slide">
+            <img class="card-img-top" src="./images/inq_logo.png" alt="Card image cap" />
+            <div class="card-body">
+              <div class="card-text card-title">[인큐] 프로젝트 관리 매니저</div>
+              <div class="card-text">
+                <div class="card-info">
+                  <div class="info-left">
+                    <div class="info-date">
+                      모집기간
+                      <span class="recruit-date">22.05.10 - 22.05.20</span>
+                    </div>
+                  </div>
+                  <div class="info-right">
+                    <div class="info-member">
+                      <span class="symbol material-icons">person</span>
+                      <span class="member-personnel">
+                        2
+                        /
+                        5
+                      </span>
+                    </div>
+                    <div class="info-progress recruit">모집중</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+``` 
+```css
+/* Card */
+.card {
+  width: 600px;
+  padding: 50px;
+  /* border: 3px solid var(--inq-blue); */
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+}
+.card .card-body {
+  margin-top: 50px;
+}
+.card .card-body .card-text.card-title {
+  font-weight: 700;
+  font-size: var(--large-font);
+}
+.card .card-body .card-text .card-info .info-left {
+  margin:20px 0 20px 0;
+}
+.card .card-body .card-text .card-info .info-right {
+  display: flex;
+}
+.card .card-body .card-text .card-info .info-right .info-member {
+  display: flex;
+}
+.card .card-body .card-text .card-info .info-right .info-member .symbol {
+  font-size: 50px;
+  color: #5b5b5b;
+}
+.card .card-body .card-text .card-info .info-right .info-member .member-personnel {
+  margin-top: 7px;
+  margin-left: 15px;
+}
+.card .card-body .card-text .card-info .info-right .info-progress {
+  width: auto;
+  border-radius: 8px;
+  padding: 10px;
+  margin-left: 150px;
+}
+/* 모집중 */
+.card .card-body .card-text .card-info .info-right .info-progress.recruit {
+  background-color: var(--recruit-color);
+}
+/* 진행중 */
+.card .card-body .card-text .card-info .info-right .info-progress.execution {
+  background-color: var(--inq-yellow);
+}
+/* 완료 */
+.card .card-body .card-text .card-info .info-right .info-progress.complete {
+  background-color: var(--complete-color);
+}
+```
+- __카드 구조__  
+  카드의 구조는 크게 img, card-title, info-right, info-left로 나눌 수 있다.  
+  img는 사용자가 등록하는 프로젝트의 이미지이다.  
+  card-title은 등록한 프로젝트의 이름이다.  
+  info는 두개로 나뉘어 info-right, info-left인데, info-right에는 모집기간, info-left에는 모집중인 인원과 참여 인원, 모집 상태가 나온다. 
+- __모집상태 표시__  
+  카드에는 해당 프로젝트의 모집상태가 나오게 되는데 모집중, 진행중, 완료 3가지이다. 모집상태에 따라 색상이 다르게 나온다.  
+  모집중은 빨강, 진행중은 노랑, 완료는 초록이다. 상태표시 색상은 **신호등**을 착안하여 정했다.
+- __box-shadow__  
+  카드 테두리에 그림자를 주었다. 내가 직접 설정해서 하기에는 이쁘게 만들기가 힘들었다. 그래서 서칭을 통해 다양한 box-shadow를 정리해둔 
+  [box-shadow 사이트](https://getcssscan.com/css-box-shadow-examples)를 찾았다.
