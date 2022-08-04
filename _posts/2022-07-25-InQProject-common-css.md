@@ -302,3 +302,58 @@ inner 클래스는 내가 만들 클래스이다.
 - __box-shadow__  
   카드 테두리에 그림자를 주었다. 내가 직접 설정해서 하기에는 이쁘게 만들기가 힘들었다. 그래서 서칭을 통해 다양한 box-shadow를 정리해둔 
   [box-shadow 사이트](https://getcssscan.com/css-box-shadow-examples)를 찾았다.
+
+<br>
+
+### __언더라인 css__  
+홈 페이지와 프로젝트 홈 페이지에 적용되는 언더라인이 있다.  
+홈 페이지에서는 프로젝트 홈 페이지로 이동하는 버튼에서 **프로젝트**클릭시 언더라인이 나타나면서 이동한다.  
+프로젝트 홈 페이지에서는 검색을 할 때 모집중, 진행중, 완료를 선택한 후 검색을 할 수 있다. 이때, 프로젝트의 상태를 어떤 것을 선택했는지 나타내줄 때 언더라인을 사용한다.  
+```html
+<div class="text-title">
+  <a href="#" onClick="location.href='../project/project_home.html'" class="title title-cursor underline line" title="프로젝트 페이지로 이동">프로젝트</a>
+</div>
+```
+```css
+/* Underline */
+.underline {
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  background-image: linear-gradient(transparent 60%, var(--inq-yellow) 40%);
+}
+.underline:hover {
+  background-size: 100% 100%;
+}
+.underline.click-line {
+  background-size: 100% 100%; 
+}
+```
+```js
+$('.underline').each(function(index){
+  $(this).attr('underline-index', index);
+}).click(function(){
+  /*클릭된 <div>의 menu-index 값을 index 변수에 할당한다.*/
+  var index = $(this).attr('underline-index');
+  /*클릭한 <div>에  click-line 클래스 추가*/
+  $('.underline[underline-index=' + index + ']').addClass('click-line'); 
+    /*그 외 <div>는  click-line 클래스 삭제*/
+  $('.underline[underline-index!=' + index + ']').removeClass('click-line');
+});
+```
+- __HTML__  
+  사용하고자 하는 부분의 클래스에 **underline**을 작성한다.
+- __CSS__  
+  - __background: linear-gradient();__  
+    linear-gradient(방향 또는 각도, 색상과 정지 지점 ... )  
+    두개의 색상이 직선을 따라 점진적으로 색상이 변경되게 해준다.  
+    내가 작성한 `background-image: linear-gradient(transparent 60%, var(--inq-yellow) 40%);`은, 투명 배경을 화면의 60%, 노란색 (--inq-yellow)을 40%로 설정했다.  
+    이렇게 %로 원하는 화면의 비율을 설정할 수도 있다.  
+    방향(각도)를 줌으로 자연스럽게 색상이 섞이게 하고 색상이 변경되는 방향도 설정할 수 있다.  
+    `background-image: linear-gradient(90deg, red 20% ,yellow 80%)`    
+    해당 코드는 색상이 변경되는 각도는 90도(오른쪽) 빨강은 20%, 노랑은 80% 차지한다.
+  - __background-size__  
+    요소의 배경 이미지의 크기를 설정한다. 그대로 두거나, 늘리거나 줄이는 등을 할 수 있다. 배경 이미지로 덮히지 않는 부분은 `background-color` 속성으로 채워지며, 배경 이미지가 투명, 반투명해도 background-color 색상이 보인다.  
+    background-size는 키워드값, 단일값, 두개값, 다중배경, 전역값이 있다. 이중에서 내가 사용한 것은 **두개값**이다.  
+    `background-size: 0% 100%;`의 첫번째 값은 너비, 두번째 값은 높이를 설정한다.  
+    hover와 click을 하지 않았을 때는 아무것도 없다. (너비 0% 높이 100%) 해당 언더라인 부분에 마우스를 올리거나 클릭했을때는 너비가 100%이 되면서 linear-gradient 속성이 보이게 된다. 
+- __JS__
