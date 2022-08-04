@@ -305,44 +305,32 @@ inner 클래스는 내가 만들 클래스이다.
 
 <br>
 
-### __언더라인 css__  
+### __언더라인 underline__  
 홈 페이지와 프로젝트 홈 페이지에 적용되는 언더라인이 있다.  
 홈 페이지에서는 프로젝트 홈 페이지로 이동하는 버튼에서 **프로젝트**클릭시 언더라인이 나타나면서 이동한다.  
 프로젝트 홈 페이지에서는 검색을 할 때 모집중, 진행중, 완료를 선택한 후 검색을 할 수 있다. 이때, 프로젝트의 상태를 어떤 것을 선택했는지 나타내줄 때 언더라인을 사용한다.  
-```html
-<div class="text-title">
-  <a href="#" onClick="location.href='../project/project_home.html'" class="title title-cursor underline line" title="프로젝트 페이지로 이동">프로젝트</a>
-</div>
-```
-```css
-/* Underline */
-.underline {
-  background-repeat: no-repeat;
-  background-size: 0% 100%;
-  background-image: linear-gradient(transparent 60%, var(--inq-yellow) 40%);
-}
-.underline:hover {
-  background-size: 100% 100%;
-}
-.underline.click-line {
-  background-size: 100% 100%; 
-}
-```
-```js
-$('.underline').each(function(index){
-  $(this).attr('underline-index', index);
-}).click(function(){
-  /*클릭된 <div>의 menu-index 값을 index 변수에 할당한다.*/
-  var index = $(this).attr('underline-index');
-  /*클릭한 <div>에  click-line 클래스 추가*/
-  $('.underline[underline-index=' + index + ']').addClass('click-line'); 
-    /*그 외 <div>는  click-line 클래스 삭제*/
-  $('.underline[underline-index!=' + index + ']').removeClass('click-line');
-});
-```
 - __HTML__  
   사용하고자 하는 부분의 클래스에 **underline**을 작성한다.
+  ```html
+  <div class="text-title">
+    <a href="#" onClick="location.href='../project/project_home.html'" class="title title-cursor underline line" title="프로젝트 페이지로 이동">프로젝트</a>
+  </div>
+  ```
 - __CSS__  
+  ```css
+  /* Underline */
+  .underline {
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    background-image: linear-gradient(transparent 60%, var(--inq-yellow) 40%);
+  }
+  .underline:hover {
+    background-size: 100% 100%;
+  }
+  .underline.click-line {
+    background-size: 100% 100%; 
+  }
+  ```
   - __background: linear-gradient();__  
     linear-gradient(방향 또는 각도, 색상과 정지 지점 ... )  
     두개의 색상이 직선을 따라 점진적으로 색상이 변경되게 해준다.  
@@ -356,4 +344,25 @@ $('.underline').each(function(index){
     background-size는 키워드값, 단일값, 두개값, 다중배경, 전역값이 있다. 이중에서 내가 사용한 것은 **두개값**이다.  
     `background-size: 0% 100%;`의 첫번째 값은 너비, 두번째 값은 높이를 설정한다.  
     hover와 click을 하지 않았을 때는 아무것도 없다. (너비 0% 높이 100%) 해당 언더라인 부분에 마우스를 올리거나 클릭했을때는 너비가 100%이 되면서 linear-gradient 속성이 보이게 된다. 
-- __JS__
+- __JS__  
+  ```js
+  $('.underline').each(function(index){
+    $(this).attr('underline-index', index);
+  }).click(function(){
+    /*클릭된 <div>의 underline-index 값을 index 변수에 할당한다.*/
+    var index = $(this).attr('underline-index');
+    /*클릭한 <div>에  click-line 클래스 추가*/
+    $('.underline[underline-index=' + index + ']').addClass('click-line'); 
+      /*그 외 <div>는  click-line 클래스 삭제*/
+    $('.underline[underline-index!=' + index + ']').removeClass('click-line');
+  });
+  ```
+  - __attr()__  
+  attr()은 jQuery의 메소드이다. 선택자에 의해 선택된 요소중에서 가장 처음의 요소의 속성값을 가져온다.(즉 원하는 것을 찾는 애랄까?)  
+  .attr(attributeName): 선택된 요소 집합에서 첫번째 요소의 attributeName에 해당하는 속성값을 가져온다.  
+  .attr(attributeName, Value): 선택자에 의해 선택된 요소에 하나 이상의 속성을 부여할 수 있다.  
+  `$(this).attr('underline-index', index);`는 underline-index에 index를 부여했다.  
+  *[attr() 참고 글](https://solbel.tistory.com/365)*
+  - __addClass와 removeClass__  
+  jQuery의 메소드로, 원하는 클래스를 추가하거나 삭제할 수 있다.  
+  나는 underline 클릭하면 click-line 클래스를 추가하여 linear-gradient가 적용되게, 클릭하지 않으면 click-line 클랙스를 삭제하게 하였다. 
