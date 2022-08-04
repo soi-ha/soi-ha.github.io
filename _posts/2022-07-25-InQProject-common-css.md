@@ -47,7 +47,7 @@ common.css에 작성했던 것 중에 header와 footer의 스타일은 [저번 �
   --btn-font: 30px
 }
 ```
-  - 표기법 `:root`
+  - 표기법 :root
     ```css
     /* 표기법 */
     :root {
@@ -207,108 +207,115 @@ inner 클래스는 내가 만들 클래스이다.
 <br>
 
 ### __카드 Card__  
+홈 화면과, 프로젝트 홈 화면에서 사용하는 카드에 대한 스타일을 common 파일에 작성하였다. 아직은 두 페이지에서만 사용하지만 차후 업데이트를 하게 된다면 다른 곳에서 사용가능성이 높기 때문이다. 또, 두 페이지에서 사용하는 카드의 모양이 완전히 동일하기 때문에 각 페이지의 css파일에 작성하는 것 보다는 common 파일에 작성하는 것이 더 수정에 편리할 것이라 생각이 들어 common 파일에 작성하였다. 
 
 <img width="1494" alt="홈2" src="https://user-images.githubusercontent.com/77609591/182856650-25758d2f-57ab-4b57-9e62-31196ad1cf1b.png">
 
-홈 화면과, 프로젝트 홈 화면에서 사용하는 카드에 대한 스타일을 common 파일에 작성하였다. 아직은 두 페이지에서만 사용하지만 차후 업데이트를 하게 된다면 다른 곳에서 사용가능성이 높기 때문이다. 또, 두 페이지에서 사용하는 카드의 모양이 완전히 동일하기 때문에 각 페이지의 css파일에 작성하는 것 보다는 common 파일에 작성하는 것이 더 수정에 편리할 것이라 생각이 들어 common 파일에 작성하였다. 
-```html
-<a href="#" onclick="location.href='./project/project_info.html'" class="card swiper-slide">
-            <img class="card-img-top" src="./images/inq_logo.png" alt="Card image cap" />
-            <div class="card-body">
-              <div class="card-text card-title">[인큐] 프로젝트 관리 매니저</div>
-              <div class="card-text">
-                <div class="card-info">
-                  <div class="info-left">
-                    <div class="info-date">
-                      모집기간
-                      <span class="recruit-date">22.05.10 - 22.05.20</span>
+<br>
+
+- __HTML__
+  ```html
+  <a href="#" onclick="location.href='./project/project_info.html'" class="card swiper-slide">
+              <img class="card-img-top" src="./images/inq_logo.png" alt="Card image cap" />
+              <div class="card-body">
+                <div class="card-text card-title">[인큐] 프로젝트 관리 매니저</div>
+                <div class="card-text">
+                  <div class="card-info">
+                    <div class="info-left">
+                      <div class="info-date">
+                        모집기간
+                        <span class="recruit-date">22.05.10 - 22.05.20</span>
+                      </div>
                     </div>
-                  </div>
-                  <div class="info-right">
-                    <div class="info-member">
-                      <span class="symbol material-icons">person</span>
-                      <span class="member-personnel">
-                        2
-                        /
-                        5
-                      </span>
+                    <div class="info-right">
+                      <div class="info-member">
+                        <span class="symbol material-icons">person</span>
+                        <span class="member-personnel">
+                          2
+                          /
+                          5
+                        </span>
+                      </div>
+                      <div class="info-progress recruit">모집중</div>
                     </div>
-                    <div class="info-progress recruit">모집중</div>
                   </div>
                 </div>
               </div>
-            </div>
-          </a>
-``` 
-```css
-/* Card */
-.card {
-  width: 600px;
-  padding: 50px;
-  /* border: 3px solid var(--inq-blue); */
-  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
-}
-.card .card-body {
-  margin-top: 50px;
-}
-.card .card-body .card-text.card-title {
-  font-weight: 700;
-  font-size: var(--large-font);
-}
-.card .card-body .card-text .card-info .info-left {
-  margin:20px 0 20px 0;
-}
-.card .card-body .card-text .card-info .info-right {
-  display: flex;
-}
-.card .card-body .card-text .card-info .info-right .info-member {
-  display: flex;
-}
-.card .card-body .card-text .card-info .info-right .info-member .symbol {
-  font-size: 50px;
-  color: #5b5b5b;
-}
-.card .card-body .card-text .card-info .info-right .info-member .member-personnel {
-  margin-top: 7px;
-  margin-left: 15px;
-}
-.card .card-body .card-text .card-info .info-right .info-progress {
-  width: auto;
-  border-radius: 8px;
-  padding: 10px;
-  margin-left: 150px;
-}
-/* 모집중 */
-.card .card-body .card-text .card-info .info-right .info-progress.recruit {
-  background-color: var(--recruit-color);
-}
-/* 진행중 */
-.card .card-body .card-text .card-info .info-right .info-progress.execution {
-  background-color: var(--inq-yellow);
-}
-/* 완료 */
-.card .card-body .card-text .card-info .info-right .info-progress.complete {
-  background-color: var(--complete-color);
-}
-```
-- __카드 구조__  
-  카드의 구조는 크게 img, card-title, info-right, info-left로 나눌 수 있다.  
-  img는 사용자가 등록하는 프로젝트의 이미지이다.  
-  card-title은 등록한 프로젝트의 이름이다.  
-  info는 두개로 나뉘어 info-right, info-left인데, info-right에는 모집기간, info-left에는 모집중인 인원과 참여 인원, 모집 상태가 나온다. 
-- __모집상태 표시__  
-  카드에는 해당 프로젝트의 모집상태가 나오게 되는데 모집중, 진행중, 완료 3가지이다. 모집상태에 따라 색상이 다르게 나온다.  
-  모집중은 빨강, 진행중은 노랑, 완료는 초록이다. 상태표시 색상은 **신호등**을 착안하여 정했다.
-- __box-shadow__  
-  카드 테두리에 그림자를 주었다. 내가 직접 설정해서 하기에는 이쁘게 만들기가 힘들었다. 그래서 서칭을 통해 다양한 box-shadow를 정리해둔 
-  [box-shadow 사이트](https://getcssscan.com/css-box-shadow-examples)를 찾았다.
+            </a>
+  ``` 
+  - __카드 구조__  
+    카드의 구조는 크게 img, card-title, info-right, info-left로 나눌 수 있다.  
+    img는 사용자가 등록하는 프로젝트의 이미지이다.  
+    card-title은 등록한 프로젝트의 이름이다.  
+    info는 두개로 나뉘어 info-right, info-left인데, info-right에는 모집기간, info-left에는 모집중인 인원과 참여 인원, 모집 상태가 나온다.
+- __CSS__
+  ```css
+  /* Card */
+  .card {
+    width: 600px;
+    padding: 50px;
+    /* border: 3px solid var(--inq-blue); */
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+  }
+  .card .card-body {
+    margin-top: 50px;
+  }
+  .card .card-body .card-text.card-title {
+    font-weight: 700;
+    font-size: var(--large-font);
+  }
+  .card .card-body .card-text .card-info .info-left {
+    margin:20px 0 20px 0;
+  }
+  .card .card-body .card-text .card-info .info-right {
+    display: flex;
+  }
+  .card .card-body .card-text .card-info .info-right .info-member {
+    display: flex;
+  }
+  .card .card-body .card-text .card-info .info-right .info-member .symbol {
+    font-size: 50px;
+    color: #5b5b5b;
+  }
+  .card .card-body .card-text .card-info .info-right .info-member .member-personnel {
+    margin-top: 7px;
+    margin-left: 15px;
+  }
+  .card .card-body .card-text .card-info .info-right .info-progress {
+    width: auto;
+    border-radius: 8px;
+    padding: 10px;
+    margin-left: 150px;
+  }
+  /* 모집중 */
+  .card .card-body .card-text .card-info .info-right .info-progress.recruit {
+    background-color: var(--recruit-color);
+  }
+  /* 진행중 */
+  .card .card-body .card-text .card-info .info-right .info-progress.execution {
+    background-color: var(--inq-yellow);
+  }
+  /* 완료 */
+  .card .card-body .card-text .card-info .info-right .info-progress.complete {
+    background-color: var(--complete-color);
+  }
+  ``` 
+  - __모집상태 표시__  
+    카드에는 해당 프로젝트의 모집상태가 나오게 되는데 모집중, 진행중, 완료 3가지이다. 모집상태에 따라 색상이 다르게 나온다.  
+    모집중은 빨강, 진행중은 노랑, 완료는 초록이다. 상태표시 색상은 **신호등**을 착안하여 정했다.
+  - __box-shadow__  
+    카드 테두리에 그림자를 주었다. 내가 직접 설정해서 하기에는 이쁘게 만들기가 힘들었다. 그래서 서칭을 통해 다양한 box-shadow를 정리해둔 
+    [box-shadow 사이트](https://getcssscan.com/css-box-shadow-examples)를 찾았다.
 
 <br>
 
 ### __언더라인 underline__  
 홈 페이지와 프로젝트 홈 페이지에 적용되는 언더라인이 있다.  
 홈 페이지에서는 프로젝트 홈 페이지로 이동하는 버튼에서 **프로젝트**클릭시 언더라인이 나타나면서 이동한다.  
-프로젝트 홈 페이지에서는 검색을 할 때 모집중, 진행중, 완료를 선택한 후 검색을 할 수 있다. 이때, 프로젝트의 상태를 어떤 것을 선택했는지 나타내줄 때 언더라인을 사용한다.  
+프로젝트 홈 페이지에서는 검색을 할 때 모집중, 진행중, 완료를 선택한 후 검색을 할 수 있다. 이때, 프로젝트의 상태를 어떤 것을 선택했는지 나타내줄 때 언더라인을 사용한다.
+
+<img width="1506" alt="언더라인" src="https://user-images.githubusercontent.com/77609591/182877048-62944ae2-93c4-4d56-94a7-69241ebdb687.png">  
+
 - __HTML__  
   사용하고자 하는 부분의 클래스에 **underline**을 작성한다.
   ```html
