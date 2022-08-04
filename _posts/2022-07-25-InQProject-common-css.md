@@ -129,3 +129,77 @@ inner 클래스는 내가 만들 클래스이다.
 
 ### __버튼 css__
 모든 페이지에서 버튼은 굉장히 많이 사용한다. 버튼의 스타일이 대부분 동일하고 약간의 색상 변화를 주는 경우가 대다수였기에 common 파일에 버튼 스타일을 정의해두어 각 페이지에서 사용할때마다 해당 클래스명만을 입력하여 버튼 스타일을 사용하였다.
+```css
+/* Button */
+.bton {
+  width: 250px;
+  padding: 10px;
+  border-radius: 4px;
+  color: var(--font-black);
+  background-color: transparent;
+  font-size: var(--btn-font);
+  font-weight: 500;
+  text-align: center; /*박스 안에서 글자 가운데 정렬*/
+  cursor: pointer;
+  /* box-sizing: border-box; 패딩, 보더가 들어간 만큼 요소가 커지지 않도록 */
+  display: block; /* a나 span태그에 버튼 클래스를 부여했을 때도 버튼이 정상적으로 나오도록 */
+  transition: .4s; /* hover시 자연스럽게 색상이 바뀌도록 */
+}
+.bton:hover {
+  background-color: var(--inq-yellow);
+}
+.bton.btn--reverse {
+  background-color: var(--inq-yellow);
+  border: 0;
+  color: white;
+}
+.bton.btn--reverse:hover {
+  background-color: #ffa703;
+}
+.bton.btn--blue {
+  background-color: transparent;
+  border: 2px solid var(--inq-blue);
+  border-radius: 4px;
+  color: var(--inq-blue);
+}
+.bton.btn--blue:hover {
+  background-color: var(--inq-blue);
+  color: var(--inq-white);
+}
+.bton.btn--blue-reverse {
+  background-color: var(--inq-blue);
+  border: 2px solid var(--inq-blue);
+  border-radius: 4px;
+  color: var(--inq-white);
+}
+.bton.btn--blue-reverse:hover {
+  background-color: transparent;
+  color: var(--inq-blue);
+}
+```
+- __bton__  
+가장 기본적인 버튼 스타일 속성이다. 해당 클래스명을 작성하면 내가 작성한 기본적인 버튼 속성이 적용된다. 
+- __CSS선택자: 일치 선택자__  
+선택자 ABC와 XYZ를 동시에 만족하는 요소를 선택할 때 사용한다.  
+  ```html
+  <div class="abc xyz">hello</div>
+  <span class="ght">world</span>
+  ```
+  ```css
+  .abc.xyz {
+    color: red;
+  }
+  span.ght {
+    color: blue;
+  }
+  ```  
+  위의 경우에는 hello는 빨간색, world는 파란색으로 결과가 나온다.  
+  나는 일치 선택자를 기본적으로 적용한 버튼 스타일 속성에서 추가적으로 변경하고 싶은 속성이 있을 때 사용하였다.  
+  예를 들어,.bton에서 글자 색상만을 바꾸고 싶을 때, 배경 색상을 변경하고 싶을 때 등등 
+- __background: transparent__  
+`background: transparend`를 사용하여 배경색상을 투명하게 만든다.
+- __transition: 속성명 지속시간 타이밍함수 대기시간;__  
+`transition: .6s`  
+요소의 전환(시작과 끝)효과를 지정하는 단축 속성이다. 이때, 지속시간은 필수적으로 작성해야 하는 속성이다.  
+지속시간을 입력하면 전환 효과의 시간을 지정한다. 기본은 *0s*로 전환 효과가 없다. 지속시간을 작성할때는 원하는 시간 뒤에 *S*를 붙혀 작성한다. 이때 *S*는 second를 의미한다.  
+만약 0.5초 지속시간을 주고 싶다면 앞의 0은 생략이 가능하다. (0.5s -> .5s)  
