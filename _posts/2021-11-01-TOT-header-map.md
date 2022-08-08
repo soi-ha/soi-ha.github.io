@@ -9,6 +9,8 @@ tags:
   - project
   - 스파르타코딩클럽
   - TIL
+  - CSS
+  - HTML
 ---
 ## __디자인 컨셉__
 ---

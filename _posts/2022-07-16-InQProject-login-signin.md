@@ -9,6 +9,8 @@ tags:
   - project
   - InQ Project Manager
   - TIL
+  - HTML
+  - CSS
 ---
 
 ## __로그인 페이지__
