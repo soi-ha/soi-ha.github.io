@@ -102,3 +102,85 @@ tags:
     background-color: rgba(255,255,255,0.9);
   }
   ```
+
+## __프로젝트 파트__
+---
+
+<img width="1494" alt="홈2" src="https://user-images.githubusercontent.com/77609591/184624106-5f03b240-3f32-4471-b4e6-340c5cf92695.png">
+
+### __구성__
+- 프로젝트 페이지로 이동하기 버튼
+- 모집중 카드 슬라이드
+
+### __Swiper__
+`new Swiper(선택자, 옵션)`의 형태이다.  
+공지사항 등의 다양한 슬라이드 기능을 가지고 있다.   
+나는 카드가 자동으로 슬라이드 되게 하는 것과 방향 버튼 클릭시 해당 방향으로 슬라이드가 넘어가는 기능을 구현했다.  
+
+<br> 
+
+**HTML**
+```html
+<!-- Swiper -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+  <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+  --------------------------
+  <section class="project">
+    <div class="inner">
+      <div class="swiper">
+        <!-- 카드 내용 -->
+        <div class="card-list swiper-wrapper">
+          ...
+          <a href="#" onclick="location.href='./project/project_info.html'" class="card swiper-slide">
+          ... 
+          </a>
+        </div>
+        <!-- 슬라이드 버튼 -->
+        <div class="swiper-prev">
+          <div class="material-icons">arrow_back</div>
+        </div>
+        <div class="swiper-next">
+          <div class="material-icons">arrow_forward</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+```
+- Swiper 적용  
+  나는 cdn 방식으로 Swiper를 적용하였다.  
+- 방향 버튼 생성  
+  앞 뒤 방향 클릭시 해당 방향으로 이동하기 위한 버튼을 만들었다.
+
+<br>  
+
+**JS**
+```js
+// new Swiper(선택자, 옵션)
+new Swiper('.project .swiper', {
+  slidesPerView: 4, // 한번에 보여줄 슬라이드 개수
+  spaceBetween: 10, // 슬라이드 사이 여백
+  centeredSlides: true, // 1번 슬라이드가 가운데 보이기
+  loop: true,
+  autoplay: {
+    delay: 5000 // 5초 , 밀리세컨 단위
+  },
+  navigation: {
+    prevEl: '.project .swiper-prev',
+    nextEl: '.project .swiper-next'
+  }
+});
+```
+- 선택자는 `.project .swiper`이다.
+- **옵션**  
+  slidesPerVeiw: 한번에 보여줄 슬라이드 개수  
+  spaceBetween: 슬라이드 사이 여백  
+  centerSides: 1번 슬라이드가 가운데 보이게 설정하기  
+  loop: 반복 옵션, autopaly의 delay를 통해 시간 설정  
+  navigation: Swiper에서 제공하는 앞 뒤로 이동할 수 있도록 하는 네비게이션 (버튼)  
+  prevEl에는 뒤로 이동할 버튼을, nextEl에는 앞으로 이동할 버튼
+
+## __마무리__
+---
+저번에도 느꼈지만 home을 만들면서 더욱 느낀것은 작성해야 할 css 선택자가 늘어나는게 굉장히 비효율적이고 실수도 잘 나올 수 있게 한다는 것이다. SCSS를 알게되면 이렇게 길어지지 않아도 된다고 들었던 것같은데, 빨리 배워서 좀 더 간결하고 깔끔하게 만들고 싶다..!
