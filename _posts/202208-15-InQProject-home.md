@@ -77,3 +77,28 @@ tags:
     background-size: cover;
   }
   ```
+
+### __투명도 설정__
+내가 만든 박스에 투명도를 넣어주고 싶다면 가장 간단한 방법은 opacity를 통해 투명도를 넣어주는 것이다.  
+그래서 나는 회원정보의 박스에만 투명도를 약간 주기 위해서 opacity를 사용하였다. 그런데, 배경에도 같이 투명도가 들어갔다. 
+
+- **문제점**  
+  opacity를 이용하여 박스에 투명도를 주려고 했으나 그의 부모 요소인 배경또한 같이 투명해짐.
+  ```css
+  .member-info {
+  margin-top: 200px;
+  background-image: url("../images/home_back.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  } /* 얘도 같이 투명해짐 (부모요소) */
+  .member-info .text-body .row {
+  opacity: 0.9; /* 배경 + 자식요소까지 투명해짐*/
+  }
+  ```
+- **해결방법**
+  opacity를 사용하는 것이 아닌, background-color rgba()를 사용하여 투명도를 준다. 이렇게 하면 원하는 배경만을 투명하게 할 수 있다. 
+  ```css
+  .member-info .text-body .row {
+    background-color: rgba(255,255,255,0.9);
+  }
+  ```
