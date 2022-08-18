@@ -95,7 +95,7 @@ tags:
   opacity: 0.9; /* 배경 + 자식요소까지 투명해짐*/
   }
   ```
-- **해결방법**
+- **해결방법**  
   opacity를 사용하는 것이 아닌, background-color rgba()를 사용하여 투명도를 준다. 이렇게 하면 원하는 배경만을 투명하게 할 수 있다. 
   ```css
   .member-info .text-body .row {
