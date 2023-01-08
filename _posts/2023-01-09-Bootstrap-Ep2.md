@@ -66,3 +66,28 @@ NPM으로 bootstrap을 가져오는 방법이 더 복잡하고 귀찮다. 그런
 
 해당 방법을 통해 bootstrap을 가져오면 우리가 필요로 하는 기능만을 가져와서 사용할 수 있다.  
 그리고 bootstrap에서 제공하는 기본적인 테마들을 우리가 원하는 대로 커스터마이징을 할 수 있다.
+
+## __테마 색상 커스터마이징__
+---
+
+[Color Link](https://getbootstrap.com/docs/5.3/customize/color/)  
+색상 커스터마이징을 하기 위해서 필수적으로 불러와야 하는 코드이다.  
+
+```scss
+// required
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  yellowgreen,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark
+);
+```
+theme-colors는 bootstrap에서 지정해 놓은 색상들이다. 해당 테마의 색상을 원하는 형태로 변경이 가능하다
