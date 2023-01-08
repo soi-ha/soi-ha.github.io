@@ -74,3 +74,51 @@ Popper JS패키지는 팝업을 조금 더 쉽게 만들어 줄 수 있도록 �
   <button type="button" class="btn btn-primary">Right</button>
 </div>
 ```
+## __드롭다운과 리스트 (Dropdown and list)__
+---
+
+### __Dropdowns__
+[Dropdowns Link](https://getbootstrap.com/docs/5.3/components/dropdowns/)
+```html
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Dropdown button
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+  </ul>
+</div>
+```
+
+### __List Group__
+
+[List group Link](https://getbootstrap.com/docs/5.3/components/list-group/)
+```html
+<ul class="list-group">
+  <li class="list-group-item active" aria-current="true">An active item</li>
+  <li class="list-group-item">A second item</li>
+  <li class="list-group-item">A third item</li>
+  <li class="list-group-item">A fourth item</li>
+  <li class="list-group-item">And a fifth one</li>
+</ul>
+```
+
+`aria-current`는 웹 접근성과 관련된 것으로 실제 기능 동작과는 연관되지 않은 부분이니 꼭 필요한 것이 아니라면 무시하면 된다.
+
+`disabled` 클래스를 추가하면 해당 항목을 비활성화 될 수 있게 만들 수 있다.
+
+```html
+<div class="list-group">
+  <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+    The current link item
+  </a>
+  <a href="#" class="list-group-item list-group-item-action">A second link item</a>
+  <a href="#" class="list-group-item list-group-item-action">A third link item</a>
+  <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
+  <a class="list-group-item list-group-item-action disabled">A disabled link item</a>
+</div>
+```
+클래스에 `list-group-item-action`을 추가 작성하게 되면 hover나 disabled를 active 상태로 추가할 수 있다.  
+즉, 마우스를 올렸을 때 동작 효과를 넣은 것이다.
