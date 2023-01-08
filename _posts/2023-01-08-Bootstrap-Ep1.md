@@ -203,3 +203,34 @@ ex) show, hide …
 
 **Events**  
 다양한 이벤트를 통해서 모달의 상태를 제어할 수 있다.
+
+## __툴팁 (Tooltips)__
+---
+Tooltips라는 컴포넌트는 성능상의 이유 때문에 포함되어 있지 않아, 직접적으로 초기화를 해줘야 한다.  
+Tooltips는 단일요소, 다수요소가 아니고 굉장히 많은 부분에서 사용될 수 있기 때문에 해당 부분을 인지해서 따로 정확하게 초기화를 해줘야지만 동작한다. 
+
+**Tooltip**은 팝업으로 설명글이 나오는 것을 말한다.  
+방향을 원하는 방향으로 설정이 가능하다.  
+[Tooltips Link](https://getbootstrap.com/docs/5.3/components/tooltips/)
+
+```html
+<button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Tooltip on top">
+  Tooltip on top
+</button>
+<button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Tooltip on right">
+  Tooltip on right
+</button>
+<button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Tooltip on bottom">
+  Tooltip on bottom
+</button>
+<button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Tooltip on left">
+  Tooltip on left
+</button>
+```
+
+Tooltip을 사용하기 위해서는 **초기화**가 **필수!!**이다.
+
+```jsx
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+```
