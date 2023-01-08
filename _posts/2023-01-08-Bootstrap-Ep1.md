@@ -127,7 +127,7 @@ Popper JS패키지는 팝업을 조금 더 쉽게 만들어 줄 수 있도록 �
 ---
 
 ### __Form__
-[Forms](https://getbootstrap.com/docs/5.3/forms/overview/)
+[Forms Link](https://getbootstrap.com/docs/5.3/forms/overview/)
 
 사용자에게 데이터를 얻는 양식을 말한다.  
 boostrap에서 제공하는 양식을 통해 사용자에게 조금 더 깔끔한 형태로 데이터를 얻게 도움 받을 수 있다.
@@ -150,3 +150,56 @@ boostrap에서 제공하는 양식을 통해 사용자에게 조금 더 깔끔�
 - input group
   
   다양한 input 태그를 사용자가 보고 사용하기 편하도록 정리해 두었다.
+
+## __모달 (Modal)__
+---
+해당 코드로 모달 창 내부에서 원하는 부분에 focusing 되도록 만들어준다.  
+[Modal Link](https://getbootstrap.com/docs/5.3/components/modal/)
+
+```jsx
+const myModal = document.getElementById('myModal')
+const myInput = document.getElementById('myInput')
+
+myModal.addEventListener('shown.bs.modal', () => {
+  myInput.focus()
+})
+```
+
+```html
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+- button 태그의 data-bs-target 속성으로 원하는 모달의 id값을 입력하면, 버튼 클릭시 해당 모달창을 띄운다.
+- modal-header에는 모달 창 내부의 header 내용
+- modal-body는 내가 나타내고자 하는 핵심 내용
+- modal-footer에는 주로 원하는 기능의 버튼 등
+
+
+**Via JavaScript**  
+오른쪽 사이드에 해당 목록을 클릭하면 모달에서 사용할 수 있는 자바스크립트의 기본적인 코드들을 확인할 수 있다.  
+ex) show, hide …
+
+**Events**  
+다양한 이벤트를 통해서 모달의 상태를 제어할 수 있다.
