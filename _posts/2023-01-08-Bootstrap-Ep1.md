@@ -45,3 +45,32 @@ jsdelivr에서 bootstrap css 파일을 원격으로 제공한다.
 ### __Popper__
 Popper JS패키지는 팝업을 조금 더 쉽게 만들어 줄 수 있도록 도와준다.  
 [Poper Home Link](https://popper.js.org/)
+
+## __버튼과 버튼 그룹 (button and botton group)__
+---
+
+### __Button__
+다양한 색상의 버튼  
+[Buttons Link](https://getbootstrap.com/docs/5.3/components/buttons/)
+```html
+<button type="button" class="btn btn-primary">Primary</button>
+<button type="button" class="btn btn-secondary">Secondary</button>
+<button type="button" class="btn btn-success">Success</button>
+<button type="button" class="btn btn-danger">Danger</button>
+<button type="button" class="btn btn-warning">Warning</button>
+<button type="button" class="btn btn-info">Info</button>
+<button type="button" class="btn btn-light">Light</button>
+<button type="button" class="btn btn-dark">Dark</button>
+<button type="button" class="btn btn-link">Link</button>
+```
+
+### __Button Group__
+버튼들을 btn-group 클래스에 묶어서 넣으면 하나의 버튼 일렬로 출력된다.  
+[Button group Link](https://getbootstrap.com/docs/5.3/components/button-group/)
+```html
+<div class="btn-group" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-primary">Left</button>
+  <button type="button" class="btn btn-primary">Middle</button>
+  <button type="button" class="btn btn-primary">Right</button>
+</div>
+```
