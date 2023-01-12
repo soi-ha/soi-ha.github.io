@@ -59,7 +59,6 @@ html, css, js를 가지고 웹을 만드는데 이것만으로 만들기에는 �
     package.json 파일 최하단에 해당 코드를 추가한다.
     
     ```json
-    // package.json 파일
     "staticFiles": {
         "staticPath": "static"
       }
