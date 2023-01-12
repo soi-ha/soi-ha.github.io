@@ -180,7 +180,7 @@ tags:
   "scripts": {
       "dev": "parcel index.html --port 9876",
       "build": "parcel build index.html"
-    },
+    }
   ```
     
 - 주의!
