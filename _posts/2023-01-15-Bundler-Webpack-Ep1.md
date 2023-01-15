@@ -180,3 +180,67 @@ webpack.config.js 파일은 브라우저에서 동작하는 것이 아니라 nod
     우리가 구성옵션을 바꾸게 되면 바꾸기 이전의 파일들이 그대로 존재하게 되는 문제가 발생하게 되었다. 이것을 해결하는 옵션이 clean 옵션이다.
     
     clean을 true로 설정하게 되면 기존에 만들었던 내용들을 제거하고 새롭게 설정한 내용만이 존재하게 된다.
+
+## __plugins__
+---
+
+우리는 진입점으로 main.js를 설정했는데 이 main.js에 index.html을 삽입해서 개발서버를 오픈해 줄 수 있다.
+
+- html-webpack-plugin 패키지 설치
+  
+  개발 의존성모드로 html-webpack-plugin 패키지를 설치해 준다.
+  
+  ```bash
+  npm i -D html-webpack-plugin
+  ```
+  
+- **plugins**
+  
+  번들링 후 결과물의 처리 방식 등의 다양한 내용을 지정해주는 플러그인들을 설정해 줄 수 있는 옵션이다.
+  
+  ```js
+  // import
+  const path = require('path')
+  const HtmlPlugin = require('html-webpack-plugin')
+  
+  // export
+  module.exports = {
+    ...
+  
+    // 번들링 후 결과물의 처리 방식 등 다양한 플러그인들을 설정
+    plugins: [
+      new HtmlPlugin({
+        template: './index.html'
+      })
+    ]
+  }
+  ```
+  
+  HtmlPlugin 변수를 생성하여 해당 패키지를 불러온다.
+  
+  export의 구성옵션으로 plugins를 추가해주고 배열 데이터를 할당한다.    
+  배열 데이터의 첫번째 아이템으로 위에서 가져왔던 html plugin을 new라는 키워드로 생성자 함수처럼 실행을 해준다. 
+  
+  생성자 함수가 실행이 되면서 해당 자리에 어떠한 결과가 반환이 되는데, 이때 반환된 결과가 plugins의 첫번째 배열의 아이템으로 사용된다는 것이다.
+  
+  생성자 함수의 데이터로 객체 데이터를 생성하여 template 옵션에 index.html 파일을 명시해 준다.  
+  명시한 index.html 파일은 루트경로에 만들어둔 index.html을 지칭한다.
+  
+  webpack이 entry로 시작해서 js 폴더의 main.js 파일을 읽어서 그것에 대한 결과를 output에 있는 옵션으로 만들어낸다. 이걸 만들어내는 과정에서 plugins에 명시되어져 있는 여러가지 plugin들을 활용하게 된다.  
+  이때, HtmlPlugin을 통해서 template로 루트경로에 만들어두었던 index.html을 지정한 것이다.  
+  이 index.html과 결과물을 만들어내는 main.js에 대한 합본은 dist 폴더에 만들어두는 역할을 한다. 
+    
+- dev 서버 실행 시 localhost가 뜨지 않는다면
+  
+  devServer 옵션을 추가해준다.
+  
+  ```js
+  // export
+  module.exports = {
+    ...
+    
+    devServer: {
+      host: 'localhost'
+    }
+  }
+  ```
