@@ -70,8 +70,8 @@ tags:
   css 폴더를 static 안에 만들어서 관리한다.  
   정적 파일 연결에서 static 폴더 안에 있는 내용들은 dist 폴더에 들어가기 때문에 실제로 실행했을 때, 경로를 css 폴더 안의 main.css 파일 찾기로 해도 잘 출력이 되는 것을 확인할 수 있다.
   
-  ```css
-  <link *rel*="stylesheet" *href*="./css/main.css">
+  ```html
+  <link rel="stylesheet" href="./css/main.css">
   ```
     
 - webpack을 활용한 파일 관리
@@ -140,8 +140,14 @@ tags:
 
 단, webpack.config.js 파일에서 정규표현식 부분에 해당 내용을 추가한다.
 
-```jsx
-test: /\.s?css$/
+```js
+{
+  test: /\.s?css$/,
+  use: [
+    'style-loader',
+    'css-loader'
+  ]
+}
 ```
 
 s뒤의 물음표의 의미는 s가 있을 수도 있고, 없을 수도 있다는 것이다.   
