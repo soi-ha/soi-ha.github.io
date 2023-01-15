@@ -65,7 +65,7 @@ tags:
 ## __entry, output__
 ---
 
-[Concepts | 웹팩 Link](https://webpack.kr/concepts/)
+[Concepts 웹팩 Link](https://webpack.kr/concepts/)
 
 webpack.config.js 파일은 브라우저에서 동작하는 것이 아니라 node.js 환경에서 동작한다. 우리가 저번에 봤던 것 처럼 파일을 내보낼 때 export가 아닌 module.exports를 이용해서 파일을 내보낸다.
 
