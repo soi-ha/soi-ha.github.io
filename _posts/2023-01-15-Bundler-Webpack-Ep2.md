@@ -132,3 +132,48 @@ tags:
     style-loader는 해석된 내용을 사용하는 패키지로, html의 style 태그 부분에 style-loader가 해석된 내용을 삽입해 주는 역할을 한다.
     
     작성 순서는 style-loader를 먼저 작성해줘야 한다.
+
+## __SCSS__
+---
+
+작성했던 css들을 모두 scss로 변경한다. 
+
+단, webpack.config.js 파일에서 정규표현식 부분에 해당 내용을 추가한다.
+
+```jsx
+test: /\.s?css$/
+```
+
+s뒤의 물음표의 의미는 s가 있을 수도 있고, 없을 수도 있다는 것이다.   
+혹시라도 우리가 css 파일을 연결하게 되었을 때 발생할 문제를 방지하기 위함이다.  
+따라서, 해당 정규표현식으로 css, scss 파일 모두 찾을 수 있다.
+
+하지만 해당 패키지들로는 scss 파일을 읽을 수가 없다. 추가 패키지를 설치해야 한다.
+
+- scss 리딩 패키지 설치
+    
+  ```bash
+  npm i -D sass-loader sass
+  ```
+    
+- 패키지의 역할 및 순서
+  
+  sass-loader를 통해서 webpack에서 해당하는 css 파일을 읽어낼 수 있다.  
+  sass는 실제로 해당 내용을 읽을 때, 문법을 해석해 줄 수 있는 실제 sass 모듈이다.
+  
+  패키지의 순서는 sass-loader가 가장 먼저 읽어져야 하기 때문에 css-loader 다음에 둔다.
+  
+  ```jsx
+  module: {
+      rules: [
+        {
+          test: /\.s?css$/,
+          use: [
+            'style-loader',
+            'css-loader',
+            'sass-loader'
+          ]
+        }
+      ]
+    }
+  ```
