@@ -71,3 +71,54 @@ autoprefixer: 공급업체 접두사를 자동으로 만들어 주는 것
     ]
   }
   ```
+
+## __babel__
+---
+
+- 패키지 설치
+  
+  ```bash
+  npm i -D @babel/core @babel/preset-env @babel/plugin-transform-runtime
+  ```
+    
+- .babelrc.js 생성
+  
+  ```jsx
+  module.exports = {
+    presets: ['@babel/preset-env'],
+    plugins: [
+      ['@babel/plugins-transform-runtime']
+    ]
+  }
+  ```
+  
+  presets: 우리가 일일이 명시해야 하는 자바스크립트 기능을 한번에 지원해주는 패키지
+  
+  plugins: 비동기 처리를 위해서 plugin-transform-runtime 패키지 설치.  
+  plugins는 배열안에 배열이 들어가 있다. 이것을 2차원 배열이라고 부르기도 한다.
+    
+- webpack.config.js
+  
+  .js로 끝나는 모듈을 매칭해서 그 부분에 패키지들을 사용할 것이다.
+  해당 패키지는 babel-loader이며, js로 끝나는 확장자들을 webpack에서 babel-loader로 읽어들여서 실제로 babel이 적용될 수 있게 한다.
+  
+  ```jsx
+  module: {
+      rules: [
+        {
+        },
+        {
+          test: /\.js$/,
+          use: [
+            'babel-loader'
+          ]
+        }
+      ]
+    }
+  ```
+    
+- babel-loader 패키지 설치
+  
+  ```bash
+  npm i -D babel-loader
+  ```
