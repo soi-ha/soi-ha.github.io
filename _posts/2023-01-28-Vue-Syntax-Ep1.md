@@ -72,7 +72,7 @@ export default {
 ## __템플릿 문법__
 ---
 
->[템플릿 문법 | Vue.js](https://v3-docs.vuejs-korea.org/guide/essentials/template-syntax.html#text-interpolation)
+>[Vue.js 템플릿 문법](https://v3-docs.vuejs-korea.org/guide/essentials/template-syntax.html#text-interpolation)
 >
 > 해당 페이지 내용 참고하기
 >
