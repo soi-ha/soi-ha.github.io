@@ -25,7 +25,7 @@ tags:
   
   ```jsx
   <template>
-    <h1> {{ count }}</h1>
+    <h1> {{ count }} </h1>
   </template>
   
   <script>
