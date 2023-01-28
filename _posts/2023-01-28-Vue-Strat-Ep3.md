@@ -23,7 +23,7 @@ tags:
     
 - Vue 문법 적용해보기
   
-  ```vue
+  ```jsx
   <template>
     <h1> {{ count }} </h1>
   </template>
