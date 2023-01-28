@@ -106,3 +106,183 @@ tags:
       
       데이터를 정의( data() )하고 이것을 갱신할 수 있는 핸들러( methods )를 작성했다. 여기서 가장 중요한 것은 count라는 데이터를 갱신하면, 연결되어져 있는 브라우저의 화면도 같이 갱신된다는 것이다. 이것을 반응성이라고 부른다.  
       요약하면, 데이터를 갱신하면 화면도 바뀐다! 이다.
+
+## __조건문과 반복문__
+---
+
+- **조건문 (v-if)**
+  
+  ```jsx
+  <template>
+    <h1 @click="increase">
+      {{ count }}
+    </h1>
+    <div v-if="count > 4">
+      4보다 큽니다!
+    </div>
+  </template>
+  ```
+  
+  - 조건
+    
+    클릭하여 숫자를 증가시킬때, 해당 숫자가 4보다 크면 div의 내용(4보다 큽니다!)를 보여준다.
+    
+  - v-if: if 속성이다. 해당 속성의 값으로 원하는 조건을 작성한다.
+  - `v-` 형태를 **디렉티브(Directive)**라고 부른다.
+
+- style을 scss로 읽어들이기
+  
+  style 태그에 lang 속성의 값으로 scss를 입력해주면 scss로 읽어들인다.
+    
+- **반복문 (v-for)**
+  - fruits
+    
+    script에서 fruits라는 배열 데이터를 생성한다.
+    
+  - v-for
+    
+    ```jsx
+    <template>
+      <ul>
+        <li
+          v-for="fruit in fruits"
+          :key="fruit">
+          {{ fruit }}
+        </li>
+      </ul>
+    </template>
+    
+    <script>
+    export default {
+      data() {
+        return {
+          fruits: ["Apple", "Baanan", "Cherry"]
+        }
+      }
+    </script>
+    ```
+    
+    for 속성이다. 해당 속성의 값으로 원하는 반복 조건을 입력한다.
+    
+    `fruit in fruits`  
+    나는 조건으로 fruits 배열 데이터를 불러들여 해당 배열안에 존재하는 데이터 값만큼 반복하도록 했다.  
+    그리고 해당 배열 안의 값을 fruit 변수에 할당했다.
+    
+    `:key=”fruit”`  
+    데이터를 반복할 때, 각각의 데이터가 고유한지 증명하기 위해서 `:key=””`형태로 제공해야 한다. 반복을 할 때마다 key안의 값 fruit에 Apple, Banana, Cherry가 들어가게 된다.
+    
+
+    > **참고!!**
+    > 
+    > 
+    > vue.js, react, svelt, angular 같은 모던 웹 프론트엔드 프레임워크들은  데이터를 기반으로 해서 화면이 출력되는 것을 고려해야 한다.
+    > 
+
+- 별개의 components로 데이터 출력하기
+  - components 폴더에 Fruit.vue 파일 생성
+  - Fruit.vue
+    
+    props 옵션을 설정한다.   
+    해당 객체 데이터 내부에는 name 이라는 이름으로 어떤 데이터를 받아낸다. name이라는 데이터의 타입은 String이다. 
+    
+    **노란색 밑줄 발생!**  
+    name이라는 props는 필수로 default value를 제공해야 한다.  
+    우리는 어떤 데이터를 name에 받아서 사용할 것인데, name에 데이터가 들어오지 않는다면 default 속성에 기본값을 지정해 줄 수 있다.
+    
+    ```jsx
+    <template>
+      <li>{{ name }}</li>
+    </template>
+    
+    <script>
+    export default {
+      props: {
+        name: {
+          type: String,
+          default: ''
+        }
+      }
+    }
+    </script>
+    ```
+      
+  - Fruit.vue 파일 App.vue 파일로 가져오기
+    - App.vue
+        
+        ```jsx
+        <template>
+          <ul>
+            <hello
+              v-for="fruit in fruits"
+              :key="fruit"
+              :name="fruit">
+              {{ fruit }}
+            </hello>
+          </ul>
+        </template>
+        
+        <script>
+        import Fruit from '~/components/Fruit'
+        
+        export default {
+          components: {
+            hello: Fruit
+          }
+        </script>
+        ```
+        
+        script 부분에 import를 사용하여 Fruit 라는 이름으로 파일을 가져온다.
+        
+        Fruit 이름으로 가져온 파일을 사용하기 위해서는 components 옵션 부분에 등록을 해줘야 한다. 나는 hello 라는 이름으로 등록해줬다.
+        
+        template 부분에 li를 hello로 변경한다.  
+        key 속성 밑에 name 속성을 작성하고 값은 fruit를 명시한다.
+        
+      - Fruit라는 컴포넌트를 만들어서 해당 내용을 App.vue에 가져와서 활용을 한다.
+      - 이때 우리가 사용한 name 속성은 Fruit의 props라는 옵션에 작성되어 있다.  
+      name이라는 이름으로 데이터를 받는데, 해당 데이터 타입이 문자열(String)데이터 이고, 여기에 데이터가 들어오지 않으면 빈 문자를 사용하겠다고 선언했다.  
+
+        이렇게 받아진 name이라는 이름으로 데이터를 출력하게 된다.  
+        이때 출력하는 name 뒤에 내용을 추가하면 해당 내용도 같이 출력된다.
+        
+        ```jsx
+        <template>
+          <li>{{ name }} ?! </li>
+        </template>
+        ```
+        
+  - hello는 직관성이 떨어지니 Fruit로 변경하자
+    
+    Fruit로 변경하면 컴포넌트 옵션에서 지정할 때 파일 이름과 지정해준 이름이 동일하다. 이럴때는 이름 하나만 작성해도 된다.
+    
+    ```jsx
+    components: {
+      // Fruit: Fruit
+      Fruit
+      }
+    ```
+      
+  - Fruit 파일의 style
+    
+    ```jsx
+    <style lang="scss">
+      h1 {
+        color: red !important;
+      }
+    </style>
+    ```
+    
+    해당 코드를 작성하고 브라우저 화면을 확인하면 숫자 색상이 빨간색으로 변경되었다.  
+    이것은 App.vue에 만들어져있는 h1의 해당하는 스타일을 다른 컴포넌트에서 제어한 것이다. 이런 방식은 그닥 효율적이지 못하다.
+    
+    - **scoped**
+      
+      style 부분에 scoped라는 속성을 추가한다.  
+      다시 브라우저를 확인하면 숫자 색상이 파란색으로 변경된 것을 볼 수 있다.
+      
+      scoped가 작성된 해당하는 vue 파일의 스타일은 다른 컴포넌트에는 영향을 미치지 않는다.  
+      현재 파일에 있는 내용에만 영향을 미친다.
+      
+      h1은 Fruit 파일에는 존재하지 않으니 다른 컴포넌트인 App.vue에는 영향을 미치지 못하게 된다.
+      
+      즉, 해당 스타일이 가진 유효범위는 해당 파일 내에서만 가진다는 것이다.
