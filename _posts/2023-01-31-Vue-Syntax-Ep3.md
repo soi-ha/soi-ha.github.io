@@ -2,7 +2,7 @@
 layout: post
 categories:
   - TIL
-title: "Vue.js: Vue 문법 Ep.3"
+title: "Vue.js: Vue 문법 Ep.3 클래스와 스타일 바인딩"
 tags:
   - TIL
   - Vue.js
