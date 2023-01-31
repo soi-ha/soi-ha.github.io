@@ -90,3 +90,66 @@ export default {
 reverseFruits의 계산은 다음과 같다.  
 'Apple' ⇒ ['A','p','p','l','e'] ⇒ ['e','l','p','p','A'] ⇒ 'elppA'  
 배열 데이터 fruit를 각 알파벳으로 쪼개고 해당 배열을 뒤짚은 다음에 다시 이어준다.
+
+## __Computed 캐싱__
+---
+
+- 캐싱하지 않은 코드
+  
+  메소드를 불러올 때 마다 계산을 한다.  
+  즉, 같은 값을 계속 불러와도 같은 연산을 계속 반복하여 값을 출력하는 것이다.
+  
+  ```jsx
+  <template>
+    <h1>{{ reverseMessage() }}</h1>
+    <h1>{{ reverseMessage() }}</h1>
+    <h1>{{ reverseMessage() }}</h1>
+  </template>
+  
+  <script>
+  export default {
+    data() {
+      return {
+        msg: 'Hello Computed!'
+      }
+    },
+    methods: {
+      reverseMessage() {
+        return this.msg.split('').reverse().join('') 
+      }
+    }
+  }
+  </script>
+  ```
+    
+- 계산된 데이터 (캐싱)
+  
+  마치 데이터처럼 적용을 하면 된다.
+  
+  computed 옵션 부분에 만들어 둔 계산된 데이터는 캐싱이라는 기능이 있기 때문에 한번 연산을 해 놓은 값이 있으면 반복적으로 화면에 데이터처럼 출력할 때, 다시 한번 연산하지 않는다.
+  
+  캐싱이 되어져 있기 때문에 저장된(캐싱된) 값으로 해당하는 내용을 출력해준다.  
+  첫번째만 연산을 실행하고 그 이후의 두번째, 세번째, … 100번째는 연산을 진행하지 않고 첫번째 연산에서 찾은 값을 저장해 두었다가 출력한다.
+  
+  ```jsx
+  <template>
+    <h1>{{ reversedMessage }}</h1>
+    <h1>{{ reversedMessage }}</h1>
+    <h1>{{ reversedMessage }}</h1>
+  </template>
+  
+  <script>
+  export default {
+    data() {
+      return {
+        msg: 'Hello Computed!'
+      }
+    },
+    computed: {
+      reversedMessage() {
+        return this.msg.split('').reverse().join('') 
+      }
+    }
+  }
+  </script>
+  ```
