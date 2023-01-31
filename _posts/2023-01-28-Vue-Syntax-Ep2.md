@@ -153,3 +153,52 @@ reverseFruits의 계산은 다음과 같다.
   }
   </script>
   ```
+
+## __Getter, Setter__
+---
+
+- __Getter__
+  
+  값을 **얻어 내는 것**이다.
+  
+  computed 옵션에 작성해둔 reversedMessage는 계산된 데이터로,  읽기 전용(Readonly)이다.   
+  method의 add의 `+= ‘?!’`는 할당연산자로, 어떤 값을 할당하더라도 반응적으로 동작할 수 있는 구조가 아니다.   
+  즉 reversedMessage는 내부의 기본 로직을 통해서 값을 얻어내는 용도로만 사용한다. **이것이 Getter!**
+  
+  ```jsx
+  computed: {
+      // Getter 
+      reversedMessage() {
+        return this.msg.split('').reverse().join('') 
+      }
+    }
+  ```
+  
+- __Setter__
+  
+  값을 **지정하는 것**이다.
+  
+  computed는 기본적으로 얻어내는 것만 가능하다.  
+  단, vue.js 문법을 통해서 계산된 데이터 부분의 Setter를 지정해 줄 수 있다.
+  
+  ```jsx
+  computed: {
+      reversedMessage: {
+        // Getter
+        get() {
+          return this.msg.split('').reverse().join('') 
+        },
+        // Setter
+        set(value) {
+          this.msg = value
+        }
+      }
+    },
+    methods: {
+      add() {
+        this.reversedMessage += '!?'
+      }
+    }
+  ```
+  
+  계산된 데이터 부분에 getter와 setter로 구분되는 방식이 일반적으로 잘 활용되지는 않는다. 단, Vuex(Store, 중앙 집중식 저장소)에 간간히 유용하게 사용할 수 있다.
