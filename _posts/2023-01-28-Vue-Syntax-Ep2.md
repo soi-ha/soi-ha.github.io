@@ -202,3 +202,47 @@ reverseFruits의 계산은 다음과 같다.
   ```
   
   계산된 데이터 부분에 getter와 setter로 구분되는 방식이 일반적으로 잘 활용되지는 않는다. 단, Vuex(Store, 중앙 집중식 저장소)에 간간히 유용하게 사용할 수 있다.
+
+## __Watch__
+---
+
+특정한 데이터들의 변경사항을 감시하는 용도의 옵션이다.
+
+감시하고 싶은 데이터가 있다면, 해당 데이터를 watch에 하나의 메소드처럼 만들어서 메소드의 로직으로 데이터가 변경되었을 때, 어떤 내용을 실행할지 명시하면 된다.
+
+```jsx
+<script>
+export default {
+  data() {
+    return {
+      msg: 'Hello?'
+    }
+  },
+  computed: {
+    reversedMessage() {
+      return this.msg.split('').reverse().join('') 
+    }
+  },
+  watch: {
+    msg(newValue) {
+      console.log('msg:', newValue)
+    },
+    reversedMessage() {
+      console.log('reversedMessage:', this.reversedMessage)
+    }
+  },
+  methods: {
+    changeMessage() {
+      this.msg = 'Good!'
+    }
+  }
+}
+</script>
+```
+
+watch를 통해서 msg 데이터는 감시되고 있는 상황이다.  
+감시가 되어있다가 변경사항이 있으니까, 감시되고 있는 해당 내용(콘솔에 msg 출력)의 로직을 실행한다.
+
+watch는 기존 데이터 뿐만이 아니라 계산된 데이터도 감시가 가능하다.   
+changeMessage를 통해서 msg의 원본 데이터만 수정하더라도 계산된 데이터 부분의 내용도 변경된다.  
+따라서 watch의 reversedMessage의 변경이 감시되어 해당 내용의 로직이 실행된다.
