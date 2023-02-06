@@ -10,7 +10,7 @@ tags:
 ---
 ## __컴포넌트: Slot__
 ---
-
+> [Vue.js: 슬롯](https://v3-docs.vuejs-korea.org/guide/components/slots.html)
 - Fallback contents
   
   App.vue(부모 컴포넌트) 파일에서 MyBtn 컴포넌트 태그 사이에 컨텐츠가 없을 때, MyBtn.vue(자식 컴포넌트) 파일의 slot 태그 사이에 있는 컨텐츠가 출력되는 것을 말한다.
@@ -50,6 +50,7 @@ tags:
 
 ## __컴포넌트: Provide, Inject__
 ---
+> [Vue.js: Provide(제공),Inject(주입)](https://v3-docs.vuejs-korea.org/guide/components/provide-inject.html)
 
 - Prop 드릴링
   
@@ -73,7 +74,7 @@ tags:
     provide 옵션을 추가하여 컴포넌트 하위 항목에 데이터를 제공한다.
     
     ```jsx
-    *export* *default* {  
+    export default {  
       provide: {    
         message: '안녕!'  
       }
