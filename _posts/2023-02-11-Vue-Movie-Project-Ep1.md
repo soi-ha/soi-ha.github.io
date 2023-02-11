@@ -126,7 +126,7 @@ vue router은 실제 브라우저에서 페이지 관리를 해줘야 하기 때
 npm i bootstrap
 ```
 
-[Sass](https://getbootstrap.com/docs/5.2/customize/sass/)
+> [Bootstrap: Sass](https://getbootstrap.com/docs/5.2/customize/sass/)
 
 **!default**
 
