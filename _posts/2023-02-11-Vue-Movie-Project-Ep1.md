@@ -156,3 +156,18 @@ bootstrap에서 지정한 파란색의 Primary 색상을 우리가 외부에서 
     
   해당 변수 안에 있는 값들을 모두 변경했다면, 위의 $primary와 같이 상단에 작성해준다.  
   만약, 일부만 변경하고 다른 info, warning 등은 변경하지 않았다면, required 부분 뒤에 정의해야 한다. 따로 재정의를 하지 않았기에 앞에 사용하면 에러가 발생하게 된다.
+
+## __BT: Containers__
+---
+
+>[BootStrap: Containers](https://getbootstrap.com/docs/5.2/layout/containers/)
+
+가운데 정렬을 시켜주는 레이아웃이다.  
+특정 사이즈에서 가운데 정렬을 시켜준다.
+
+- XX-Large > 1400px 과 1320px의 의미
+  
+  최대 화면 크기가 1400px일때 우리가 사용하는 `.containe`r의 가로 사이즈는 1320px이라는 의미이다.  
+  따라서 화면 크기가 1400px 이상일 때,1320px에서 가운데 정렬이 된다.
+  
+  만약 1200px과 1400px 사이라면 가로 사이즈는 1140px이 된다.
