@@ -8,12 +8,13 @@ tags:
   - TIL
   - Vue.js
   - project
-  - css
+  - CSS
 ---
 ## __텍스트 말줄임 표시와 배경 흐림 처리__
+---
 
 
-- 텍스트 말줄임 표시
+### __텍스트 말줄임 표시__
   
   ```css
   div {
@@ -45,7 +46,7 @@ tags:
     
     > [MDN: text-overflow - CSS](https://developer.mozilla.org/en-US/docs/Web/CSS/text-overflow)
       
-- 배경 흐림 처리
+### __배경 흐림 처리__
   
   ```css
   div { 
