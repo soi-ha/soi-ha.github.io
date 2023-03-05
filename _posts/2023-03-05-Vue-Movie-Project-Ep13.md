@@ -10,7 +10,7 @@ tags:
   - project
 ---
 
-> [State | Vuex](https://vuex.vuejs.org/guide/state.html#the-mapstate-helper)
+> [Vuex: State](https://vuex.vuejs.org/guide/state.html#the-mapstate-helper)
 
 계산된 데이터(computed)를 이용해서 컴포넌트 내부에서 사용할 데이터들을 하나씩 만들때, 유사한 코드들을 반복적으로 작성하게 된다.
 
