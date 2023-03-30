@@ -61,7 +61,7 @@ _내가 만든 마켓컬리 클론코딩 페이지!_
 
     콘텐츠 박스 크기에 맞춰 대체 콘텐츠의 크기를 조절한다. 콘텐츠가 박스를 가득 채운다. 가로세로비가 일치하지 않으면 콘텐츠가 늘어난다.
 
-  [object-fit - CSS: Cascading Style Sheets : MDN](https://developer.mozilla.org/ko/docs/Web/CSS/object-fit)
+  > [object-fit - CSS: Cascading Style Sheets : MDN](https://developer.mozilla.org/ko/docs/Web/CSS/object-fit)
 
 - **z-index**
 
@@ -82,7 +82,7 @@ _내가 만든 마켓컬리 클론코딩 페이지!_
   }
   ```
 
-  [z-index - CSS: Cascading Style Sheets : MDN](https://developer.mozilla.org/ko/docs/Web/CSS/z-index)
+  > [z-index - CSS: Cascading Style Sheets : MDN](https://developer.mozilla.org/ko/docs/Web/CSS/z-index)
 
 - **letter-spacing**
 
@@ -96,4 +96,4 @@ _내가 만든 마켓컬리 클론코딩 페이지!_
   }
   ```
 
-  [letter-spacing - CSS: Cascading Style Sheets : MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/letter-spacing)
+  > [letter-spacing - CSS: Cascading Style Sheets : MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/letter-spacing)
