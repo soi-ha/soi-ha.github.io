@@ -68,15 +68,15 @@ export default function Example2() {
 }
 ```
 
-- useState()안의 인자가 class 컴포넌트의 count: 0 과 같은 초기값이다. 따라서 인자로 0을 넣어준다.
+useState()안의 인자가 class 컴포넌트의 count: 0 과 같은 초기값이다. 따라서 인자로 0을 넣어준다.
 
-- React.useState(0)를 한 결과물은 배열이다. 배열의 앞 인덱스는 useState의 0, state(count)가 업데이트 됐을 때, 변경된 값을 의미한다. 즉, 앞 인덱스는 count를 작성하면 된다.  
-  두번째 인덱스는 count를 바꾸는 함수를 제공한다. 따라서 우리는 함수 이름을 setCount라고 명한다.
+React.useState(0)를 한 결과물은 배열이다. 배열의 앞 인덱스는 useState의 0, state(count)가 업데이트 됐을 때, 변경된 값을 의미한다. 즉, 앞 인덱스는 count를 작성하면 된다.  
+두번째 인덱스는 count를 바꾸는 함수를 제공한다. 따라서 우리는 함수 이름을 setCount라고 명한다.
 
-- 클릭을 했을 때, setCount가 호출되도록 한다. setCount는 클릭시, count 값이 증가하는 로직을 작성한다.
+클릭을 했을 때, setCount가 호출되도록 한다. setCount는 클릭시, count 값이 증가하는 로직을 작성한다.
 
-- setCount가 하는 역할은 count의 값을 변경하는 것 + Example2 함수를 다시 실행하는 것이다.  
-  변경한 값을 적용하고 해당 값에 다시 값을 추가해야 하므로, 해당 함수를 다시 실행하기 때문이다.
+setCount가 하는 역할은 count의 값을 변경하는 것 + Example2 함수를 다시 실행하는 것이다.  
+변경한 값을 적용하고 해당 값에 다시 값을 추가해야 하므로, 해당 함수를 다시 실행하기 때문이다.
 
 - **useState를 객체를 사용하는 것으로 변경하기**
 
