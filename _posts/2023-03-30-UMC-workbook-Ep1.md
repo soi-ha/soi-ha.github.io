@@ -2,7 +2,7 @@
 layout: post
 categories:
   - TIL
-title: "UMC: 마켓컬리 클론코딩, object-fit"
+title: 'UMC: 마켓컬리 클론코딩, object-fit'
 tags:
   - TIL
   - UMC
@@ -28,8 +28,6 @@ react나 vue는 사용하지 않고 그냥 만드는 거라... 컴포넌트의 �
 <img width="1519" alt="마켓컬리 클론코딩" src="https://user-images.githubusercontent.com/77609591/228606428-8257db48-4d3a-413b-8fd2-dbbac22ce0d7.png">
 
 _내가 만든 마켓컬리 클론코딩 페이지!_
-
-</br>
 
 **어려웠던 점**  
 클론코딩을 하면서 어려운 점은.. 기존에 코드를 참고해서 하는데, 해당 코드를 바탕으로 새롭게 나만의 코드 만드는게 처음이라 애를 좀 먹었다. 어떻게 해야 할 지 감을 잡는데 조금 걸렸달까? 그래도 여러번 반복되니 이제 대략 코드들도 이해가 되고 버려도 되는 코드를 금방 파악할 수 있어서 후반부에 갈 수록 코드 작성하는 시간은 적게 걸렸다.
@@ -71,14 +69,14 @@ _내가 만든 마켓컬리 클론코딩 페이지!_
   ```css
   /* 최상위 요소 */
   .first {
-    position: relative;
-    z-index: 9999;
+  	position: relative;
+  	z-index: 9999;
   }
 
   /* 밑에 깔리는 요소*/
   .second {
-    position: relative;
-    z-index: 10;
+  	position: relative;
+  	z-index: 10;
   }
   ```
 
@@ -92,7 +90,7 @@ _내가 만든 마켓컬리 클론코딩 페이지!_
 
   ```css
   p {
-    letter-spacing: 10px;
+  	letter-spacing: 10px;
   }
   ```
 
