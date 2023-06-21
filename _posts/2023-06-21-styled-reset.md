@@ -34,3 +34,5 @@ tags:
   ```
 
   import를 통해 Reset을 불러오고, 작성할 내용들의 상단 (즉, 루트 태그 바로 아래)에 Reset을 불러오면 된다.
+
+> [styled-reset 공식 링크](https://www.npmjs.com/package/styled-reset)
