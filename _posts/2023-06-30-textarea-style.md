@@ -2,7 +2,7 @@
 layout: post
 categories:
   - TIL
-title: 'CSS: <textarea> 하단 줄 스타일 없애기(resize)'
+title: 'CSS: textarea 하단 줄 스타일 없애기(resize)'
 tags:
   - TIL
   - CSS
