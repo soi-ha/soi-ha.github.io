@@ -2,7 +2,7 @@
 layout: post
 categories:
   - TIL
-title: 'Git Error: "Already up to date"/강제로 리셋시키기'
+title: 'Git Error: "Already up to date",강제로 리셋시키기'
 tags:
   - TIL
   - Git
