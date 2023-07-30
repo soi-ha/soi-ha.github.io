@@ -24,5 +24,5 @@ tags:
 매번 느끼는거지만 git은 참.. 어렵다.. 알다가도 모르게 만들어.. 열심히.. 공부해야겠다..
 
 > 참고  
-> [해결방법: stack overflow]('https://stackoverflow.com/questions/13106179/error-fatal-not-possible-to-fast-forward-aborting')  
-> [그림으로 이해하는 merge --no-ff, squash, rebase 그리고 pull request(PR)]('https://velog.io/@emrhssla/%EA%B7%B8%EB%A6%BC%EC%9C%BC%EB%A1%9C-%EC%9D%B4%ED%95%B4%ED%95%98%EB%8A%94-merge-no-ff-squash-rebase-%EA%B7%B8%EB%A6%AC%EA%B3%A0-pull-requestPR')
+> [해결방법: stack overflow](https://stackoverflow.com/questions/13106179/error-fatal-not-possible-to-fast-forward-aborting)  
+> [그림으로 이해하는 merge --no-ff, squash, rebase 그리고 pull request(PR)](https://velog.io/@emrhssla/%EA%B7%B8%EB%A6%BC%EC%9C%BC%EB%A1%9C-%EC%9D%B4%ED%95%B4%ED%95%98%EB%8A%94-merge-no-ff-squash-rebase-%EA%B7%B8%EB%A6%AC%EA%B3%A0-pull-requestPR)

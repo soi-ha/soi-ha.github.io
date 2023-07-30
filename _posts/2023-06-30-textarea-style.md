@@ -30,4 +30,4 @@ tags:
 프로젝트를 통해 새로운 것을 또 알아간다..!
 
 > 참고  
-> [(즐거웅코드) CSS textarea 우측 하단 세줄 표시 없애기]('https://ungdoli0916.tistory.com/680')
+> [(즐거웅코드) CSS textarea 우측 하단 세줄 표시 없애기](https://ungdoli0916.tistory.com/680)

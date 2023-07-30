@@ -71,5 +71,5 @@ git push <단축이름> <브랜치명>
 <img width="102" alt="깃허브 잔디" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/e31d32f7-cab2-4d12-b431-6a1392ef971f">
 
 > 참고  
-> [여러 개의 Git Repository로 소스코드 Push하기]('https://twofootdog.tistory.com/42')  
-> [git 여러개 원격 저장소 사용해서 프로젝트 한개에 연결하기]('https://velog.io/@adguy/git-%EC%97%AC%EB%9F%AC%EA%B0%9C-%EC%9B%90%EA%B2%A9-%EC%A0%80%EC%9E%A5%EC%86%8C-%EC%82%AC%EC%9A%A9%ED%95%B4%EC%84%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%ED%95%9C%EA%B0%9C%EC%97%90-%EC%97%B0%EA%B2%B0%ED%95%98%EA%B8%B0')
+> [여러 개의 Git Repository로 소스코드 Push하기](https://twofootdog.tistory.com/42)  
+> [git 여러개 원격 저장소 사용해서 프로젝트 한개에 연결하기](https://velog.io/@adguy/git-%EC%97%AC%EB%9F%AC%EA%B0%9C-%EC%9B%90%EA%B2%A9-%EC%A0%80%EC%9E%A5%EC%86%8C-%EC%82%AC%EC%9A%A9%ED%95%B4%EC%84%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%ED%95%9C%EA%B0%9C%EC%97%90-%EC%97%B0%EA%B2%B0%ED%95%98%EA%B8%B0)
