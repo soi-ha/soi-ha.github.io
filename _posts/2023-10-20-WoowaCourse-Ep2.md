@@ -22,7 +22,7 @@ n (npm n)을 사용해서 Node.js 버전을 업그레이드 했었는데, 맨 �
 ~~아래 사진 에러 말고도 굉장히 다양한 에러가 나타났다~~
 <img width="486" alt="스크린샷 2023-10-20 00 49 17" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/b1aea9aa-6d6f-4d49-b84a-84a2facce6d0">
 
-그러다가 문뜩 떠오른 것이 Node.js의 installed(npm n)와 active(nvm)의 경로가 다른데.. 그냥 Node.js의 버전 업그레이드를 NVM으로 해보자!였다.
+그러다가 문득 떠오른 것이 Node.js의 installed(npm n)와 active(nvm)의 경로가 다른데.. 그냥 Node.js의 버전 업그레이드를 NVM으로 해보자!였다.
 
 <img width="486" alt="스크린샷 2023-10-20 00 49 05" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/e8a40133-a047-4977-b5dc-4be2a240e4cd">
 
@@ -74,6 +74,9 @@ NVM은 n과 달리 npm의 패키지가 아니라 개별적인 존재이다.
 ---
 
 미래의 나.. Node.js 업그레이드... N아니고 NVM으로 했다.. 자꾸 N으로 업그레이드 하지 말아라... 에러 또 날라..ㅜ
+
++추가  
+해당 에러는 잡았지만 `npm i`가 안되는 에러 해결 안됨... (추후에 계속)
 
 > 참고  
 > [Node.js 버전 변경하기 (with NVM 사용법)](https://oingdaddy.tistory.com/481)  
