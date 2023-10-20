@@ -3,7 +3,6 @@ layout: post
 published: true
 categories:
   - TIL
-  - Project
 title: 'npm ERR! EACCES: permission denied, mkdir <경로>'
 tags:
   - TIL

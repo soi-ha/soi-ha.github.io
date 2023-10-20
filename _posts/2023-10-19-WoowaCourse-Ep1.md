@@ -2,7 +2,6 @@
 layout: post
 categories:
   - TIL
-  - Project
 title: 'Git: 좋은 git commit message 작성법 (feat. 우테코 프리코스)'
 tags:
   - TIL
@@ -71,7 +70,7 @@ type(타입): title(제목)
 - build: 빌드 파일 수정
 - ci: CI 설정 파일 수정
 - perf: 성능 개선
-- chore: 빌드 업무 수정, 패키지 매니저 수정 (gitignore 수정 등)
+- chore: 이 외에 자잘한 수정
 - rename: 파일 혹은 폴더명을 수정만 한 경우
 - remove: 파일을 삭제만 한 경우
 

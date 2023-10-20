@@ -2,7 +2,6 @@
 layout: post
 categories:
   - TIL
-  - Project
 title: 'Node.js: 버전 업그레이드 (feat. NPM)'
 tags:
   - TIL
