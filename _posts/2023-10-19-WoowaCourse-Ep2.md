@@ -53,10 +53,10 @@ NVM은 n과 달리 npm의 패키지가 아니라 개별적인 존재이다.
 #### NVM 사용 방법
 
 - nvm 버전 확인  
-  `npm -v`
+  `nvm -v`
 
 - nvm 설치된 버전 확인  
-  `npm ls`
+  `nvm ls`
 
 - nvm으로 node.js 설치  
   `nvm install <원하는 node.js 버전/lts or 20(버전 숫자)>`
