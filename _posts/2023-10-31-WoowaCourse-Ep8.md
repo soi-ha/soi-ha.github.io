@@ -126,6 +126,7 @@ tags:
 - [npm permission denined 에러](https://soi-ha.github.io/til/2023/10/20/WoowaCourse-Ep3.html)
 - [git reset -hard 경로 : 원하는 시점으로 되돌리기](https://soi-ha.github.io/til/2023/10/27/WoowaCourse-Ep6.html)
 - [throw를 통한 예외처리](https://soi-ha.github.io/til/2023/10/26/WoowaCourse-Ep5.html)
+- [기명 함수표현식?](https://soi-ha.github.io/til/2023/10/28/WoowaCourse-Ep7.html)
 
 ## 코드리뷰
 
