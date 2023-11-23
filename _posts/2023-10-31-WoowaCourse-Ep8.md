@@ -174,6 +174,6 @@ tags:
 
 그럼 앞으로 남은 3주 (~~글 작성 현재 2주~~) 화이팅하자!
 
-> 참고  
+> 학습 참고자료  
 > [Git: 대소문자 구분 이슈](https://loshy244110.medium.com/git-%EB%8C%80%EC%86%8C%EB%AC%B8%EC%9E%90-%EA%B5%AC%EB%B6%84-%EC%9D%B4%EC%8A%88-b600e93b5b9d)  
 > [git 파일명 대소문자 변경했을 때 제대로 인식하지 못하는 문제](https://v3.leedo.me/devs/15)
