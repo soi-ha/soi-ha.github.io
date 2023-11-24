@@ -22,6 +22,7 @@ tags:
 
 다행이도.. 그간 코딩좀 타탁거렸던 실력으로.. 정말 많은 난관들이 있었지만.. 잘 해결해서 테스트 실행을 통과시킬 수 있었다.
 
+[1주차: 야구게임 Repository](https://github.com/soi-ha/javascript-baseball-6/tree/soi-ha)
 <img width="785" alt="스크린샷 2023-10-31 23 56 56" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/10ab6f0a-d828-413e-b601-b049de4f5b50">
 
 서론은 여기서 마치고 1주차 미션을 진행하면서 발생했었던 일들에 대해 작성해보고자 한다.

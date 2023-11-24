@@ -16,6 +16,7 @@ tags:
 
 프리코스를 마친 현재에도 해당 내용들이 잊혀지지 않고 진짜 '나의 지식'이 되었다는 느낌이 든다.
 
+[3주차: 로또 Repository](https://github.com/soi-ha/javascript-lotto-6/tree/soi-ha)
 <img width="779" alt="3주차 프리코스 미션 완료 캡쳐" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/9382bf4f-5494-45f7-b158-805470c7c13c">
 
 ---

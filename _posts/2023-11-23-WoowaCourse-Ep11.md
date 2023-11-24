@@ -14,6 +14,7 @@ tags:
 
 이번 미션은 기능구현을 어떻게 해석하느냐도 중요했던 것 같고, 미션 제출을 fork가 아니라 개인 레포를 만들어서 private로 제한하는 등의 방식으로 진행했다. 여러모로 마지막을 이전과는 달리 새로운 방식으로 진행해서 색달랐다.
 
+[4주차: 크리스마스 프로모션 Repository](https://github.com/soi-ha/javascript-christmas-6-soi-ha)
 <img width="794" alt="4주차 프리코스 미션 성공" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/3ee8919f-b1c0-49d2-8fb0-16515815e280">
 
 ---
