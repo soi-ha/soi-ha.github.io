@@ -14,7 +14,7 @@ tags:
 다 끝나고 진행해서 까먹은 개념도 존재할 것이고, 해당 복기로 인해 당시의 내 코드를 돌아볼 수 있기에 조금 늦게 작성하지만 안 적는 것 보단 낫다고 생각해서 지금이라도 작성해본다.  
 해당 글은 당시에 내가 작성했던 소감문을 바탕으로 작성했다.
 
-[2주차: 레이싱게임 Repository](https://github.com/soi-ha/javascript-racingcar-6/tree/soi-ha)
+[2주차: 자동차 경주 Repository](https://github.com/soi-ha/javascript-racingcar-6/tree/soi-ha)
 <img width="779" alt="2주차 프리코스 예제 테스트 성공 캡쳐" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/bd010c95-24a4-4577-932e-dd0577d65058">
 
 2주차 미션은 1주차 미션의 코드리뷰를 통해 새롭게 알게된 개념들을 적극 반영하여 구현하였다. 확실히 이전보다 코드를 읽는데 아주 약간은..! 나아진 듯 싶다.
