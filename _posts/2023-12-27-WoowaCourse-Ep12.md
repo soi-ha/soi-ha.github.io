@@ -56,36 +56,38 @@ tags:
 
 ## 에러 해결
 
-EmergencyShiftNumber 클래스를 실행하면 weekdays와 holidys의 값이 이상하게 변경되는 문제 (sort의 잘못된 사용)
+**EmergencyShiftNumber 클래스를 실행하면 weekdays와 holidys의 값이 이상하게 변경되는 문제 (sort의 잘못된 사용)**
+
 이번 미션을 진행하면서 해결하는데 가장 오래 걸린 문제였다.
-값 에러 이유: #validateListSameValue(weekdays, holidays)를 통해 두 배열의 입력된 값이 동일한지 확인한다. 이때, 동일한 값인지 빠르게 확인하고자 sort()를 활용하였다. weekdays와 holidays를 sort하여 정렬하면 두 배열의 값과 순서가 모두 동일하게 될 것이다. 따라서 sort를 사용하였다. 이게 에러의 원인이었다. sort 할때 처음에 그냥 week.sort()로 했다. 이러면 안된다.. 시간이 부족해서 정확히 해당 이유가 맞는지는 모르겠지만, sort()를 사용하면 원본 배열에도 영향을 준다고 한다. 나의 코드는 `const week = weekdays.sort();` 였는데, week에만 정렬되는 것이 아닌 weekdays에도 sort()가 적용되어 해당 클래스를 사용하고 난 후, weekdays를 출력하면 값이 변경됐던 것이다.
 
-에러 해결: 에러를 해결하는 방법은 구조분해할당을 하여 weekdays의 모든 값을 구조분해하여 새롭게 배열을 생성하고 그 배열을 정렬하면 된다. const week = [...weekdays].sort();를 해야 원하는 결과로 잘 출력된다. 이렇게 하면 원본 배열인 weekdays에도 영향을 주지 않고 유효성검사를 할 수 있다!
+**값 에러 이유**  
+#validateListSameValue(weekdays, holidays)를 통해 두 배열의 입력된 값이 동일한지 확인한다. 이때, 동일한 값인지 빠르게 확인하고자 sort()를 활용하였다. weekdays와 holidays를 sort하여 정렬하면 두 배열의 값과 순서가 모두 동일하게 될 것이다. 따라서 sort를 사용하였다. 이게 에러의 원인이었다.  
+sort 할때 처음에 그냥 week.sort()로 했다. 이러면 안된다.. sort()를 사용하면 원본 배열에도 영향을 준다.  
+나의 코드는 `const week = weekdays.sort();` 였는데, week에만 정렬되는 것이 아닌 weekdays에도 sort()가 적용되어 해당 클래스를 사용하고 난 후, weekdays를 출력하면 값이 변경됐던 것이다.
 
+**EmergencyShiftNumberContorller 코드**
 <img width="356" alt="EmergencyShiftNumberContorller 코드" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/1d55c7da-d21f-4cb8-994c-6a69c629a080">
 
-<img width="160" alt="EmergencyShiftNumber 문제의 코드" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/b3822c57-0f4f-441e-a437-8ab6816734fa">
+**에러 해결**  
+에러를 해결하는 방법은 구조분해할당을 하여 weekdays의 모든 값을 구조분해하여 새롭게 배열을 생성하고 그 배열을 정렬하면 된다.  
+`const week = [...weekdays].sort();`를 해야 원하는 결과로 잘 출력된다. 이렇게 하면 원본 배열인 weekdays에도 영향을 주지 않고 유효성검사를 할 수 있다!
 
-<img width="316" alt="정렬되기 전" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/44f6fd95-27e0-4b2b-9dcb-62341224be40">
+**EmergencyShiftNumber 클래스의 #validateListSameValue()**
+<img width="316" alt="EmergencyShiftNumber 에러 해결 코드" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/44f6fd95-27e0-4b2b-9dcb-62341224be40">
 
-<img width="162" alt="정렬된 후" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/619842c1-6f99-4911-9ba0-d493249ade7c">
+## OnCall 미션 기능 구현
 
-## 아쉬운점
+5시간의 제한 시간동안 해당 문제를 테스트코드까지 완벽하게 작성하기에는 다소 시간이 부족했다. 난이도도 약간 있었다고 생각이 든다. 문제 설명이 굉장히 길고, 기능을 이해하는데도 시간이 좀 걸리는 문제였다고 생각이 든다. 그리고 개발자가 생각해야 할 요소가 다분히 존재하는 문제인 것 같다.
 
-시간이 제한되어 있기 때문에 테스트코드를 작성하면서 기능을 구현하는 것은 포기했다. 만약 테스트코드를 작성하면서 기능을 구현했다면 제 시간에 기능을 구현하지 못했을 것이다. 그래도, ApplicationTest는 잘 통과됐으니.. 다행이랄까..?
-
-최종 코딩테스트까지 오게 될 줄은 몰랐는데, 시간을 제한하여 기능을 구현하는 색다른 경험을 하게 되면서 우테코 프리코스는 나에게 참 많은 경험을 하게 해준 것 같다.
-프리코스와 최종 코테까지 많은 것을 배우게 해주어서 우테코에 감사하다!
-최종 코테에도 합격해서 우테코에서 보게 되었으면.. 좋겠다...!
-그동안 감사했습니다!
-
-결과는 모르겠다. 일단 예제테스트는 다 실행되게했다. 난 이걸로 만족한다.
-비록 테코를 거의.. 작성 못했지만.. 난 그래도 지금 내 수준에서 최선을 다해 풀었고, 일단 실행되는 쓰레기를 만든점에서 만족한다…! 결과는.. 어떻게 될지 진짜 모르겠다ㅎ
-떨어지면 내가 잘해서 떨어진거라고 생각할련다ㅎ
+그래도 나의 목표인 예제 테스트는 잘 실행을 완료할 수 있었다. 이것으로 굉장히 만족한다.
 
 <img width="777" alt="예제 테스트 실행 결과" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/9a37aa23-73a6-414b-9307-1755dd09692f">
 
 # 최종 코딩테스트 마친 소감
+
+시험 메일에서 언급했던 것 처럼. 돌아가는 쓰레기를... 만든 것 같다.ㅎ 하지만, 일단 제한 시간이 주어진 이상. 어떻게든 돌아가게 기능을 구현하는 것이 중요하다고 생각한다. 그래서 기존에는 기능을 구현하면서 테스트코드도 바로 작성했었는데, 최종 코딩테스트에서도 이렇게 하면 시간이 매우 부족할 것으로 예상됐다. 그래서 테스트코드는 쿨하게 버리고. 일단은 기능 구현을 중점으로 두었다.  
+그리고 이 선택은 잘 한 선택이었다. 테스트코드도 작성하면서 기능을 구현했더라면 제 시간에 맞춰서 기능을 완성할 수 없었을 것이다.. 종료 30분전에 기능 구현을 완료했었고, 남은 시간에 how to solve와 테스트코드 하나를 작성하니.. 시간이 종료되었다!  
+선택과 집중을 잘 한 것 같다.
 
 시험을 종료한 후에 느낌이 굉장히 좋았다. 그래서 N인 나는 집 가는 버스에서 행복회로를 오지게 돌리면서 갔다..  
 일단 전날부터 너무 걱정됐던, 5시간안에 기능 구현 완료를 못해서 예제 테스트 실패하면 어쩌지? 예제 테스트만 성공시키자.를 목표로 잡았는데, 해당 목표를 이룰 수 있어서 너무 만족스러웠다.  
