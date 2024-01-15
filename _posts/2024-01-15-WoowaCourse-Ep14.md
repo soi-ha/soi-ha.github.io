@@ -3,7 +3,7 @@ layout: post
 published: true
 categories:
   - TIL
-title: '우테코: 최종 코딩테스트 준비 '
+title: '우테코: 최종 코딩테스트 준비 TIL '
 tags:
   - TIL
   - JS
