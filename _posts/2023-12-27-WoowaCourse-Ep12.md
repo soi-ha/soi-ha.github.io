@@ -3,6 +3,7 @@ layout: post
 published: true
 categories:
   - TIL
+  - Soha's Log
 title: '우테코: 최종 코딩테스트 복기'
 tags:
   - TIL

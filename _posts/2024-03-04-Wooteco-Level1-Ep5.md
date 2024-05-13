@@ -2,7 +2,7 @@
 layout: post
 published: true
 categories:
-  - SohaLog
+  - Soha's Log
 title: '우테코: 온보딩(자동차 경주) & 로또 미션 회고 '
 tags:
   - Wooteco

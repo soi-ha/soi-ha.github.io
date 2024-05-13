@@ -2,7 +2,7 @@
 layout: post
 published: true
 categories:
-  - TIL
+  - Soha's Log
 title: '우테코: FE 최종합격 후기 (feat. 프리코스 및 최종 코테 준비 방법)'
 tags:
   - WoowaCourse
