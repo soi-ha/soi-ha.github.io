@@ -2,11 +2,9 @@
 layout: post
 published: true
 categories:
-  - TIL
+  - SohaLog
 title: '우테코: 온보딩(자동차 경주) & 로또 미션 회고 '
 tags:
-  - TIL
-  - JS
   - Wooteco
 ---
 
