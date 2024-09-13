@@ -1,16 +1,12 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: 'en-us'}}">
+<html lang="{{ page.lang | default: 'ko'}}">
+	{% include head.html %}
 
-  {% include head.html %}
+	<body class="{{ page.layout }}{% if page.url == '/' %} home{% endif %}">
+		{% include sidebar.html %}
 
-  <body class="{{ page.layout }}{% if page.url == '/' %} home{% endif %}">
+		<main class="container">{{ content }}</main>
 
-    {% include sidebar.html %}
-
-    <main class="container">
-      {{ content }}
-    </main>
-
-    {% include custom-foot.html %}
-  </body>
+		{% include custom-foot.html %}
+	</body>
 </html>
