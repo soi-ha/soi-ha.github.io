@@ -36,8 +36,8 @@ Level3-4 동안 나는 내가 이루고자 하던 것들을 이뤘을까? 그 �
 ### 우테코 복지
 
 <p style="display:flex; gap:10px; overflow: scroll;">
-  <img width="80%"  alt="이미지1" src="https://github.com/user-attachments/assets/ad27a79f-c879-4e8c-9cc8-75387c07e616"/>
-  <img width="80%" alt="이미지2" src="https://github.com/user-attachments/assets/e66a568b-da27-4c41-aacd-127dbfe92f8d"/>
+  <img width="50%"  alt="이미지1" src="https://github.com/user-attachments/assets/ad27a79f-c879-4e8c-9cc8-75387c07e616"/>
+  <img width="50%" alt="이미지2" src="https://github.com/user-attachments/assets/e66a568b-da27-4c41-aacd-127dbfe92f8d"/>
 </p>
 
 이걸 참 복지라고 말하기에는 교육기관이라 애매하지만? 우테코 후드집업과 런던 베이글!!을 복지로 받았당.
@@ -51,9 +51,9 @@ Level3-4 동안 나는 내가 이루고자 하던 것들을 이뤘을까? 그 �
 ### 소알맹 : 소하의 알맹이를 찾아서
 
 <p style="display:flex; gap:10px; overflow: scroll;">
-  <img width="80%"  alt="이미지1" src="https://github.com/user-attachments/assets/df76288a-7078-4912-8900-afa6db80d722"/>
-  <img width="80%" alt="이미지2" src="https://github.com/user-attachments/assets/74cbf8f7-5290-4059-babf-19664638d4d5"/>
-  <img width="80%" alt="이미지2" src="https://github.com/user-attachments/assets/31fcd353-d501-4b23-a605-e810320509b2"/>
+  <img width="50%"  alt="이미지1" src="https://github.com/user-attachments/assets/df76288a-7078-4912-8900-afa6db80d722"/>
+  <img width="50%" alt="이미지2" src="https://github.com/user-attachments/assets/74cbf8f7-5290-4059-babf-19664638d4d5"/>
+  <img width="50%" alt="이미지2" src="https://github.com/user-attachments/assets/31fcd353-d501-4b23-a605-e810320509b2"/>
 </p>
 
 준의 알맹이 찾기 워크숍을 들으면서 깨달은 것들이 너무 많았다. 나의 알맹이를 찾아야 지치지 않고 살아갈 수 있다고 받아들였다. 그래서 나는 나의 알맹이를 찾고자 했다. 첫 시도는 행동대장 데일리 스크럼 시간에 한 팀원을 인터뷰한 내용으로 퀴즈를 내는 것이었다. 퀴즈를 만들기 위해 한명씩 따로 인터뷰를 진행하는데 이게 또 미묘하고 재밌다. 사실 아직도 어색한 팀원들이 존재한다. 이는 어쩔 수 없는 것 같다. 그런데 이 인터뷰를 하면서 해당 팀원에게 들었던 궁금증을 해결할 수 있었다. 또한, 이전에는 몰랐던 이 사람의 진면목을 알아갈 수 있었다. 내가 기획했지만 여러모로 나에게 많은 도움을 준 활동이었다.  
@@ -72,18 +72,18 @@ Level3-4 동안 나는 내가 이루고자 하던 것들을 이뤘을까? 그 �
 위는 내가 만든 행동대장 메인 포스터이다. 사실 메인으로 만든 생각은 아니었다.. 토다리가 만들던 카드뉴스 컨셉에 맞게 방탈출 소품을 위해 만들었는데.. 어쩌다 보니 메인 포스터가 되었다. 그리고 은근 찰떡이다(?) ~~내가 만들었지만 잘 만들었군. 흠~~
 
 <p style="display:flex; gap:10px; overflow: scroll;">
-  <img width="80%"  alt="이미지1" src="https://github.com/user-attachments/assets/01531cde-4fe6-411f-9234-11c9effec0a0"/>
-  <img width="80%" alt="이미지2" src="https://github.com/user-attachments/assets/4662bdcc-eaee-46e0-be79-0e90ff188fe3"/>
+  <img width="50%"  alt="이미지1" src="https://github.com/user-attachments/assets/01531cde-4fe6-411f-9234-11c9effec0a0"/>
+  <img width="50%" alt="이미지2" src="https://github.com/user-attachments/assets/4662bdcc-eaee-46e0-be79-0e90ff188fe3"/>
 </p>
 
 우리의 귀여운 행댕이 스티커... 우리 팀에 금손 웨디가 있어서 정말 다행이다. 이 스티커는 진짜 너무 귀여워서 행복했다. 그리고 타 팀원들에게도 우리 스티커가 가장 반응이 좋지 않았을까.. 흠흠^^ 귀여워서 이뻤던 행댕이가 이번 스티커를 통해 더 너무너무 좋아졌다!
 
 <p style="display:flex; gap:10px; overflow: scroll;">
-  <img width="80%"  alt="이미지1" src="https://github.com/user-attachments/assets/9774be68-7e1e-42ee-bf9a-5de567a0d041"/>
-  <img width="80%" alt="이미지2" src="https://github.com/user-attachments/assets/df7960bb-0c90-4a4f-8c13-16862b642b4f"/>
-  <img width="80%" alt="이미지2" src="https://github.com/user-attachments/assets/9e9fb1cc-5eeb-48d2-acd4-ad558776f447"/>
-  <img width="80%" alt="이미지2" src="https://github.com/user-attachments/assets/172c7c87-f82d-4d23-b555-364f0040e015"/>
-  <img width="80%" alt="이미지2" src="https://github.com/user-attachments/assets/34715931-622b-48a7-9676-97d7936daf90"/>
+  <img width="50%"  alt="이미지1" src="https://github.com/user-attachments/assets/9774be68-7e1e-42ee-bf9a-5de567a0d041"/>
+  <img width="50%" alt="이미지2" src="https://github.com/user-attachments/assets/df7960bb-0c90-4a4f-8c13-16862b642b4f"/>
+  <img width="50%" alt="이미지2" src="https://github.com/user-attachments/assets/9e9fb1cc-5eeb-48d2-acd4-ad558776f447"/>
+  <img width="50%" alt="이미지2" src="https://github.com/user-attachments/assets/172c7c87-f82d-4d23-b555-364f0040e015"/>
+  <img width="50%" alt="이미지2" src="https://github.com/user-attachments/assets/34715931-622b-48a7-9676-97d7936daf90"/>
 </p>
 
 나름 매우 열심히 준비한 최종 데모데이!  
