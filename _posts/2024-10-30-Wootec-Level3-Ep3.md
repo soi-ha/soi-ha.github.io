@@ -17,9 +17,9 @@ tags:
 
 우테코에 오기 이전의 나라면 아니, 불과 몇달 전의 나라면 이런 카톡을 보내지 않았을 것이다. 누군가를 위하는 말 일지라도 상대방에게 돌아오는 답변이 무서웠기 때문이다. 꼭 하지 않아도 되는 것에 대한 연락은 상대 답변이 어떻게 올지 참 무섭다. 이건 아직도 여전한 것 같다. 그러나, 우테코에 오면서 조금씩 이런 부분에 대해 용기를 내보고 있다. 이런 부분을 소프트 스킬 수업 시간에 알려주지는 않지만, 우테코라는 환경이 나를 조금씩 나도 모르게 변화시키고 있다.
 
-<p style="display:flex; gap:10px;">
-  <img width="40%"  alt="이미지1" src="https://github.com/user-attachments/assets/660f86db-0f02-48df-a052-c8997195e5a0"/>
-  <img width="50%" alt="이미지2" src="https://github.com/user-attachments/assets/23ee59bf-52b8-44d7-957c-fbce37faede6"/>
+<p style="display:flex; gap:10px; overflow: sroll;">
+  <img width="80%"  alt="이미지1" src="https://github.com/user-attachments/assets/660f86db-0f02-48df-a052-c8997195e5a0"/>
+  <img width="80%" alt="이미지2" src="https://github.com/user-attachments/assets/23ee59bf-52b8-44d7-957c-fbce37faede6"/>
 </p>
 
 _우테코에서 받은 키트(좌), 공구한 행성이 키링(우)_
@@ -37,9 +37,9 @@ _우테코에서 받은 키트(좌), 공구한 행성이 키링(우)_
 
 ## 인생 첫 커피 챗
 
-<p style="display:flex; gap:10px;">
-  <img width="40%"  alt="이미지1" src="https://github.com/user-attachments/assets/16e303ec-7adb-4c0e-bcf6-35234f41912f"/>
-  <img width="50%" alt="이미지2" src="https://github.com/user-attachments/assets/915e2cd4-378a-4b94-961d-57e6d40c6284"/>
+<p style="display:flex; gap:10px; overflow: sroll;">
+  <img width="80%"  alt="이미지1" src="https://github.com/user-attachments/assets/16e303ec-7adb-4c0e-bcf6-35234f41912f"/>
+  <img width="80%" alt="이미지2" src="https://github.com/user-attachments/assets/915e2cd4-378a-4b94-961d-57e6d40c6284"/>
 </p>
 
 지난 번에 용기를 내어 가브리엘에게 커피챗을 신청했다. 가브리엘은 흔쾌히 받아 주셨고 엘버도 함께 커피챗에 응해주셨다. 회사 일로 인해 굉장히 바쁘실텐데도 불구하고 커피챗 신청에 응해주셔서 너무 감사했다.
@@ -58,9 +58,9 @@ _우테코에서 받은 키트(좌), 공구한 행성이 키링(우)_
 
 # 이제 level3는 끝이다!
 
-<p style="display:flex; gap:10px;">
-  <img width="40%"  alt="이미지1" src="https://github.com/user-attachments/assets/6c936e22-2f8f-4928-96af-32aabe78951d"/>
-  <img width="50%" alt="이미지2" src="https://github.com/user-attachments/assets/3a0dceee-3cfd-43bd-aa84-25d98943f4b2"/>
+<p style="display:flex; gap:10px; overflow: sroll;">
+  <img width="80%"  alt="이미지1" src="https://github.com/user-attachments/assets/6c936e22-2f8f-4928-96af-32aabe78951d"/>
+  <img width="80%" alt="이미지2" src="https://github.com/user-attachments/assets/3a0dceee-3cfd-43bd-aa84-25d98943f4b2"/>
 </p>
 
 위에서 말했듯이 4차 스프린트는 우리만의 방식을 찾으면서 매우 안정적이게 협업이 진행되었다. 개인이 task를 맡아 진행하는 방식으로 변경했다. 대신 이 task의 규모를 작게 나누었다. 이전에는 하나의 기능을 task로 뒀다면, 이번에는 이 하나의 기능에 대한 a,b,c를 각각의 task로 두는 것이다. 또한, 원활한 merge를 위해 리뷰 제출 시간을 18시로 제한하였다. 그리고 PR 내용을 상세하게 작성해 다른 팀원들이 코드를 리뷰하는데 시간을 덜 들일 수 있도록 했다.
