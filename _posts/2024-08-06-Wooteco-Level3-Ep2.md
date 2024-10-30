@@ -34,6 +34,7 @@ tags:
 
 <p align="center">
   <img align="center" width="40%"  alt="스크린샷 2024-08-06 19 13 58" src="https://github.com/user-attachments/assets/a5fac36b-6fe1-42f8-a68a-4385a402956b"/>
+  
   <img align="center" width="50%"" alt="스크린샷 2024-08-06 19 13 58" src="https://github.com/user-attachments/assets/ddfd0532-8cde-46dc-bf1a-f3fabf3cb37e"/>
 </p>
 
