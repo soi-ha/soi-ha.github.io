@@ -35,7 +35,7 @@ Level3-4 동안 나는 내가 이루고자 하던 것들을 이뤘을까? 그 �
 
 ### 우테코 복지
 
-<p style="display:flex; gap:10px; overflow: sroll;">
+<p style="display:flex; gap:10px; overflow: scroll;">
   <img width="80%"  alt="이미지1" src="https://github.com/user-attachments/assets/ad27a79f-c879-4e8c-9cc8-75387c07e616"/>
   <img width="80%" alt="이미지2" src="https://github.com/user-attachments/assets/e66a568b-da27-4c41-aacd-127dbfe92f8d"/>
 </p>
@@ -50,7 +50,7 @@ Level3-4 동안 나는 내가 이루고자 하던 것들을 이뤘을까? 그 �
 
 ### 소알맹 : 소하의 알맹이를 찾아서
 
-<p style="display:flex; gap:10px; overflow: sroll;">
+<p style="display:flex; gap:10px; overflow: scroll;">
   <img width="80%"  alt="이미지1" src="https://github.com/user-attachments/assets/df76288a-7078-4912-8900-afa6db80d722"/>
   <img width="80%" alt="이미지2" src="https://github.com/user-attachments/assets/74cbf8f7-5290-4059-babf-19664638d4d5"/>
   <img width="80%" alt="이미지2" src="https://github.com/user-attachments/assets/31fcd353-d501-4b23-a605-e810320509b2"/>
@@ -71,14 +71,14 @@ Level3-4 동안 나는 내가 이루고자 하던 것들을 이뤘을까? 그 �
 
 위는 내가 만든 행동대장 메인 포스터이다. 사실 메인으로 만든 생각은 아니었다.. 토다리가 만들던 카드뉴스 컨셉에 맞게 방탈출 소품을 위해 만들었는데.. 어쩌다 보니 메인 포스터가 되었다. 그리고 은근 찰떡이다(?) ~~내가 만들었지만 잘 만들었군. 흠~~
 
-<p style="display:flex; gap:10px; overflow: sroll;">
+<p style="display:flex; gap:10px; overflow: scroll;">
   <img width="80%"  alt="이미지1" src="https://github.com/user-attachments/assets/01531cde-4fe6-411f-9234-11c9effec0a0"/>
   <img width="80%" alt="이미지2" src="https://github.com/user-attachments/assets/4662bdcc-eaee-46e0-be79-0e90ff188fe3"/>
 </p>
 
 우리의 귀여운 행댕이 스티커... 우리 팀에 금손 웨디가 있어서 정말 다행이다. 이 스티커는 진짜 너무 귀여워서 행복했다. 그리고 타 팀원들에게도 우리 스티커가 가장 반응이 좋지 않았을까.. 흠흠^^ 귀여워서 이뻤던 행댕이가 이번 스티커를 통해 더 너무너무 좋아졌다!
 
-<p style="display:flex; gap:10px; overflow: sroll;">
+<p style="display:flex; gap:10px; overflow: scroll;">
   <img width="80%"  alt="이미지1" src="https://github.com/user-attachments/assets/9774be68-7e1e-42ee-bf9a-5de567a0d041"/>
   <img width="80%" alt="이미지2" src="https://github.com/user-attachments/assets/df7960bb-0c90-4a4f-8c13-16862b642b4f"/>
   <img width="80%" alt="이미지2" src="https://github.com/user-attachments/assets/9e9fb1cc-5eeb-48d2-acd4-ad558776f447"/>

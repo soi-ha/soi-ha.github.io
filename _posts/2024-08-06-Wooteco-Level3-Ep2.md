@@ -32,7 +32,7 @@ tags:
 
 그래서 일단 결과적으로 2명씩 나눠서 Task를 맡았던 것은 사실 그닥 결과는 좋지 않았다. 디자인시스템을 배포하는 과정에서 문제가 발생하여 결국 퍼블리싱 페이지에 디자인시스템을 붙히지 못했다. 그래서 우리는 뼈대만 존재하는 페이지로 시연을 진행해야 했다.. 하하
 
-<p style="display:flex; gap:10px; overflow: sroll;">
+<p style="display:flex; gap:10px; overflow: scroll;">
   <img width="80%"  alt="스크린샷 2024-08-06 19 13 58" src="https://github.com/user-attachments/assets/a5fac36b-6fe1-42f8-a68a-4385a402956b"/>
   <img width="80%" alt="스크린샷 2024-08-06 19 13 58" src="https://github.com/user-attachments/assets/ddfd0532-8cde-46dc-bf1a-f3fabf3cb37e"/>
 </p>
