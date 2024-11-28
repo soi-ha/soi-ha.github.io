@@ -3,7 +3,6 @@ layout: post
 published: true
 categories:
   - TIL
-  - Project
 title: '카카오톡 수정한 OGTag 미반영 문제 해결 방법'
 tags:
   - 카카오톡
