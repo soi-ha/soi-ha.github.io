@@ -3,7 +3,7 @@ layout: post
 published: true
 categories:
   - Soha's Log
-title: '우테코: Level5 종료 및 우아한테크코스 수료 회고'
+title: '우테코: Level5 & 우아한테크코스 수료 회고'
 tags:
   - Wooteco
 ---
