@@ -124,4 +124,4 @@ export const requestPostGoogleSpreadSheets = async () => {
 
 ## 참고
 
-- [기본 쓰기  |  Google Sheets  |  Google for Developers](https://developers.google.com/sheets/api/samples/writing?hl=ko#append_values)
+- [기본 쓰기 : Google Sheets : Google for Developers](https://developers.google.com/sheets/api/samples/writing?hl=ko#append_values)
