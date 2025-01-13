@@ -4,10 +4,11 @@ published: true
 categories:
   - TIL
   - Project
-title: 'Error | Module not found: Error: Can't resolve child_process'
+title: 'Error | Module not found: Can't resolve child_process'
 tags:
   - Wooteco
   - 행동대장
+  - Error
 ---
 
 ## 에러
