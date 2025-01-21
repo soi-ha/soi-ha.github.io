@@ -3,7 +3,7 @@ layout: post
 published: true
 categories:
   - TIL
-title: 'Git: checkout, switch, restore (부제: 원격 브랜치를 로컬에 그대로 생성하기)'
+title: '매3개 | Git: checkout, switch, restore (부제: 원격 브랜치를 로컬에 그대로 생성하기)'
 tags:
   - Git
   - TIL
