@@ -186,7 +186,7 @@ git restore --source=<commit-hash> <file-path>
 - `switch`와 `restore`는 Git 2.23 이상에서만 사용할 수 있다. 구버전에서는 `checkout`을 사용해야 한다.
 - `switch`와 `restore`를 사용하면 작업의 목적과 의도가 명확히 드러나므로, 사용을 권장한다.
 
-## 참고
+## 📚 참고
 
 - [Git -git-checkout Documentation](https://git-scm.com/docs/git-checkout)
 - [Git -git-switch Documentation](https://git-scm.com/docs/git-switch)

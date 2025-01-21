@@ -10,11 +10,11 @@ tags:
   - 매3개
 ---
 
-## HEAD?
+## 📩 HEAD?
 
 **HEAD**는 Git에서 현재 작업 중인 **브랜치를 가리키는 포인터**이다. 일반적으로 HEAD는 특정 브랜치(예: `main`, `develop`)를 가리키며, 해당 브랜치의 마지막 커밋을 기준으로 작업을 진행한다.
 
-## detached HEAD?
+## 💘 detached HEAD?
 
 **detached HEAD**는 HEAD가 브랜치를 가리키는 대신, **특정 커밋**을 직접 가리키는 상태를 말한다. 즉, **브랜치와 연결되지 않은 채** 특정 커밋에서 작업을 시작한다.
 
@@ -155,14 +155,14 @@ git reflog
 git switch -c <new-branch> <잃어버린 커밋의 hash>
 ```
 
-## 정리
+## 📝 정리
 
 | 상태               | HEAD가 가리키는 위치   | 브랜치와의 연결 여부 |
 | ------------------ | ---------------------- | -------------------- |
 | 일반 브랜치 상태   | 특정 브랜치 (`main`)   | 연결됨               |
 | detached HEAD 상태 | 특정 커밋 (`1234abcd`) | 연결되지 않음        |
 
-## 참고
+## 📚 참고
 
 - [Git/번역: Detached HEAD](https://velog.io/@ss-won/Git-Detached-Head)
 - [Git - Detached HEAD 당황하지 말자](https://castellan.tistory.com/78)
