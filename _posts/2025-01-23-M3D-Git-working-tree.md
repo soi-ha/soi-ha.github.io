@@ -3,7 +3,7 @@ layout: post
 published: true
 categories:
   - TIL
-title: '매3개 | Git 저장소의 구조와 흐름'
+title: '매3개 | Git 저장소의 구조와 흐름 & 파일 상태 변화'
 tags:
   - Git
   - TIL
@@ -132,3 +132,10 @@ Tracked 상태의 파일이 수정되면, 파일은 **Modified 상태**로 변�
   - **Unmodified**: 마지막 커밋 이후 변경 없음
   - **Modified**: 파일 수정됨
   - **Staged**: 수정 파일이 `git add`로 스테이징 영역에 반영
+
+## 📚 참고
+
+- [Git -git-glossary](https://git-scm.com/docs/gitglossary)
+- [GIT: 작업 트리, 커밋 이해하기 (working tree, git add, commit, push)](https://velog.io/@calm0_0/GIT-Git-%EC%9E%91%EC%97%85-%ED%8A%B8%EB%A6%AC-%EC%BB%A4%EB%B0%8B-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-working-tree-git-add-commit-push)
+- [📖 초보자를 위한 깃&깃허브](https://velog.io/@khakhid/%EC%B4%88%EB%B3%B4%EC%9E%90%EB%A5%BC-%EC%9C%84%ED%95%9C-%EA%B9%83%EA%B9%83%ED%97%88%EB%B8%8C)
+- [GIT: ⚡️ 버전 관리하기 (git init / add / commit / log / diff)](https://inpa.tistory.com/entry/GIT-%E2%9A%A1%EF%B8%8F-%EB%B2%84%EC%A0%84-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0-init-add-commit)
