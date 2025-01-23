@@ -91,37 +91,37 @@ git stash
 
 1. **현재 브랜치 상태**
 
-현재 HEAD는 `main` 브랜치를 가리킨다.
+   현재 HEAD는 `main` 브랜치를 가리킨다.
 
-```bash
-git checkout main
-```
+   ```bash
+   git checkout main
+   ```
 
 2. **detached HEAD 상태로 전환**
 
-HEAD가 특정 커밋(`1234abcd`)을 가리키고, `main` 브랜치와의 연결이 끊긴다.
+   HEAD가 특정 커밋(`1234abcd`)을 가리키고, `main` 브랜치와의 연결이 끊긴다.
 
-```bash
-git checkout 1234abcd
-```
+   ```bash
+   git checkout 1234abcd
+   ```
 
 3. **detached HEAD 상태에서 커밋 생성**
 
-이 커밋은 브랜치와 연결되지 않아 나중에 잃어버릴 위험이 있다. 그러나 완전히 사라지는 것은 아니다.
+   이 커밋은 브랜치와 연결되지 않아 나중에 잃어버릴 위험이 있다. 그러나 완전히 사라지는 것은 아니다.
 
-```bash
-echo "Test" > file.txt
-git add file.txt
-git commit -m "Detached HEAD commit"
-```
+   ```bash
+   echo "Test" > file.txt
+   git add file.txt
+   git commit -m "Detached HEAD commit"
+   ```
 
 4. **브랜치를 생성하여 커밋 보존**
 
-커밋을 안전하게 새로운 브랜치에 저장할 수 있다.
+   커밋을 안전하게 새로운 브랜치에 저장할 수 있다.
 
-```bash
-git checkout -b <new-branch>
-```
+   ```bash
+   git checkout -b <new-branch>
+   ```
 
 여기서 만약? `detached HEAD` 상태에서 작업한 커밋을 브랜치를 생성하여 바로 저장하지 않고 그냥 기존 브랜치(`main`)로 변경해버렸다면? 어떻게 다시 `detached HEAD` 상태에서 작업한 커밋을 찾아서 저장할 수 있을까?
 
