@@ -3,7 +3,7 @@ layout: post
 published: true
 categories:
   - TIL
-title: '매3개 | Git의 merge & rebase & squash merge'
+title: '매3개 | Git의 다양한 Merge 방법 (merge, rebase, squash)'
 tags:
   - Git
   - TIL
