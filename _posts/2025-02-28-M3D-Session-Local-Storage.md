@@ -152,7 +152,6 @@ document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
 
   `secure` 옵션이 없으면 `http://example.com`에서 생성한 쿠키를 `https://example.com`에서 읽을 수 있다. 즉, 서로 쿠키를 공유하게 된다. 쿠키는 도메인만 확인하고 프로토콜을 따지지 않기 때문이다.
 
-````
 ### 🚨 주의
 
 쿠키 저장은 프론트엔드에서도 가능하고, 백엔드에서도 가능하다.
@@ -169,7 +168,7 @@ res.cookie('token', 'secureToken123', {
 	sameSite: 'Strict',
 	maxAge: 1000 * 60 * 60 * 24, // 1일 동안 유지
 });
-````
+```
 
 - `httpOnly: true` → JS에서 접근 불가능 (XSS 공격 방지)
 - `secure: true` → HTTPS에서만 쿠키 전송
