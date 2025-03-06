@@ -4,8 +4,8 @@ highlighter: rouge
 
 # Setup
 title: Soha
-tagline: "soyeon devlog"
-description: "프론트엔드 개발자가 되기 위한 발걸음 기록"
+tagline: 'soyeon devlog'
+description: '프론트엔드 개발자가 되기 위한 발걸음 기록'
 url: https://soi-ha.github.io
 baseurl:
   # the optional subpath of your site, e.g. "/blog"
@@ -15,7 +15,7 @@ baseurl:
   # sidebar_blog_link below.
 
 author:
-  name: "soha"
+  name: 'soha'
   url: https://twitter.com/fongandrewc
 
 paginate: 5
@@ -26,6 +26,7 @@ plugins:
   - jekyll-feed
   - jekyll-gist
   - jekyll-paginate
+  - jekyll-sitemap
 
 # Sidebar link settings
 sidebar_home_link: true
