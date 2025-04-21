@@ -13,7 +13,7 @@ tags:
 
 때는 4월 17일 20시.. 공부를 하기 위해 책상에 앉아 디스코드에 접속하여 서버에서 기존에 사용하던 노래봇을 실행하려 했는데.. 유튜브 검색이 제대로 작동하지 않았다. 그래서 나는 다른 노래봇을 새롭게 불러와 서버에 실행했지만? 또 안됐다. 그렇게 한국어를 지원하는 어느정도 인지도가 있는 노래봇만 6개를 실행해봤다. 근데, 내가 원하는 유튜브로 검색하여 실행이 제대로 돌아가지 않았다.
 
-<img width="519" alt="디스코드 노래봇 입장 채팅" src="https://github-production-user-asset-6210df.s3.amazonaws.com/77609591/435443479-263c8ea5-9f88-4d62-b57e-2dd8903c023b.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250421%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250421T041050Z&X-Amz-Expires=300&X-Amz-Signature=e5794c5eed438d0a5215d91582bd02145fabef9fbcd177f294d84fadd93516af&X-Amz-SignedHeaders=host" />
+<img width="519" alt="디스코드 노래봇 입장 채팅" src="https://github-production-user-asset-6210df.s3.amazonaws.com/77609591/435543059-d061e531-17d1-46e9-bd4f-c162037bf119.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250421%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250421T042705Z&X-Amz-Expires=300&X-Amz-Signature=cc38f1e4105eaa841ce31c3d2c2d185cefb0885e68af14b1a38418300f8805ef&X-Amz-SignedHeaders=host" />
 
 원하는대로 돌아가지 않아 약간 빡친(?) 나는, 너가 이기나 내가 이기나 해보자는 심보로 디스코드 노래봇을 어떻게 만드는지 찾아봤다. 어렵지 않으면 내가 만드는게 더 빠를 것 같다는 생각이 들었다. 오, 근데 간단하게 찾아보니 그리 어렵지 않고 주로 JS 혹은 Python으로 만드는 것 같았다. 직접 만드는게 진짜 더 좋겠는데...? 라는 생각에, 나는 계획에도 없던 디스코드 노래봇을 만들게 되었다 ^^!
 
