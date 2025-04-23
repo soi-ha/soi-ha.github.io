@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 JavaScript: 예외 던지기(throw), 예외처리(try-catch-finally)  &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">JavaScript: 예외 던지기(throw), 예외처리(try-catch-finally) </h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">26 Oct 2023</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <p>우테코 프리코스를 진행하면서 다음과 같은 요구사항이 존재했다.</p>
+
+<blockquote>
+  <p>사용자가 잘못된 값을 입력한 경우 throw문을 사용해 예외를 발생시킨후 애플리케이션은 종료되어야 한다.</p>
+</blockquote>
+
+<p>throw..?? 이번에 처음 보는 친구였기 때문에 이 기회를 삼아 학습해보기로 했다!</p>
+
+<h2 id="예외처리">예외처리</h2>
+
+<hr />
+
+<p>throw를 배우기에 앞서 try, catch, finally에 대해 알아보자.</p>
+
+<p><strong>예외(exception)</strong> 란 실행 중인 프로그램에서 예기치 못한 상황이 발생하여 더 이상 진행할 수 없는 상황을 말한다. 매우 대표적으로는 SyntaxError나 TypeError 등이 있다.
+예외가 발생하면 프로그램을 실행할 수 없기 때문에 예외를 처리할 수 있는 방법을 마련해야 한다.</p>
+
+<p>이런 예외처리는 try-catch 문을 사용하여 처리할 수 있다.</p>
+
+<h3 id="try">try</h3>
+
+<hr />
+
+<p><code class="language-plaintext highlighter-rouge">try</code>는 에러가 날수도 있는 코드를 담은 것이다.<br />
+해당 블록안에 있는 코드를 실행하여 에러가 발생한다면 <code class="language-plaintext highlighter-rouge">catch</code> 블록으로 옮겨가고, 에러가 발생하지 않는다면 정상적으로 실행된다.<br />
+예외는 <code class="language-plaintext highlighter-rouge">throw</code>나 예외를 발생시키는 메서드에 의해 발생된다.</p>
+
+<h3 id="catch">catch</h3>
+
+<hr />
+
+<p>해당 블록은 <code class="language-plaintext highlighter-rouge">try</code> 블록에서 예외가 발생한 경우에만 실행된다.<br />
+에러에 대한 정보를 담은 객체(매개변수)를 사용할 수 있다.<br />
+<code class="language-plaintext highlighter-rouge">catch</code> 블록에서는 예외를 처리하거나, 예외를 무시하거나 (아무것도 하지 않음), <code class="language-plaintext highlighter-rouge">throw </code>를 사용하여 예외를 다시 발생시킬 수 있다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">e.name</code> : 에러 이름</li>
+  <li><code class="language-plaintext highlighter-rouge">e.message</code> : 에러 상세 내용을 담고 있는 메시지</li>
+  <li><code class="language-plaintext highlighter-rouge">e.stack</code> : 현재 호출 스택. 에러를 유발한 중첩 호출들의 순서 정보를 가진 문자열이다. 디버깅을 목적으로 사용한다.</li>
+</ul>
+
+<h3 id="finally">finally</h3>
+
+<hr />
+
+<p><code class="language-plaintext highlighter-rouge">try</code> 블록에서 일어난 일에 상관없이 해당 블록에 있는 코드는 무조건 실행된다. 따라서 <code class="language-plaintext highlighter-rouge">try</code> 블록이 어떤 형태로든 종료되면 실행된다.<br />
+return, break, continue등으로 코드의 실행 흐름이 즉시 이동되더라도 무조건 실행된다.</p>
+
+<p>에러가 발생하지 않은 경우: try - finally<br />
+에러가 발생한 경우: try - 에러발생 - catch - finally</p>
+
+<p><strong>try 블록이 종료되는 상황</strong></p>
+
+<ul>
+  <li>정상적으로 블록의 끝에 도달했을 때</li>
+  <li>break, continue 또는 return 문에 의해서</li>
+  <li>예외가 발생했지만 catch 절에서 처리했을 때</li>
+  <li>예외가 발생했고 그것이 잡히지 않은 채 퍼져나갈 때</li>
+</ul>
+
+<h2 id="예외-던지기-throw">예외 던지기 (throw)</h2>
+
+<hr />
+
+<p>개발자가 직접 에러를 유발시킨다. 에러나 예외 상황을 알리기 위해서이다.<br />
+따라서 예외를 강제로 발생시켜야 할 경우에는 <code class="language-plaintext highlighter-rouge">throw</code>를 사용한다. 이를 <strong>예외 던지기</strong>라고 한다.</p>
+
+<p>개발자가 예외를 던지면, 예외 객체가 생성되고, 이 객체는 프로그램 실행 중에 catch 블록에서 처리된다.</p>
+
+<p>예외를 던질 때는 <code class="language-plaintext highlighter-rouge">new Error('에러 메세지')</code> 와 같이 예외 객체를 생성하여 던진다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="p">{</span>
+	<span class="kd">const</span> <span class="nx">even</span> <span class="o">=</span> <span class="nf">parseInt</span><span class="p">(</span><span class="nf">prompt</span><span class="p">(</span><span class="dl">'</span><span class="s1">짝수를 입력하세요</span><span class="dl">'</span><span class="p">));</span>
+	<span class="k">if </span><span class="p">(</span><span class="nx">even</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">throw</span> <span class="k">new</span> <span class="nc">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">짝수가 아닙니다.</span><span class="dl">'</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nf">alert</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 홀수를 입력할 경우</span>
+<span class="c1">// Error: 짝수가 아닙니다.</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>참고<br />
+<a href="https://inpa.tistory.com/entry/JS-%F0%9F%93%9A-%EC%98%88%EC%99%B8-%EC%B2%98%EB%A6%AC#%EC%98%88%EC%99%B8_%EB%8D%98%EC%A7%80%EA%B8%B0_throw">자바스크립트의 예외 처리(Exception)</a><br />
+<a href="https://ktko.tistory.com/entry/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EC%98%88%EC%99%B8%EC%B2%98%EB%A6%AC">자바스크립트 예외처리</a></p>
+</blockquote>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#woowacourse">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">WoowaCourse</span>
+    </a>
+  
+    
+    <a href="/tags.html#js">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">JS</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

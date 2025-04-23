@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 Vue.js: Vue 문법 Ep.6 이벤트 핸들링  &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">Vue.js: Vue 문법 Ep.6 이벤트 핸들링 </h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">01 Feb 2023</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h2 id="이벤트-핸들링"><strong>이벤트 핸들링</strong></h2>
+<hr />
+
+<blockquote>
+  <p><a href="https://v3-docs.vuejs-korea.org/guide/essentials/event-handling.html">Vue.js: 이벤트 핸들링 </a></p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>이벤트 리스닝</p>
+
+    <p>v-on 디렉티브를 @기호로 작성이 가능하며, DOM 이벤트를 듣고 트리거 될 때와 자바스크립트를 실행할 때 사용한다.</p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="nt">button</span> <span class="err">@</span><span class="na">click</span><span class="p">=</span><span class="s">"count += 1"</span><span class="p">&gt;&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>메소드 핸들러</p>
+
+    <p>위와 같은 인라인 핸들러에서는 복잡한 논리를 사용하기 힘들다. 따라서 메소드에 복잡한 내용들을 작성하고 해당 메소드 명을 이벤트 핸들러로 사용한다.</p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">methods</span><span class="p">:</span> <span class="p">{</span>  
+  <span class="nf">greet</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>   
+    <span class="nf">alert</span><span class="p">(</span><span class="s2">`안녕 </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">!`</span><span class="p">)</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>      
+      <span class="nf">alert</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">tagName</span><span class="p">)</span>    
+    <span class="p">}</span>  
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="nt">button</span> <span class="err">@</span><span class="na">click</span><span class="p">=</span><span class="s">"greet"</span><span class="p">&gt;</span>환영하기<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>인라인 핸들러에서 메소드 호출</p>
+
+    <p>메서드 이름을 직접 바인딩하지 않고 인라인 핸들러에서 메서드를 호출할 수 있다. 결과로 이벤트 객체 대신 사용자 지정 인자를 출력할 수 있다.</p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">methods</span><span class="p">:</span> <span class="p">{</span>
+  <span class="nf">handler</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  
+<span class="p">&lt;</span><span class="nt">button</span> <span class="err">@</span><span class="na">click</span><span class="p">=</span><span class="s">"handler('hello')"</span><span class="p">&gt;</span>Click!<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</code></pre></div>    </div>
+
+    <ul>
+      <li>
+        <p>이벤트 객체와 인수 둘 다 사용하기</p>
+
+        <p>vue에서 제공하는 문법 $event를 사용하면 된다.<br />
+해당하는 이벤트가 연결되어져 있는 버튼에서 이벤트 객체가 나와서 $event 안으로 들어가게 된다.</p>
+
+        <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">methods</span><span class="p">:</span> <span class="p">{</span>
+  <span class="nf">handler</span><span class="p">(</span><span class="nx">msg</span><span class="p">,</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>        </div>
+
+        <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    
+<span class="p">&lt;</span><span class="nt">button</span> <span class="err">@</span><span class="na">click</span><span class="p">=</span><span class="s">"handler('hello', $event)"</span><span class="p">&gt;</span>Click!<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>여러가지 이벤트 핸들러 사용</p>
+
+    <p>하나의 요소에 어떤 이벤트가 발생했을 때 실행할 메소드가 여러개라면, 해당 메소드를 쉼표로 구분한다. <br />
+단, 주의할 점은 호출할때 메소드 명 뒤에 소괄호를 꼭 붙여야 한다.   소괄호를 사용하지 않으면 메소드가 호출되지 않는다.</p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">methods</span><span class="p">:</span> <span class="p">{</span>
+  <span class="nf">handlerA</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">A</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">},</span>
+  <span class="nf">handlerB</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">B</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  
+<span class="p">&lt;</span><span class="nt">button</span> <span class="err">@</span><span class="na">click</span><span class="p">=</span><span class="s">"handlerA(),handlerB()"</span><span class="p">&gt;</span>Click!<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</code></pre></div>    </div>
+
+    <p>버튼을 한번만 클릭해도 메소드 두개가 동시에 작동된다.<br />
+콘솔창에서 확인해 보면, A와 B가 동시에 출력된 것을 볼 수 있다.</p>
+  </li>
+</ul>
+
+<h2 id="이벤트-핸들링-이벤트-수식어"><strong>이벤트 핸들링: 이벤트 수식어</strong></h2>
+<hr />
+
+<p>이벤트 핸들러 내에서 <code class="language-plaintext highlighter-rouge">event.preventDefault(</code>)또는 <code class="language-plaintext highlighter-rouge">event.stopPropagation()</code>을 호출 자주 호출하게 된다. 메소드 내에서는 해당 작업을 쉽게 수행할 수 있지만 메소드가 데이터 처리 로직만 가지고 있다면 유지보수가 더욱 용이할 것이다. <br />
+그렇기에 이벤트 수식어를 사용하여 유지보수가 용이하도록 만든다.</p>
+
+<ul>
+  <li>
+    <p>이벤트 수식어 체이닝</p>
+
+    <p>이벤트 수식어는 체이닝이 가능하다. <br />
+체이닝 형태로 여러가지 수식어를 붙여서 사용할 수 있다.</p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="nt">div</span> <span class="err">@</span><span class="na">click</span><span class="err">.</span><span class="na">prevent</span><span class="err">.</span><span class="na">once</span><span class="p">=</span><span class="s">"handler"</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>preventDefault</p>
+
+    <p>preventDefault는 기본 동작을 방지하는 것이다.<br />
+예시를 들자면, html에서 a태그는 기본적으로 페이지 링크를 연결해주는 동작을 가지고 있다. a태그의 기본동작은 링크 연결인 것이다.<br />
+즉, html이 기본적으로 가지고 있는 동작이라고 생각하면 된다.</p>
+
+    <p>오직 event.preventDefault만 사용한다면 a태그가 가지고 있는 기본 동작이 방지가 되면서 동작하지 않게 되고 다음 로직으로 넘어가게 된다.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">.prevent</code></p>
+
+    <p>preventDefault라는 기능을 prevent 이름만 작성하여 사용할 수 있게 한다.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">.once</code></p>
+
+    <p>특정 이벤트가 발생했을 때 해당하는 메소드를 <strong>단 한번</strong>만 실행해준다.<br />
+동작을 다시 실행하더라도 해당 메소드는 더 이상 실행되지 않는다.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">.stop</code></p>
+
+    <p>해당 수식어는 stopPropagation 메소드를 간단하게 사용하기 위해 만든 수식어이다.</p>
+
+    <p>이벤트 버블링을 방지할 때 자주 사용한다. <br />
+버블링이 발생하지 않기를 원하는 영역에 해당 수식어를 사용하면 버블링이 발생하지 않고 원하는 부분의 메소드만 실행하게 된다.<br />
+즉, 전파를 방해하는 역할을 한다.</p>
+
+    <p><strong>이벤트 버블링</strong><br />
+마치 거품이 일어나듯이 점점 확산되는 개념이다. <br />
+a 박스(부모요소) 안에 b 박스(자식요소)가 존재할 때, a 박스 부분을 클릭하면 a 메소드만 출력되지만 b박스 부분을 클릭하면 b 메소드가 실행된 후 a 메소드도 실행된다.<br />
+이는, a박스가 b 박스를 감싸고 있기 때문이다. 이런 현상이 이벤트 버블링이다.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">.capture</code></p>
+
+    <p>해당 수식어는 버블링의 반대 개념인 캡처링을 발생시키는 수식어이다.<br />
+이벤트 실행의 순서를 역으로 진행하게 만든다.</p>
+
+    <p><strong>이벤트 캡처링(Event Capturing)</strong><br />
+이벤트 버블링의 반대가 되는 개념이다.<br />
+이벤트 버블링은 자식요소(b박스)가 먼저 실행되고 부모요소(a박스)가 실행이 된다.<br />
+하지만, 이벤트 캡처링은 부모요소가 먼저 실행되고 그 이후에 자식요소가 실행되도록 만든다.</p>
+
+    <ul>
+      <li>
+        <p>만약 거꾸로 버블링을 방지시키고 싶다면?</p>
+
+        <p>자식요소 부분을 클릭했을 때, 부모요소만 실행되고 자식요소가 실행되지 않게 하고 싶다면 부모요소 부분에 .capture.stop을 작성하면 된다.<br />
+캡처링으로 인해 부모요소가 먼저 실행이 되고 이후에 자식요소가 실행을 하려 할때 stop 수식어로 인해 실행이 멈추면서 자식요소는 실행되지 않는다.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">.self</code></p>
+
+    <p>해당 수식어가 붙어있는 해당 영역을 정확하게 클릭을 했을 때에만 해당 이벤트가 동작하도록 만들어 준다.</p>
+
+    <p>예를 들면, 부모요소 위에 자식요소 버튼이 존재한다. 자식요소에는 click 이벤트가 존재하지 않는다. <br />
+부모요소에 self 수식어를 사용하지 않았다면 자식요소를 클릭해도 부모요소의 메소드가 실행된다. 버블링으로 인해 자식요소 뒤에 있는 부모요소가 실행되는 것이다.<br />
+<strong>부모요소에 self 수식어를 사용</strong>한다면, 자식요소를 클릭해도 이벤트가 실행되지 않는다. 오직 self 수식어가 붙어있는 영역인 부모요소의 이벤트만 실행되게 된다.<br />
+정확이 말하자면, 모든 영역이 부모요소인 것은 맞지만 자식요소로 인해 자식요소가 존재하는 부분은 노출되어져 있지 않다. 자식요소가 해당 부분을 가리기 때문이다. <br />
+그렇기에 self는 <strong>오직 부모요소가 노출되어져 있는 부분</strong>만을 클릭했을 때 <strong>이벤트가 실행</strong>하게 만든다.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">.passive</code></p>
+
+    <p>처리해야 하는 로직이 굉장히 많이 존재할 때 동작 실행이 느려지게 된다.<br />
+많은 양의 로직과 브라우저에 보이는 화면을 동시에 처리하기 때문이다.</p>
+
+    <p>passive 수식어를 사용하게 되면 <strong>로직 처리와 브라우저 출력을 독립</strong>시킬 수 있다. 그렇게 되면 브라우저에서 보이는 렉(동작 느려짐)이 줄어들고 로직 처리는 따로 돌아가게 된다. 사용자 입장에서 화면을 이용할 때 편리하며, 로직은 내부적으로 따로 돌아가기 때문에 문제가 되지 않는다.</p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="nt">div</span> <span class="err">@</span><span class="na">scroll</span><span class="err">.</span><span class="na">passive</span><span class="p">=</span><span class="s">"onScroll"</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>    </div>
+
+    <p>즉, passive는 로직처리가 많은 메소드를 호출하는 요소에 사용하면 좋다.</p>
+
+    <p>추가로, passive는 prevent와 함께 사용해서는 안된다. passive는 브라우저에게 이벤트의 기본동작을 방해(prevent)하지 않겠다는 의미를 가지기 때문이다.</p>
+  </li>
+</ul>
+
+<h2 id="이벤트-핸들링-키-수식어"><strong>이벤트 핸들링: 키 수식어</strong></h2>
+<hr />
+
+<p>input에서 enter 키를 입력했을 때 콘솔창에 Enter라는 문구가 출력되도록 코드를 작성했다.</p>
+
+<p>key 요소에 값으로 Enter가 들어왔을 때, 콘솔창에 Enter!! 문구를 출력하도록 if문을 사용하여 작성했다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">input</span>
+    <span class="na">type</span><span class="p">=</span><span class="s">"text"</span>
+    <span class="err">@</span><span class="na">keydown</span><span class="p">=</span><span class="s">"handler"</span> <span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+export default <span class="si">{</span>
+  <span class="nx">methods</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nf">handler</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if </span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">key</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">Enter</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Enter!!</span><span class="dl">'</span><span class="p">)</span>
+      <span class="p">}</span>
+    <span class="si">}</span>
+  }
+}
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div></div>
+
+<p>하지만, 이렇게 if문을 사용하지 않고 간단하게 키 수식어를 통해 작동되도록 할 수 있다.</p>
+
+<p>input에 a를 제외한 나머지 키들을 입력하다가 a키를 누르면 콘솔창에 Enter 문구가 출력되도록 작성했다.<br />
+이제는 if 문이 아니라 keydown 이벤트 뒤에 a 수식어만 추가해주면 된다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">input</span>
+    <span class="na">type</span><span class="p">=</span><span class="s">"text"</span>
+    <span class="err">@</span><span class="na">keydown</span><span class="err">.</span><span class="na">a</span><span class="p">=</span><span class="s">"handler"</span> <span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+export default <span class="si">{</span>
+  <span class="nx">methods</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nf">handler</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Enter!!</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="si">}</span>
+}
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div></div>
+
+<p>위 코드 처럼 원하는 키를 눌렀을 때 어떤 동작이 실행되도록 만들고 싶다면 이벤트 뒤에 원하는 키 수식어를 작성하면 된다.<br />
+단, 수식어는 <strong>꼭 케밥케이스</strong>로 작성해야 한다.</p>
+
+<p>예) a ⇒ .a  / enter ⇒ .enter</p>
+
+<p>추가로, 해당 키 수식어 또한 <strong>체이닝이 가능</strong>하다.<br />
+<code class="language-plaintext highlighter-rouge">@keydown.ctrl.a=”handler”</code><br />
+a키만 누르면 메소드가 실행되지 않고 ctrl 키와 a키를 같이 눌러야 메소드가 실행된다.</p>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#vue-js">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">Vue.js</span>
+    </a>
+  
+    
+    <a href="/tags.html#js">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">JS</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

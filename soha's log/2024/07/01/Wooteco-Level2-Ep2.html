@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 우테코: 장바구니 & 상품 목록 미션 회고 + Level2을 마치며  &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">우테코: 장바구니 & 상품 목록 미션 회고 + Level2을 마치며 </h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">01 Jul 2024</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/sohaLog.html">
+          Soha's Log
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <p><img width="325" alt="level2 수료 축하 fe 걸스 나잇" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/28dede93-4a61-4fa6-9b64-ce566cffaaf2" /></p>
+
+<h1 id="성장이란-뭘까-어른이란-뭘까">성장이란 뭘까. 어른이란 뭘까.</h1>
+
+<p><img width="325" alt="행복했던 내 생일" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/d0f09ca2-8c2c-4a9a-93cd-6fb37b5032ff" /></p>
+
+<p>장바구니 미션에서는 상태관리 라이브러리인 recoil을 주로 사용해보는 미션이었다. 나는 상태관리 라이브러리를 사용하는 것이 완전 처음이었기 때문에 걱정이 많았었다. 하지만 준의 베이스캠프가 친절하게 설명되어 있기 때문에 베이스캠프의 글을 따라 차근차근 기능을 구현하다보니 생각한 대로 잘 기능 구현을 할 수 있었다. 그래서 그런가? 장바구니 미션을 진행하는 내내 재밌었던 것 같다. 물론 생각이 많고 구현해야 할 기능들이 많았어서 스트레스를 받았지만.. 그래서 step2에서 능률이 엄청 떨어지기도 했지만.. recoil이라는 새로운 것을 배우고 적용하는 과정은 참 즐거웠다.</p>
+
+<p>장바구니 미션을 진행하면서 가장 많이 생각했던 키워드이다. <strong>성장, 어른</strong><br />
+지식이 늘고 있고 나의 실력이 늘어나는 것은 맞지만 성장했다는 느낌이 들지 않았다. 성장에 대한 고민은 장바구니 미션 시작부터 Level2를 마치기까지 계속해서 따라왔다. 그래서 나중에 Level2 글쓰기에 나의 성장에 대해 작성하기도 했다.</p>
+
+<p>그리고 성장과 같이 고민한 키워드가 <em>어른</em> 이다.<br />
+개인적일과 겹치면서 어른이 되는 건 뭘까 생각을 참 많이 했다. 24세인데.. 정신적으로나 경제적으로나 나는 어른이 아직 아니라고 생각이 들었다. 또한, 개인적인 일을 해결해나가면서 어떻게 어른답게 유하게 해결해 나갈 수 있을까 고민을 많이 했었다. 그렇게 선택한 방법은 결과적으로 봤을 때 그닥 어른답지 못했던 것 같다. 시간이 알아서 해결해 주기를 바랬으면 안됐는데, 먼저 다가가서 해결하려고 했어야 했는데.. 내가 생각한 것과 다른 방향으로 일이 흘러가서 그게 참 아쉬웠고 어른이 된다는 건 어렵다는 것을 몸소 깨달았다.</p>
+
+<p>장바구니 미션 자체는 굉장히 재밌었지만 다른 요소에서 스트레스를 받아 만족스럽게 미션을 진행하지는 못했던 것 같다.<br />
+그래도 해당 미션때, 내 생일이 껴있었는데 인생에서 가장 행복한 생일을 보냈다. 이 날은 절대 잊을 수 없는 행복한 날 top5에 들 것이다!</p>
+
+<h1 id="level2의-마지막-미션을-만족스럽게-끝내다">Level2의 마지막 미션을 만족스럽게 끝내다!</h1>
+
+<p><img width="325" alt="한강에서 치킨 뜯은 날" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/602f7c84-672b-4eb0-9a31-340b24d068c5" /></p>
+
+<p>마지막 미션의 리뷰어는 이전 자동차 미션때 만난 유조를 또 만나게 되었다. 또한, 페어는 처음 이야기를 하게 된 수야였다. 정말 만족스럽게 마지막 페어 미션을 마쳤던 것 같다. 리뷰어의 피드백도 너무 좋았고.. 페어와의 합도 너무 좋았다.</p>
+
+<p>성향이 비슷해서 일이 착착- 진행된 점이 굉장히 만족스러웠다. 나는 기능을 구현할 때 GPT를 많이 사용하는 편이다. 내가 개발을 하다가 에러가 발생한 부분이 존재하면 혼자 뚱땅 거리다가 방향성이 안 보이면 GPT에게 물어본다. 이렇듯 GPT를 많이 활용하는 편이다. 그런데 마침 수야가 GPT를 결제하면서 많이 활용해보고자 했던 시기라 나의 행동을 백분 이해해줘서 너무 좋았다.</p>
+
+<p>그리고 일단은 주어진 과제를 우선적으로 생각하여 제한된 시간안에 제출하는 것을 먼저라고 생각한다. 개발하면서 <em>이것도 있으면 좋겠는데?</em> 싶은 기능들이 나타나게 된다. 하지만, 시간이 남으면 그때 하자~로 미뤄두는데 이런 부분이 수야와 잘 맞았다. 내가 ~~건 어떻게 하고 싶으세요? 하면 해보고는 싶은데 당장 필요한 건 아닌 것 같다라고 솔직하게 말해준다. 그렇다. 내가 원했던 대답을 속 시원하게 온건하게 말해준다. 너무 좋았다.</p>
+
+<p>그리고 아마 가장 좋았던 부분은 수야와 나의 리액트에 대한 지식 기반에 매우 비슷했기 때문인 것 같다. 둘다 이전에 리액트를 약간 깔짝인 수준 정도라 다양한 훅들이나 상태관리 라이브러리도 우테코에 와서 처음 사용했다.<br />
+이렇듯 지식 기반이 유사하기 때문에 어느 한쪽에 끌려가지 않고 둘이서 기능을 구현하는데 균형을 잘 잡으며 미션을 진행해서 만족스러웠던 것 같다.</p>
+
+<p>아, 그래도 가장 좋았던 건.. 어느정도 수면 시간을 확보했던 거였을까나..? 수야의 영어 수업 덕분에 첫날 칼퇴. 둘쨋날에도 생각한 만큼 진행해서 나름 칼퇴 (무려 페어미션때 운동하러 감..) 마지막 제출날에도 시간 넉넉하게 기능 구현 완료.. 진짜 꿈의 페어 미션이었다.. 행복한 마지막 페어 미션이었다!!</p>
+
+<p>이번 미션이 주로 학습하고자 하는 것은 RTL이었는데, step1때는 다소 이상하게 쓰다가 주변 크루들의 도움으로 step2때는 오~ 이게 RTL이군~ 하는 수준의 테스트 코드를 작성할 수 있었다!</p>
+
+<p>또한, react-query를 처음 사용해봤는데 뭐 크게 어려운 건 없는 것 같았다! 사실 react-query를 깊게 사용한 건 아닌 것 같은데.. 음 ~ 이건 프로젝트하면서 와 닿겠지..!</p>
+
+<p>그리고 마지막 Level2 미션이라 그런가? 굉장히 많이 놀러다녔다. step1 제출하고 급조된 한강 피크닉 가기.. 난생 처음 재즈바도 가보고, 프론트엔드 여자 크루들끼리 걸스나잇 파티도 열고..!(버퍼 기간이긴 하지만..!) 너무 즐겁게 놀러다니면서 마지막 미션을 진행했다..!</p>
+
+<h1 id="level2를-마치며">Level2를 마치며</h1>
+
+<p><img width="325" alt="level2 수료식날 구왼조" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/f270ca3b-44e9-40d4-b364-fabbb558a103" /></p>
+
+<p>Level2는 react를 학습하는 것이 주된 학습 목표였기 때문에 JS를 할 때보다 각 미션들이 참 재밌었던 것 같다. 처음 사용해보는 것들도 많아서 즐거웠고!<br />
+그리고 level1에서 잘 이야기 나눠보지 않았던 사람들을 알게 되어서 더더욱 좋았다.</p>
+
+<p>Level2에서도 데일리 미팅 조가 변경된 것이 무색할 정도로 구왼조와 굉장히 자주.. 회식하고 놀았는데 이런 소소한 것들이 지치지 않게 만들어 주는 것 같다. (내 깜짝 생일 축하.. 마위 생파 겸 일리 테코톡 종료 기념 회식, 월하 집들이.. 히비키 회식.. 바다, 렛서 테코톡 종료 회식 등등..) 진짜 회식 많이 했네; level1때보다 level2 들어오면서 서로 더 돈독하고 가까워졌던 것 같다!</p>
+
+<p>Level2를 진행하면서 좋은 수면 습관과 학습 루틴을 세울 수 있어서 좋았다. 일찍 자는 습관을 만들면서 이전보다 수면 시간이 길어져 하루 하루를 상쾌하게 보낼 수 있었다. 또, 일찍 일어나다 보니 아침 시간에 혼자만의 공부 시간을 가질 수 있어서 좋았다.<br />
+스터디를 진행하면서 새롭게 알게 된 것들이 많아서 좋았고 크루들의 이야기를 들으며 여러 시각으로 배울 수 있어서 좋았다.</p>
+
+<p>Level2는 기술적인 성장도 성장이지만 생각에 대한, 정신적인 부분의 성장이 컸던 것 같다. 개인적인 일이 결코 작은 일이 아니었음에도 무던하게 일을 해결하려고 노력하며 어른이 되는 것에 한 발짝 다가갈 수 있었다.<br />
+또한, 성장에 대해 의구심을 가짐으로 그간의 나를 되돌아 볼 수 있었던 것 같다. 그리고 결과적으로 나에게 성장이란 무엇인지 알 수도 있었다.</p>
+
+<blockquote>
+  <h3 id="-level2-글쓰기-미션-나는-성장한다-고로-존재한다"><a href="https://github.com/soi-ha/woowa-writing/blob/level2/level2.md">🔗 Level2 글쓰기 미션: 나는 성장한다. 고로 존재한다.</a></h3>
+</blockquote>
+
+<p>기술적인 면이나 정신적인 면이나 여러모로 나를 성장시킨! 그런 Level이었다.<br />
+그리고 나의 못 이룬 대학 로망을 이뤄준 Level이기도 하다~! 무사히 내가 Level2도 보낼 수 있도록 옆에서 도와주고 지켜준 모든 분들에게 고맙다 💙</p>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#wooteco">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">Wooteco</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

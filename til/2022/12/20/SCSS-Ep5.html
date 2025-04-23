@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 SCSS: SCSS Ep.5 &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">SCSS: SCSS Ep.5</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">20 Dec 2022</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h2 id="반복문"><strong>반복문</strong></h2>
+<hr />
+
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@for</span> <span class="nv">$i</span> <span class="ow">from</span> <span class="m">1</span> <span class="ow">through</span> <span class="m">10</span> <span class="p">{</span>
+	<span class="nc">.box</span><span class="nd">:nth-child</span><span class="o">()</span> <span class="p">{</span>
+		<span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ul>
+  <li>‘@for’을 통해서 반복문을 시작한다.</li>
+  <li>내부에서 사용할 반복 변수는 통상적으로 ‘$i’로 사용한다.</li>
+  <li>through 앞에는 시작할 숫자, 뒤에는 끝날 숫자를 작성한다.<br />
+1 through 10이라면 1부터 시작해서 10까지 반복된다. 총 10번 반복.<br />
+css는 js과 달리 제로 베이스가 아니기 때문에 1부터 시작을 해준다.</li>
+</ul>
+
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@for</span> <span class="nv">$i</span> <span class="ow">from</span> <span class="m">1</span> <span class="ow">through</span> <span class="m">10</span> <span class="p">{</span>
+	<span class="nc">.box</span><span class="nd">:nth-child</span><span class="o">(</span><span class="si">#{</span><span class="nv">$i</span><span class="si">}</span><span class="o">)</span> <span class="p">{</span>
+		<span class="nl">width</span><span class="p">:</span> <span class="m">100px</span> <span class="o">*</span> <span class="nv">$i</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>단순하게 박스 클래스만 반복하는 것은 유용하게 사용이 불가능하기 때문에 nth-child를 추가하여 유용하게 사용할 수 있도록 해본다.</p>
+<ul>
+  <li>nth-child() 가상 클래스 추가하기<br />
+소괄호에 몇번째인지 표시할 수 있게 된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">.box:nth-child()</code>는 css 선택자로, i라는 변수가 가지고 있는 숫자를 그대로 명시할 수 가 없다.</li>
+  <li>문자 <strong>보간</strong> 방식을 통해 숫자를 명시할 수 있도록 한다.<br />
+JS에서 백틱기호 사이에 문자 데이터에다가 자바스크립트 데이터를 채우기 위해서 보간이라는 특수한 문법 사용했었다.<br />
+SCSS 또한 보간을 지원한다.</li>
+  <li>SCSS에서 보간은 ‘${ }’이 아닌 ‘<strong>#{ }</strong>’을 통해서 괄호 안에 데이터를 채워넣는 방식이다.</li>
+  <li>추가로, 연산할때에는 보간을 사용할 필요가 없다!<br />
+위에서 보간처리를 한 것은 값을 적는 부분이 아니기 때문에 해준 것이다.<br />
+연산에서는 값을 작성하기 때문에 보간을 할 필요가 없다.</li>
+</ul>
+
+<h2 id="함수"><strong>함수</strong></h2>
+<hr />
+
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@mixin</span> <span class="nf">center</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+  <span class="nl">justify-content</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+  <span class="nl">align-items</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">@function</span> <span class="nf">ratio</span><span class="p">(</span><span class="nv">$size</span><span class="o">,</span> <span class="nv">$ratio</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">@return</span> <span class="nv">$ratio</span> <span class="o">*</span> <span class="nv">$size</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.box</span> <span class="p">{</span>
+  <span class="nv">$width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="nv">$width</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="nf">ratio</span><span class="p">(</span><span class="nv">$width</span><span class="o">,</span> <span class="m">1</span><span class="o">/</span><span class="m">2</span><span class="p">);</span>
+  <span class="k">@include</span> <span class="nd">center</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+  <span class="nl">justify-content</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+  <span class="nl">align-items</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>@function 키워드는 지정한 이름(ratio)의 함수를 만들어 낸다.</li>
+  <li>@return 키워드는 해당하는 값($ratio * $size)을 함수 밖으로 내보내는 역할을 한다.</li>
+  <li>
+    <p>mixin과 function 키워드의 차이점</p>
+
+    <p>mixin은 css코드의 모음집이라고 보면 된다.<br />
+css의 속성과 값을 나열해서 재활용이 가능한 부분들을 재활용하기 위해서 사용하는 용도이다.</p>
+
+    <p>function은 어떤 값을 따로 연산을 해서 반환된 결과로 사용하기 위해서 만드는 용도이다.<br />
+function 키워드가 우리가 익히 아는 JS의 함수 개념과 훨씬 유사하다.</p>
+  </li>
+</ul>
+
+<h2 id="색상-내장-함수"><strong>색상 내장 함수</strong></h2>
+<hr />
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"box"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"box built-in"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+  <span class="nv">$color</span><span class="p">:</span> <span class="no">royalblue</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">200px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+  <span class="nl">border-radius</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="nv">$color</span><span class="p">;</span>
+  <span class="k">&amp;</span><span class="nc">.built-in</span> <span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="nv">$color</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>mix()</p>
+
+    <p>첫번째 인수의 색상과 두번째 인수의 색상을 섞어서 새로운 색상을 만들어 낸다.</p>
+    <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+  <span class="nv">$color</span><span class="p">:</span> <span class="no">royalblue</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="nv">$color</span><span class="p">;</span>
+  <span class="k">&amp;</span><span class="nc">.built-in</span> <span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="nf">mix</span><span class="p">(</span><span class="nv">$color</span><span class="o">,</span> <span class="no">red</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>lighten()</p>
+
+    <p>첫번째 인수에는 색상을, 두번째 인수에는 수치(%)를 넣는다. <br />
+첫번째 인수의 색상이 해당 수치만큼 밝아진다.</p>
+    <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+  <span class="nv">$color</span><span class="p">:</span> <span class="no">royalblue</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="nv">$color</span><span class="p">;</span>
+  <span class="k">&amp;</span><span class="nc">.built-in</span> <span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="nf">lighten</span><span class="p">(</span><span class="nv">$color</span><span class="o">,</span> <span class="m">10%</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>darken()</p>
+
+    <p>첫번째 인수에는 색상을, 두번째 인수에는 수치(%)를 넣는다. <br />
+첫번째 인수의 색상이 해당 수치만큼 어두워진다.</p>
+    <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+  <span class="nv">$color</span><span class="p">:</span> <span class="no">royalblue</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="nv">$color</span><span class="p">;</span>
+  <span class="k">&amp;</span><span class="nc">.built-in</span> <span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$color</span><span class="o">,</span> <span class="m">10%</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+
+    <ul>
+      <li>
+        <p>사용 예제</p>
+
+        <p>hover시 박스의 색상을 약간 더 어둡게 변경하고 싶을 때 사용하기 유용하다.<br />
+특히, 버튼을 만들 때 굉장히 유용하게 사용이 가능하다.</p>
+        <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+  <span class="nv">$color</span><span class="p">:</span> <span class="no">royalblue</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="nv">$color</span><span class="p">;</span>
+  <span class="k">&amp;</span><span class="nd">:hover</span> <span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$color</span><span class="o">,</span> <span class="m">10%</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>saturate()</p>
+
+    <p>첫번째 인수에 해당하는 색상을 두번째 인수의 수치만큼 채도를 높여준다.</p>
+    <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+  <span class="nv">$color</span><span class="p">:</span> <span class="no">royalblue</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="nv">$color</span><span class="p">;</span>
+  <span class="k">&amp;</span><span class="nc">.built-in</span> <span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="nf">saturate</span><span class="p">(</span><span class="nv">$color</span><span class="o">,</span> <span class="m">60%</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>desaturate()</p>
+
+    <p>첫번째 인수에 해당하는 색상을 두번째 인수의 수치만큼 채도를 낮춰준다.</p>
+    <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+  <span class="nv">$color</span><span class="p">:</span> <span class="no">royalblue</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="nv">$color</span><span class="p">;</span>
+  <span class="k">&amp;</span><span class="nc">.built-in</span> <span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="nf">desaturate</span><span class="p">(</span><span class="nv">$color</span><span class="o">,</span> <span class="m">60%</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>grayscale()</p>
+
+    <p>인수의 색상을 회색으로 변경시켜준다. (두번째 인수는 필요하지 않다.)</p>
+    <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+  <span class="nv">$color</span><span class="p">:</span> <span class="no">royalblue</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="nv">$color</span><span class="p">;</span>
+  <span class="k">&amp;</span><span class="nc">.built-in</span> <span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="nf">grayscale</span><span class="p">(</span><span class="nv">$color</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>invert()</p>
+
+    <p>인수의 색상을 반전 시켜준다. (두번째 인수는 필요하지 않다.)</p>
+    <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+  <span class="nv">$color</span><span class="p">:</span> <span class="no">royalblue</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="nv">$color</span><span class="p">;</span>
+  <span class="k">&amp;</span><span class="nc">.built-in</span> <span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="nf">invert</span><span class="p">(</span><span class="nv">$color</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>rgba()</p>
+
+    <p>첫번째 인수로는 원하는 색상, 두번째 인수로는 색상의 투명도를 넣어준다.<br />
+기존 css에서는<code class="language-plaintext highlighter-rouge">rgba(0,0,0, .5)</code> 형식으로 작성해야 했다.<br />
+css에서는 쓸대없이 길어서 불편했던 것이 인수 2개만 넣어주면 되는 것으로 간편해 졌기에 많이 사용하게 된다.</p>
+    <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+  <span class="nv">$color</span><span class="p">:</span> <span class="no">royalblue</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="nv">$color</span><span class="p">;</span>
+  <span class="k">&amp;</span><span class="nc">.built-in</span> <span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="nf">rgba</span><span class="p">(</span><span class="nv">$color</span><span class="o">,</span> <span class="mi">.5</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="가져오기"><strong>가져오기</strong></h2>
+<hr />
+
+<h3 id="import">@import</h3>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@import</span> <span class="sx">url("./sub.scss")</span><span class="p">;</span>
+
+<span class="nv">$color</span><span class="p">:</span> <span class="no">royalblue</span><span class="p">;</span>
+
+<span class="nc">.container</span> <span class="p">{</span>
+  <span class="nt">h1</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="nv">$color</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>css의 선언방식에서 import 키워드는 css가 css를 가져올 수 있도록 해준다.<br />
+url 함수를 통해서 연결하기를 원하는 scss 파일의 경로를 넣어준다.</p>
+
+<ul>
+  <li>
+    <p>더 간편하게 줄이기 (SCSS)</p>
+
+    <p>scss에서는 url 함수를 사용하지 않아도 해당하는 내용이 정상적으로 작동한다.</p>
+    <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@import</span> <span class="s2">"./sub.scss"</span><span class="p">;</span>
+</code></pre></div>    </div>
+
+    <p>추가로, scss에서는 확장자를 명시하지 않아도 작동한다.</p>
+    <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@import</span> <span class="s2">"./sub"</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>쉼표를 통해서 다른 파일도 가져올 수 있다.</p>
+    <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@import</span> <span class="s2">"./sub"</span><span class="o">,</span> <span class="s2">"./sub2"</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#scss">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">SCSS</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

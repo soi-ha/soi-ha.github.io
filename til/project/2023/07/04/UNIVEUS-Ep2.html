@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 UNIVE.US: React, 모달(modal)구현하기 &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">UNIVE.US: React, 모달(modal)구현하기</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">04 Jul 2023</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/project.html">
+          Project
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <p>해당 프로젝트에는 모달창이 자주 사용되는데, Bootstrap에서 제공하는 modal을 사용해도 되지만 이전에 해당 방법으로 modal을 구현했기에 이번에는 직접 만들어보기로 했다.</p>
+
+<h3 id="modal-컴포넌트"><strong>Modal 컴포넌트</strong></h3>
+
+<hr />
+
+<p><img width="770" alt="Modal 컴포넌트" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/1954579d-ef9c-465e-b21e-c4a48140a8a1" /></p>
+
+<p>일단 필수적으로 필요한 div는 modal 이외의 배경을 블랙처리해줄 최상위 div(modal-back)와 바로 아래의 modal이 될 div(modal)를 만들어줘야 한다. 그 안의 내용은 선택사항으로 넣어준다.</p>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">className='modal-back'</code></p>
+
+    <p>최상위 div의 경우에는 style을 사용하여 modal을 나타나게 하는 버튼을 클릭하지 않았다면(false) <code class="language-plaintext highlighter-rouge">display:none</code>을 해준다. modal을 나타나게 하는 버튼을 클릭했다면(true) <code class="language-plaintext highlighter-rouge">display: true</code>를 해서 modal을 화면에 보이게 한다.</p>
+
+    <p>또한, 스타일로 배경색 등을 지정해준다.</p>
+
+    <p><img width="465" alt="Modal 기본 css" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/f001e70f-05f6-4f37-ac9e-e71a4d96dd6a" /></p>
+
+    <p>position은 fixed로 하여 화면을 스크롤해도 modal이 해당 위치에서 고정되어 스크롤한 화면과 같이 이동하도록 한다.<br />
+background-color는 rgba로 하여 3번째 값까지는 0을 넣어주고 마지막 값에는 원하는 투명도를 넣어준다. 만약 해당 값을 0을 넣는다면 배경색은 검정색이 된다.<br />
+z-index는 999로 설정하여 modal의 위치가 최상위에 위치하도록 한다. (다른 내용들 위에 위치)<br />
+width와 height는 100%로 설정하여 블러처리 배경색(검정색)이 화면을 모두 채울 수 있도록 한다.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">className='modal'</code></p>
+
+    <p>나의 경우에는 닫기(x)버튼, 내용이 들어갈 div, 확인버튼(내용)으로 구성했다.</p>
+
+    <ul>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">className='modal-close'</code></p>
+
+        <p>닫기 버튼을 클릭하면 modal 창이 닫힌다. 부모로부터 닫힌 상태(true/false)를 넘겨 받아 닫힘 버튼을 동작할 수 있도록 한다.</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">className='modal-body'</code></p>
+
+        <p>내용이 들어갈 div의 경우에는 logo, title, content로 나눠줬다.<br />
+logo의 경우에는 프로젝트 modal 디자인의 이미지를 넣어준 것이다.<br />
+title과 content의 경우 부모로부터 props로 내용을 넘겨 받아 뿌려준다.<br />
+title과 content는 어느 페이지에서 modal을 사용하냐에 따라 값이 달라지기에 props로 하여 부모에서 Modal 컴포넌트를 사용할때 원하는 값을 넣을 수 있도록 했다.<br />
+이로 인해, Modal 컴포넌트의 재사용성이 높아졌다. (만약, 이러한 방식으로 하지 않았다면 modal을 사용하는 페이지마다 modal 코드를 계속 적어 넣어야 했을 것이다..)</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">className='modal-footer'</code></p>
+
+        <p>해당 부분에는 버튼들이 들어가는데 버튼의 종류는 두가지이다.<br />
+예/아니오 버튼 한쌍과 확인 버튼이다. 내용에 따라 어떤 버튼을 사용하는지가 달라지는데 버튼을 정의해두지 않으면 매번 modal 코드를 가져와서 붙여넣고 변경해줘야 하기 때문에.. 어떻게 하면 건들지 않을 수 있을까 고민하다가 해당 방법을 생각해냈다.</p>
+
+        <p>일단 예/아니오 버튼을 묶은 div와 확인 버튼에 style로 삼항연산자를 넣어주는 것이다. 해당 방법은 닫기 버튼에서 사용한 것과 동일하다. 다만, <code class="language-plaintext highlighter-rouge">ynBtn</code>의 값이 true냐 false냐에 따라서 어떤 버튼이 활성화될지 달라진다.</p>
+
+        <p><code class="language-plaintext highlighter-rouge">ynBtn</code>이 true라면 예/아니오 버튼이 활성화(즉, <code class="language-plaintext highlighter-rouge">display: block;</code>)되면서 확인 버튼은 비활성화 (<code class="language-plaintext highlighter-rouge">display:none;</code>)된다. false라면 확인 버튼이 활성화되고 예/아니오 버튼은 비활성화된다.</p>
+
+        <p>true값을 넣을지 false값을 넣을 지는 부모에서 Modal 컴포넌트를 사용할 때 설정해준다.</p>
+
+        <p>해당방법을 통해서 Modal 컴포넌트의 재사용성이 높아졌다.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="부모-컴포넌트modal-컴포넌트를-사용할-곳"><strong>부모 컴포넌트(Modal 컴포넌트를 사용할 곳)</strong></h3>
+
+<hr />
+
+<p><img width="457" alt="Modal 컴포넌트 사용(1)" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/8261f75b-7997-4ce0-b8f5-d8028491205b" /></p>
+
+<p>Modal 컴포넌트를 열고 닫을 수 있도록 useState로 상태를 관리한다.</p>
+
+<p><img width="646" alt="Modal 컴포넌트 사용(2)" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/071d2c93-a5a6-4ccf-8302-6e71cdf1a245" /></p>
+
+<p>Modal 컴포넌트의 속성들은 다음과 같다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">isOpen</code>: modal을 열게 한다.<br />
+<code class="language-plaintext highlighter-rouge">closeModal</code>: modal을 닫게 한다.<br />
+<code class="language-plaintext highlighter-rouge">ynBtn</code>: 예/아니오 버튼을 사용할지 확인버튼을 사용할지 결정한다.<br />
+<code class="language-plaintext highlighter-rouge">title</code>: title로 넣을 내용을 작성한다. (content와 스타일이 다르다.)<br />
+<code class="language-plaintext highlighter-rouge">content</code>: content로 넣을 내용을 작성한다.</p>
+
+<h3 id="구현-화면"><strong>구현 화면</strong></h3>
+
+<hr />
+
+<p><img width="1624" alt="Modal 구현 화면" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/c19a365e-aeb1-4234-9d15-4e6cc1ef7ebf" /></p>
+
+<p>modal이 잘 구현된 것을 확인할 수 있다!</p>
+
+<h3 id="마치며"><strong>마치며</strong></h3>
+
+<hr />
+
+<p>불과 작년까지만 해도 modal 만들다가 실패해서 bootstrap의 modal을 사용했었는데, 이제는 혼자서도 modal을 구현할 수 있을 정도로 성장한게 보여서 뿌듯했다!<br />
+또한 modal을 완전히 컴포넌트화 시키기 위해서 정말 고민을 많이 했었다. title과 content, 버튼이 매 페이지마다 다른데 이걸 어떻게 Modal 컴포넌트를 건드리지 않고 사용할 수 있을까 고민을 많이 했다.
+그러다가 props를 떠올렸고, 해당 방법은 매우 성공적이었다.<br />
+이전에 공부하면서 props 개념을 이해하려 할때 솔직히 완벽히 이해하지 못했다. 어영부영 이해한 느낌? 하지만 이번에 직접 떠올리고 사용해보면서 완전히 props 개념을 이해하고 활용할 수 있게 되었다.</p>
+
+<p>프로젝트를 진행하면서 점점 성장해나가고 있는 나를 볼 수 있어서 뿌듯했다. 앞으로 더 성장해나가자!!</p>
+
+<blockquote>
+  <p>참고<br />
+<a href="https://cocoder16.tistory.com/84">리액트 모달창 만들기 2가지 방법</a></p>
+</blockquote>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#unive-us">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">UNIVE.US</span>
+    </a>
+  
+    
+    <a href="/tags.html#react">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">React</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

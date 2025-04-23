@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 영화 검색 사이트: 영화검색 (변이 메소드, 검색 추가요청, lodash: uniqBy) &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">영화 검색 사이트: 영화검색 (변이 메소드, 검색 추가요청, lodash: uniqBy)</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">13 Feb 2023</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/project.html">
+          Project
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h2 id="영화검색"><strong>영화검색</strong></h2>
+<hr />
+
+<ul>
+  <li>
+    <p>Store의 Mutations를 실행할 때는 <code class="language-plaintext highlighter-rouge">.commit()</code> 메소드를, Actions를 실행할 때는 <code class="language-plaintext highlighter-rouge">.dispatch()</code> 메소드를 사용한다.</p>
+  </li>
+  <li>
+    <p><strong>변이 메소드 (updateState)</strong></p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+    <span class="na">namespaced</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="na">state</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">({</span>
+      <span class="na">movies</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="na">mesaage</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+      <span class="na">loading</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">}),</span>
+    <span class="na">getters</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="na">mutations</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nf">updateState</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">payload</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// ['movies', 'message', 'loading']</span>
+        <span class="nb">Object</span><span class="p">.</span><span class="nf">keys</span><span class="p">(</span><span class="nx">payload</span><span class="p">).</span><span class="nf">forEach</span><span class="p">(</span><span class="nx">key</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">state</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">payload</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span>
+        <span class="p">})</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="na">actions</span><span class="p">:</span> <span class="p">{</span>
+      <span class="k">async</span> <span class="nf">searchMovies</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span> <span class="nx">payload</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="p">{</span> <span class="nx">title</span><span class="p">,</span> <span class="nx">type</span><span class="p">,</span> <span class="nx">number</span><span class="p">,</span> <span class="nx">year</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">payload</span>
+        <span class="kd">const</span> <span class="nx">OMDB_API_KEY</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">키값입력</span><span class="dl">'</span>
+          
+        <span class="kd">const</span> <span class="nx">res</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s2">`https://www.omdbapi.com/?apikey=</span><span class="p">${</span><span class="nx">OMDB_API_KEY</span><span class="p">}</span><span class="s2">&amp;s=</span><span class="p">${</span><span class="nx">title</span><span class="p">}</span><span class="s2">&amp;type=</span><span class="p">${</span><span class="nx">type</span><span class="p">}</span><span class="s2">&amp;y=</span><span class="p">${</span><span class="nx">year</span><span class="p">}</span><span class="s2">&amp;page=1`</span><span class="p">)</span>
+        <span class="kd">const</span> <span class="p">{</span> <span class="nx">Search</span><span class="p">,</span> <span class="nx">totalResults</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">res</span><span class="p">.</span><span class="nx">data</span>
+        <span class="nx">context</span><span class="p">.</span><span class="nf">commit</span><span class="p">(</span><span class="dl">'</span><span class="s1">updateState</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+          <span class="na">movies</span><span class="p">:</span> <span class="nx">Search</span><span class="p">,</span>
+          <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Hello World!</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">loading</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="p">})</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+</code></pre></div>    </div>
+
+    <p>actions 부분에서 데이터를 갱신하기 위해서 mutations에 있는 updateState를 commit 메소드를 통해서 실행할 수 있다.<br />
+  실행할 때, 기본적인 객체 데이터(<code class="language-plaintext highlighter-rouge">moives: Search …</code>)를 담아서 전달을 해줄 수 있다.</p>
+
+    <p>이것은 mutations의 payload 변수로 전달이 된다. 이, payload는 하나의 객체 데이터이며, <code class="language-plaintext highlighter-rouge">Object.keys</code>를 통해서 배열 데이터로 만든다. <br />
+  배열 데이터의 갯수만큼 <code class="language-plaintext highlighter-rouge">forEach()</code>로 반복한다. 한번 반복할 때마다, 첫번째 key는 movies이고, 이때 state에 있는 movies(<code class="language-plaintext highlighter-rouge">state[’movies’]</code>)라는 데이터의 payload에 있는 movies (<code class="language-plaintext highlighter-rouge">payload[’movies’]</code>) 데이터 즉, (actions의 commit 객체 데이터) Search라는 OMDb API에서 가지고 온 데이터를 payload에서 state로 할당해줄 수 있다.</p>
+
+    <p>두번째 반복이 될 때는, key가 message이고 <code class="language-plaintext highlighter-rouge">state[’message’]</code>는 <code class="language-plaintext highlighter-rouge">payload[’message’]</code> 즉, <code class="language-plaintext highlighter-rouge">‘Hello World!’</code> 문자 데이터로 할당한다.
+  세번째도 마찬가지.</p>
+
+    <p>updateState라는 공용화하여 사용할 수 있는 로직을 만들어 둔다면, 어디에서든지 저장소에 있는 데이터를 변이 메소드를 통해서 수정할 수 있다.</p>
+
+    <ul>
+      <li>
+        <p>조금 더 깔끔하게 정리</p>
+
+        <p>commit 메소드는 context에서 가져와서 사용한다.<br />
+이 context를 객체 구조분해를 통해서 commit 메소드만 꺼내서 사용하면 조금 더 깔끔하게 정리가 가능하다.</p>
+
+        <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">actions</span><span class="p">:</span> <span class="p">{</span>
+    <span class="k">async</span> <span class="nf">searchMovies</span><span class="p">({</span> <span class="nx">commit</span> <span class="p">},</span> <span class="nx">payload</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="p">{</span> <span class="nx">title</span><span class="p">,</span> <span class="nx">type</span><span class="p">,</span> <span class="nx">number</span><span class="p">,</span> <span class="nx">year</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">payload</span>
+      <span class="kd">const</span> <span class="nx">OMDB_API_KEY</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">키값입력</span><span class="dl">'</span>
+            
+      <span class="kd">const</span> <span class="nx">res</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s2">`https://www.omdbapi.com/?apikey=</span><span class="p">${</span><span class="nx">OMDB_API_KEY</span><span class="p">}</span><span class="s2">&amp;s=</span><span class="p">${</span><span class="nx">title</span><span class="p">}</span><span class="s2">&amp;type=</span><span class="p">${</span><span class="nx">type</span><span class="p">}</span><span class="s2">&amp;y=</span><span class="p">${</span><span class="nx">year</span><span class="p">}</span><span class="s2">&amp;page=1`</span><span class="p">)</span>
+      <span class="kd">const</span> <span class="p">{</span> <span class="nx">Search</span><span class="p">,</span> <span class="nx">totalResults</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">res</span><span class="p">.</span><span class="nx">data</span>
+      <span class="nf">commit</span><span class="p">(</span><span class="dl">'</span><span class="s1">updateState</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+        <span class="na">movies</span><span class="p">:</span> <span class="nx">Search</span>
+      <span class="p">})</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="영화-검색-추가-요청"><strong>영화 검색 추가 요청</strong></h2>
+<hr />
+
+<p>첫번째 페이지에는 총 10개의 영화가 검색되어 출력된다.<br />
+우리가 20개, 30개까지 검색이 가능하도록 했는데, 10개가 넘어가면 2페이지, 3페이지로 넘어가면서 검색이 된다.</p>
+
+<p>우리는 처음 검색한 1페이지에서 추가로 스크롤하면 다음 검색 페이지가 이어서 나오도록 만들 것이다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">total</span> <span class="o">=</span> <span class="nf">parseInt</span><span class="p">(</span><span class="nx">totalResults</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">pageLength</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">ceil</span><span class="p">(</span><span class="nx">total</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>pageLength는 우리가 검색한 키워드를 모두 출력하고자 할때, 한 페이지에 결과를 10개씩 요청했을 때 반복해야 하는 횟수이다. 우리가 검색한 결과의 갯수에서 10을 나누어 올림해준다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 추가 요청</span>
+<span class="k">if </span><span class="p">(</span><span class="nx">pageLength</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for </span><span class="p">(</span><span class="kd">let</span> <span class="nx">page</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="nx">page</span> <span class="o">&lt;=</span> <span class="nx">pageLength</span><span class="p">;</span> <span class="nx">page</span> <span class="o">+=</span> <span class="mi">1</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">res</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s2">`https://www.omdbapi.com/?apikey=</span><span class="p">${</span><span class="nx">OMDB_API_KEY</span><span class="p">}</span><span class="s2">&amp;s=</span><span class="p">${</span><span class="nx">title</span><span class="p">}</span><span class="s2">&amp;type=</span><span class="p">${</span><span class="nx">type</span><span class="p">}</span><span class="s2">&amp;y=</span><span class="p">${</span><span class="nx">year</span><span class="p">}</span><span class="s2">&amp;page=</span><span class="p">${</span><span class="nx">page</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">Search</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">res</span><span class="p">.</span><span class="nx">data</span>
+    <span class="nf">commit</span><span class="p">(</span><span class="dl">'</span><span class="s1">updataState</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+      <span class="na">movies</span><span class="p">:</span> <span class="p">[...</span><span class="nx">state</span><span class="p">.</span><span class="nx">movies</span><span class="p">,</span> <span class="p">...</span><span class="nx">Search</span><span class="p">]</span>
+    <span class="p">})</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>pageLength, 즉 우리가 추가 검색을 요청하려는 횟수가 1 이상일때 추가 요청이 발생한다. <br />
+기본은 page가 1부터 시작하니까 우리가 다음로 찾아야 하는 시작 페이지는 2페이지이다. 따라서 변수 page는 2부터 시작한다. page가 pageLength보다 작거나 같을때 까지만 반복하도록 한다.</p>
+
+<p>추가 요청이 들어왔으니 res 변수를 다시 호출해서 API를 불러온다.<br />
+get 메소드 안의 마지막 줄에 page=1이었으나, 추가 요청을 함에 따라 페이지의 숫자가 증가하니 <code class="language-plaintext highlighter-rouge">${page}</code>로 변경해준다. 요청이 늘어날때 마다 증가하는 변수(page)의 값이 들어간다.</p>
+
+<p>movies에는 최초의 요청을 통해서 들어온 첫 페이지의 10개의 영화목록이 존재한다. 추가적으로 응답이 온 데이터를 movies 데이터 뒤쪽으로 밀어넣어 줘야 한다.<br />
+commit 메소드를 실행하여 updateState 변이 메소드를 실행해준다. movies 데이터를 수정한다고 선언한다.<br />
+추가적으로 들어온 Search를 바로 movies에 할당하면 기존에 존재했던 데이터들은 덮어져서 사라진다. <code class="language-plaintext highlighter-rouge">movies: Search</code></p>
+
+<p>따라서, 빈 배열 데이터를 만들어주고 내부에서 전개 연산자(<code class="language-plaintext highlighter-rouge">…</code>)를 실행해서 state에 있는 기존의 movies 데이터를 먼저 전개해준다.<br />
+다음에 추가로 가지고온 Search도 전개연산자를 통해서 뒤쪽에 새롭게 데이터를 전개해준다. 이렇게 되면 새로운 배열로 movies에 배열을 할당하게 된다.<br />
+<code class="language-plaintext highlighter-rouge">movies: [...state.movies, ...Search]</code><br />
+추가로, state 오류가 발생하는데 searchMovies에 state 사용 선언이 안되어있기 때문에 context 부분에 state 사용을 선언해주면 된다.<br />
+<code class="language-plaintext highlighter-rouge">async searchMovies({ state, commit }, payload)</code></p>
+
+<h2 id="중복-id-제거-lodash-uniqby"><strong>중복 ID 제거 (Lodash: uniqBy)</strong></h2>
+<hr />
+
+<blockquote>
+  <p><a href="https://lodash.com/docs/4.17.15#uniqBy">Lodash Documentation: uniqBy</a></p>
+</blockquote>
+
+<p>lodash의 uniqBy라는 API 명령을 사용한다.</p>
+
+<p>특정한 속성의 이름을 가지고 배열 데이터를 고유화 시켜줄 수 있는 API이다.<br />
+배열 데이터안에 들어있는 각각의 객체 데이터의 특정한 속성 이름을 기준으로 하여 배열 데이터를 고유화 시켜주는 기능을 가진다.</p>
+
+<p>x라는 속성의 값이 중복되고 있는 배열 데이터가 첫번째 인수이며, 두번째 인수는 속성의 이름이다. uniqBy가 두번째 인수의 속성 이름을 확인해서 중복되는 부분들을 제거해준다. 결과적으로 중복이 제거된 새로운 배열데이터가 반환이된다.</p>
+
+<ul>
+  <li>
+    <p>lodash 설치</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm i lodash
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>movie.js</p>
+
+    <p>import를 통해서 lodash를 불러온다.<br />
+uniqBy만 사용할 것이기 때문에 해당 메소드만 호출한다.</p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">_uniqBy</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">lodash/uniqBy</span><span class="dl">'</span>
+</code></pre></div>    </div>
+
+    <p>imdbID는 Search라는 배열 데이터안에 존재하기 때문에 Search를 movies에 할당하기 전에 uniqBy를 통해서 중복을 제거해준다.</p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">commit</span><span class="p">(</span><span class="dl">'</span><span class="s1">updateState</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">movies</span><span class="p">:</span> <span class="nf">_uniqBy</span><span class="p">(</span><span class="nx">Search</span><span class="p">,</span> <span class="dl">'</span><span class="s1">imdbID</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#vue-js">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">Vue.js</span>
+    </a>
+  
+    
+    <a href="/tags.html#project">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">project</span>
+    </a>
+  
+    
+    <a href="/tags.html#vuex">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">Vuex</span>
+    </a>
+  
+    
+    <a href="/tags.html#lodash">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">lodash</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

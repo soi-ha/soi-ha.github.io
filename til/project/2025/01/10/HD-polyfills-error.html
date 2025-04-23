@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 Error | webpack < 5 used to include polyfills for node.js core modules by default &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">Error | webpack < 5 used to include polyfills for node.js core modules by default</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">10 Jan 2025</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/project.html">
+          Project
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h2 id="문제-발생-상황">문제 발생 상황</h2>
+
+<p>때는, 행동대장 회원 탈퇴 기능 구현에서 google spreadsheets api를 사용하기 위해서 google-auth-library를 활용하여 코드를 작성하던 중.. 이런 어마무시한 에러의 늪에 빠져버렸다.</p>
+
+<p><img width="611" alt="webpack_v5_error_1" src="https://github.com/user-attachments/assets/0834ea75-cd07-43bf-bfbd-cae50c1a8c79" /></p>
+
+<h2 id="이-에러가-무슨-에러인데">이 에러가 무슨 에러인데?</h2>
+
+<p><code class="language-plaintext highlighter-rouge">webpack &lt; 5 used to include polyfills for node.js core modules by default.
+This is no longer the case. Verify if you need this module and configure a polyfill for it.</code></p>
+
+<p>위 에러를 해석하면 다음과 같다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">이 에러 메시지는 Webpack 5부터 Node.js의 코어 모듈(예: http, https, fs, 등)에 대한 폴리필(polyfill)이 기본적으로 제공되지 않는다는 것을 의미함.</code></p>
+
+<p>Webpack 4까지는 브라우저 환경에서도 Node.js 코어 모듈이 동작할 수 있도록 <strong>자동으로 폴리필을 포함</strong>했다. 그러나 <strong>Webpack 5부터는 이를 자동으로 포함하지 않으며</strong>, 사용자가 필요한 폴리필을 <strong>직접 설정</strong>해야 하도록 바뀌었다. 우리 행동대장의 Webpack의 버전은 <strong><code class="language-plaintext highlighter-rouge">^5.93.0</code></strong>… 그렇기에 폴리필을 직접 설정을 해줘야 해당 에러가 해결된다.</p>
+
+<h2 id="근데-폴리필이-뭐예요">근데 폴리필이 뭐예요?</h2>
+
+<p>폴리필(Polyfill)은 최신 기술이나 특정 기능이 일부 환경에서 지원되지 않을 때, <strong>그 기능을 대신 구현하여 호환성을 제공하는 코드나 라이브러리</strong>를 말한다.<br />
+쉽게 말해, <strong>오래된 브라우저나 특정 환경에서도 새로운 기능을 사용할 수 있도록 도와주는 “백업” 코드</strong>이다.</p>
+
+<h3 id="그렇다면-폴리필이-왜-필요할까">그렇다면 폴리필이 왜 필요할까?</h3>
+
+<p>JavaScript는 빠르게 진화하지만, 모든 브라우저나 환경이 새로운 기능을 지원하는 것은 아니다.<br />
+예를 들어 <code class="language-plaintext highlighter-rouge">Array.prototype.includes</code>는 최신 브라우저에서는 지원되지만, 구형 브라우저(ex, IE)에서는 작동하지 않는다. 이 경우, 폴리필을 사용하면 <code class="language-plaintext highlighter-rouge">Array.prototype.includes</code>와 동일한 기능을 추가할 수 있다.</p>
+
+<h3 id="webpack에서-폴리필은-어떻게-설정해야-하죠">Webpack에서 폴리필은 어떻게 설정해야 하죠?</h3>
+
+<p>Webpack은 브라우저 환경에서 동작하도록 설계되었지만, 일부 Node.js 기능을 사용할 때 폴리필이 필요하다. 그렇기에 필요한 Node.js 코어 모듈(<code class="language-plaintext highlighter-rouge">http</code>, <code class="language-plaintext highlighter-rouge">fs</code> 등)을 직접 설치하고 설정해주면 되겠다!</p>
+
+<h2 id="에러-해결">에러 해결</h2>
+
+<p>아래 이미지 외에도 많은 폴리필 에러가 발생했다.. 에러 메세지를 확인하면 설치해야 할 라이브러리를 알려주고 있어 설치하라는 라이브러리를 모두 설치하고 설정해주었다.</p>
+
+<p><img width="991" alt="webpack_v5_error_2" src="https://github.com/user-attachments/assets/be3916d9-0941-4355-a4f3-a645eac1dc85" /></p>
+
+<ul>
+  <li><strong>에러 메시지의 라이브러리</strong>
+    <ul>
+      <li>url</li>
+      <li>crypto-browserify</li>
+      <li>stream-http</li>
+      <li>https-browserify</li>
+      <li>os-browserify</li>
+      <li>stream-browserify</li>
+      <li>path-browserify</li>
+      <li>querystring-es3</li>
+      <li>assert</li>
+    </ul>
+  </li>
+</ul>
+
+<p>위 라이브러리를 설치한 후 webpack 파일의 <code class="language-plaintext highlighter-rouge">resolve.fallback</code>에 값을 설정해줬다.</p>
+
+<p>또한 추가로 reqire를 사용할 수 있도록 createRequire를 생성했다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span><span class="nx">createRequire</span><span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">module</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">require</span> <span class="o">=</span> <span class="nf">createRequire</span><span class="p">(</span><span class="k">import</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+	<span class="c1">// ...</span>
+  <span class="na">resolve</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">fallback</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">url</span><span class="p">:</span> <span class="nx">require</span><span class="p">.</span><span class="nf">resolve</span><span class="p">(</span><span class="dl">'</span><span class="s1">url</span><span class="dl">'</span><span class="p">),</span>
+      <span class="na">fs</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="na">crypto</span><span class="p">:</span> <span class="nx">require</span><span class="p">.</span><span class="nf">resolve</span><span class="p">(</span><span class="dl">'</span><span class="s1">crypto-browserify</span><span class="dl">'</span><span class="p">),</span>
+      <span class="na">http</span><span class="p">:</span> <span class="nx">require</span><span class="p">.</span><span class="nf">resolve</span><span class="p">(</span><span class="dl">'</span><span class="s1">stream-http</span><span class="dl">'</span><span class="p">),</span>
+      <span class="na">https</span><span class="p">:</span> <span class="nx">require</span><span class="p">.</span><span class="nf">resolve</span><span class="p">(</span><span class="dl">'</span><span class="s1">https-browserify</span><span class="dl">'</span><span class="p">),</span>
+      <span class="na">os</span><span class="p">:</span> <span class="nx">require</span><span class="p">.</span><span class="nf">resolve</span><span class="p">(</span><span class="dl">'</span><span class="s1">os-browserify/browser</span><span class="dl">'</span><span class="p">),</span>
+      <span class="na">stream</span><span class="p">:</span> <span class="nx">require</span><span class="p">.</span><span class="nf">resolve</span><span class="p">(</span><span class="dl">'</span><span class="s1">stream-browserify</span><span class="dl">'</span><span class="p">),</span>
+      <span class="na">path</span><span class="p">:</span> <span class="nx">require</span><span class="p">.</span><span class="nf">resolve</span><span class="p">(</span><span class="dl">'</span><span class="s1">path-browserify</span><span class="dl">'</span><span class="p">),</span>
+      <span class="na">querystring</span><span class="p">:</span> <span class="nx">require</span><span class="p">.</span><span class="nf">resolve</span><span class="p">(</span><span class="dl">'</span><span class="s1">querystring-es3</span><span class="dl">'</span><span class="p">),</span>
+      <span class="na">assert</span><span class="p">:</span> <span class="nx">require</span><span class="p">.</span><span class="nf">resolve</span><span class="p">(</span><span class="dl">'</span><span class="s1">assert/</span><span class="dl">'</span><span class="p">),</span>
+    <span class="p">},</span>
+  <span class="c1">// ...</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h3 id="결과">결과</h3>
+
+<p>아래 이미지를 통해 폴리필과 관련된 에러가 모두 사라졌음을 확인할 수 있다! <del>(근데 난 다른 에러가 남았지!)</del></p>
+
+<p><img width="839" alt="webpack_v5_error_3" src="https://github.com/user-attachments/assets/a580b9d3-696d-4d63-a450-f731fcc75a5c" /></p>
+
+<h2 id="참고">참고</h2>
+
+<ul>
+  <li><a href="https://mr-son.tistory.com/153">React - BREAKING CHANGE: webpack &lt; 5 used to include polyfills for node.js core modules by default</a></li>
+</ul>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#wooteco">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">Wooteco</span>
+    </a>
+  
+    
+    <a href="/tags.html#행동대장">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">행동대장</span>
+    </a>
+  
+    
+    <a href="/tags.html#error">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">Error</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

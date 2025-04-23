@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 MOA Webtoon Project: 웹툰모아 프로젝트 &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">MOA Webtoon Project: 웹툰모아 프로젝트</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">07 Sep 2022</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/project.html">
+          Project
+        </a>
+      
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h2 id="개발동기"><strong>개발동기</strong></h2>
+<hr />
+<p><strong>웹툰 모아 (Webtoon MOA)</strong> 는 대표적인 웹툰 플랫폼 3사 네이버, 카카오페이지, 카카오웹툰(구 다음웹툰)의 웹툰들을 한 페이지에서 찾아 볼 수 있도록 만든 서비스이다. <br />
+웹툰 플랫폼의 다양화 및 컨텐츠 수가 증가함에 따라 사용자는 양질의 콘텐츠를 더 많이 이용할 수 있게 되었다. 하지만 원하는 웹툰을 보기 위해서는 여러 사이트를 방문해야 하는 불편함이 존재한다.
+우리는 이러한 불편함을 해소하고자 대표적인 웹툰 플랫폼의 컨텐츠를 집약해 사용자의 편의성을 개선하는 서비스를 개발하였다.</p>
+
+<h2 id="역할"><strong>역할</strong></h2>
+<ul>
+  <li>
+    <p>백엔드<br />
+기능 구현 및 크롤링 등</p>
+  </li>
+  <li>
+    <p>프론트<br />
+페이지 화면 제작 및 데이터 불러오기 등</p>
+  </li>
+  <li>
+    <p>나의 역할<br />
+헤더, 푸터, 검색창, 로그인, 회원가입, 아이디 찾기, 비밀번호 찾기 등의 페이지 제작 (퍼블리싱)</p>
+  </li>
+</ul>
+
+<h2 id="주요-기능"><strong>주요 기능</strong></h2>
+<hr />
+<ul>
+  <li>
+    <p><strong>다양한 방식으로 웹툰 리스트 보여주기</strong><br />
+여러가지 방식으로 웹툰 리스트를 보여주는 기능이다.<br />
+해당 기능은 가장 메인이 되는 기능이다.<br />
+처음 페이지에 접근하게 되면, 해당 요일과 전체 플랫폼을 기준으로 웹툰 리스트를 보여준다.<br />
+요일과 플랫폼, 정렬 방식(인기순, 조회순)을 조건으로 설정할 수 있으며, 조건에 해당하는 웹툰들의 썸네일 이미지와 제목, 작가, 조회수 정보를 표기하여 보여준다.<br />
+정렬 방식 중 <strong>인기순</strong>의 경우 각 유저들의 즐겨찾기 리스트에 가장 많이 추가가 된 순서로 정렬된다.<br />
+<strong>조회순</strong>의 경우 해당 서비스에서 실제 웹툰 페이지로 이동할 때 발생하는 클릭 누적 횟수를 기준으로 정렬된다.</p>
+  </li>
+  <li>
+    <p><strong>웹툰 즐겨찾기</strong> <br />
+각 웹툰 카드의 하트 토글을 누르면 동작한다.<br />
+하트 토글을 누르게 되면 해당 유저의 즐겨찾기 리스트에 추가되며, 한 번 더 누르게 되면 즐겨찾기 리스트에서 삭제가 된다.<br />
+이와같이 사용자가 즐겨찾기한 웹툰 리스트는 오른쪽 상단(인기순, 조회순 버튼 옆)의 하트 토글을 눌러 확인할 수 있다.</p>
+  </li>
+  <li>
+    <p><strong>검색</strong><br />
+페이지 상단의 검색창에 작가, 작품명을 키워드로 검색할 수 있다.   일치하는 결과가 있다면, 웹툰의 제목과 플랫폼, 작가 정보를 보여준다. 검색결과에서 제목을 클릭시 해당 웹툰으로 이동할 수 있다.</p>
+  </li>
+</ul>
+
+<h2 id="페이지-구성"><strong>페이지 구성</strong></h2>
+<hr />
+<ul>
+  <li>메인 화면 (웹툰 리스트)</li>
+  <li>로그인</li>
+  <li>회원가입</li>
+  <li>아이디 찾기</li>
+  <li>비밀번호 찾기</li>
+  <li>검색</li>
+</ul>
+
+<h3 id="header"><strong>Header</strong></h3>
+
+<p><img width="1506" alt="헤더" src="https://user-images.githubusercontent.com/77609591/188835479-fc14c5c6-f188-465d-8992-4cd3d24db766.png" /></p>
+
+<ul>
+  <li>
+    <p>웹툰 모아 첫번째 로고<br />
+클릭시, 메인 페이지로 이동.</p>
+  </li>
+  <li>
+    <p>검색란<br />
+원하는 키워드 입력시 해당 키워드로 작가/작품명 검색.</p>
+  </li>
+  <li>
+    <p>로그인 / 로그아웃<br />
+로그인 하지 않았을 때는 로그인창으로 이동.<br />
+로그인이 되어있는 상태일때는 <strong>로그아웃</strong>글자가 적혀있으며, 클릭시 로그아웃.</p>
+  </li>
+</ul>
+
+<h3 id="footer"><strong>Footer</strong></h3>
+
+<p><img width="1506" alt="푸터" src="https://user-images.githubusercontent.com/77609591/188836494-d129a51f-0fce-4efa-9c92-627355eee066.png" /></p>
+
+<ul>
+  <li>
+    <p>웹툰 모아 두번째 로고<br />
+로고 클릭시, 메인 페이지로 이동.</p>
+  </li>
+  <li>
+    <p>정보<br />
+웹툰 모아 개발자 및 개발 기간 등을 명시.</p>
+  </li>
+</ul>
+
+<h3 id="요일별-웹툰-정렬"><strong>요일별 웹툰 정렬</strong></h3>
+
+<p><img width="1506" alt="요일별웹툰정리" src="https://user-images.githubusercontent.com/77609591/188835392-a7bb2ad0-12b2-4274-ac55-a897bf702f56.png" /></p>
+
+<ul>
+  <li>
+    <p>요일 정렬 Default<br />
+기본적으로 해당 요일에 맞는 웹툰 리스트를 보여줌.<br />
+오늘이 수요일이면, 수요일 웹툰 리스트를 보여줌.</p>
+  </li>
+  <li>
+    <p>요일별 웹툰<br />
+원하는 요일을 선택하여 해당 요일의 웹툰들을 볼 수 있음.</p>
+  </li>
+</ul>
+
+<h3 id="플랫폼별-웹툰-정렬"><strong>플랫폼별 웹툰 정렬</strong></h3>
+
+<p><img width="1506" alt="플랫폼별웹툰정리" src="https://user-images.githubusercontent.com/77609591/188835471-b5736125-f2ca-4aa5-9c67-9cbd80759f10.png" /></p>
+
+<ul>
+  <li>
+    <p>원하는 플랫폼만 보기<br />
+네이버웹툰, 카카오페이지, 카카오웹툰 중 원하는 플랫폼 하나를 선택하여 해당 플랫폼의 웹툰만을 볼 수 있음.</p>
+  </li>
+  <li>
+    <p>플랫폼 정렬 Default<br />
+플랫폼 정렬의 기본은 3사 플랫폼 모두를 모아 보는 것임.</p>
+  </li>
+</ul>
+
+<h3 id="웹툰-즐겨찾기"><strong>웹툰 즐겨찾기</strong></h3>
+
+<p><img width="1506" alt="즐겨찾기" src="https://user-images.githubusercontent.com/77609591/188835445-fa067253-c7c7-4485-88a7-45d8d3834427.png" /></p>
+
+<ul>
+  <li>하트 토글<br />
+하트 토글을 클릭하여 해당 웹툰을 즐겨찾기에 추가.<br />
+빨간색이 된 하트를 한번 더 클릭시 즐겨찾기에서 삭제.<br />
+우측 상단 하트 버튼을 클릭하여 사용자가 즐겨찾기한 웹툰만을 모아 볼 수 있음.</li>
+</ul>
+
+<h3 id="인기순-웹툰-정렬"><strong>인기순 웹툰 정렬</strong></h3>
+
+<p><img width="1506" alt="인기순정렬(1)" src="https://user-images.githubusercontent.com/77609591/188835417-515a9716-7e57-4a59-8974-86f328ccb574.png" /></p>
+
+<ul>
+  <li>인기순<br />
+해당 서비스를 이용하는 사용자들이 가장 많이 즐겨찾기 리스트에 추가한 순서.</li>
+  <li>인기순 정렬로 인해 많은 사용자들에게 사랑받고 있는 웹툰들의 추세를 알 수 있음.</li>
+</ul>
+
+<h3 id="조회순-웹툰-정렬"><strong>조회순 웹툰 정렬</strong></h3>
+
+<p><img width="1506" alt="조회순정렬(2)" src="https://user-images.githubusercontent.com/77609591/188835442-ac683d49-5b08-4348-bde3-392a1641c23d.png" /></p>
+
+<ul>
+  <li>
+    <p>하트 옆 숫자<br />
+해당 서비스에서 웹툰 카드를 클릭하여 해당 웹툰의 페이지로 이동한 횟수를 나타냄.</p>
+  </li>
+  <li>
+    <p>조회순<br />
+조회순 정렬 버튼을 클릭하면 조회가 가장 많은 웹툰부터 최상단에 정렬됨.</p>
+  </li>
+</ul>
+
+<h3 id="검색기능"><strong>검색기능</strong></h3>
+
+<p><img width="1506" alt="검색기능" src="https://user-images.githubusercontent.com/77609591/188835352-27e1abfe-e8f4-42e7-b5c7-50727abc8226.png" /></p>
+
+<ul>
+  <li>
+    <p>검색란<br />
+헤더 우측에 검색란에 원하는 키워드를 입력하여 검색.</p>
+  </li>
+  <li>
+    <p>검색 결과<br />
+해당 키워드가 들어가는 작품과 작가명들을 모두 보여줌.<br />
+검색 결과로는 제목, 플랫폼, 작가명을 알려줌.<br />
+해당 웹툰 클릭시 해당 웹툰 페이지로 이동.</p>
+  </li>
+  <li>
+    <p>검색 결과 없음<br />
+키워드에 해당하는 검색결과가 없을 경우, “검색 결과 없음”이라는 문구 등장.</p>
+  </li>
+</ul>
+
+<h3 id="로그인"><strong>로그인</strong></h3>
+
+<p><img width="1506" alt="로그인" src="https://user-images.githubusercontent.com/77609591/188835385-22297868-d45f-4aa9-8c37-21018f64f9b0.png" /></p>
+
+<ul>
+  <li>
+    <p>자사 로그인<br />
+아이디와 비밀번호 입력후 파란색의 로그인 버튼 클릭시, 로그인 완료.</p>
+  </li>
+  <li>
+    <p>소셜 로그인<br />
+카카오와 네이버로 로그인 가능.<br />
+카카오 및 네이버 로그인 버튼 클릭시, 회원가입이 되어있지 않을 경우 회원가입 페이지가 열림.<br />
+회원가입이 완료되었다면 클릭시 팝업창이 뜬 후, 로그인이 완료됨.</p>
+  </li>
+</ul>
+
+<h3 id="회원가입"><strong>회원가입</strong></h3>
+
+<p><img width="1506" alt="회원가입" src="https://user-images.githubusercontent.com/77609591/188835485-b6bbdb03-9fd9-4bd4-85a7-d9076d21713e.png" /></p>
+
+<ul>
+  <li>회원가입하기<br />
+이름, 아이디, 비밀번호, 비밀번호 확인, 이메일을 모두 입력하면 가입완료.<br />
+조건에 맞지 않거나 모두 입력하지 않았을 경우 팝업창으로 사용자에게 알려줌.</li>
+</ul>
+
+<h3 id="아이디-찾기"><strong>아이디 찾기</strong></h3>
+
+<p><img width="1506" alt="아이디찾기" src="https://user-images.githubusercontent.com/77609591/188835397-0e853ea8-388e-4caa-bcf7-ae7ae7831b7a.png" /></p>
+
+<ul>
+  <li>
+    <p>아이디 찾기<br />
+이름과 이메일을 입력.<br />
+회원가입한 이름과 이메일이 동일하지 않거나 존재하지 않는 계정이면 아이디 찾기가 불가하다는 경고문 알림.</p>
+  </li>
+  <li>
+    <p>인증번호<br />
+이름과 이메일이 일치하면 해당 이메일로 인증번호 전송.<br />
+인증번호를 해당 페이지에 입력 후, 확인버튼을 클릭하면 해당 아이디를 알려줌.</p>
+  </li>
+</ul>
+
+<h3 id="비밀번호-찾기"><strong>비밀번호 찾기</strong></h3>
+
+<p><img width="1506" alt="비밀번호찾기" src="https://use r-images.githubusercontent.com/77609591/188835393-00b5371d-cdab-450e-94af-fe2e65101812.png" /></p>
+
+<ul>
+  <li>
+    <p>비밀번호 찾기<br />
+아이디와 이메일을 입력.<br />
+일치하지 않을 시 경고문 알림.</p>
+  </li>
+  <li>
+    <p>비밀번호 전송<br />
+아이디와 이메일이 일치하면, 해당 이메일로 가입시 작성하였던 비밀번호를 전송.</p>
+  </li>
+</ul>
+
+<h2 id="프로젝트를-마치며"><strong>프로젝트를 마치며</strong></h2>
+<hr />
+<p>해당 프로젝트에서 내가 맡은 역할은 웹 퍼블리싱이었다. <br />
+아직 제대로된 <strong>프론트엔드</strong>공부를 하지 않아서 자바스크립트는 잘 다루지 못하는 것이 문제였다. 거의 모든 페이지를 제작하였는데, 저번 프로젝트에서 사용했던 것들을 다시 복습만을 하게 되었다. 새롭게 배운 것이 거의 없다보니 새로 배운 내용들을 작성할 것이 없다.<br />
+대신 이번 프로젝트를 하면서 깨달은 것은 난 정확히 무엇이 하고 싶은 것인가? 이다. 웹 퍼블리싱인지 프론트엔드인지.<br />
+내가 내린 결론은 <strong>프론트엔드</strong>이다. 웹 퍼블리싱, 충분히 좋지만 앞으로의 비전과 발전을 위해서는 프론트엔드가 맞는 것이고, 퍼블리싱의 길을 갈것이라면 디자인도 할 줄 알아야 한다고 생각이 들었다. 하지만 난 디자인은 완전 잼병..이다.<br />
+나는 프론트엔드 개발자의 길을 걸어가기로 완전히 정하게 되었다. 그렇기 위해서는 정말 자바스크립트 공부와 리액트 공부를 열심히 해야 한다는 것을 이번 프로젝트에서 절실히 느꼈다.<br />
+백엔드에서 크롤링한 데이터들을 제작한 페이지로 불러오는데 난 할줄 아는 것이 하나도 없었다. 심지어 프론트엔드 처음하시는 컴공분이 다 하셨다. 여기서 약간의 자존심 스크래치와 난 도대체 그동안 뭘 공부한거지?라는 약간의 회의감이 들었다. 그리고 아직 배울 것이 한참 남았다는 것을 깨닫게 된 프로젝트였다.<br />
+다음 프로젝트에서는 진짜 프론트엔드를 할 수 있도록 열심히 자바스크립트 기본 공부를 끝내고 리액트 공부를 해야 겠다.<br />
+이번 프로젝트는 새롭게 알게된 지식들은 별로 없었지만 해이해져있던 나에게 경각심과 뭘 공부해야 할지에 대한 방향을 얻을 수 있었던 프로젝트였다.</p>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#inq">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">InQ</span>
+    </a>
+  
+    
+    <a href="/tags.html#project">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">project</span>
+    </a>
+  
+    
+    <a href="/tags.html#moa-project">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">MOA Project</span>
+    </a>
+  
+    
+    <a href="/tags.html#웹툰-모아">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">웹툰 모아</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

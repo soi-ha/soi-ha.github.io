@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 우테코: Level3 1차 스프린트 기간 회고 &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">우테코: Level3 1차 스프린트 기간 회고</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">20 Jul 2024</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/sohaLog.html">
+          Soha's Log
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h1 id="자-이제-시작이야">자~ 이제 시작이야~</h1>
+
+<p>드디어 대망의 Level3가 시작됐다. level3부터는 선릉 캠퍼스가 아닌 잠실 캠퍼스로 등교하게 되면서 비록 출퇴근 시간이 왕복 1시간이나 늘었지만.. 고대하던 프로젝트를 시작하게 된다는 것에 설레임을 갖고 level3 첫 등교를 했다.</p>
+
+<p>level3에 같이 프로젝트를 하게 된 팀원은 나 포함 총 8명이다.<br />
+FE는 나, 토다리, 쿠키, 웨디이고 BE는 이상, 백호, 먕쵸, 감자이다. 나는 선릉 지박령으로 잠실에는 주말에 딱 한번 와 봤기에 백엔드 팀원들은 모두 처음 알게 된 분들이었다. 프론트엔드 팀원들은 토다리를 제외하고는 같이 미션을 진행한 적이 없었다. 그래서 같이 프로젝트를 하게 되면 어떨까? 기대감이 조금 들었던 것 같다. 그리고 프론트엔드 팀원들은 주도적인 면이 많기 때문에 프로젝트는 무조건 잘 굴러가긴 하겠다라는 안도감도 들었다.</p>
+
+<h1 id="행동-시작">행동 시작!</h1>
+
+<p><img width="923" alt="스크린샷 2024-07-20 12 44 51" src="https://github.com/user-attachments/assets/efc387ce-bc92-4956-9e4e-88ce50fea3ec" /></p>
+
+<p>1차 스프린트 기간에는 어떤 프로젝트를 진행할 지, 주제부터 기획, 디자인까지 모두 우리가 정하고 주도해 나갔다. 모두의 의견을 들어보고자 피그잼을 활용하여 브레인스토밍을 진행했다. 다행이 해당 방식은 우리 팀에게 잘 맞았던 것 같다.</p>
+
+<p><img width="643" alt="스크린샷 2024-07-20 12 36 40" src="https://github.com/user-attachments/assets/30108134-cdc0-4523-a559-19e86fc1a836" /></p>
+
+<p>1차 스프린트기간 동안 계속되는 회의를 통해 주제를 정할 수 있었다. 우리 팀의 주제는 행사/동아리를 조금 더 편하게 운영할 수 있도록 도와주는 서비스이다. 우리 팀에는 이런 행사나 동아리 임원 활동과 같은 것을 해본 팀원이 나 포함 3명이 있었다. 모두 주도적으로 했던 사람들이었기에 불편함을 많이 느끼고 있었다. 다른 팀원들은 운영하지는 않았지만 이런 행사 및 동아리에는 참여한 적이 있기 때문에 주최자와 참여자의 입장을 모두 들을 수 있다고 생각이 들었다. 그래서 위와 같은 주제로 프로젝트를 진행하게 되었다.<br />
+프로젝트 주제를 선정하는 것에 일주일을 사용하게 되었다. 비록 오래걸린 것 같지만 모두가 만족하는 주제로 프로젝트를 진행하게 된 것 같아서 만족스러웠다.</p>
+
+<p>1주차 금요일에는 여러 사람들의 의견을 듣기 위해서 구글폼을 작성하여 주말동안 여러 의견을 들었다. 2주차 월요일에 데일리 스크럼 시간에 어떤 의견들이 존재하는지 또, 우리가 예상한 불편함을 다른 사람들도 많이 느끼는지 확인하는 시간을 가졌다. 이를 기반으로 페르소나와 유저 시나리오를 작성했다.</p>
+
+<p><img width="584" alt="스크린샷 2024-07-20 12 51 50" src="https://github.com/user-attachments/assets/5fc3d44f-bca3-4aef-9523-0a559d274857" /></p>
+
+<p>그리고 우리 프로젝트의 이름을 붙이기 진행했다. 정말.. 별의 별 이름이 다 나왔다. 사실 이름 공모전 보다는 진짜 아우말 대잔치가 맞다..ㅋㅋㅋㅋ 그래도 나름 진지하게 토너먼트를 거친 끝에 이름이 선정되었다.<br />
+우리 프로젝트의 이름은 <strong>행동대장</strong> 이다.! 이름의 뜻은 여러가지 있다. 행사나 동아리를 운영하는 사람들은 말 그대로 <code class="language-plaintext highlighter-rouge">행동</code> <code class="language-plaintext highlighter-rouge">대장(大將)</code>이기 때문이다. 다른 의미로 이름을 풀어보자면 <code class="language-plaintext highlighter-rouge">행사 및 동아리 대장(臺帳)</code>이다.</p>
+
+<p><img width="699" alt="스크린샷 2024-07-20 12 54 05" src="https://github.com/user-attachments/assets/2a0cef31-62a6-473a-b3bc-649022177493" /></p>
+
+<p>사실 이름을 정하고 위 의미는 나중에 끼어 맞췄다.ㅎㅎ 해당 이름의 낸 사람은 백호이다! 나름 아이디어 뱅크이다.</p>
+
+<p>그렇게 우리 프로젝트, 행동대장이 진짜 시작되었다!</p>
+
+<h1 id="1차-데모데이">1차 데모데이</h1>
+
+<p>2주차 금요일은 1차 데모데이가 있는 날로 유저시나리오와 기능명세서를 발표하고 각 파트별로 요구사항을 잘 충족했는지 확인하는 시간을 가진다. 데모데이는 배정된 코치님들 앞에서 발표를 하는 것인데, 이 시간을 가지면서 프로젝트의 방향에 대해 많은 생각이 들었다.</p>
+
+<p>첫째, 기능이 많다.<br />
+그러니까, 주요 기능을 위한 부가적인 기능이 많았다. 로그인, 행사 생성, 참여자 받기, 공지, 참여자 확인 등등.. 그래서 데모데이를 통해 기능을 최대한 덜어내야 겠다는 생각이 들었다.</p>
+
+<p>둘째, 사용자를 생각하지 않았나?<br />
+우리의 그라운드 룰에는 사용자를 생각하기가 존재하는데, 사용자를 생각하기로 했지만 그러지 못했던 것 같다. 빠르게 사용자를 먼저 만나는게 우선이라는 생각이 들었다.</p>
+
+<p>셋째, 차별점이 존재하지 않는다.<br />
+다 너무 흔하고 충분히 대체 가능한 유명한 도구들이 많다. 우리는 이런 도구를 모두 한 곳으로 모으고자 했는데, 과연 이 유명 도구들(구글 스프레드 시트, 카카오톡)과 싸우는 것이 맞을까? 아니라는 생각이 들었다. 오히려 이 도구들을 사용하면서 불편했던 점들을 채워주는 방향으로 가는 것이 더 좋겠다는 생각이 들었다.</p>
+
+<p>1차 데모데이를 진행하고 팀원들과 추가적으로 회의를 진행하면서 앞으로의 방향에 대해 많은 논의를 가졌다. 결과적으로는 일단, 핵심 기능에만 집중하자로 귀결되었다. 로그인? 버려. 공지란? 버려. 참여자 확인? 일단 버려!</p>
+
+<h1 id="1차-스프린트를-마치며">1차 스프린트를 마치며</h1>
+
+<p>벌써 Level3의 2주를 보냈다. 프로젝트를 하다보니 이전 level들 보다 시간이 더 빠르게 가는 것 같다. 1차 스프린트 기간은 정말 회의만 하느라 개발을 하지 못했다. 그러면서 이래도 되나? 생각이 들기도 했다.</p>
+
+<p>과연 이 프로젝트에서 얻을 수 있는 것은 무엇일까? 라고 생각해봤을 때, 누군가는 기술적인 챌린지일수도 있고 누군가는 협업 과정을 얻고 싶을 수 있다.<br />
+나는 이 프로젝트에서 얻고 싶은 것을 2주의 시간과 여러 이야기들을 들어봤을 때, 기술적인 부분이 아니라 보다 <strong>현업과 가까운 경험</strong>을 얻고 싶다는 결론을 내렸다.</p>
+
+<p>회사마다 다르겠지만 현업에 가면 새로운 것을 개발해내는 것 보다는 기존에 있던 서비스를 유지 보수하는 일이 태반일 것이다. 그렇다면 포트폴리오에 들어갈 프로젝트에서 보여줄 것이 현업과 가까운 것이면 더 좋지 않을까? 생각이 들었다.<br />
+그렇기에 많은 기능을 만들어서 완벽한 서비스를 만드는 것에 치중하기 보다는 핵심적인 기능이 담긴 서비스를 빠르게 만들어 배포하여 유저의 이야기를 듣고 싶었다. 유저의 이야기와 데이터를 가지고 해당 서비스를 조금씩 고도화 해 나가고 우리가 미처 발견하지 못한 에러나 불편한 점들을 개선해나가고 서비스 성능 향상에 신경을 쓰면 더 좋겠다는 생각이 들었다.</p>
+
+<p>회고를 작성하며 취업준비에 관한 해당 프로젝트에 대해 정말 많은 생각이 들고 있다. 어떻게 해야 유의미한 프로젝트를 만들 수 있을까.. 조금 더 많이 고민을 해봐야 방향을 잡을 수 있을 것 같다.<br />
+그리고 든 생각은 이제는 용기내어 물어보고 다녀야 할 시기라고 생각이 든다. 두려워하면 나아갈 수 없다. 용기를 내고 실천해야 앞으로 한걸음 한걸음 걸을 수 있을 것이다.</p>
+
+<blockquote>
+  <p><a href="https://github.com/woowacourse-teams/2024-haeng-dong/wiki">행동대장 wiki</a></p>
+</blockquote>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#wooteco">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">Wooteco</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

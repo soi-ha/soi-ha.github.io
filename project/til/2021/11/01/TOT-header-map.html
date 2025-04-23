@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 Trip Or Travel: 뼈대(HTML) 및 header 제작 &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">Trip Or Travel: 뼈대(HTML) 및 header 제작</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">01 Nov 2021</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/project.html">
+          Project
+        </a>
+      
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h2 id="디자인-컨셉"><strong>디자인 컨셉</strong></h2>
+<hr />
+<p>헤더를 제작을 시작하기에 앞서 굉장히 오랜 시간이 걸렸다. 생각했던 디자인들이 맘에 안들고.. 이미지를 svg로 적용하는 건 처음이라 신기해서(?) 내용들 찾아보다 보니, 만드는 시간은 3시간 (중간에 말도 안되는 실수로 인해 1시간을 버렸다) 서칭하는 시간은 2배이상 사용한 것 같다. 시간을 헛으로 날린 느낌도 나지만… 언젠가 도움이 될 것이라고 믿는다..ㅎ</p>
+
+<p>일단 이번 프로젝트의 디자인 컨셉은 <strong>바다 + 녹은 아이스크림 == 여름</strong> 이다. 여행일지를 기록하는 서비스이기 때문에 여행하면 떠오르는 바다의 느낌이 났으면 좋겠다고 생각했다. 그래서 해변가의 바다가 일렁이는 느낌을 주고 싶었다. 그러다보니 녹은 아이스크림 같다는 생각이 들어서 아이스크림 녹은 느낌 + 바다색(파랑)으로 header을 제작했다.
+<img src="/assets/images/139908722-a860ef1e-3d1d-4978-8584-158d8ad08422.png" /></p>
+
+<h2 id="html-작성"><strong>HTML 작성</strong></h2>
+<hr />
+<p>뼈대를 header, posting-box, map, card로 4등분했다. 그리고 각각 필요한 내용들을 넣어주었다. 처음에 뼈대를 어떻게 만들어 줘야 할지 감이 안 잡혔는데 서칭을 하며 공부를 하다보니 감이 잡혔다. 그냥 만들고 싶은 기능으로 크게 나누면 되는 것 같다.</p>
+
+<h2 id="header-제작"><strong>header 제작</strong></h2>
+<hr />
+<p>헤더를 제작하는데 너무나 많은 시간이 들었다. 대략 3시간 정도? 막상 만들고 나보니 그렇게 오래걸릴 것은 아니였는데 이상한 실수들을 계속해서 시간을 많이 버린 것 같다. 진짜 조심해야지…</p>
+
+<h2 id="til"><strong>TIL</strong></h2>
+<ul>
+  <li><strong>:root</strong><br />
+css를 제대로 작성하기 전에 :root를 통해서 색상, 글 크기, 사이즈 등을 저장해둔다. 색상이나 글 크기, size는 동일하게 주는 경우가 대부분이기에 root에 저장해두면 나중에 수정을 해야 할 때 root에서 값만 바꿔주면 사용됐던 모든 곳을 하나하나 수정하지 않아도 된다.
+    <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">:root</span> <span class="p">{</span>
+  <span class="c">/*color*/</span>
+  <span class="py">--blue-color</span><span class="p">:</span> <span class="m">#87d7ff</span><span class="p">;</span>
+    
+  <span class="c">/*font size*/</span>
+  <span class="py">--font-title</span><span class="p">:</span> <span class="m">80px</span><span class="p">;</span>
+  <span class="py">--font-large</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+
+  <span class="c">/*size*/</span>
+  <span class="py">--padding</span><span class="p">:</span> <span class="m">15px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">/* 사용할 때 */</span>
+<span class="nt">body</span> <span class="p">{</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--blue-color</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>텍스트(+button) 중앙 배치</strong><br />
+페이지의 이름과 부제목은 span태그를 이용하였다. 페이지 이름과 부제목을 div를 통해 묶었다. 이 div에 margin: auto;를 주면 페이지 중앙으로 이동하게 된다. 하지만 글들이 한 줄로 정렬이 되기에 (span특성) 부제목을 block(inline-block이 더 맞는 것 같다)으로 변경하고 text-align을 주면 각 글들이 중앙으로 배치하게 된다.<br />
+이 방법 말고도 각 span들을 div로 묶지 않고 각 span들을 inline-block으로 만들고 text-align을 사용해도 된다. <br />
+button은 가로, 세로를 가운데로 정렬해주기 위해서 margin: auto;를 해줬다. 해주지 않으면 가로로 길게 늘어지게 된다.
+    <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.div</span> <span class="p">{</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.div</span> <span class="nc">.span</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="nb">block</span><span class="p">;</span> <span class="c">/*inline-block*/</span>
+  <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.button</span> <span class="p">{</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>hover시 button색상 변경</strong><br />
+hover시에 버튼의 색상이 노랑색으로 변경되도록 작성하였다.
+    <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.button</span><span class="nd">:hover</span> <span class="p">{</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--button-color</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <p><img src="/assets/images/139910128-5c0618d5-d41e-476a-b281-7c1bf62014a9.png" /></p>
+  </li>
+  <li>
+    <p><strong>svg파일 만드는 사이트</strong><br />
+해변가의 파도와 같으면서 아이스크림이 녹는 느낌의 곡선을 주고 싶기에 png나 jpg파일 보다는 svg파일이 낫겠다는 생각을 했다. 아무래도 벡터니까 좀 더 부드럽게 잘 될테니까? 그래서 마구 서칭을 하다가 곡선을 svg파일로 만들 수 있는 사이트를 발견했다. (png파일로도 제작할 수 있다.) <br />
+이 사이트는 앞으로 디자인할 때 유용하게 사용할 것 같다! 디자인 감각이 없는 나도 뭔가 있어보이게 만들어 준다. <del>이 사이트 말고도 다양한 사이트가 많았는데, 추후에 따로 정리하는 걸로…</del><br />
+<a href="https://app.haikei.app/">다양한 svg파일제작 사이트</a></p>
+  </li>
+  <li><strong>background-image</strong><br />
+header 디자인 위에 다른 아이템들을 배치해주기 위해서 background-image를 사용하였다. 이때 나는 이미지가 반복되는 것을 원하지 않기에 no-repeat을 사용했으며, 사이즈가 화면에 맞게 늘어나길 원해서 background-size에 cover을 주었다.
+    <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">body</span><span class="p">{</span>
+  <span class="nl">background-image</span><span class="p">:</span> <span class="sx">url("이미지 경로.확장자 | 위치/이름.확장자")</span><span class="p">;</span>
+  <span class="nl">background-repeat</span><span class="p">:</span> <span class="nb">no-repeat</span><span class="p">;</span>
+  <span class="nl">background-size</span><span class="p">:</span> <span class="n">cover</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="마무리"><strong>마무리</strong></h2>
+<hr />
+<h3 id="프로젝트를-진행하며"><strong>프로젝트를 진행하며</strong></h3>
+<p>이번에 페이지를 제작하면서 가장 크게 느낀 것은 <strong>나 정말 사소한 실수를 많이 한다.</strong> 였다. 몰라서 틀리는 거면 괜찮은데.. html에 css연결을 안해서 애 먹었다던가… div 닫는 태그 위치를 잘 못 둬가지고 안 나왔다던가… 진짜 신경쓰자!</p>
+<h3 id="블로그를-하며"><strong>블로그를 하며</strong></h3>
+<p>이번에 내가 한 것을 다시 보면서 이 글을 작성하고 있는데 장점을 찾았다. 배우고 기억해둬야 하는 것들을 작성하면서 필요 없는 코드들을 찾을 수 있었다. 한 3개정도? 지운 것 같다. 그리고 막상 정리해서 글을 쓰려니까 ‘어? 이래도 원하는 대로 나오나?’ 생각이 들어서 코드를 만지작하다보니 새롭게 알게된 사실들도 있었다. <del>text-align인데 inline은 안 먹히고 inline-block이여야 된다는 점 등등..</del></p>
+
+<p>이번에 블로그를 작성하면서 좀 귀찮기는 하지만 장점이 많다는 것을 몸소 느끼다 보니 더더욱 계속해서 블로그를 해야 겠다고 느꼈다. 그러니 일단 이번의 나의 큰 목표는 꾸준히 블로그 작성하기! 내가 꼭 계속 실천하기를 빌면서 글을 끝내겠다.</p>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#triportravel">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TripOrTravel</span>
+    </a>
+  
+    
+    <a href="/tags.html#project">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">project</span>
+    </a>
+  
+    
+    <a href="/tags.html#스파르타코딩클럽">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">스파르타코딩클럽</span>
+    </a>
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#css">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">CSS</span>
+    </a>
+  
+    
+    <a href="/tags.html#html">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">HTML</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

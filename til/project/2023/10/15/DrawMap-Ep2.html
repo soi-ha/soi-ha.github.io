@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 DrawMap: SelectBox 구현하기, 스크롤 바 커스텀/map() error &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">DrawMap: SelectBox 구현하기, 스크롤 바 커스텀/map() error</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">15 Oct 2023</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/project.html">
+          Project
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h3 id="들어가는-말-잡담">들어가는 말 (잡담)</h3>
+
+<hr />
+
+<p>사실 해당 기능은 9월에 진작 끝냈지만 ^^…<br />
+9월에 프로젝트 일이 휘몰아치면서 이제야.. 적게 되었다.. (과거의 나 반성해..) 한달 정도 늦게 작성하는 거라 기억이 많이 휘발되었지만, 그 당시에 막혔던 부분들을 복습한다 생각하고 작성해보겠다.</p>
+
+<h3 id="selectbox-직접-구현하기">SelectBox 직접 구현하기</h3>
+
+<hr />
+
+<p>html에 select 태그가 존재하지만, 드로맵 프로젝트에서 해당 태그를 사용할 수 없었다. 디자이너 분이 select 박스의 디자인을 이쁘게 만들어주셨는데.. select 태그로는 해당 디자인 구현이 불가능해서 ㅜ… 직접 select 박스를 만들었어야 했다.</p>
+
+<p>기본적인 select 박스의 틀은 <a href="https://www.youtube.com/watch?v=z0avfnlBRto&amp;t=809s&amp;ab_channel=CodingNepal">해당 영상</a>을 참고하여 구현하였다.<br />
+다 만들고 생각했던건데, 굳이? 영상 참고 안하고 해도 됐을 것 같았다. 처음 만든다는 두려움 때문에 참고자료를 찾고 싶어서 고생했던게 기억 난다..<br />
+쨋든, select 박스의 틀은 본인이 원하는 디자인으로 만들면 된다.</p>
+
+<h3 id="select-리스트-열고-닫기">select 리스트 열고 닫기</h3>
+
+<hr />
+
+<p>나는 select 리스트(li(값)들)를 열고 닫을 수 있도록 img(여닫기 화살표)를 구현해줬다. useState로 isActive를 만들고 기본값은 false(닫힘)으로 했다. 버튼(여닫기) 이미지의 style에 <code class="language-plaintext highlighter-rouge">transform: isActive</code>로 하여, isActive가 false이면 화살표가 아래로, true이면 화살표가 위로 (<code class="language-plaintext highlighter-rouge">rotate(-180deg)</code>)향하도록 했다.</p>
+
+<p>또한, class가 sbtn-content를 보면 display에도 isActive를 주었는데, isActive값이 false이면 none을 (ul 태그가 보이지 않음) true면 block을 (ul 태그가 보임/ 즉, select 리스트 박스가 보임) 해줬다.</p>
+
+<h3 id="map-함수를-사용하여-select-list의-li-값-뿌리기">map 함수를 사용하여, select list의 li 값 뿌리기</h3>
+
+<hr />
+
+<p>정말 간단하게 그냥 ul 태그 하단에 넣고 싶은 li 값들을 다 쓰면 되겠지만! 해당 selectBox 컴포넌트는 여러 페이지에서 재사용이 필요하기 때문에 map 함수를 이용하여 값들을 넣어주기로 했다.<br />
+추후에 백엔드로부터 해당 select에 넣을 값 리스트를 받기만 하면 되도록 말이다!</p>
+
+<p><img width="404" alt="스크린샷 2023-10-15 12 15 24" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/8a49c127-a282-4a09-bd6d-767334d1202e" /></p>
+
+<p>따라서 나는 일단 <code class="language-plaintext highlighter-rouge">dataList</code>라는 배열 변수를 만들어줬다.<br />
+해당 배열 안에 key는 item이고 value에는 원하는 값들을 넣은 객체를 만들어줬다.</p>
+
+<p>그리고 ul 태그 하단에 <code class="language-plaintext highlighter-rouge">dataList</code>를 map함수를 통해 뿌려줬다.<br />
+이때, map은 함수니까 꼭! 중괄호<code class="language-plaintext highlighter-rouge">{}</code>로 감싸야 한다는 것을 잊지 말자.<br />
+중괄호 안에 <code class="language-plaintext highlighter-rouge">dataList.map((it)=&gt;{return(&lt;li&gt;{it.item}&lt;/li&gt;)})</code> 코드를 작성했다. dataList 배열을 map을 통해서 반복을 할건데, li 태그의 값(?)에 it.item을 넣어준다. 라는 것이다.</p>
+
+<h4 id="error-발생-expected-an-assignment-or-function-call-and-instead-saw-an-expression">Error 발생, expected an assignment or function call and instead saw an expression</h4>
+
+<hr />
+
+<p>위의 설명한 방법으로 했을 때는 에러가 발생하지 않겠지만.. 과거에 작성했을 때는 중괄호 안에 return을 작성하지 않았다. 그러니 <code class="language-plaintext highlighter-rouge">expected an assignment or function call and instead saw an expression.</code> 에러가 발생했다.
+에러가 발생한 이유는 map을 사용할 때, <code class="language-plaintext highlighter-rouge">.map(()=&gt;{})</code> 형식으로 작성했다면 반드시 중괄호 안에 return이 존재해야 한다는 것이었다.</p>
+
+<p>만약에 return을 작성하고 싶지 않다면 요소를 소괄호<code class="language-plaintext highlighter-rouge">()</code>로 감싸도록 하자. <code class="language-plaintext highlighter-rouge">dataList.map((it)=&gt;(&lt;li&gt;{it.item}&lt;/li&gt;))</code></p>
+
+<hr />
+
+<h5 id="buttonselect-컴포넌트--작성한-코드-설명하지-않은-내용은-다음편에">ButtonSelect 컴포넌트 / 작성한 코드 (설명하지 않은 내용은 다음편에)</h5>
+
+<p><img width="404" alt="스크린샷 2023-10-15 12 15 15" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/d1a15c90-7c65-4ede-97e1-031d4c0acd91" /></p>
+
+<p><img width="594" alt="스크린샷 2023-10-15 12 14 55" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/dd56d1bb-f738-4500-bca4-688df3cd19b2" /></p>
+
+<h3 id="스크롤바scroll-bar-커스텀">스크롤바(Scroll Bar) 커스텀</h3>
+
+<hr />
+
+<p>우리 디자이너가 스크롤바 역시도 이쁘게 디자인해줬기 때문에 스크롤바 스타일 역시 변경해야 했다.<br />
+스크롤바 스타일은 <code class="language-plaintext highlighter-rouge">-webkit-scrollbar</code>를 통해 변경해준다.</p>
+
+<p>스크롤바 변경 webkit의 의미는 다음과 같다</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">::-webkit-scrollbar</code> : 스크롤바 전체</li>
+  <li><code class="language-plaintext highlighter-rouge">::-webkit-scrollbar-thumb</code> : 스크롤 막대</li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">::-webkit-scrollbar-track</code> : 스크롤 막대 외부</p>
+
+    <p><img alt="webkit-scrollbar 설명" width="300" src="https://cdn.hashnode.com/res/hashnode/image/upload/v1637505909053/PBfovy_H9.jpeg?auto=compress,format&amp;format=webp" /></p>
+  </li>
+</ul>
+
+<p>다음 속성들을 적용하여 스크롤바를 변경해주었다.</p>
+
+<p><img width="405" alt="스크린샷 2023-10-15 13 29 05" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/c52abdda-d9a9-4928-bf6e-079f3f85ba69" /></p>
+
+<h4 id="스크롤바-위치-변경">스크롤바 위치 변경</h4>
+
+<hr />
+
+<p>스크롤바 커스텀을 하고 나서도 스크롤바의 위치가 너무 오른쪽에 붙어있어, 해당 바를 좀 더 왼쪽으로 옮겨주고 싶었다.<br />
+이때 좀 바보짓을 했는데…ㅋ<br />
+박스에 패딩을 주고 뭐 별 짓을 다 했는데도 스타일 적용이 안돼서.. 애먹고 있다가, “다시 스크롤바의 위치가 어디일지를 보자” 란 생각이 들어 다시 개발자도구를 통해 확인해보니 ul 태그에 해야 할 것 같은 것이다…! 그래서 ul태그에 margin을 주었더니 스크롤바의 위치가 안 쪽으로 이쁘게 잘 들어갔다..ㅎ..</p>
+
+<p><strong>결론: 스크롤바 위치를 옮기고 싶으면 ul태그에 margin 주기… 잊지말것..</strong></p>
+
+<p><strong>스크롤바 위치 수정 전</strong>
+<img width="1177" alt="스크롤바 수정 전" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/69bedb47-d7ec-43eb-952a-525e40141689" /></p>
+
+<p><strong>스크롤바 위치 수정 후</strong>
+<img width="1177" alt="스크롤바 수정 후" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/fdb9923d-834b-4436-bd10-1d2ec2ee7b3b" /></p>
+
+<p><strong>스크롤바 수정 전/후 영상</strong>
+<img src="/assets/images/0d849a6a-9167-4f4a-8375-84a2f0b146c8" alt="scrollBar 수정 적용" /></p>
+
+<hr />
+
+<p>다음 편에는 선택한 값을 띄워주는 것을 작성하도록 하겠다.</p>
+
+<blockquote>
+  <p>참고<br />
+<a href="https://codingbroker.tistory.com/66">HTML, CSS: 스크롤바 스타일(디자인)하는 방법 - webkit-scrollbar</a> &gt; <a href="https://webisfree.com/2019-01-08/css-%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80-%EC%8A%A4%ED%81%AC%EB%A1%A4%EB%B0%94-%EC%8A%A4%ED%83%80%EC%9D%BC-%EC%A7%80%EC%A0%95-%EB%B0%94%EA%BE%B8%EB%8A%94-%EB%B0%A9%EB%B2%95-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0">Css 브라우저 스크롤바 스타일 지정, 바꾸는 방법 알아보기</a><br />
+<a href="https://inpa.tistory.com/entry/CSS-%F0%9F%8C%9F-%EC%8A%A4%ED%81%AC%EB%A1%A4-%EB%B0%94Scrollbar-%EA%BE%B8%EB%AF%B8%EA%B8%B0-%EC%86%8D%EC%84%B1-%EC%B4%9D%EC%A0%95%EB%A6%AC">🌟 스크롤 바(Scrollbar) 스타일링 💯 총정리</a><br />
+<a href="https://breathtaking-life.tistory.com/123">리액트: 버튼 클릭시 요소 표시, 숨기기</a> &gt;<a href="https://grownfresh.tistory.com/147">React hooks로 Select Option 처리하기</a><br />
+<a href="https://helicopter55.tistory.com/2">React:expected an assignment or function call and instead saw an expression.</a><br />
+<a href="https://bomango.tistory.com/80">React에서 (api 데이터) json형식 데이터 가져오기 및 원하는 데이터 추출 등 데이터 관리 방법!</a></p>
+</blockquote>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#drawmap">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">DrawMap</span>
+    </a>
+  
+    
+    <a href="/tags.html#error">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">Error</span>
+    </a>
+  
+    
+    <a href="/tags.html#react">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">React</span>
+    </a>
+  
+    
+    <a href="/tags.html#css">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">CSS</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

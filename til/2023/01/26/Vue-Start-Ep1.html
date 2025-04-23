@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 Vue.js: Vue 시작하기 Ep.1 &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">Vue.js: Vue 시작하기 Ep.1</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">26 Jan 2023</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h2 id="vue-cli-vetur"><strong>Vue CLI, Vetur</strong></h2>
+<hr />
+
+<ul>
+  <li>
+    <p>Vue CLI 설치</p>
+
+    <p><a href="https://cli.vuejs.org/">Vue CLI Link</a></p>
+
+    <p>경로 위치 상관없이 해당 명령어를 실행하면 된다. (-g는 전역설치이기 때문에 경로 위치 상관없음)</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">-g</span> @vue/cli
+<span class="c"># 또는</span>
+yarn global add @vue/cli
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Vue CLI로 폴더 생성</p>
+
+    <p>Vue CLI 설치로 아래와 같은 명령어 사용 가능</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 간단하게 새로운 프로젝트 생성하기</span>
+<span class="c">## vue create 폴더명</span>
+vue create hello-world
+</code></pre></div>    </div>
+
+    <p>폴더 생성 후, 다음과 같은 옵션 선택이 뜬다. (화살표로 이동이 가능하며 선택이 가능하다.)</p>
+
+    <p>현재는 옵션 선택에 vue2,3버전 중 어떤 걸 사용할 것인지 묻는다.<br />
+(원하는 버전으로 선택하면 된다.)</p>
+
+    <p><img src="/assets/images/cli-new-project.png" alt="/assets/images/cli-new-project.png" /></p>
+  </li>
+  <li>
+    <p>package.json</p>
+
+    <p><img width="289" alt="스크린샷 2023-01-26 14 54 51" src="https://user-images.githubusercontent.com/77609591/214785809-6c349beb-e2cd-49d4-95cc-d0454939c478.png" /></p>
+
+    <ul>
+      <li>
+        <p>serve는 dev와 동일한 것이다.</p>
+
+        <p>개발서버를 열고 싶다면 다음과 같은 명령어 사용</p>
+
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run serve
+</code></pre></div>        </div>
+      </li>
+      <li>제품화 과정에서는 <code class="language-plaintext highlighter-rouge">npm run build</code></li>
+      <li>
+        <p><strong>lint</strong></p>
+
+        <p>vue.js 코드를 어떤 규칙에 맞게 작동이 잘 되었는지 확인하기 위해서 해당 명령어를 사용한다.</p>
+
+        <p>lint를 통해서 코드를 작성하는 규칙을 정할 수 있다.<br />
+하단에서 <strong>eslintConfig</strong> 에서 기본적인 구성옵션을 확인할 수 있으며, <strong>rules</strong> 부분에 원하는 규칙을 추가할 수 있다.</p>
+      </li>
+      <li>
+        <p>vue-cli의 경우에는 내부적으로 webpack을 사용하고 있다.</p>
+
+        <p>webpack에 대한 기본적인 구조는 프로젝트 내에서 숨겨져 있다.<br />
+대신, 숨겨진 부분을 vue-cli-service를 통해서 제공한다.</p>
+      </li>
+      <li>
+        <p>browserslist</p>
+
+        <p>프로젝트가 지원할 브라우저의 기본적인 종류를 명시한다.<br />
+vue.js 설치시 자동으로 작성되어져 있으며, babel, postCSS등을 기본적으로 사용할 수 있다.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Vue CLI 장점과 단점</p>
+
+    <p><strong>장점</strong></p>
+
+    <p>기본적인 부분부터 디테일한 부분까지 vue-cli에서 흡수를 했기 때문에 입문자 입장에서는 구성옵션을 최대한 신경쓰지 않고 문법에 집중해서 프로젝트를 만들 수 있어서 편리하다.</p>
+
+    <p><strong>단점</strong></p>
+
+    <p>vue-cli에서 대부분 관리하기 때문에 세부적인 부분들을 정리하면서 나만의 프로젝트를 관리하기 어렵다.</p>
+  </li>
+  <li>
+    <p>public과 src 파일 <strong>(Vetur)</strong></p>
+    <ul>
+      <li>
+        <p>html 파일</p>
+
+        <p><code class="language-plaintext highlighter-rouge">&lt;div id=”app”&gt;&lt;/div&gt;</code> 에 vue.js를 연결해서 사용한다.</p>
+      </li>
+      <li>
+        <p>main.js</p>
+
+        <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">createApp</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">vue</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">App</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./App.vue</span><span class="dl">'</span>
+    
+<span class="nf">createApp</span><span class="p">(</span><span class="nx">App</span><span class="p">).</span><span class="nf">mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div>        </div>
+
+        <p>createApp을 vue에서 가져와서(import) 사용을 하고 있다.<br />
+4번째 줄 createApp 앞에는 Vue.이 생략되어져 있으며, 이것을 대신해서 vue 패키지에서 해당하는 내용을 가져와서 직접적으로 실행하는 구조로 되어져 있다.</p>
+
+        <p>mount 메소드를 통해서 html에서 app 아이디를 가진 요소를 선택해서 vue.js 프로젝트를 바로 연결한다.</p>
+
+        <p>App이라는 이름으로 어떤 내용을 가져와서 연결을 하는데, 해당 내용은 주변에 존재하는 App.vue 파일에서 온다.</p>
+      </li>
+      <li>
+        <p>App.vue (확장자 <strong>Vetur</strong>)</p>
+
+        <p>npm 프로젝트로 시작하게 되면, vue라는 확장자를 가진 파일을 만들어서 vue 프로젝트를 시작할 수 있다.</p>
+
+        <p>App.vue 파일을 열어보면 하이라이팅이 되어있지 않아 내용을 확인하기 어려운데, vscode에서 확장자를 설치하여 하이라이팅을 만들어준다. <br />
+vscode에서 <strong>Vetur</strong>라는 확장자를 설치해준다.</p>
+
+        <ul>
+          <li>
+            <p>template</p>
+
+            <p>기본적인 html 내용을 작성한다.</p>
+          </li>
+          <li>
+            <p>script</p>
+
+            <p>자바스크립트 내용을 작성한다.</p>
+          </li>
+          <li>
+            <p>style</p>
+
+            <p>css 내용을 작성한다.</p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="vue3-webpack-template"><strong>Vue3 Webpack Template</strong></h2>
+<hr />
+
+<p>이전 webpack 연습에서 사용했던 폴더를 그대로 사용할 것이다.</p>
+
+<ul>
+  <li>
+    <p>src 폴더 생성</p>
+
+    <p>main.js 파일 생성 (기존에 존재했던 js 폴더는 삭제)<br />
+App.vue 파일 생성</p>
+
+    <p>App.vue와 main.js을 연결해서 사용한다.<br />
+해당 내용이 정상적으로 작동할 수 있도록 패키지를 설치한다.</p>
+  </li>
+  <li>
+    <p>vue 패키지 설치 (일반 의존성 모드)</p>
+
+    <p>vue 패키지는 기본적인 문법을 해석하기 위한 패키지이다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm i vue@next
+</code></pre></div>    </div>
+
+    <p>@next 없이 설치하면 2 버전이 설치된다. 해당 키워드를 입력해야 최신 버전(3 버전)이 설치된다.</p>
+
+    <p>vue.js는 개발 할 때만 사용하는 것이 아닌 실제 브라우저에서 동작하는 패키지이기 때문에 개발의존성 모드 (-D)로 설치하면 안된다.</p>
+  </li>
+  <li>
+    <p>vue 관리를 위한 패키지 (개발 의존성 모드)</p>
+
+    <p>프로젝트 내부에서 vue 파일을 관리하기 위해서 해당 패키지들을 설치한다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm i <span class="nt">-D</span> vue-loader@next vue-style-loader @vue/compiler-sfc
+</code></pre></div>    </div>
+
+    <ul>
+      <li>
+        <p>vue-loader</p>
+
+        <p>뒤에 @next를 붙여서 설치한다. 최신 버전(버전 3)으로 설치하기 위함이다.</p>
+      </li>
+      <li>
+        <p>vue-style-loader</p>
+
+        <p>App.vue와 같이 vue 파일 내부에서 style 태그로 css 내용을 작성할 수 있다. 이런 vue 파일 내부에 있는 style 태그를 해석해서 동작할 수 있도록 만들어준다.</p>
+      </li>
+      <li>
+        <p>@vue/compiler-sfc</p>
+
+        <p>vue 파일을 변환해서 브라우저에서 동작할 수 있는 형태로 바꿔준다.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>webpack.config.js</p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">rules</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">vue$/</span><span class="p">,</span>
+        <span class="na">use</span><span class="p">:</span> <span class="dl">'</span><span class="s1">vue-loader</span><span class="dl">'</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">s</span><span class="se">?</span><span class="sr">css$/</span><span class="p">,</span>
+        <span class="na">use</span><span class="p">:</span> <span class="p">[</span>
+          <span class="dl">'</span><span class="s1">vue-style-loader</span><span class="dl">'</span><span class="p">,</span>
+          <span class="dl">'</span><span class="s1">style-loader</span><span class="dl">'</span><span class="p">,</span>
+          <span class="dl">'</span><span class="s1">css-loader</span><span class="dl">'</span><span class="p">,</span>
+          <span class="dl">'</span><span class="s1">postcss-loader</span><span class="dl">'</span><span class="p">,</span>
+          <span class="dl">'</span><span class="s1">sass-loader</span><span class="dl">'</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+</code></pre></div>    </div>
+
+    <p>vue 확장자를 찾아 번역하기 위한 코드를 추가한다. <br />
+scss 부분에 vue-style-loader가 마지막으로 읽히기 위해서 가장 상단에 해당 패키지 명을 작성한다.</p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">VueLoaderPlugin</span> <span class="p">}</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">vue-loader</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div>    </div>
+
+    <p>상단에 해당 내용을 불러온다. 객체구조분해를 통해서 내용을 가져온다는 것을 주의하도록 하자.</p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">plugins</span><span class="p">:</span> <span class="p">[</span>
+  <span class="p">...</span>
+  <span class="p">,</span>
+  <span class="k">new</span> <span class="nc">VueLoaderPlugin</span><span class="p">()</span>
+<span class="p">]</span>
+</code></pre></div>    </div>
+
+    <p>plugins 부분에 불러왔던 내용을 new 키워드를 통해 생성자 함수로 실행한다.</p>
+  </li>
+  <li>
+    <p>App.vue</p>
+
+    <p>정상적으로 실행하는지 확인하기 위한 간단한 코드 작성</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;template&gt;
+  &lt;h1&gt;&lt;/h1&gt;
+&lt;/template&gt;
+  
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      message: "Hello Vue!!"
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>main.js</p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">Vue</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">vue</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">App</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./App.vue</span><span class="dl">'</span>
+  
+<span class="nx">Vue</span><span class="p">.</span><span class="nf">createApp</span><span class="p">(</span><span class="nx">App</span><span class="p">).</span><span class="nf">mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div>    </div>
+
+    <p>Vue 라는 이름으로 vue 패키지를 불러온다.<br />
+App 이라는 이름으로 주변에서 App.vue 파일을 불러온다.</p>
+
+    <p>mount의 인수로 ‘#app’을 넣는다. html에서 아이디 값이 app인 요소를 찾아 Vue.js 프로젝트를 연결한다.</p>
+
+    <p>createApp의 인수로는 App을 넣는다. <br />
+만약 cdn으로 vue를 불러와서 사용했다면 해당 인수로는 우리가 App.vue에서 작성했던 data 부분을 작성했을 것이다. 하지만, 해당 방법에서는 App.vue 파일을 만들어 해당 파일에 data 내용을 작성했기 때문에 불러왔던 이름을 넣어주기만 하면 된다.</p>
+
+    <p>즉, main.js에서 App.vue 파일이 Vue 프로젝트의 시작이 될 수 있도록 설정을 하는 것이다.</p>
+
+    <ul>
+      <li>
+        <p>Vue CLI를 사용해서 작성한다면!</p>
+
+        <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">createApp</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">vue</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">App</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./App.vue</span><span class="dl">'</span>
+    
+<span class="nf">createApp</span><span class="p">(</span><span class="nx">App</span><span class="p">).</span><span class="nf">mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div>        </div>
+
+        <p>Vue. 객체를 작성하지 않아도 되며, import로 가져오기를 할때 객체구조분해를 통해서 바로 createApp을 가져올 수 있다.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<hr />
+
+<p><br /></p>
+
+<h3 id="vue-확장자를-생략하기"><strong>vue 확장자를 생략하기</strong></h3>
+
+<p><br /></p>
+
+<ul>
+  <li>
+    <p>webpack.config.js</p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">resolve</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">extensions</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">.js</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">.vue</span><span class="dl">'</span><span class="p">]</span>
+  <span class="p">},</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+
+    <p>resolve와 extensions 추가로 js와 vue 확장자를 생략해도 문제없게 만들어주었다.</p>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<hr />
+
+<p><br /></p>
+
+<h3 id="새로운-component-만들기"><strong>새로운 component 만들기</strong></h3>
+
+<p><br /></p>
+
+<p>App.vue파일에 연결할 component를 만든다.</p>
+
+<ul>
+  <li>src 폴더 내부에 <strong>components 폴더</strong> 생성</li>
+  <li>
+    <p>해당 폴더 내부에 HelloWorld.vue 파일 생성</p>
+
+    <p>파일명은 첫번째 글자 대문자, 두번째 단어의 첫 글자도 대문자인 방식 (파스칼 표기법 PascalCase)으로 작성한다.</p>
+  </li>
+  <li>이미지 출력하기 (<strong>경로 별칭</strong>)
+    <ul>
+      <li>src 폴더 내부에 <strong>assets 폴더</strong>를 생성하고 사용하길 원하는 이미지를 해당 폴더에 넣는다.</li>
+      <li>
+        <p>HelloWorld.vue 파일에 다음과 같이 경로를 입력한다.</p>
+
+        <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="p">=</span><span class="s">"~assets/logo.png"</span> <span class="na">alt</span><span class="p">=</span><span class="s">""</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</code></pre></div>        </div>
+
+        <p>해당 경로에서 사진을 가져와서 vue 파일 내부에서 분석하여 화면에 출력할 수 있게 만들어줘야 한다.</p>
+      </li>
+      <li>
+        <p>패키지 설치하기</p>
+
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm i <span class="nt">-D</span> file-loader
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p>webpack.config.js</p>
+
+        <p>rules 부분에 이미지 파일 확장자들을 찾아서 file-loader 패키지를 실행하도록 한다.</p>
+
+        <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nl">rules</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">...</span>
+      <span class="p">{</span>
+        <span class="nl">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.(</span><span class="sr">png|jpe</span><span class="se">?</span><span class="sr">g|gif|webp</span><span class="se">)</span><span class="sr">$/</span><span class="p">,</span>
+        <span class="nx">use</span><span class="p">:</span> <span class="dl">'</span><span class="s1">file-loader</span><span class="dl">'</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+</code></pre></div>        </div>
+
+        <p>reslove 부분에 <strong>경로 별칭(Alias)</strong>을 추가한다.<br />
+기존에는 상대경로를 통해서 파일을 불러왔다. 경로 별칭(~)을 사용하면 해당하는 경로별칭이 지칭하는 실제 경로로 바로 점프해서 해당하는 파일을 찾을 수 있게 한다.<br />
+말 그대로, 경로를 별칭으로 만들어서 사용하는 것이다.</p>
+
+        <p>틸드(물결)부분에는 path의 resolve를 통해서 현재 webpack.config.js가 있는 경로(__dirname 의미)에서 src 폴더를 지칭해준다.</p>
+
+        <p>assets 부분에서는 __dirname으로 src폴더 안에 있는 assets 라는 실제 이미지가 존재하는 폴더를 지칭해준다.</p>
+
+        <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">resolve</span><span class="p">:</span> <span class="p">{</span>
+    <span class="c1">// 경로 별칭</span>
+    <span class="nl">alias</span><span class="p">:</span> <span class="p">{</span>
+      <span class="dl">'</span><span class="s1">~</span><span class="dl">'</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nf">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">src</span><span class="dl">'</span><span class="p">),</span>
+      <span class="dl">'</span><span class="s1">assets</span><span class="dl">'</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nf">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">src/assets</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+</code></pre></div>        </div>
+
+        <p>우리가 만든 경로 별칭을 통해서 틸드 혹은 틸드의 assets에 손쉽게 접근을 해서 실제 이미지나 파일들을 가지고 올 수 있다.</p>
+      </li>
+      <li>
+        <p>App.vue</p>
+
+        <p>잘 작동하는지 확인하기 위해서 다음과 같이 코드를 작성한다.</p>
+
+        <p>HelloWorld는 경로별칭 사용이 가능하다. 해당 파일은 components 폴더 안에 존재하는데 이 폴더는 src 폴더안에 있기에 틸드(src로 지정) 경로별칭을 사용할 수 있다.</p>
+
+        <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nc">HelloWorld</span> <span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+    
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+import HelloWorld from '~/components/HelloWorld'
+    
+export default <span class="si">{</span>
+  <span class="nx">components</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">HelloWorld</span>
+  <span class="p">},</span>
+  <span class="nf">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">message</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Hello Vue!!</span><span class="dl">"</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="si">}</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>        </div>
+
+        <p>export default에 components 속성을 객체 데이터로 만들어서 HelloWorld를 연결해준다.</p>
+
+        <p>template에 HelloWorld를 빈 태그처럼 작성해주면 된다.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#vue-js">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">Vue.js</span>
+    </a>
+  
+    
+    <a href="/tags.html#js">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">JS</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

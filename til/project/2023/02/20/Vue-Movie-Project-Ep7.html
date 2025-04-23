@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 영화 검색 사이트: 비동기 &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">영화 검색 사이트: 비동기</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">20 Feb 2023</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/project.html">
+          Project
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h2 id="비동기"><strong>비동기</strong></h2>
+<hr />
+
+<h3 id="콜백-callback"><strong>콜백 (callback)</strong></h3>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">function</span> <span class="nf">a</span><span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">A</span><span class="dl">'</span><span class="p">)</span>
+      <span class="nf">callback</span><span class="p">()</span>
+    <span class="p">},</span> <span class="mi">1000</span><span class="p">)</span>
+  <span class="p">}</span>
+  
+  <span class="kd">function</span> <span class="nf">b</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">B</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">}</span>
+  
+  <span class="nf">a</span><span class="p">(</span><span class="nf">function </span><span class="p">()</span> <span class="p">{</span>
+    <span class="nf">b</span><span class="p">()</span>
+  <span class="p">})</span>
+</code></pre></div></div>
+
+<p>callback, 호출 뒤에 실행한다는 것으로. a함수의 로직이 끝난 다음에 b함수 로직을 실행하도록 콜백함수를 사용하였다.</p>
+
+<p>콜백함수를 사용하지 않고 단순히, a와 b를 호출했다면, a의 setTimeout으로  1초뒤에 출력되기 때문에, b가 먼저 출력되고 a가 출력되었을 것이다.<br />
+  하지만, 콜백함수 사용으로 a가 호출되고 나면 b가 실행되는 구조가 되었다.</p>
+
+<p>어떤 상황에서든 우리가 실행한 함수 순서대로 출력이 되는 것이다.</p>
+
+<ul>
+  <li>
+    <p>콜백지옥</p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">a </span><span class="p">(</span><span class="nf">function </span><span class="p">()</span> <span class="p">{</span>
+  <span class="nf">b </span><span class="p">(</span><span class="nf">function </span><span class="p">()</span> <span class="p">{</span>
+    <span class="nf">c </span><span class="p">(</span><span class="nf">function </span><span class="p">()</span> <span class="p">{</span>
+      <span class="nf">d </span><span class="p">(</span><span class="nf">function </span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Done!</span><span class="dl">'</span><span class="p">)</span>
+      <span class="p">})</span>
+    <span class="p">})</span>
+  <span class="p">})</span>
+<span class="p">})</span>
+</code></pre></div>    </div>
+
+    <p>기본적인 실행을 보장하고 그 다음에 처리해야 하는 내용이 많아지면, 해당 코드가 점점 깊어진다. 따라서 관리하기가 어려워지게 된다.<br />
+콜백이 실행의 다음 순서를 보장하는 장점을 가지고 있지만 사용 패턴이 불편하다. 따라서 해당 부분을 보완하기 위해서 Promise 객체를 사용한다.</p>
+  </li>
+</ul>
+
+<h3 id="promise-객체"><strong>Promise 객체</strong></h3>
+
+<p>promise는 약속의 객체이다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">function</span> <span class="nf">a</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nc">Promise</span><span class="p">(</span><span class="nf">function </span><span class="p">(</span><span class="nx">resolve</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nf">setTimeout</span><span class="p">(</span><span class="nf">function </span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">A</span><span class="dl">'</span><span class="p">)</span>
+        <span class="nf">resolve</span><span class="p">()</span>
+      <span class="p">},</span> <span class="mi">1000</span><span class="p">)</span>
+    <span class="p">})</span>
+  <span class="p">}</span>
+  
+  <span class="kd">function</span> <span class="nf">b</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">B</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">}</span>
+  
+  <span class="k">async</span> <span class="kd">function</span> <span class="nf">test</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">await</span> <span class="nf">a</span><span class="p">()</span>
+    <span class="nf">b</span><span class="p">()</span>
+  <span class="p">}</span>
+  
+  <span class="nf">test</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>promise 객체의 생성자(new)를 통해서 내부에 1초뒤에 ‘A’가 출력되도록 작성했다. <br />
+  a 함수가 실행되고 내부에 있는 console.log의 A를 출력하는 로직이 동작한 다음에 다른 코드가 실행되는 것을 보장하려면 콜백에서 callback()을 호출한 것 처럼 resolve라는 매개변수를 호출하면 된다.<br />
+  즉, 단순하게 설명하자면 callback 자리에 resolve를 작성하면 된다.</p>
+
+<p>test 함수 내부에서 a 함수를 기다린(async await)다음에 b함수를 실행해줄 수 있다.<br />
+  promise라는 약속의 객체가 반환이 되면, 해당 자리에  await 키워드를 붙일 수 있다. 해당 부분에서 resolve 매개변수가 실행될 때까지 기다려(await) 줄 수 있다.<br />
+  a 함수가 실행되기 시작해서 마지막에 resolve 매개변수가 호출되기 전까지 기다렸다가, resolve가 호출되면 그 다음 코드로(b 호출) 넘어갈 수 있다.</p>
+
+<p>즉, 실행 순서는 a함수 → resolve → b함수</p>
+
+<ul>
+  <li>
+    <p>콜백 지옥을 promise 객체로 벗어나기</p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="kd">function</span> <span class="nf">test</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">await</span> <span class="nf">a</span><span class="p">()</span>
+  <span class="k">await</span> <span class="nf">b</span><span class="p">()</span>
+  <span class="k">await</span> <span class="nf">c</span><span class="p">()</span>
+  <span class="k">await</span> <span class="nf">d</span><span class="p">()</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Done!</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nf">test</span><span class="p">()</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="예외처리"><strong>예외처리</strong></h3>
+
+<p><strong>Promise</strong></p>
+
+<p>비동기를 통해서 로직을 기다렸다가 처리가 끝나면 처리가 온전히 완료되거나 실패될 수 있는데 그것에 대한 결과를 반환하는 것을 말한다.</p>
+
+<blockquote>
+  <p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise">MDN: Promise - JavaScript</a></p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>예외처리</p>
+
+    <p>async await를 사용할 수 없는 상황에서 해당 방법을 통해 비동기 처리를 한다.</p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">a</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">new</span> <span class="nc">Promise</span><span class="p">(</span><span class="nf">function </span><span class="p">(</span><span class="nx">resolve</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">setTimeout</span><span class="p">(</span><span class="nf">function </span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">A</span><span class="dl">'</span><span class="p">)</span>
+      <span class="nf">resolve</span><span class="p">()</span>
+    <span class="p">},</span> <span class="mi">1000</span><span class="p">)</span>
+  <span class="p">})</span>
+<span class="p">}</span>
+    
+<span class="k">async</span> <span class="kd">function</span> <span class="nf">test</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">await</span> <span class="nf">a</span><span class="p">()</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">B</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">}</span>
+    
+<span class="nf">test</span><span class="p">()</span>
+</code></pre></div>    </div>
+
+    <ul>
+      <li>
+        <p><strong>then</strong></p>
+
+        <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">a</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">new</span> <span class="nc">Promise</span><span class="p">(</span><span class="nf">function </span><span class="p">(</span><span class="nx">resolve</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">setTimeout</span><span class="p">(</span><span class="nf">function </span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">A</span><span class="dl">'</span><span class="p">)</span>
+      <span class="nf">resolve</span><span class="p">()</span>
+    <span class="p">},</span> <span class="mi">1000</span><span class="p">)</span>
+  <span class="p">})</span>
+<span class="p">}</span>
+      
+<span class="kd">function</span> <span class="nf">test</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nf">a</span><span class="p">().</span><span class="nf">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">B</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">})</span>
+<span class="p">}</span>
+      
+<span class="nf">test</span><span class="p">()</span>
+</code></pre></div>        </div>
+
+        <p>a가 실행된 다음에 b가 실행하는 것을 보장해준다.</p>
+
+        <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">test</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nf">a</span><span class="p">()</span>
+    <span class="p">.</span><span class="nf">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nf">b</span><span class="p">())</span>
+    <span class="p">.</span><span class="nf">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nf">c</span><span class="p">())</span>
+    <span class="p">.</span><span class="nf">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nf">d</span><span class="p">())</span>
+    <span class="p">.</span><span class="nf">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Done!</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">})</span>
+<span class="p">}</span>
+<span class="nf">test</span><span class="p">()</span>
+</code></pre></div>        </div>
+
+        <p>비동기 패턴(async await)을 사용할 수 없을 때는, then메소드를 체이닝 형식으로 작성해나가면서 다음 실행을 보장해 나갈 수 있다.<br />
+이때, then 메소드를 체이닝으로 붙이려면 메소드의 콜백 내부에 새로운 promise 객체가 반환이 꼭 되어야 한다.</p>
+      </li>
+      <li>
+        <p><strong>catch</strong></p>
+
+        <p>reject, promise의 콜백 내부에서 로직이 정상적으로 실행될 수 없을 때, resolve처럼 호출해줄 수 있다.</p>
+
+        <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">a</span><span class="p">(</span><span class="nx">number</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">new</span> <span class="nc">Promise</span><span class="p">(</span><span class="nf">function </span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">number</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nf">reject</span><span class="p">()</span>
+      <span class="k">return</span>
+    <span class="p">}</span>
+    <span class="nf">setTimeout</span><span class="p">(</span><span class="nf">function </span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">A</span><span class="dl">'</span><span class="p">)</span>
+      <span class="nf">resolve</span><span class="p">()</span>
+    <span class="p">},</span> <span class="mi">1000</span><span class="p">)</span>
+  <span class="p">})</span>
+<span class="p">}</span>
+      
+<span class="k">async</span> <span class="kd">function</span> <span class="nf">test</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">await</span> <span class="nf">a</span><span class="p">()</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">B</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">}</span>
+      
+<span class="nf">test</span><span class="p">()</span>
+</code></pre></div>        </div>
+
+        <p>number 매개변수가 숫자 4보다 큰 경우에는 로직을 정상적으로 처리하지 않겠다(거부하겠다)는 의미로 reject 매개변수를 호출할 수 있다.<br />
+reject 매개변수가 실행되면 promise의 콜백에서는 더이상 resolve 매개변수는 동작하지 않는다.</p>
+
+        <p>reject 매개변수가 실행됐다는 것은 로직이 완료됐다는 일종의 <strong>이행</strong>으로 이해할 수 있다. reject이 실행되고 resolve가 실행될 수 없는 부분은 일종의 <strong>거부</strong>되었다고 할 수 있다.<br />
+즉! 간단하게 말하면 reject이 실행되면 resolve는 실행이 되지 않는다는 것이다.</p>
+
+        <p>해당 부분을 테스트하기 위해 다음과 같은 코드를 작성한다.</p>
+
+        <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">test</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nf">a</span><span class="p">()</span>
+  <span class="p">.</span><span class="nf">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Resolve!</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Reject!</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">})</span>
+<span class="p">}</span>
+</code></pre></div>        </div>
+
+        <p>then 메소드가 실행이 되면, resolve 매개변수가 실행이 됐다는 것이다. catch 메소드가 실행이 되면, reject 매개변수가 실행이 됐다는 것이다.</p>
+
+        <p>a에 숫자 2를 넣으면 resolve가 실행되고, 5를 넣으면 rejcet이 실행된다. 2를 넣으면 A, Resolve!가 출력되고, 5를 넣으면 Reject!가 출력된다.</p>
+
+        <ul>
+          <li>
+            <p><strong>then 과 catch</strong></p>
+
+            <p>특정함수에서 조건에 맞게 reject와 resolve 매개변수가 실행돼서, 해당 함수가 <strong>잘 처리가 되고 실행할 내용은 then</strong>, 해당 함수가 문제가 있어서 함수의 실행을 <strong>거부했을 때 실행할 내용은 catch</strong>를 사용하여 이후 로직을 만들어 줄 수 있다.</p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>finally</strong></p>
+
+        <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">test</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nf">a</span><span class="p">()</span>
+  <span class="p">.</span><span class="nf">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Resolve!</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Reject!</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="k">finally</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Done!</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">})</span>
+<span class="p">}</span>
+</code></pre></div>        </div>
+
+        <p>이름 그대로 <strong>마침내</strong>이다. <br />
+finally는 resolve가 실행되던 reject가 실행이 되던간에 항상 가장 마지막에 실행되는 로직이다.</p>
+      </li>
+      <li>
+        <p>try catch 구문 (비동기 패턴)</p>
+
+        <p>then, catch, finally로 작성했던 코드를 비동기 패턴으로 다시 작성해 본다.</p>
+
+        <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="kd">function</span> <span class="nf">test</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="k">await</span> <span class="nf">a</span><span class="p">()</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Resolve!</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Reject!</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Done!</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="nf">test</span><span class="p">()</span>
+</code></pre></div>        </div>
+
+        <p>then과 catch를 try와 catch 구문을 통해 작성이 가능하다.</p>
+
+        <p>error가 발생할 수 있는 구문을 try에 작성하고, error가 발생했을 때는 내용을 catch 구문으로 넘겨서 처리할 수 있도록 한다.<br />
+어떤 상황에서든 항상 마지막에 실행되도록 하는 것은 finally 부분에 작성하여 로직이 실행되도록 한다.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="대기-이행-거부"><strong>대기, 이행, 거부</strong></h3>
+<ul>
+  <li>
+    <p>대기(pending)</p>
+
+    <p>이행하지도, 거부하지도 않은 초기 상태.</p>
+
+    <p>비동기 함수가 실행되기 시작해서 이행이나 거부가 되기 직전까지의 내용을 전부 <strong>대기</strong>라고 한다.</p>
+  </li>
+  <li>
+    <p>이행(fulfilled)</p>
+
+    <p>연산이 성공적으로 완료됨.</p>
+
+    <p>기본적인 로직이 완료되면 resolve 매개변수를 실행한다.<br />
+이것은, 로직이 정상적으로 처리됐다는 것을 의미하기 때문에 resolve 매개변수가 실행된다는 것이 성공적으로 연산이 완료됐다는 <strong>이행</strong>을 의미한다.</p>
+  </li>
+  <li>
+    <p>거부(rejected)</p>
+
+    <p>연산이 실패함.</p>
+
+    <p>비동기 패턴에서 기본적인 로직에 문제가 발생해서 연산이 실패하면 비동기에 대한 거부를 할 수 있고 reject가 실행됨으로 rejcet이 실행됐다는 것은 <strong>거부</strong>를 의미한다.</p>
+  </li>
+</ul>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#vue-js">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">Vue.js</span>
+    </a>
+  
+    
+    <a href="/tags.html#project">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">project</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

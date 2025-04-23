@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 DrawMap: 프로젝트를 마치며. 성장하는 개발자가 되자👩🏻‍💻 &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">DrawMap: 프로젝트를 마치며. 성장하는 개발자가 되자👩🏻‍💻</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">30 Nov 2023</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/project.html">
+          Project
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h2 id="drawmap"><a href="https://github.com/UMC-DRAWMAP/DRAWMAP-FE">DrawMap</a></h2>
+
+<p>자전거 주행으로 그리는 관광 컨텐츠 개발/공유 서비스</p>
+
+<p><img width="310px" alt="드로맵 로고" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/055c1f49-00bc-4778-91e6-c49a3e98bc6f" /></p>
+
+<h3 id="내가-개발한-페이지">내가 개발한 페이지</h3>
+
+<hr />
+
+<p><strong>코스개발페이지</strong></p>
+
+<p><img width="510px" alt="코스개발 페이지1" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/63f6d3f0-b3f9-457d-9d10-6754fb1be8be" />
+<img width="510px" alt="코스개발 페이지2" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/78b3e088-a593-454d-9f0e-3fd74592fdd1" /></p>
+
+<p><strong>마이페이지</strong></p>
+
+<p><img width="510px" alt="마이페이지" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/ff3d6a42-defe-42a5-be93-68b73b5b90b2" />
+<img width="510px" alt="마이페이지 수정" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/e40f6ae2-e0ba-466d-a8df-0bece3c90b08" /></p>
+
+<h2 id="프로젝트를-진행하며">프로젝트를 진행하며</h2>
+
+<h3 id="타-파트와의-소통의-중요성">타 파트와의 소통의 중요성</h3>
+
+<p>드로맵은 팀프로젝트로 진행했기 때문에, 다른 파트 팀원과의 소통또한 중요했다. 타 파트와 소통할 때 어려운점들을 느꼈는데 프로젝트가 종료하고 나서 이렇게 개선하면 될 것 같은 사항을 적어본다.</p>
+
+<ul>
+  <li>
+    <p><strong>상세히 물어보기</strong></p>
+
+    <p>잘 모르겠거나 이해가 안되는 것은 상세하게 물어보자.<br />
+내가 말하는 것 혹은 다른 파트원이 말하는 내용들이 이해가 안 갈수도 있다. 내가 엄청난 관심을 가진 분야가 아니면 기존 지식으로 이해하는 것에 한계가 존재하더라. 따라서, 조그만한 내용도 이해가 안되면 자세히! 풀어서 설명해줄 수 있는지 물어볼 수 있는 용기가 필요하다.</p>
+
+    <p>타 파트의 진행 상황을 상세하게 물어봐야 한다.<br />
+매주 단체 회의를 진행했는데 회의 시간은 항상 30분을 넘기지 않았었다. 당시에는 회의가 빨리 끝나서 마냥 좋았었는데, 끝나고 보니 이 점을 개선해야 했다고 느껴졌다.<br />
+단체 회의때 각 파트의 진행 사항을 이야기 하는데, 단순하게 ‘저희 파트는 ~ 했습니다.’하고 끝났다. 이렇게 간단하게 말하고 끝낼 것이 아니라 진행했던 결과까지 같이 확인하면서 구체적으로 뭘 했는지까지 설명해야 했다.</p>
+
+    <p>예를 들자면, API 명세서를 작성했다고 치자. 그럼 작성한 명세서와 함께 이건 어떤 데이터를 뜻하고 값으로는 뭐가 들어올 수 있는지 등을 말이다..! 그렇다.. API 명세서를 이해하지 못해서 고생했었다.<br />
+회의때, 명세서를 작성했다고 했을 때 같이 보면서 이야기했었더라면.. 명세서를 보고 상세히 물어봤더라면.. 라는 아쉬움이 많이 남는다.</p>
+  </li>
+  <li>
+    <p><strong>잦은 소통의 필요</strong></p>
+
+    <p>다른 파트와 소통을 자주, 많이 해야 한다.<br />
+직접 느끼게 된 계기는 API 명세서였다. 해당 프로젝트는 ‘스웨거(Swagger)’를 사용하였는데, 처음에 이게 뭔지 몰라서 (이때 처음 들었다) 회의를 하면서 찾아본 기억이 난다.<br />
+처음 듣고 사용하게 된 것이라 찾아보면서 사용하느라 애를 먹기도 했지만, 가장 큰 문제는 이게 아니었다.</p>
+
+    <p>백엔드 측에서 작성해둔 데이터 명이 뭘 뜻하는지 알 수가 없다는 것이 가장 큰 문제였다. 어떤 것은 눈치껏 데이터 값을 보고 알 수 있었지만, 도저히 이해되지 않는 데이터들이 존재했다. 또한, 프론트에서 받으려는 데이터의 갯수와 종류가 API 명세서에 적혀있는 것과 달랐다.</p>
+
+    <p>처음에 API를 명세서를 이해하느라 필요없는 시간을 많이 허비했다. 심지어 겨우 이해했다고 생각했지만, 작성한 의도와 다르게 이해를 해버려서 카카오로그인 토큰이 발급되지 않은 줄 알고 헛 고생을 했던 기억이 새록새록하다.</p>
+
+    <p>이런 문제가 발생했을 때, 회의에서만 물어볼게 아니라 메세지라도 지속적으로 물어봤다면 시간을 낭비할 필요가 없었을 것이다.<br />
+그렇게 하지 못했던 것이 프로젝트를 종료하고 나서 가장 아쉬웠던 것으로 기억된다.</p>
+  </li>
+</ul>
+
+<h3 id="같은-파트원과의-소통">같은 파트원과의 소통</h3>
+
+<p>‘드로맵’ 프로젝트를 진행하게 되면서 프론트엔드 팀장을 맡게 되었다. 프론트엔드 파트 회의 진행 및 의견 수렴, 일정 조정, 파트 분배 등을 일을 했다. 프로젝트가 종료된 후, 이렇게 팀장의 역할을 했었다면 더 좋았을 것 같은 점들을 적어본다.</p>
+
+<ul>
+  <li>
+    <p><strong>진행 상황 발표</strong></p>
+
+    <p>각자의 진행 상황은 상세히 발표하자.<br />
+파트 회의를 진행하면서 각자 해와야 했던 일들을 같이 확인하면서 발표를 진행하지 않았던 것이 아쉬운 점으로 기억된다.</p>
+
+    <p>회의 시작 시간 전에 깃허브에 push가 되어있는지 확인하고 회의에 들어갔었다. 그리고 회의때, 간단하게 ‘@@님 ~~하셨죠? 깃허브에 push를 안하셨는데 해주세요’ 정도만 하고 넘어갔었다. 이러면 안됐었다…!ㅜ<br />
+깃허브에 올려있지 않으니, 정확히 했는지 안했는지는 해당 파트원의 말만 믿고 넘어갔었다.<br />
+이렇게 말만으로 넘어갈 것이 아니라, 같이 해당 코드 혹은 결과물을 확인하면서 어떻게 구현했는지 꼭 같이 확인을 해야 했다.<br />
+그래야 우리 파트의 진행 상황을 정확하게 파악할 수 있고, 정기 회의때 정확한 진척 상황을 PM에게 말할 수 있다.<br />
+그러니 다음에는 꼭, 각자의 진행 상황을 발표하고 토의하는 시간을 가져야 겠다고 생각했다.</p>
+  </li>
+  <li>
+    <p><strong>코드 리뷰</strong></p>
+
+    <p>구현한 코드를 팀원들과 리뷰하자.<br />
+나중에야 알게된 것인데, 코드 리뷰는 정말 중요하다. 이론적으로만 리뷰가 필요하다는 것은 알고 있었다. 하지만 이게 왜 필요한 것일지는 느끼지 못했다.<br />
+이번 프로젝트를 진행하면서 왜 리뷰가 필요한지를 느꼈다.</p>
+
+    <p>파트원들과 코드리뷰를 가져야, 다른 사람이 구현한 기능을 사용할 때 원활하게 활용할 수 있다.<br />
+예를 들어 내가 select box를 구현했다. 이에 대한 props로 locataion과 title이 존재한다. 내가 이 props가 뭔지 설명하지 않으면, 다른 파트원이 해당 select box 컴포넌트를 사용할 때 뭘 뜻하는 건지 한번에 이해하기 어려울 것이다.<br />
+해당 컴포넌트는 어떻게 사용하는지 코드리뷰를 하면서 설명했다면, 타 파트원이 구현을 하면서 해당 컴포넌트를 사용할 때 쉽게 이해하고 사용할 수 있을 것이다.</p>
+
+    <p>또한, 코드리뷰를 통해 기능을 개선해 나갈 수 있다.<br />
+본인이 아무리 뛰어난 코딩 실력을 가졌다고 해도, 부족한 점은 존재할 것이다. 내가 작성한 코드를 다른 팀원이 리뷰하면서 더 좋게 발전할 수 있는 사항을 찾아줄 수 있다. 또한, 내가 이상하게 혹은 잘 못 작성한 것들도 찾아 수정할 수 있을 것이다.<br />
+항상 코딩을 하면서 느낀 것이지만, 내가 작성한 것은 잘못된 점을 찾기 어렵다. 그렇기에 제3자에게 리뷰를 받으면서 개선사항을 찾는 것이 중요하다고 생각한다.</p>
+
+    <p>프론트엔드 팀장을 맡으면서 확실하게 짚고 넘어가거나 프로젝트의 성장을 위해 이끌어나가지 못한 것 같아서 아쉽다.<br />
+위에 작성한 것처럼 했더라면, 일의 진행도 원활했을 것이고 코드리뷰를 통해 피드백을 받아 수정해나가면서 보다 완성도가 높은 프로젝트가 만들어질 수 있었을 것이라고 생각한다.</p>
+  </li>
+</ul>
+
+<h2 id="프로젝트를-종료하며">프로젝트를 종료하며</h2>
+
+<p>여러모로 아쉬움이 많이 남는 프로젝트다.<br />
+첫 시작부터 일정이 많이 밀린채로 시작했고, 종료 또한 완전한 완성이 아닌 상태에서 종료하게 되었다. 그래서 정말 많은 아쉬움이 남는 프로젝트인 것 같다.<br />
+처음으로 프로젝트의 프론트엔드 파트 팀장을 맡게 되면서 팀장의 역할을 제대로 하지 못한 것 같아, 같은 파트원들에게도 미안함이 든다. 더 잘 챙기고 이끌어 나갔더라면 더 좋은 결과물을 만들어 낼 수 있지 않았을까 생각이 든다.</p>
+
+<p>그리고 무언가 불만사항이 있다면, 나는 그 불만사항을 해결하기 위해서 노력하였는가? 혹은 무조건 내가 다 수습하려고만 하지 않았는가?를 생각해야 할 것 같다.<br />
+내가 무조건 다 수습하는 것도 좋지 않고, 불만만 토로하고 해결을 위해 노력하지 않는 것도 좋지 않다는 것을 느꼈다.<br />
+혼자서 할 것이 아니라 이건 <strong>‘팀’</strong> 프로젝트니까 <strong>같이</strong> 해결해 나가고, 소통을 통해 <strong>같이</strong> 서로의 문제점을 개선해나가는 것이 중요한 것 같다.</p>
+
+<p>여러모로 아쉬움은 많이 남은 프로젝트였지만, 해당 프로젝트를 진행하면서 React의 활용 능력이나 서버와의 통신, Kakao API를 활용하는 등의 능력이 많이 향상됐다는 것을 느낄 수 있는 프로젝트였다.<br />
+예전에 Kakao API를 연결한다고 애를 많이 먹었는데.. 이번에는 내가 생각한 것 보다 굉장히 빠르게 기능을 구현할 수 있었다.<br />
+나의 성장을 확인할 수 있었던 프로젝트였다.</p>
+
+<p>다음번에는 좀 더 성장하여 이번에 아쉬웠던 점들을 개선하여 프로젝트를 진행하고 싶다. 성장하는 개발자가 되자.</p>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#drawmap">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">DrawMap</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

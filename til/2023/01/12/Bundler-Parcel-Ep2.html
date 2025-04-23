@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 Bundler: Parcel Bundler Ep.2 &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">Bundler: Parcel Bundler Ep.2</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">12 Jan 2023</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h2 id="babel"><strong>babel</strong></h2>
+<hr />
+
+<p>자바스크립트의 표준은 ECMA Script라고 하며 간단하게 ES라고 부른다.
+이게 2016년에 새로 나왔는데 ES6라고 부른다. 2015년을 기준으로 이전에 사용했던 것은 ES5 혹은 ES4이다. <br />
+우리가 요즘 사용하는 것들은  ES6, ES7, ES8의 최신의 문법들이다.
+이런 최신의 문법들은 구형 브라우저에서 동작하지 않을 수 있다.</p>
+
+<p>그래서 우리는 최신의 자바스크립트 코드를 babel을 통해서 구형 브라우저에서도 동작할 수 있는 ES5로 변환 시켜줄 수 있다.<br />
+변환을 <strong>컴파일</strong>이라고도 부르며 babel을 <strong>컴파일러</strong>라고 부른다.</p>
+
+<ul>
+  <li>
+    <p>babel 설치하기</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 두가지 패키지 설치</span>
+npm i <span class="nt">-D</span> @babel/core @babel/preset-env
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>.babelrc.js 파일 생성</p>
+
+    <p>구형 브라우저로 변환하는 코드 작성</p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">presets</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">@babel/preset-env</span><span class="dl">"</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+
+    <p>이제부터 우리가 작성하는 자바스크립트는 babel을 통해서 ES5의 문법으로 변환이 되어 구형 브라우저에서도 동작을 하게 된다.</p>
+  </li>
+  <li>
+    <p>package.json, browserslist 옵션 추가하기</p>
+
+    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"browserslist"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"&gt; 1%"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last 2 versions"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span></code></pre></div>    </div>
+
+    <p>기존에 postcss를 적용한 적이 있다면, 해당 옵션이 잘 적혀있는지 확인만 하고 넘어가면 된다.<br />
+작성한 적이 없다면 해당 내용 추가 작성을 해준다.</p>
+  </li>
+  <li>
+    <p>오류 없이 잘 작동하는지 확인하기 npm run dev</p>
+  </li>
+</ul>
+
+<h3 id="비동기-문법-동작하게-하기"><strong>비동기 문법 동작하게 하기</strong></h3>
+
+<ul>
+  <li>
+    <p>비동기 함수 만들기</p>
+
+    <p>함수 앞에 async를 붙여 비동기 함수로 만들어준다.</p>
+
+    <p>async를 통해서 test라는 이름의 비동기 함수를 만들었고 내부에서 await 키워드를 통해 실제로 무엇인가를 기다리는(promise) 내용을 만들었다.</p>
+  </li>
+  <li>
+    <p>regeneratorRuntime is not defined 에러가 발생했다면</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm i <span class="nt">-D</span> @babel/plugin-transform-runtime
+</code></pre></div>    </div>
+
+    <ul>
+      <li>
+        <p>.babelrc.js</p>
+
+        <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">presets</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">@babel/preset-env</span><span class="dl">"</span><span class="p">],</span>
+  <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">[</span><span class="dl">"</span><span class="s2">@babel/plugin-transform-runtime</span><span class="dl">"</span><span class="p">]</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>        </div>
+        <p>해당 플러그인을 통해서 async, await가 동작하게 된다.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="cli"><strong>CLI</strong></h2>
+<hr />
+
+<p>구글에 parcel 검색 후, parcel 한국어판에 접속하면 해당 내용을 확인할 수 있다.</p>
+
+<p><a href="https://ko.parceljs.org/cli.html">🖥 커맨드 라인 인터페이스(CLI) Link</a></p>
+
+<p><strong>CLI (Comman Line Interface)</strong></p>
+
+<p>대표적으로 터미널에서 어떤 글자에 해당하는 명령어로 여러 내용들을 실행한다. npm i로 패키지 설치라던가 git으로 버전관리라던가. 이런 것들을 CLI라고 부른다.</p>
+
+<p>위 문서는 parcel bundler를 통해서 CLI로 할 수 있는 여러가지 명령어들을 정리해둔 것이다.</p>
+
+<h3 id="명령어"><strong>명령어</strong></h3>
+<ul>
+  <li>
+    <p>Serve</p>
+
+    <p>개발용 명령어이다. 개발용 서버를 시작한다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>parcel index.html
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Build</p>
+
+    <p>제품용 명령어이다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>parcel build index.html
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="옵션"><strong>옵션</strong></h3>
+
+<ul>
+  <li>
+    <p>결과물 디렉토리</p>
+
+    <p>기본값은 dist 폴더이다.<br />
+dist 폴더 이름을 다른 이름으로 변경하고 싶다면 아래와 같이 명령어를 실행한다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>parcel build entry.js <span class="nt">--out-dir</span> build/output
+  
+<span class="c"># entry.js == index.html</span>
+<span class="c"># build/output =&gt; dist를 대신하는 폴더 구조. ouput이 변경한 이름</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>포트 번호</p>
+
+    <p>기본값은 1234이다.<br />
+포트 번호를 변경하고 싶다면 serve 명령어를 통해 변경한다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>parcel serve entry.js <span class="nt">--port</span> 1111
+  
+<span class="c">### 1111 -&gt; 변경하고자 하는 포트 번호</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>브라우저에서 열기</p>
+
+    <p>해당 옵션은 npm run dev를 실행했을 때 직접 브라우저에서 포트번호로 이동을 해줘야 했다. 해당 옵션을 사용하면 우리가 따로 열어줄 필요없이 자동으로 브라우저가 열린다.</p>
+
+    <p>기본값을 비활성 되어있다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>parcel entry.js <span class="nt">--open</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>빠른 모듈 교체의 비활성화</p>
+
+    <p>기본값은 HMR 활성화이다.</p>
+
+    <p>HMR은 빠른 모듈 교체(Hot Module Replacement)로, 런타임에 페이지 새로고침 없이 수정된 내용을 자동으로 갱신하는 방식을 말한다.<br />
+실제 프로젝트에서 어떤 코드를 고치고 저장하면 바로 브라우저에 반영이 되는데 이게 HMR이다.<br />
+해당 옵션을 비활성화 하고 싶다면 다음과 같이 명령어를 작성한다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>parcel entry.js <span class="nt">--no-hmr</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>파일시스템 캐시 비활성화</p>
+
+    <p>기본값을 캐시 활성이다.</p>
+
+    <p>캐시활성이 되어 있어서 우리가 개발서버를 열거나 제품화를 시킬때 이미 캐시가 되어져 있는 내용때문에 훨씬 빠르게 내용이 처리될 수 있다.<br />
+다만, 가끔씩 캐시 활성으로 인해 문제가 발생하는 경우가 있다. 그럴때 해당 옵션을 사용하여 파일시스템 캐시를 비활성화 시켜준다.</p>
+
+    <p>캐시 비활성화로 속도는 저하될 수 있지만 매번 새로운 내용으로 결과를 만들어 낼 수 있다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>parcel build entry.js <span class="nt">--no-cache</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="옵션-변경-적용해보기"><strong>옵션 변경 적용해보기</strong></h3>
+
+<ul>
+  <li>
+    <p>포트 번호 바꾸기</p>
+
+    <p>package.json 파일</p>
+
+    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"dev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"parcel index.html --port 9876"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"build"</span><span class="p">:</span><span class="w"> </span><span class="s2">"parcel build index.html"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>주의!</p>
+
+    <p>구성옵션 변경은 꼭 필요에 따라서만 사용하는 것이 좋다.<br />
+parcel bundler는 개발자가 따로 구성옵션을 제공하지 않고 자동으로 기본적인 내용을 동작 시키는 것이 핵심이기 때문에 필요하지 않다면 구성 옵션 변경은 자제하자.</p>
+  </li>
+</ul>
+
+<h2 id="저장소-업로드"><strong>저장소 업로드</strong></h2>
+<hr />
+
+<ul>
+  <li>
+    <p>.gitignore 파일 생성</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.cache
+.DS_Store
+node_modules
+dist
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>git(저장소) 업로드</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 버전관리 초기화</span>
+git init
+  
+<span class="c"># 변경 내용 확인</span>
+git status
+  
+<span class="c"># 버전관리 시작</span>
+git add <span class="nb">.</span>
+  
+<span class="c"># 버전 생성</span>
+git commit <span class="nt">-m</span> <span class="s2">"내용"</span>
+  
+<span class="c"># 버전 생성 확인</span>
+git log
+<span class="c"># 빠져나갈때는 Q키</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#bundler">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">Bundler</span>
+    </a>
+  
+    
+    <a href="/tags.html#parcel">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">Parcel</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

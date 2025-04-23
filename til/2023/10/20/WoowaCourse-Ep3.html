@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 npm ERR! EACCES: permission denied, mkdir <경로> &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">npm ERR! EACCES: permission denied, mkdir <경로></h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">20 Oct 2023</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <p><a href="https://soi-ha.github.io/til/project/2023/10/19/WoowaCourse-Ep2.html">지난 글</a>에서 node.js 버전 업그레이드 오류를 해결했으나, 이번에는 <code class="language-plaintext highlighter-rouge">npm i</code>가 작동하지 않는 에러가 발생했다.. 이 오류 해결하는데 한시간 반은 걸린 것 같은데.. 아무리 서칭해서 적용해도 해결되지 않아서… ㅎ흙흑 겨우 해결방법 글을 발견하여 에러를 해결했다!! 미래의 내가 같은 에러를 마주치면 그때 쉽게 해결할 수 있도록 글을 적어본다..</p>
+
+<p><strong>문제의 에러 화면</strong></p>
+
+<p><img width="491" alt="스크린샷 2023-10-20 02 08 56" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/e5233ab8-70b7-4232-aa7f-b75dde3269a6" /></p>
+
+<p>어떤 에러인지 확인해보자면 해당 파일에 권한이 없음! 과 파일 이미 존재하니까 삭제하고 다시 해보셈! 그리고 <code class="language-plaintext highlighter-rouge">--force</code> 사용해보셈! 인걸로 나는 이해했다.</p>
+
+<p><img width="491" alt="스크린샷 2023-10-20 01 28 08" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/3d4df3c0-3c68-4f46-92f3-c878d7237e2e" /></p>
+
+<p>그래서 <code class="language-plaintext highlighter-rouge">--force</code>를 붙여서 해봤다. (대부분 이렇게 하면 해결된다고 하더라) 응, 근데 난 해결이 안됐다 ^^! 그래서 파일도 삭제해봤지만.. 해결이 안됐다.</p>
+
+<p>그러던 중 발견한 정말 나의 <a href="https://helloinyong.tistory.com/191">구원글</a>..ㅜㅜㅜ 정말 친절히 작성해주셔서 덕분에 해결할 수 있었다.
+<em>(자고 싶었는데 해결 안하면 도저히 잠이 안 올 것 같아서 해결방법을 찾던 나에게 자도 된다고 선언해준 글..)</em></p>
+
+<h3 id="permission-denied-에러-해결">permission denied 에러 해결</h3>
+
+<hr />
+
+<h4 id="원인">원인</h4>
+
+<p>해당 에러가 발생한 이유는 이거였다. “접속중인 local 계정이 npm 설치 경로에 권한을 가지고 있지 않다.”</p>
+
+<p>아마 추측하기로는 다른 에러 해결한다고 sudo를 좀 많이(?)사용한 것 같은데 그래서 이 에러가 발생한 것 같다. (해당 글에서도 node를 sudo를 사용하여 설치해서 에러가 발생할 가능성이 높다고 했다.)</p>
+
+<h4 id="해결방법">해결방법</h4>
+
+<p>해당 에러를 해결하는 방법으로 택한 것은 “<code class="language-plaintext highlighter-rouge">npm install -g</code> 로 설치되는 디렉토리 경로를 현재 계정의 home directory로 변경” 하는 것이다. (참고한 글의 분이 선택한 방법이다!)</p>
+
+<ul>
+  <li>
+    <p>npm global directory 생성</p>
+
+    <p><code class="language-plaintext highlighter-rouge">mkdir ~/.npm-global</code></p>
+  </li>
+  <li>
+    <p>생성한 디렉토리에 npm config set 설정</p>
+
+    <p><code class="language-plaintext highlighter-rouge">npm config set prefix '~/.npm-global'</code></p>
+  </li>
+  <li>
+    <p>‘.npm-global’ 파일에 library path 설정 추가</p>
+
+    <p><code class="language-plaintext highlighter-rouge">nano ~/.profile</code></p>
+
+    <p>해당 명령어를 입력하면 편집기가 켜지는데, 파일에 다음과 같은 코드를 추가한다.<br />
+<code class="language-plaintext highlighter-rouge">export PATH=~/.npm-global/bin:$PATH</code></p>
+  </li>
+  <li>
+    <p>‘.npm-global’ 파일 설정 적용</p>
+
+    <p><code class="language-plaintext highlighter-rouge">source ~/.profile</code></p>
+  </li>
+</ul>
+
+<p><img width="491" alt="스크린샷 2023-10-20 02 09 23" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/d1903e68-ee71-42fe-80b6-bafdb5b12414" /></p>
+
+<p>위 단계를 모두 한 후, npm 명령어를 실행했는데도 에러가 계속 발생한다면?</p>
+
+<ul>
+  <li>
+    <p>default directory에 대한 권한을 다시 한번 변경</p>
+
+    <p><code class="language-plaintext highlighter-rouge">sudo chown -R $USER:$GROUP ~/.npm</code></p>
+  </li>
+</ul>
+
+<p>이 모든 명령어들을 수행 한 후, <code class="language-plaintext highlighter-rouge">npm i</code>를 실행했더니…..!!!! 설치가 됐다 <del>흠엄ㄴ럼ㅇ러구ㅜㅜ</del></p>
+
+<p><img width="491" alt="스크린샷 2023-10-20 02 09 06" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/c9c167c7-6d1f-4bcb-b09d-2f58e9dc554f" /></p>
+
+<p>참고로 나의 경우에는 default directory 권한을 변경하는 것까지 수행한 후에 에러가 해결 됐다..</p>
+
+<h3 id="마치며">마치며</h3>
+
+<hr />
+
+<p>정말… 험난했다.. 하.. 그래도 해결하니 기분 좋게 잘 수 있겠더라!ㅎㅎ 이런 맛에 코딩하는 거지… 항상 느끼는 거지만 코딩은 수학문제 같달까… 이 정답을 맞췄을 때의 쾌감.. 내가 이래서 수학을 좋아했지.. 이래서 코딩이 좋은가 보다..헿</p>
+
+<blockquote>
+  <p>참고<br />
+<a href="https://helloinyong.tistory.com/191">[2019.09.01] 오늘의 TIL - npm install 중, permission denied 에러 해결방법</a></p>
+</blockquote>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#woowacourse">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">WoowaCourse</span>
+    </a>
+  
+    
+    <a href="/tags.html#node-js">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">Node.js</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

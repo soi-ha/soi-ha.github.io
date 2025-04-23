@@ -1,0 +1,2585 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://soi-ha.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://soi-ha.github.io/" rel="alternate" type="text/html" /><updated>2025-04-23T07:38:13+00:00</updated><id>https://soi-ha.github.io/feed.xml</id><title type="html">Soha</title><subtitle>프론트엔드 개발자가 되기 위한 발걸음 기록</subtitle><author><name>soha</name></author><entry><title type="html">디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)</title><link href="https://soi-ha.github.io/til/2025/04/20/Creating-A-Discord-Music-Bot.html" rel="alternate" type="text/html" title="디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)" /><published>2025-04-20T00:00:00+00:00</published><updated>2025-04-20T00:00:00+00:00</updated><id>https://soi-ha.github.io/til/2025/04/20/Creating-A-Discord-Music-Bot</id><content type="html" xml:base="https://soi-ha.github.io/til/2025/04/20/Creating-A-Discord-Music-Bot.html"><![CDATA[<h2 id="나는-어쩌다가-디스코드-노래봇을-만들게-되었는가">나는 어쩌다가 디스코드 노래봇을 만들게 되었는가…</h2>
+
+<p>때는 4월 17일 20시.. 공부를 하기 위해 책상에 앉아 디스코드에 접속하여 서버에서 기존에 사용하던 노래봇을 실행하려 했는데.. 유튜브 검색이 제대로 작동하지 않았다. 그래서 나는 다른 노래봇을 새롭게 불러와 서버에 실행했지만? 또 안됐다. 그렇게 한국어를 지원하는 어느정도 인지도가 있는 노래봇만 6개를 실행해봤다. 근데, 내가 원하는 유튜브로 검색하여 실행이 제대로 돌아가지 않았다.</p>
+
+<p><img width="519" alt="디스코드 노래봇 입장 채팅" src="https://github.com/user-attachments/assets/7ebbd883-0215-4ab8-a9c8-1f4bd091c52b" /></p>
+
+<p>원하는대로 돌아가지 않아 약간 빡친(?) 나는, 너가 이기나 내가 이기나 해보자는 심보로 디스코드 노래봇을 어떻게 만드는지 찾아봤다. 어렵지 않으면 내가 만드는게 더 빠를 것 같다는 생각이 들었다. 오, 근데 간단하게 찾아보니 그리 어렵지 않고 주로 JS 혹은 Python으로 만드는 것 같았다. 직접 만드는게 진짜 더 좋겠는데…? 라는 생각에, 나는 계획에도 없던 디스코드 노래봇을 만들게 되었다 ^^!</p>
+
+<h2 id="-나만의-디스코드-노래봇-대하-만들기">🦐 나만의 디스코드 노래봇, 대하 만들기</h2>
+
+<p>나의 디스코드 노래봇의 이름은 ‘대하’이다. 이름이 대하인 이유는.. 내 닉네임 ‘소하’에서 ‘소’를 작을 소로 보고 큰 ‘대’로 바꿔 노래봇의 이름을 대하로 지어줬다. 나의 분신같은 친구니까. ^~^</p>
+
+<p>내가 만들 디스코드 노래봇은 Node.js 환경에서 ‘discord.js’와 관련된 라이브러리를 활용하여 구현했다. 코드가 복잡한 것 하나 없이 매우 간단하게 1시간이면 만들 수 있다.</p>
+
+<h2 id="-목표">🎯 목표</h2>
+
+<p>일단 내가 만들 디스코드 노래봇의 목표는 다음과 같다.</p>
+
+<ul>
+  <li>디스코드 서버에서 명령어를 입력하면 <strong>유튜브에서 노래 검색 및 재생</strong> &lt;- 유튜브 기반 검색과 재생이 매우 중요!!</li>
+  <li>기본적인 명령어: <code class="language-plaintext highlighter-rouge">/재생</code>, <code class="language-plaintext highlighter-rouge">/스킵</code>, <code class="language-plaintext highlighter-rouge">/대기열</code>, <code class="language-plaintext highlighter-rouge">/종료</code></li>
+  <li>봇은 지정된 서버에서만 사용 가능 (내가 존재하는 서버에서만 사용할 것이기 때문)</li>
+</ul>
+
+<h2 id="️-준비물">🛠️ 준비물</h2>
+
+<ul>
+  <li>VSCode</li>
+  <li>Node.js (LTS 버전 권장)</li>
+  <li>Discord 계정 및 디스코드 개발자 포털에서 봇 생성 후 토큰 발급</li>
+  <li>FFmpeg 설치</li>
+</ul>
+
+<h2 id="-노래봇을-만들어-보자">🔧 노래봇을 만들어 보자!</h2>
+
+<h3 id="1-디스코드-개발자-포털-설정">1. 디스코드 개발자 포털 설정</h3>
+
+<p>디스코드 개발자 포털 설정은 어렵지 않다! 아래 이미지와 글을 잘 읽고 따라오면 쉽게 생성할 수 있다.</p>
+
+<h4 id="1-새-애플리케이션-생성">1. 새 애플리케이션 생성</h4>
+
+<p><a href="https://discord.com/developers/applications">디스코드 개발자 포털</a>로 이동하여 로그인을 하고, 새 애플리케이션 생성 버튼을 클릭한다.</p>
+
+<p><img width="812" alt="애플리케이션 생성" src="https://github.com/user-attachments/assets/ae2d41cc-30fa-4b76-b304-bed69bd989ec" /></p>
+
+<p>애플리케이션의 이름을 작성하고 Create 버튼을 클릭하면,</p>
+
+<p><img width="812" alt="애플리케이션 이름 작성" src="https://github.com/user-attachments/assets/3f58d043-e641-429a-a3fe-d5163bfa02cb" /></p>
+
+<p>애플리케이션 생성이 완료된다.</p>
+
+<p><img width="812" alt="애플리케이션 생성 완료" src="https://github.com/user-attachments/assets/f28e097e-a775-42c7-8798-ff6bd256cb42" /></p>
+
+<p>Applicaion ID와 Public Key가 생성된 것을 확인할 수 있다. (이 두가지 정보는 이번 디스코드 노래봇 생성에는 사용되지 않음.)</p>
+
+<h4 id="2-bot-token-생성">2. Bot Token 생성</h4>
+
+<p>위 이미지에서 왼쪽 “Bot”을 클릭하고 “Add Bot” 클릭하면 Bot이 생성된다.<br />
+그리고 Bot 생성하고 Reset Token 버턴을 클릭하면 토큰이 만들어진다.<br />
+이 토큰(Token)을 복사하여 저장해둔다. 혹은 <code class="language-plaintext highlighter-rouge">.env</code> 파일에 보관해두면 된다. (이건 뒤에서 또 설명)</p>
+
+<p><img width="812" alt="봇 토큰" src="https://github.com/user-attachments/assets/2dc422c8-4e94-4013-b2b6-50e65693c48c" /></p>
+
+<h4 id="3-message-content-intent-옵션">3. “MESSAGE CONTENT INTENT” 옵션</h4>
+
+<p>Bot 섹션(Bot 페이지)에서 <strong>Privileged Gateway Intents</strong> 소제목 아래의 “MESSAGE CONTENT INTENT” 토글을 켜준다.</p>
+
+<p><img width="812" alt="message content intent 옵션" src="https://github.com/user-attachments/assets/8d71367e-f023-4ed9-9924-af411fe1e442" /></p>
+
+<p>Message Content Intent는 봇에게 Prefix 명령어(!play, !stop 등/messageCreate) 실행 시, message.content를 받으려면 켜야 한다. 단, 해당 옵션은 100개 이상 서버에 배포하려면 검증 및 승인 필요하다.</p>
+
+<p>근데 여기서 잠깐! ✋ 슬래시 커맨드(/play)만 쓴다면, 이 Intent 없이도 명령 입력값을 받을 수 있다.</p>
+
+<p>위 설명 방식은 messageCreate를 사용하지만 슬래시 커맨드를 사용한다면 interactionCreate를 사용하여 디스코드 내에서 자동완성 및 도움말을 제공할 수 있다. 단, messageCreate를 사용하여 구현하는 방식보다는 조금 더 만들기 복잡하다.</p>
+
+<ul>
+  <li>
+    <p><strong>Prefix vs Slash 커맨드 비교</strong></p>
+
+    <table>
+      <tbody>
+        <tr>
+          <td>구분</td>
+          <td>Prefix (messageCreate)</td>
+          <td>Slash (interactionCreate)</td>
+        </tr>
+        <tr>
+          <td>구현 난이도</td>
+          <td>간단 (문자열 파싱)</td>
+          <td>배포 스크립트 추가 필요</td>
+        </tr>
+        <tr>
+          <td>사용자 UX</td>
+          <td>접두사+명령어 암기 필요</td>
+          <td>자동완성·도움말 제공 ✨</td>
+        </tr>
+        <tr>
+          <td>Intent 필요 여부</td>
+          <td>Message Content Intent 필요</td>
+          <td>불필요</td>
+        </tr>
+        <tr>
+          <td>서버 확장성</td>
+          <td>100개 이상 시 Intent 승인 필요</td>
+          <td>승인 절차 없이 배포 가능</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Slach 커맨드를 사용하는 것이 사용성을 고려했을 때 더 좋기 때문에.. 이건 추후 해당 방법으로 시도해보도록 하겠다! (일단 이번 글에서는 빠르게 구현이 목적이기 때문에 messageCreate를 사용)</p>
+  </li>
+</ul>
+
+<h4 id="4-bot을-서버로-초대하기-위한-url-생성">4. Bot을 서버로 초대하기 위한 URL 생성</h4>
+
+<p>OAuth2 섹션에 접속하여 아래 내용들을 켜준다.</p>
+
+<ul>
+  <li>SCOPES: <code class="language-plaintext highlighter-rouge">bot</code></li>
+  <li>BOT PERMISSIONS:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">Connect</code></li>
+      <li><code class="language-plaintext highlighter-rouge">Speak</code></li>
+      <li><code class="language-plaintext highlighter-rouge">Send Messages</code></li>
+      <li><code class="language-plaintext highlighter-rouge">Embed Links</code></li>
+    </ul>
+  </li>
+</ul>
+
+<p>URL 생성 범위를 Bot으로 설정</p>
+
+<p><img width="812" alt="OAuth2 bot 클릭" src="https://github.com/user-attachments/assets/2538966d-b578-4cbd-872e-33febeb28093" /></p>
+
+<p>permisson 설정</p>
+
+<p><img width="812" alt="OAuth2 bot permission 선택" src="https://github.com/user-attachments/assets/bd7f7243-32ab-4d45-bd9b-24ac02e6715c" /></p>
+
+<p>위 설정들을 모두 완료했다면 생성된 ULR에 접속하여, 봇을 사용할 서버에 초대하면 끝!
+<img width="812" alt="OAuth2 bot 초대 링크 복사" src="https://github.com/user-attachments/assets/aeb638ec-2924-457c-8c74-d195d6608150" /></p>
+
+<p>그러면 이렇게 디스코드 개발자 설정은 모두 완료되었다. 이제는 VScode를 실행하여 필요 패키지를 설치하고 코드를 작성하면 끝이다.</p>
+
+<h3 id="2-프로젝트-초기-설정">2. 프로젝트 초기 설정</h3>
+
+<p>폴더를 생성하고 프로젝트를 초기화한다.<br />
+폴더 이름은 본인이 원하는 것으로 아무거나 해도 된다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm init <span class="nt">-y</span>
+</code></pre></div></div>
+
+<h3 id="3-ffmpeg-설치">3. FFmpeg 설치</h3>
+
+<p>FFmpeg는 YouTube 스트림을 디스코드에서 재생 가능한 오디오 포맷(Opus)으로 변환해준다. 설치하지 않을 경우 음성 스트림 변환 과정에서 에러가 발생하기 때문에 꼭 설치해야 한다!</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>ffmpeg
+</code></pre></div></div>
+
+<h3 id="4-필요-패키지-설치">4. 필요 패키지 설치</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install </span>discord.js @discordjs/voice @distube/ytdl-core yt-search dotenv @discordjs/opus
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">discord.js</code>: 디스코드 API</li>
+  <li><code class="language-plaintext highlighter-rouge">@discordjs/voice</code>: 음성 채널 재생</li>
+  <li><code class="language-plaintext highlighter-rouge">@distube/ytdl-core</code>: YouTube 스트림 추출</li>
+  <li><code class="language-plaintext highlighter-rouge">yt-search</code>: 키워드 기반 검색</li>
+  <li><code class="language-plaintext highlighter-rouge">dotenv</code>: 환경변수 관리</li>
+  <li><code class="language-plaintext highlighter-rouge">@discordjs/opus</code>: Opus 인코딩</li>
+</ul>
+
+<p>여기서 <code class="language-plaintext highlighter-rouge">@discordjs/opus</code>는 우리 코드에서 직접적으로 호출되지는 않는다. 그럼에도 설치를 꼭! 해줘야 한다. 디스코드 음성은 Opus 코덱을 사용해서 전송된다. <code class="language-plaintext highlighter-rouge">@discordjs/voice</code> 패키지는 내부적으로 Opus 스트림을 주고받기 때문에, Node.js 환경에서 Opus 처리를 해 줄 라이브러리가 반드시 있어야 한다. 이때, <code class="language-plaintext highlighter-rouge">@discordjs/opus</code>가 사용된다. 우리가 코드에서 직접 호출하지 않지만 <code class="language-plaintext highlighter-rouge">@discordjs/voice</code>가 자동으로 감지해서 사용한다.</p>
+
+<p>그렇기에 우리 코드에서 사용하지 않는다고 해당 패키지를 삭제해서는 안된다!</p>
+
+<h3 id="5-환경변수-설정-env">5. 환경변수 설정 (.env)</h3>
+
+<pre><code class="language-env">DISCORD_TOKEN=여기에_봇_토큰을_붙여넣기
+PREFIX=/
+GUILD_ID=여기에_서버_ID_입력
+</code></pre>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">DISCORD_TOKEN</code>: 위 애플리케이션 생성 단계에서 2. Bot Token 생성에서 얻은 토큰을 넣어주면 된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">GUILD_ID</code>: 봇을 허용할 서버 ID. 나의 경우에는 사용할 서버를 제한하는 조건을 넣을 것이기 때문에 해당 서버의 ID가 필요했다. (본인 프로필 설정 - 고급 - 개발자 모드 키고 사용할 서버 우클릭 - 서버 ID 복사하기 클릭)</li>
+  <li><code class="language-plaintext highlighter-rouge">PREFIX</code>: 명령어 접두사, 나는 <code class="language-plaintext highlighter-rouge">/</code> 로 사용했다. 다른 접두사도 사용해도 된다. (ex, <code class="language-plaintext highlighter-rouge">!</code>, <code class="language-plaintext highlighter-rouge">?</code> 등)</li>
+</ul>
+
+<h3 id="5-gitignore-설정-github에-올릴-경우에만">5. gitignore 설정 (Github에 올릴 경우에만)</h3>
+
+<pre><code class="language-gitignore">node_modules/
+.env
+</code></pre>
+
+<p>나의 경우에는 Github에 해당 코드를 업로드할 것이기 때문에 gitignore 설정을 해줬다. env 파일의 경우에는 다른 사람에게 공유되면 안되는 중요한 정보들이 들어있기 때문에 Github에 올라가지 않도록 꼭!!!! gitignore에 env 파일을 추가해줘야 한다.</p>
+
+<h3 id="6-indexjs-주요-코드-설명">6. index.js 주요 코드 설명</h3>
+
+<h4 id="1-환경-변수-및-모듈-임포트">1. 환경 변수 및 모듈 임포트</h4>
+
+<p>환경 변수를 로드하고 필요한 모듈을 불러옵니다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">dotenv</span><span class="dl">'</span><span class="p">).</span><span class="nf">config</span><span class="p">();</span> <span class="c1">// .env 불러오기</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">Client</span><span class="p">,</span> <span class="nx">IntentsBitField</span><span class="p">,</span> <span class="nx">EmbedBuilder</span> <span class="p">}</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">discord.js</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">joinVoiceChannel</span><span class="p">,</span> <span class="nx">createAudioPlayer</span><span class="p">,</span> <span class="nx">createAudioResource</span><span class="p">,</span> <span class="nx">AudioPlayerStatus</span> <span class="p">}</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@discordjs/voice</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">ytdl</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@distube/ytdl-core</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">ytSearch</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">yt-search</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h4 id="2-클라이언트-설정">2. 클라이언트 설정</h4>
+
+<p>디스코드 봇 클라이언트를 생성하고, 필요한 인텐트를 설정한다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 클라이언트 생성 (필요한 인텐트 활성화)</span>
+<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Client</span><span class="p">({</span>
+	<span class="na">intents</span><span class="p">:</span> <span class="p">[</span>
+		<span class="nx">IntentsBitField</span><span class="p">.</span><span class="nx">Flags</span><span class="p">.</span><span class="nx">Guilds</span><span class="p">,</span> <span class="c1">// 서버 접근</span>
+		<span class="nx">IntentsBitField</span><span class="p">.</span><span class="nx">Flags</span><span class="p">.</span><span class="nx">GuildMessages</span><span class="p">,</span> <span class="c1">// 메시지 읽기</span>
+		<span class="nx">IntentsBitField</span><span class="p">.</span><span class="nx">Flags</span><span class="p">.</span><span class="nx">MessageContent</span><span class="p">,</span> <span class="c1">// 메시지 내용</span>
+		<span class="nx">IntentsBitField</span><span class="p">.</span><span class="nx">Flags</span><span class="p">.</span><span class="nx">GuildVoiceStates</span><span class="p">,</span> <span class="c1">// 음성 채널 상태</span>
+	<span class="p">],</span>
+<span class="p">});</span>
+
+<span class="kd">const</span> <span class="nx">prefix</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PREFIX</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">GUILD_ID</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">GUILD_ID</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">queueMap</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Map</span><span class="p">();</span> <span class="c1">// 서버별 노래 대기열 저장</span>
+</code></pre></div></div>
+
+<h4 id="3-봇-로그인-이벤트">3. 봇 로그인 이벤트</h4>
+
+<p>봇이 정상적으로 로그인되면 터미널에 메시지를 출력한다. 만약 터미널에 해당 메시지가 출력되지 않으면 정상적으로 봇이 디스코드에서 작동하지 않을 것이다! 그렇기에 해당 코드를 추가하는 것을 추천한다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 봇 로그인</span>
+<span class="nx">client</span><span class="p">.</span><span class="nf">once</span><span class="p">(</span><span class="dl">'</span><span class="s1">ready</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+	<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`✅ 로그인 완료! </span><span class="p">${</span><span class="nx">client</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">tag</span><span class="p">}</span><span class="s2"> (명령어 접두사: </span><span class="p">${</span><span class="nx">prefix</span><span class="p">}</span><span class="s2">)`</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h4 id="4-노래-재생-함수-playsong">4. 노래 재생 함수 (<code class="language-plaintext highlighter-rouge">playSong</code>)</h4>
+
+<p>실제 음악 스트림을 생성하고 재생하며, 곡이 끝나면 자동으로 다음 곡을 재생한다.</p>
+
+<ul>
+  <li>노래를 정상적으로 재생할 경우</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 곡 재생 함수</span>
+<span class="k">async</span> <span class="kd">function</span> <span class="nf">playSong</span><span class="p">(</span><span class="nx">guildId</span><span class="p">,</span> <span class="nx">song</span><span class="p">)</span> <span class="p">{</span>
+	<span class="kd">const</span> <span class="nx">queue</span> <span class="o">=</span> <span class="nx">queueMap</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="nx">guildId</span><span class="p">);</span>
+	<span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">song</span><span class="p">)</span> <span class="p">{</span>
+		<span class="nx">queue</span><span class="p">.</span><span class="nx">connection</span><span class="p">.</span><span class="nf">destroy</span><span class="p">();</span>
+		<span class="nx">queueMap</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">guildId</span><span class="p">);</span>
+		<span class="k">return</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="c1">// 스트림 생성</span>
+	<span class="kd">const</span> <span class="nx">stream</span> <span class="o">=</span> <span class="nf">ytdl</span><span class="p">(</span><span class="nx">song</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span> <span class="p">{</span> <span class="na">filter</span><span class="p">:</span> <span class="dl">'</span><span class="s1">audioonly</span><span class="dl">'</span><span class="p">,</span> <span class="na">highWaterMark</span><span class="p">:</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">25</span> <span class="p">});</span>
+	<span class="kd">const</span> <span class="nx">resource</span> <span class="o">=</span> <span class="nf">createAudioResource</span><span class="p">(</span><span class="nx">stream</span><span class="p">);</span>
+	<span class="nx">queue</span><span class="p">.</span><span class="nx">player</span><span class="p">.</span><span class="nf">play</span><span class="p">(</span><span class="nx">resource</span><span class="p">);</span>
+	<span class="nx">queue</span><span class="p">.</span><span class="nx">connection</span><span class="p">.</span><span class="nf">subscribe</span><span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">player</span><span class="p">);</span>
+
+	<span class="c1">// 텍스트 알림</span>
+	<span class="nx">queue</span><span class="p">.</span><span class="nx">textChannel</span><span class="p">.</span><span class="nf">send</span><span class="p">(</span><span class="s2">`▶️ 재생: 🦐 </span><span class="p">${</span><span class="nx">song</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span><span class="s2"> 🦐`</span><span class="p">);</span>
+
+	<span class="c1">// 노래 종료 후 처리</span>
+	<span class="nx">queue</span><span class="p">.</span><span class="nx">player</span><span class="p">.</span><span class="nf">once</span><span class="p">(</span><span class="nx">AudioPlayerStatus</span><span class="p">.</span><span class="nx">Idle</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+		<span class="nf">playSong</span><span class="p">(</span><span class="nx">guildId</span><span class="p">,</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">songs</span><span class="p">.</span><span class="nf">shift</span><span class="p">());</span>
+	<span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="5-명령어-처리-messagecreate-이벤트">5. 명령어 처리 (<code class="language-plaintext highlighter-rouge">messageCreate</code> 이벤트)</h4>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">/재생</code>: 유튜브 링크나 제목을 통해 음악을 검색 및 재생한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">/스킵</code>: 현재 재생 중인 노래를 건너뛴다.</li>
+  <li><code class="language-plaintext highlighter-rouge">/대기열</code>: 현재 재생을 기다리는 노래 목록을 보여준다.</li>
+  <li><code class="language-plaintext highlighter-rouge">/종료</code>: 음악 재생을 종료하고 봇을 음성 채널에서 내보낸다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 메시지 이벤트</span>
+<span class="nx">client</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">messageCreate</span><span class="dl">'</span><span class="p">,</span> <span class="k">async </span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+	<span class="k">if </span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">author</span><span class="p">.</span><span class="nx">bot</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span> <span class="c1">// 봇의 메시지는 무시</span>
+	<span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">message</span><span class="p">.</span><span class="nx">guild</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span> <span class="c1">// DM 등 무시</span>
+	<span class="k">if </span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">id</span> <span class="o">!==</span> <span class="nx">GUILD_ID</span><span class="p">)</span> <span class="p">{</span>
+		<span class="c1">// 지정 서버 외 사용 제한</span>
+		<span class="k">return</span> <span class="nx">message</span><span class="p">.</span><span class="nf">reply</span><span class="p">(</span><span class="dl">'</span><span class="s1">❌ 이 서버에서는 사용할 수 없어요!</span><span class="dl">'</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">message</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nf">startsWith</span><span class="p">(</span><span class="nx">prefix</span><span class="p">))</span> <span class="k">return</span><span class="p">;</span>
+
+	<span class="c1">// 사용자의 명령어만 추출하는 코드</span>
+	<span class="kd">const</span> <span class="nx">args</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nf">slice</span><span class="p">(</span><span class="nx">prefix</span><span class="p">.</span><span class="nx">length</span><span class="p">).</span><span class="nf">trim</span><span class="p">().</span><span class="nf">split</span><span class="p">(</span><span class="sr">/ +/</span><span class="p">);</span>
+	<span class="kd">const</span> <span class="nx">cmd</span> <span class="o">=</span> <span class="nx">args</span><span class="p">.</span><span class="nf">shift</span><span class="p">();</span>
+
+	<span class="c1">// 재생 명령어: /재생 &lt;키워드 or URL&gt;</span>
+	<span class="k">if </span><span class="p">(</span><span class="nx">cmd</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">재생</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+		<span class="c1">// ... 하단에 세부 코드가 따로 있음.</span>
+	<span class="p">}</span>
+
+	<span class="c1">// 스킵 명령어: /스킵</span>
+	<span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">cmd</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">스킵</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+		<span class="c1">// ... 하단에 세부 코드가 따로 있음.</span>
+	<span class="p">}</span>
+
+	<span class="c1">// 목록 명령어: /대기열</span>
+	<span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">cmd</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">대기열</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+		<span class="c1">// ... 하단에 세부 코드가 따로 있음.</span>
+	<span class="p">}</span>
+
+	<span class="c1">// 종료 명령어: /종료</span>
+	<span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">cmd</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">종료</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+		<span class="c1">// ... 하단에 세부 코드가 따로 있음.</span>
+	<span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>재생</p>
+
+    <ul>
+      <li>노래 제목이나 URL이 없을 경우: ‘⚠️ 노래 제목이나 URL을 입력해주세요!’</li>
+      <li>사용자가 음성 채널에 들어가있지 않을 경우: ‘🎧 먼저 음성 채널에 들어가 주세요!’</li>
+      <li>검색 결과가 없을 경우: ‘😥 검색 결과가 없습니다…’</li>
+      <li>노래가 재생중인 상태일 때, 노래를 대기열에 정상적으로 추가했을 경우: <code class="language-plaintext highlighter-rouge">✅ 🦐 노래 제목🦐 를 대기열에 추가했어요!</code></li>
+    </ul>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if </span><span class="p">(</span><span class="nx">cmd</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">재생</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+	<span class="kd">const</span> <span class="nx">query</span> <span class="o">=</span> <span class="nx">args</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="dl">'</span><span class="s1"> </span><span class="dl">'</span><span class="p">);</span>
+	<span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">query</span><span class="p">)</span> <span class="k">return</span> <span class="nx">message</span><span class="p">.</span><span class="nf">reply</span><span class="p">(</span><span class="dl">'</span><span class="s1">⚠️ 노래 제목이나 URL을 입력해주세요!</span><span class="dl">'</span><span class="p">);</span>
+	<span class="kd">const</span> <span class="nx">voiceChannel</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nx">member</span><span class="p">.</span><span class="nx">voice</span><span class="p">.</span><span class="nx">channel</span><span class="p">;</span>
+	<span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">voiceChannel</span><span class="p">)</span> <span class="k">return</span> <span class="nx">message</span><span class="p">.</span><span class="nf">reply</span><span class="p">(</span><span class="dl">'</span><span class="s1">🎧 먼저 음성 채널에 들어가 주세요!</span><span class="dl">'</span><span class="p">);</span>
+
+	<span class="c1">// URL인지 확인</span>
+	<span class="kd">let</span> <span class="nx">songInfo</span><span class="p">,</span> <span class="nx">song</span><span class="p">;</span>
+	<span class="k">if </span><span class="p">(</span><span class="nx">ytdl</span><span class="p">.</span><span class="nf">validateURL</span><span class="p">(</span><span class="nx">query</span><span class="p">))</span> <span class="p">{</span>
+		<span class="nx">songInfo</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">ytdl</span><span class="p">.</span><span class="nf">getInfo</span><span class="p">(</span><span class="nx">query</span><span class="p">);</span>
+		<span class="nx">song</span> <span class="o">=</span> <span class="p">{</span> <span class="na">title</span><span class="p">:</span> <span class="nx">songInfo</span><span class="p">.</span><span class="nx">videoDetails</span><span class="p">.</span><span class="nx">title</span><span class="p">,</span> <span class="na">url</span><span class="p">:</span> <span class="nx">songInfo</span><span class="p">.</span><span class="nx">videoDetails</span><span class="p">.</span><span class="nx">video_url</span> <span class="p">};</span>
+	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+		<span class="c1">// 키워드 검색</span>
+		<span class="kd">const</span> <span class="p">{</span> <span class="nx">videos</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">ytSearch</span><span class="p">(</span><span class="nx">query</span><span class="p">);</span>
+		<span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">videos</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="k">return</span> <span class="nx">message</span><span class="p">.</span><span class="nf">reply</span><span class="p">(</span><span class="dl">'</span><span class="s1">😥 검색 결과가 없습니다...</span><span class="dl">'</span><span class="p">);</span>
+		<span class="nx">song</span> <span class="o">=</span> <span class="p">{</span> <span class="na">title</span><span class="p">:</span> <span class="nx">videos</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">title</span><span class="p">,</span> <span class="na">url</span><span class="p">:</span> <span class="nx">videos</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">url</span> <span class="p">};</span>
+	<span class="p">}</span>
+
+	<span class="c1">// 대기열 관리</span>
+	<span class="kd">let</span> <span class="nx">queue</span> <span class="o">=</span> <span class="nx">queueMap</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+	<span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">queue</span><span class="p">)</span> <span class="p">{</span>
+		<span class="c1">// 1) 플레이어를 생성하고</span>
+		<span class="kd">const</span> <span class="nx">player</span> <span class="o">=</span> <span class="nf">createAudioPlayer</span><span class="p">();</span>
+		<span class="c1">// 2) 에러 핸들러 등록 (스트림 에러 시 다음 곡으로 넘어가도록)</span>
+		<span class="nx">player</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">error</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+			<span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">🔴 AudioPlayerError:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+			<span class="c1">// 다음 곡 재생 시도</span>
+			<span class="nf">playSong</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">songs</span><span class="p">.</span><span class="nf">shift</span><span class="p">());</span>
+		<span class="p">});</span> <span class="c1">// 3) 큐 객체에 player를 포함시켜 저장</span>
+		<span class="nx">queue</span> <span class="o">=</span> <span class="p">{</span>
+			<span class="nx">voiceChannel</span><span class="p">,</span>
+			<span class="na">textChannel</span><span class="p">:</span> <span class="nx">message</span><span class="p">.</span><span class="nx">channel</span><span class="p">,</span>
+			<span class="nx">player</span><span class="p">,</span>
+			<span class="na">songs</span><span class="p">:</span> <span class="p">[],</span>
+		<span class="p">};</span>
+		<span class="nx">queueMap</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">queue</span><span class="p">);</span>
+
+		<span class="c1">// 채널 조인</span>
+		<span class="kd">const</span> <span class="nx">connection</span> <span class="o">=</span> <span class="nf">joinVoiceChannel</span><span class="p">({</span>
+			<span class="na">channelId</span><span class="p">:</span> <span class="nx">voiceChannel</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+			<span class="na">guildId</span><span class="p">:</span> <span class="nx">message</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+			<span class="na">adapterCreator</span><span class="p">:</span> <span class="nx">message</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">voiceAdapterCreator</span><span class="p">,</span>
+		<span class="p">});</span>
+		<span class="nx">queue</span><span class="p">.</span><span class="nx">connection</span> <span class="o">=</span> <span class="nx">connection</span><span class="p">;</span>
+		<span class="nf">playSong</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">songs</span><span class="p">.</span><span class="nf">shift</span><span class="p">()</span> <span class="o">||</span> <span class="nx">song</span><span class="p">);</span>
+	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+		<span class="nx">queue</span><span class="p">.</span><span class="nx">songs</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nx">song</span><span class="p">);</span>
+		<span class="k">return</span> <span class="nx">message</span><span class="p">.</span><span class="nf">reply</span><span class="p">(</span><span class="s2">`✅ 🦐 </span><span class="p">${</span><span class="nx">song</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span><span class="s2"> 🦐 를 대기열에 추가했어요!`</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+
+    <p><strong>결과</strong><br />
+<img width="820" alt="재생" src="https://github.com/user-attachments/assets/a66466cb-3174-46c6-b94d-411bd214d0a4" /></p>
+  </li>
+  <li>
+    <p>스킵</p>
+
+    <ul>
+      <li>스킵할 노래가 없을 경우: ‘⚠️ 스킵할 노래가 없어요!’’</li>
+      <li>노래를 정상적으로 스킵할 경우: ‘⏭️ 노래를 스킵합니다!’</li>
+    </ul>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 스킵 명령어: /스킵</span>
+<span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">cmd</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">스킵</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+	<span class="kd">const</span> <span class="nx">queue</span> <span class="o">=</span> <span class="nx">queueMap</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+	<span class="c1">// 1) 큐가 없거나, 2) 재생 중인 노래가 없고 대기열도 비어 있으면</span>
+	<span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">queue</span> <span class="o">||</span> <span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">player</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">status</span> <span class="o">!==</span> <span class="nx">AudioPlayerStatus</span><span class="p">.</span><span class="nx">Playing</span> <span class="o">&amp;&amp;</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">songs</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="nx">message</span><span class="p">.</span><span class="nf">reply</span><span class="p">(</span><span class="dl">'</span><span class="s1">⚠️ 스킵할 노래가 없어요!</span><span class="dl">'</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="nx">queue</span><span class="p">.</span><span class="nx">player</span><span class="p">.</span><span class="nf">stop</span><span class="p">();</span>
+	<span class="k">return</span> <span class="nx">message</span><span class="p">.</span><span class="nf">reply</span><span class="p">(</span><span class="dl">'</span><span class="s1">⏭️ 노래를 스킵합니다!</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+
+    <p><strong>결과</strong><br />
+<img width="820" alt="스킵" src="https://github.com/user-attachments/assets/691f94ad-eeb5-4c43-bd7a-eae6b5292320" /></p>
+  </li>
+  <li>
+    <p>대기열</p>
+
+    <ul>
+      <li>대기열이 비어있을 경우: ‘📃 대기열이 비어있어요!’</li>
+      <li>재생 대기열이 존재할 경우: ‘🎵 재생 대기열 ~~’</li>
+    </ul>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 목록 명령어: /대기열</span>
+<span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">cmd</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">대기열</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+	<span class="kd">const</span> <span class="nx">queue</span> <span class="o">=</span> <span class="nx">queueMap</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+	<span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">queue</span> <span class="o">||</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">songs</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="nx">message</span><span class="p">.</span><span class="nf">reply</span><span class="p">(</span><span class="dl">'</span><span class="s1">📃 대기열이 비어있어요!</span><span class="dl">'</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="kd">const</span> <span class="nx">embed</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">EmbedBuilder</span><span class="p">()</span>
+		<span class="p">.</span><span class="nf">setTitle</span><span class="p">(</span><span class="dl">'</span><span class="s1">🎵 재생 대기열</span><span class="dl">'</span><span class="p">)</span>
+		<span class="p">.</span><span class="nf">setDescription</span><span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">songs</span><span class="p">.</span><span class="nf">map</span><span class="p">((</span><span class="nx">s</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="s2">`</span><span class="p">${</span><span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">}</span><span class="s2">. </span><span class="p">${</span><span class="nx">s</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span><span class="s2">`</span><span class="p">).</span><span class="nf">join</span><span class="p">(</span><span class="dl">'</span><span class="se">\n</span><span class="dl">'</span><span class="p">))</span>
+		<span class="p">.</span><span class="nf">setColor</span><span class="p">(</span><span class="dl">'</span><span class="s1">#7E51F4</span><span class="dl">'</span><span class="p">);</span>
+	<span class="k">return</span> <span class="nx">message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nf">send</span><span class="p">({</span> <span class="na">embeds</span><span class="p">:</span> <span class="p">[</span><span class="nx">embed</span><span class="p">]</span> <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+
+    <p><strong>결과</strong><br />
+<img width="820" alt="대기열" src="https://github.com/user-attachments/assets/f7572bf1-e1af-47ec-880f-c3d429433177" /></p>
+  </li>
+  <li>
+    <p>종료</p>
+
+    <ul>
+      <li>종료할 곡이 없을 경우: ‘⚠️ 종료할 곡이 없어요!’</li>
+      <li>노래를 정상적으로 종료했을 경우: ‘👋 노래를 종료하고 🦐대하는 떠납니다!’</li>
+    </ul>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 종료 명령어: /종료</span>
+<span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">cmd</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">종료</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+	<span class="kd">const</span> <span class="nx">queue</span> <span class="o">=</span> <span class="nx">queueMap</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+
+	<span class="c1">// 1) 큐가 없거나,</span>
+	<span class="c1">// 2) 재생 중인 곡이 없고(플레이어가 Playing 상태가 아니고),</span>
+	<span class="c1">//    대기열(songs)도 비어 있으면</span>
+	<span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">queue</span> <span class="o">||</span> <span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">player</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">status</span> <span class="o">!==</span> <span class="nx">AudioPlayerStatus</span><span class="p">.</span><span class="nx">Playing</span> <span class="o">&amp;&amp;</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">songs</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="nx">message</span><span class="p">.</span><span class="nf">reply</span><span class="p">(</span><span class="dl">'</span><span class="s1">⚠️ 종료할 곡이 없어요!</span><span class="dl">'</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="nx">queue</span><span class="p">.</span><span class="nx">player</span><span class="p">.</span><span class="nf">stop</span><span class="p">();</span>
+	<span class="nx">queue</span><span class="p">.</span><span class="nx">connection</span><span class="p">.</span><span class="nf">destroy</span><span class="p">();</span>
+	<span class="nx">queueMap</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+	<span class="k">return</span> <span class="nx">message</span><span class="p">.</span><span class="nf">reply</span><span class="p">(</span><span class="dl">'</span><span class="s1">👋 노래를 종료하고 🦐대하는 떠납니다!</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+
+    <p><strong>결과</strong><br />
+<img width="820" alt="종료" src="https://github.com/user-attachments/assets/74c92d45-62ba-48e9-96a4-581af1d99dc1" /></p>
+  </li>
+</ul>
+
+<h2 id="-내가-겪은-오류와-해결방법">🚨 내가 겪은 오류와 해결방법</h2>
+
+<h3 id="-문제-상황">🐞 문제 상황</h3>
+
+<p>npm run start를 통해 코드를 실행시키면 아래와 같은 경고가 발생했다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm WARN EBADENGINE Unsupported engine <span class="o">{</span>
+npm WARN EBADENGINE   required: <span class="o">{</span> node: <span class="s1">'20 || &gt;=22'</span> <span class="o">}</span>,
+npm WARN EBADENGINE   current: <span class="o">{</span> node: <span class="s1">'v21.0.0'</span>, npm: <span class="s1">'9.5.1'</span> <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>해당 메시지는 설치하는 패키지들이 현재 사용 중인 Node.js 버전(<strong>21.0.0</strong>)을 공식적으로 지원하지 않는다는 의미이다.</p>
+
+<h3 id="-원인-분석">💡 원인 분석</h3>
+
+<p>Node.js는 크게 두 가지 방식으로 버전을 관리한다.</p>
+
+<ul>
+  <li><strong>짝수 버전(20, 22, 24 등)</strong> 👉 장기 지원(LTS) 버전</li>
+  <li><strong>홀수 버전(21, 23 등)</strong> 👉 단기 지원, 실험적인 버전</li>
+</ul>
+
+<p>많은 라이브러리와 패키지들은 <strong>안정성이 보장된 LTS 버전만 공식 지원</strong> 하도록 제한을 걸어둔다. 해당 경고는 Node.js의 현재 버전(<strong>21.x</strong>)이 짝수인 20버전이나 22 이상의 버전으로 설정된 지원 범위에서 벗어나기 때문에 나타난다.</p>
+
+<h3 id="-해결-방법">✅ 해결 방법</h3>
+
+<p>가장 권장되는 방법은 <strong>Node.js의 LTS 버전을 사용</strong> 하는 것이다.</p>
+
+<h3 id="-nvm으로-lts-버전-설치하기">🔖 <code class="language-plaintext highlighter-rouge">nvm</code>으로 LTS 버전 설치하기</h3>
+
+<p>다음 명령어를 사용하면 손쉽게 버전을 바꿀 수 있다. (단, 해당 방법은 <code class="language-plaintext highlighter-rouge">nvm</code>으로 Node를 설치 했을 경우에만 가능하다.)</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># LTS 최신 버전(v22.x) 설치</span>
+nvm <span class="nb">install </span>v22.14.0
+
+<span class="c"># 설치된 LTS 버전 사용하기</span>
+nvm use v22.14.0
+</code></pre></div></div>
+
+<p>이렇게 하면 경고가 사라지고 패키지와의 호환성 문제가 해결된다!</p>
+
+<h2 id="-명령어-사용-방법">📝 명령어 사용 방법</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">/재생 [유튜브 링크 또는 제목]</code></li>
+  <li><code class="language-plaintext highlighter-rouge">/스킵</code>: 현재 재생중인 노래를 스킵</li>
+  <li><code class="language-plaintext highlighter-rouge">/대기열</code>: 재생 대기 중인 곡들을 리스트로 출력</li>
+  <li><code class="language-plaintext highlighter-rouge">/종료</code>: 봇의 노래 재생 종료</li>
+</ul>
+
+<h2 id="️-봇-실행하기">🖥️ 봇 실행하기</h2>
+
+<p>터미널에서 다음 명령어로 봇을 실행한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>node index.js
+<span class="c"># 또는 개발 시 nodemon 활용</span>
+npm <span class="nb">install</span> <span class="nt">-g</span> nodemon
+nodemon index.js
+</code></pre></div></div>
+
+<p>두 명령어로 실행이 가능한데 매번 저렇게 터미널에 작성하기 귀찮으니 package.json의 스크립트에 만들어두자.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">//...</span><span class="w">
+	</span><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node index.js"</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"dev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nodemon index.js"</span><span class="w">
+	</span><span class="p">}</span><span class="err">,</span><span class="w">
+</span><span class="err">//...</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="개발을-마치며">개발을 마치며</h2>
+
+<p>디스코드 노래봇 사용하다가 빡쳐서 만들었는데 어쩌다 보니 그닥 어렵지도 않고 만들고 사용하면서 지난번에 다른 사람들이 제작한 봇을 사용했을 때 보다 음질이 더 좋아서 아주 만족했다! 다음번에는 내가 서버를 열지 않아도 자동으로 서버가 계속 열려있을 수 있도록 ec2도 사용하고 디스코드에 노래봇을 사용할 때 명령어와 설명이 나올 수 있도록 interactionCreate를 사용해서 더 디벨롭해볼 예정이다.</p>
+
+<p>그럼 아래에 index.js 풀 코드를 올리며 이만~ 오늘 글 끝!</p>
+
+<h2 id="indexjs-풀-코드">index.js 풀 코드</h2>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">dotenv</span><span class="dl">'</span><span class="p">).</span><span class="nf">config</span><span class="p">();</span> <span class="c1">// .env 불러오기</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">Client</span><span class="p">,</span> <span class="nx">IntentsBitField</span><span class="p">,</span> <span class="nx">EmbedBuilder</span> <span class="p">}</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">discord.js</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">joinVoiceChannel</span><span class="p">,</span> <span class="nx">createAudioPlayer</span><span class="p">,</span> <span class="nx">createAudioResource</span><span class="p">,</span> <span class="nx">AudioPlayerStatus</span> <span class="p">}</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@discordjs/voice</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">ytdl</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@distube/ytdl-core</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">ytSearch</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">yt-search</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="c1">// 클라이언트 생성 (필요한 인텐트 활성화)</span>
+<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Client</span><span class="p">({</span>
+	<span class="na">intents</span><span class="p">:</span> <span class="p">[</span>
+		<span class="nx">IntentsBitField</span><span class="p">.</span><span class="nx">Flags</span><span class="p">.</span><span class="nx">Guilds</span><span class="p">,</span> <span class="c1">// 서버 접근</span>
+		<span class="nx">IntentsBitField</span><span class="p">.</span><span class="nx">Flags</span><span class="p">.</span><span class="nx">GuildMessages</span><span class="p">,</span> <span class="c1">// 메시지 읽기</span>
+		<span class="nx">IntentsBitField</span><span class="p">.</span><span class="nx">Flags</span><span class="p">.</span><span class="nx">MessageContent</span><span class="p">,</span> <span class="c1">// 메시지 내용</span>
+		<span class="nx">IntentsBitField</span><span class="p">.</span><span class="nx">Flags</span><span class="p">.</span><span class="nx">GuildVoiceStates</span><span class="p">,</span> <span class="c1">// 음성 채널 상태</span>
+	<span class="p">],</span>
+<span class="p">});</span>
+
+<span class="kd">const</span> <span class="nx">prefix</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PREFIX</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">GUILD_ID</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">GUILD_ID</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">queueMap</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Map</span><span class="p">();</span> <span class="c1">// 서버별 노래 대기열 저장</span>
+
+<span class="c1">// 봇 로그인</span>
+<span class="nx">client</span><span class="p">.</span><span class="nf">once</span><span class="p">(</span><span class="dl">'</span><span class="s1">ready</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+	<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`✅ 로그인 완료! </span><span class="p">${</span><span class="nx">client</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">tag</span><span class="p">}</span><span class="s2"> (명령어 접두사: </span><span class="p">${</span><span class="nx">prefix</span><span class="p">}</span><span class="s2">)`</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// 메시지 이벤트</span>
+<span class="nx">client</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">messageCreate</span><span class="dl">'</span><span class="p">,</span> <span class="k">async </span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+	<span class="k">if </span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">author</span><span class="p">.</span><span class="nx">bot</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span> <span class="c1">// 봇의 메시지는 무시</span>
+	<span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">message</span><span class="p">.</span><span class="nx">guild</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span> <span class="c1">// DM 등 무시</span>
+	<span class="k">if </span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">id</span> <span class="o">!==</span> <span class="nx">GUILD_ID</span><span class="p">)</span> <span class="p">{</span>
+		<span class="c1">// 지정 서버 외 사용 제한</span>
+		<span class="k">return</span> <span class="nx">message</span><span class="p">.</span><span class="nf">reply</span><span class="p">(</span><span class="dl">'</span><span class="s1">❌ 이 서버에서는 사용할 수 없어요!</span><span class="dl">'</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">message</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nf">startsWith</span><span class="p">(</span><span class="nx">prefix</span><span class="p">))</span> <span class="k">return</span><span class="p">;</span>
+
+	<span class="kd">const</span> <span class="nx">args</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nf">slice</span><span class="p">(</span><span class="nx">prefix</span><span class="p">.</span><span class="nx">length</span><span class="p">).</span><span class="nf">trim</span><span class="p">().</span><span class="nf">split</span><span class="p">(</span><span class="sr">/ +/</span><span class="p">);</span>
+	<span class="kd">const</span> <span class="nx">cmd</span> <span class="o">=</span> <span class="nx">args</span><span class="p">.</span><span class="nf">shift</span><span class="p">();</span>
+
+	<span class="c1">// 재생 명령어: /재생 &lt;키워드 or URL&gt;</span>
+	<span class="k">if </span><span class="p">(</span><span class="nx">cmd</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">재생</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+		<span class="kd">const</span> <span class="nx">query</span> <span class="o">=</span> <span class="nx">args</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="dl">'</span><span class="s1"> </span><span class="dl">'</span><span class="p">);</span>
+		<span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">query</span><span class="p">)</span> <span class="k">return</span> <span class="nx">message</span><span class="p">.</span><span class="nf">reply</span><span class="p">(</span><span class="dl">'</span><span class="s1">⚠️ 노래 제목이나 URL을 입력해주세요!</span><span class="dl">'</span><span class="p">);</span>
+		<span class="kd">const</span> <span class="nx">voiceChannel</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nx">member</span><span class="p">.</span><span class="nx">voice</span><span class="p">.</span><span class="nx">channel</span><span class="p">;</span>
+		<span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">voiceChannel</span><span class="p">)</span> <span class="k">return</span> <span class="nx">message</span><span class="p">.</span><span class="nf">reply</span><span class="p">(</span><span class="dl">'</span><span class="s1">🎧 먼저 음성 채널에 들어가 주세요!</span><span class="dl">'</span><span class="p">);</span>
+
+		<span class="c1">// URL인지 확인</span>
+		<span class="kd">let</span> <span class="nx">songInfo</span><span class="p">,</span> <span class="nx">song</span><span class="p">;</span>
+		<span class="k">if </span><span class="p">(</span><span class="nx">ytdl</span><span class="p">.</span><span class="nf">validateURL</span><span class="p">(</span><span class="nx">query</span><span class="p">))</span> <span class="p">{</span>
+			<span class="nx">songInfo</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">ytdl</span><span class="p">.</span><span class="nf">getInfo</span><span class="p">(</span><span class="nx">query</span><span class="p">);</span>
+			<span class="nx">song</span> <span class="o">=</span> <span class="p">{</span> <span class="na">title</span><span class="p">:</span> <span class="nx">songInfo</span><span class="p">.</span><span class="nx">videoDetails</span><span class="p">.</span><span class="nx">title</span><span class="p">,</span> <span class="na">url</span><span class="p">:</span> <span class="nx">songInfo</span><span class="p">.</span><span class="nx">videoDetails</span><span class="p">.</span><span class="nx">video_url</span> <span class="p">};</span>
+		<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+			<span class="c1">// 키워드 검색</span>
+			<span class="kd">const</span> <span class="p">{</span> <span class="nx">videos</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">ytSearch</span><span class="p">(</span><span class="nx">query</span><span class="p">);</span>
+			<span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">videos</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="k">return</span> <span class="nx">message</span><span class="p">.</span><span class="nf">reply</span><span class="p">(</span><span class="dl">'</span><span class="s1">😥 검색 결과가 없습니다...</span><span class="dl">'</span><span class="p">);</span>
+			<span class="nx">song</span> <span class="o">=</span> <span class="p">{</span> <span class="na">title</span><span class="p">:</span> <span class="nx">videos</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">title</span><span class="p">,</span> <span class="na">url</span><span class="p">:</span> <span class="nx">videos</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">url</span> <span class="p">};</span>
+		<span class="p">}</span>
+
+		<span class="c1">// 대기열 관리</span>
+		<span class="kd">let</span> <span class="nx">queue</span> <span class="o">=</span> <span class="nx">queueMap</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+		<span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">queue</span><span class="p">)</span> <span class="p">{</span>
+			<span class="c1">// queue = { voiceChannel, textChannel: message.channel, player: createAudioPlayer(), songs: [] };</span>
+			<span class="c1">// 1) 플레이어를 생성하고</span>
+			<span class="kd">const</span> <span class="nx">player</span> <span class="o">=</span> <span class="nf">createAudioPlayer</span><span class="p">();</span>
+			<span class="c1">// 2) 에러 핸들러 등록 (스트림 에러 시 다음 곡으로 넘어가도록)</span>
+			<span class="nx">player</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">error</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+				<span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">🔴 AudioPlayerError:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+				<span class="c1">// 다음 곡 재생 시도</span>
+				<span class="nf">playSong</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">songs</span><span class="p">.</span><span class="nf">shift</span><span class="p">());</span>
+			<span class="p">});</span> <span class="c1">// 3) 큐 객체에 player를 포함시켜 저장</span>
+			<span class="nx">queue</span> <span class="o">=</span> <span class="p">{</span>
+				<span class="nx">voiceChannel</span><span class="p">,</span>
+				<span class="na">textChannel</span><span class="p">:</span> <span class="nx">message</span><span class="p">.</span><span class="nx">channel</span><span class="p">,</span>
+				<span class="nx">player</span><span class="p">,</span>
+				<span class="na">songs</span><span class="p">:</span> <span class="p">[],</span>
+			<span class="p">};</span>
+			<span class="nx">queueMap</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">queue</span><span class="p">);</span>
+
+			<span class="c1">// 채널 조인</span>
+			<span class="kd">const</span> <span class="nx">connection</span> <span class="o">=</span> <span class="nf">joinVoiceChannel</span><span class="p">({</span>
+				<span class="na">channelId</span><span class="p">:</span> <span class="nx">voiceChannel</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+				<span class="na">guildId</span><span class="p">:</span> <span class="nx">message</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+				<span class="na">adapterCreator</span><span class="p">:</span> <span class="nx">message</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">voiceAdapterCreator</span><span class="p">,</span>
+			<span class="p">});</span>
+			<span class="nx">queue</span><span class="p">.</span><span class="nx">connection</span> <span class="o">=</span> <span class="nx">connection</span><span class="p">;</span>
+			<span class="nf">playSong</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">songs</span><span class="p">.</span><span class="nf">shift</span><span class="p">()</span> <span class="o">||</span> <span class="nx">song</span><span class="p">);</span>
+		<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+			<span class="nx">queue</span><span class="p">.</span><span class="nx">songs</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nx">song</span><span class="p">);</span>
+			<span class="k">return</span> <span class="nx">message</span><span class="p">.</span><span class="nf">reply</span><span class="p">(</span><span class="s2">`✅ 🦐 </span><span class="p">${</span><span class="nx">song</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span><span class="s2"> 🦐 를 대기열에 추가했어요!`</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+
+	<span class="c1">// 스킵 명령어: /스킵</span>
+	<span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">cmd</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">스킵</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+		<span class="kd">const</span> <span class="nx">queue</span> <span class="o">=</span> <span class="nx">queueMap</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+		<span class="c1">// 1) 큐가 없거나, 2) 재생 중인 노래가 없고 대기열도 비어 있으면</span>
+		<span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">queue</span> <span class="o">||</span> <span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">player</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">status</span> <span class="o">!==</span> <span class="nx">AudioPlayerStatus</span><span class="p">.</span><span class="nx">Playing</span> <span class="o">&amp;&amp;</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">songs</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span>
+			<span class="k">return</span> <span class="nx">message</span><span class="p">.</span><span class="nf">reply</span><span class="p">(</span><span class="dl">'</span><span class="s1">⚠️ 스킵할 노래가 없어요!</span><span class="dl">'</span><span class="p">);</span>
+		<span class="p">}</span>
+		<span class="nx">queue</span><span class="p">.</span><span class="nx">player</span><span class="p">.</span><span class="nf">stop</span><span class="p">();</span>
+		<span class="k">return</span> <span class="nx">message</span><span class="p">.</span><span class="nf">reply</span><span class="p">(</span><span class="dl">'</span><span class="s1">⏭️ 노래를 스킵합니다!</span><span class="dl">'</span><span class="p">);</span>
+	<span class="p">}</span>
+
+	<span class="c1">// 목록 명령어: /대기열</span>
+	<span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">cmd</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">대기열</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+		<span class="kd">const</span> <span class="nx">queue</span> <span class="o">=</span> <span class="nx">queueMap</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+		<span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">queue</span> <span class="o">||</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">songs</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+			<span class="k">return</span> <span class="nx">message</span><span class="p">.</span><span class="nf">reply</span><span class="p">(</span><span class="dl">'</span><span class="s1">📃 대기열이 비어있어요!</span><span class="dl">'</span><span class="p">);</span>
+		<span class="p">}</span>
+		<span class="kd">const</span> <span class="nx">embed</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">EmbedBuilder</span><span class="p">()</span>
+			<span class="p">.</span><span class="nf">setTitle</span><span class="p">(</span><span class="dl">'</span><span class="s1">🎵 재생 대기열</span><span class="dl">'</span><span class="p">)</span>
+			<span class="p">.</span><span class="nf">setDescription</span><span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">songs</span><span class="p">.</span><span class="nf">map</span><span class="p">((</span><span class="nx">s</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="s2">`</span><span class="p">${</span><span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">}</span><span class="s2">. </span><span class="p">${</span><span class="nx">s</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span><span class="s2">`</span><span class="p">).</span><span class="nf">join</span><span class="p">(</span><span class="dl">'</span><span class="se">\n</span><span class="dl">'</span><span class="p">))</span>
+			<span class="p">.</span><span class="nf">setColor</span><span class="p">(</span><span class="dl">'</span><span class="s1">#7E51F4</span><span class="dl">'</span><span class="p">);</span>
+		<span class="k">return</span> <span class="nx">message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nf">send</span><span class="p">({</span> <span class="na">embeds</span><span class="p">:</span> <span class="p">[</span><span class="nx">embed</span><span class="p">]</span> <span class="p">});</span>
+	<span class="p">}</span>
+
+	<span class="c1">// 종료 명령어: /종료</span>
+	<span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">cmd</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">종료</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+		<span class="kd">const</span> <span class="nx">queue</span> <span class="o">=</span> <span class="nx">queueMap</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+
+		<span class="c1">// 1) 큐가 없거나,</span>
+		<span class="c1">// 2) 재생 중인 곡이 없고(플레이어가 Playing 상태가 아니고),</span>
+		<span class="c1">//    대기열(songs)도 비어 있으면</span>
+		<span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">queue</span> <span class="o">||</span> <span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">player</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">status</span> <span class="o">!==</span> <span class="nx">AudioPlayerStatus</span><span class="p">.</span><span class="nx">Playing</span> <span class="o">&amp;&amp;</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">songs</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span>
+			<span class="k">return</span> <span class="nx">message</span><span class="p">.</span><span class="nf">reply</span><span class="p">(</span><span class="dl">'</span><span class="s1">⚠️ 종료할 곡이 없어요!</span><span class="dl">'</span><span class="p">);</span>
+		<span class="p">}</span>
+		<span class="nx">queue</span><span class="p">.</span><span class="nx">player</span><span class="p">.</span><span class="nf">stop</span><span class="p">();</span>
+		<span class="nx">queue</span><span class="p">.</span><span class="nx">connection</span><span class="p">.</span><span class="nf">destroy</span><span class="p">();</span>
+		<span class="nx">queueMap</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+		<span class="k">return</span> <span class="nx">message</span><span class="p">.</span><span class="nf">reply</span><span class="p">(</span><span class="dl">'</span><span class="s1">👋 노래를 종료하고 🦐대하는 떠납니다!</span><span class="dl">'</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// 곡 재생 함수</span>
+<span class="k">async</span> <span class="kd">function</span> <span class="nf">playSong</span><span class="p">(</span><span class="nx">guildId</span><span class="p">,</span> <span class="nx">song</span><span class="p">)</span> <span class="p">{</span>
+	<span class="kd">const</span> <span class="nx">queue</span> <span class="o">=</span> <span class="nx">queueMap</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="nx">guildId</span><span class="p">);</span>
+	<span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">song</span><span class="p">)</span> <span class="p">{</span>
+		<span class="nx">queue</span><span class="p">.</span><span class="nx">connection</span><span class="p">.</span><span class="nf">destroy</span><span class="p">();</span>
+		<span class="nx">queueMap</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">guildId</span><span class="p">);</span>
+		<span class="k">return</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="c1">// 스트림 생성</span>
+	<span class="kd">const</span> <span class="nx">stream</span> <span class="o">=</span> <span class="nf">ytdl</span><span class="p">(</span><span class="nx">song</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span> <span class="p">{</span> <span class="na">filter</span><span class="p">:</span> <span class="dl">'</span><span class="s1">audioonly</span><span class="dl">'</span><span class="p">,</span> <span class="na">highWaterMark</span><span class="p">:</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">25</span> <span class="p">});</span>
+	<span class="kd">const</span> <span class="nx">resource</span> <span class="o">=</span> <span class="nf">createAudioResource</span><span class="p">(</span><span class="nx">stream</span><span class="p">);</span>
+	<span class="nx">queue</span><span class="p">.</span><span class="nx">player</span><span class="p">.</span><span class="nf">play</span><span class="p">(</span><span class="nx">resource</span><span class="p">);</span>
+	<span class="nx">queue</span><span class="p">.</span><span class="nx">connection</span><span class="p">.</span><span class="nf">subscribe</span><span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">player</span><span class="p">);</span>
+
+	<span class="c1">// 텍스트 알림</span>
+	<span class="nx">queue</span><span class="p">.</span><span class="nx">textChannel</span><span class="p">.</span><span class="nf">send</span><span class="p">(</span><span class="s2">`▶️ 재생: 🦐 </span><span class="p">${</span><span class="nx">song</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span><span class="s2"> 🦐`</span><span class="p">);</span>
+
+	<span class="c1">// 노래 종료 후 처리</span>
+	<span class="nx">queue</span><span class="p">.</span><span class="nx">player</span><span class="p">.</span><span class="nf">once</span><span class="p">(</span><span class="nx">AudioPlayerStatus</span><span class="p">.</span><span class="nx">Idle</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+		<span class="nf">playSong</span><span class="p">(</span><span class="nx">guildId</span><span class="p">,</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">songs</span><span class="p">.</span><span class="nf">shift</span><span class="p">());</span>
+	<span class="p">});</span>
+<span class="p">}</span>
+
+<span class="c1">// 로그인 실행</span>
+<span class="nx">client</span><span class="p">.</span><span class="nf">login</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">DISCORD_TOKEN</span><span class="p">);</span>
+</code></pre></div></div>]]></content><author><name>soha</name></author><category term="TIL" /><category term="TIL" /><category term="Discord" /><summary type="html"><![CDATA[나는 어쩌다가 디스코드 노래봇을 만들게 되었는가…]]></summary></entry><entry><title type="html">jekyll Github 블로그 sitemap 파일 생성하기 &amp;amp; `ERROR: While executing gem … (Gem::FilePermissionError)` 에러 해결방법</title><link href="https://soi-ha.github.io/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html" rel="alternate" type="text/html" title="jekyll Github 블로그 sitemap 파일 생성하기 &amp;amp; `ERROR: While executing gem … (Gem::FilePermissionError)` 에러 해결방법" /><published>2025-03-06T00:00:00+00:00</published><updated>2025-03-06T00:00:00+00:00</updated><id>https://soi-ha.github.io/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution</id><content type="html" xml:base="https://soi-ha.github.io/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html"><![CDATA[<h2 id="️-sitemap이란">🗺️ sitemap이란?</h2>
+
+<p>sitemap이란 검색엔진이 크롤링하여 색인할 수 있도록 모든 웹페이지를 나열한 XML 파일이다. 검색엔진 크롤러가 접근하기 어려운 페이지를 포함한 모든 페이지의 정보를 제공하여 빠짐없이 색인될 수 있도록 돕는다.<br />
+주의할 점은 sitemap이 직접적으로 검색엔진 결과의 순위를 올려주지는 않는다는 것이다.</p>
+
+<h2 id="-sitemap-생성-방법-jekyll로-생성한-github-블로그-기준">💡 sitemap 생성 방법 (jekyll로 생성한 GitHub 블로그 기준)</h2>
+
+<p>아래 설명은 jekyll로 생성한 깃허브 블로그에 sitemap을 생성하는 것을 기준으로 한다. 만약 jekyll로 생성한 깃허브 블로그가 아니라면 아래 방법으로는 sitemap 파일을 생성할 수 없다.</p>
+
+<h3 id="1-로컬의-githubio-폴더의-gemfile-파일에-다음-코드를-추가하기">1. 로컬의 <code class="language-plaintext highlighter-rouge">.github.io</code> 폴더의 <code class="language-plaintext highlighter-rouge">Gemfile</code> 파일에 다음 코드를 추가하기</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s1">'jekyll-sitemap'</span>
+</code></pre></div></div>
+
+<p>여기서 <code class="language-plaintext highlighter-rouge">Gemfile</code>은 ruby 프로젝트에 필요한 gem의 목록과 버전을 관리해주는 파일이다. 프로젝트에서 사용하는 라이브러리(이를 gem이라고 부름)를 관리하는 역할을 한다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Gemfile</code>을 통해 프로젝트에서 사용할 gem들을 명시하고, 이를 <code class="language-plaintext highlighter-rouge">Bundler</code>라는 툴이 관리해준다. <code class="language-plaintext highlighter-rouge">Bundler</code>는 <code class="language-plaintext highlighter-rouge">Gemfile</code>에 명시된 gem들이 서로 호환되는 버전으로 설치되도록 도와준다.</p>
+
+<h3 id="2-_configyml에-다음과-같이-플러그인을-추가하기">2. <code class="language-plaintext highlighter-rouge">_config.yml</code>에 다음과 같이 플러그인을 추가하기</h3>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">plugins</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">jekyll-sitemap</span>
+</code></pre></div></div>
+
+<h3 id="3-터미널에서-bundle-명령어를-실행하기">3. 터미널에서 <code class="language-plaintext highlighter-rouge">bundle</code> 명령어를 실행하기</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">bundle</code>(=== <code class="language-plaintext highlighter-rouge">bundle install</code>) 명령어는 다음과 같은 일을 진행한다.</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">Gemfile</code>을 읽어서 필요한 gem들을 확인하고</li>
+  <li><code class="language-plaintext highlighter-rouge">Gemfile.lock</code> 파일이 있으면, 그 파일에 기록된 정확한 버전을 설치하고,</li>
+  <li><code class="language-plaintext highlighter-rouge">Gemfile.lock</code> 파일이 없으면 호환 가능한 최신 버전으로 설치한 후 <code class="language-plaintext highlighter-rouge">Gemfile.lock</code> 파일을 생성해준다.</li>
+</ol>
+
+<p>그래서 보통 Rails나 Ruby 프로젝트를 처음 설치하거나 업데이트할 때, 자주 쓰는 명령어이다.</p>
+
+<p>즉, <code class="language-plaintext highlighter-rouge">bundle</code> 명령어는 Bundler를 이용해서 <code class="language-plaintext highlighter-rouge">Gemfile</code>에 적힌 gem들을 설치한다.</p>
+
+<p>실행 결과 예시:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Bundle <span class="nb">complete</span><span class="o">!</span> 3 Gemfile dependencies, 47 gems now installed.
+Use <span class="sb">`</span>bundle info <span class="o">[</span>gemname]<span class="sb">`</span> to see where a bundled gem is installed.
+</code></pre></div></div>
+
+<p>터미널에 bundle 실행이 정상적으로 진행됐을 때 결과 이미지:</p>
+
+<p><img width="450" alt="bundle 명령어 실행 결과" src="https://github.com/user-attachments/assets/41945983-54e0-4e37-ad38-135e9e484560" /></p>
+
+<p>위와 같이 명령어 실행 결과가 나타났다면, 와우! 당신은 이제 더이상 할게 없다. <a href="#4-jekyll-sitemap-설치">바로 4번을 실행</a>해주면 된다.</p>
+
+<p>그러나 만약 bundle 명령어를 실행했는데 아래 이미지와 같이 에러가 발생다면?</p>
+
+<p><img width="482" alt="bundle 명령어 실행 에러" src="https://github.com/user-attachments/assets/283232ee-7fbc-43aa-a1b9-522372f55917" /></p>
+
+<p>그리고 <code class="language-plaintext highlighter-rouge">gem install bundler</code> 명령어를 실행해봤는데 또 에러가 발생했다면? 글을 계속 내려 에러를 해결해보자.</p>
+
+<p><img width="506" alt="gem bundler 설치 에러" src="https://github.com/user-attachments/assets/2b60699b-08a3-48bb-8b97-7c63eb9753ae" /></p>
+
+<hr />
+
+<h2 id="-error-while-executing-gem--gemfilepermissionerror-에러-해결-방법">🚨 <code class="language-plaintext highlighter-rouge">ERROR: While executing gem ... (Gem::FilePermissionError)</code> 에러 해결 방법</h2>
+
+<h3 id="에러-발생-원인">에러 발생 원인</h3>
+
+<p>해당 에러는 macOS에 기본으로 설치되어 있는 ruby의 gem 디렉토리(<code class="language-plaintext highlighter-rouge">/Library/Ruby/Gems/2.6.0</code>)에 쓰기 권한이 없어서 발생한 것이다. macOS의 기본 ruby는 보안상 사용자에게 gem 설치 권한을 제공하지 않는다.</p>
+
+<p>따라서 gem 설치 시(아래 명령어) 권한 에러가 발생한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem <span class="nb">install </span>bundler
+</code></pre></div></div>
+
+<p>에러 발생 이미지:</p>
+
+<p><img width="506" alt="gem bundler 설치 에러" src="https://github.com/user-attachments/assets/2b60699b-08a3-48bb-8b97-7c63eb9753ae" /></p>
+
+<p>해당 에러의 해결 방법은 두 가지가 있다.</p>
+
+<h4 id="1️⃣-관리자-권한으로-설치하기">1️⃣ 관리자 권한으로 설치하기</h4>
+
+<p>권장하지 않는 방법이다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>gem <span class="nb">install </span>bundler
+</code></pre></div></div>
+
+<p>단, sudo를 사용하면 관리자 권한으로 명령어가 실행되기 때문에, 만약 설치하려는 gem이나 명령어에 문제가 발생하면 시스템 전체에 영향을 줄 수 있어 위험할 수 있다. 따라서 해당 방법은 권장되지 않는다.</p>
+
+<h4 id="2️⃣-ruby-버전-관리-도구rbenv를-활용하기">2️⃣ Ruby 버전 관리 도구(<code class="language-plaintext highlighter-rouge">rbenv</code>)를 활용하기</h4>
+
+<p>가장 안전하고 권장되는 방법이다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">rbenv</code>같은 ruby 버전 관리 도구를 사용하면 사용자 디렉토리 내에서 ruby를 별도로 관리할 수 있어서, 시스템 디렉토리에 접근할 필요가 없다. 이 방법을 사용하면 권한 문제를 피할 수 있다.</p>
+
+<p>이 글에서는 <code class="language-plaintext highlighter-rouge">rbenv</code>를 활용하여 에러를 해결할 것이다.</p>
+
+<h3 id="-rbenv를-활용하여-에러-해결하기">😎 <code class="language-plaintext highlighter-rouge">rbenv</code>를 활용하여 에러 해결하기</h3>
+
+<ul>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">rbenv</code> 설치</strong></p>
+
+    <p>homebrew를 활용하여 <code class="language-plaintext highlighter-rouge">rbenv</code>와 <code class="language-plaintext highlighter-rouge">ruby-build</code>를 설치한다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew update
+brew <span class="nb">install </span>rbenv ruby-build
+</code></pre></div>    </div>
+
+    <p>여기서 <code class="language-plaintext highlighter-rouge">ruby-build</code>는 <code class="language-plaintext highlighter-rouge">rbenv</code>와 함께 사용되는 플러그인으로, 다양한 ruby 버전을 쉽게 설치할 수 있도록 지원해준다. <code class="language-plaintext highlighter-rouge">rbenv</code>와 함께 <code class="language-plaintext highlighter-rouge">ruby-build</code>를 설치하면 ruby 버전 관리와 함께 새로운 ruby 버전 설치도 한 번에 준비할 수 있어서 더 편리하다.</p>
+  </li>
+  <li>
+    <p><strong>설치한 <code class="language-plaintext highlighter-rouge">rbenv</code>와 ruby 버전 확인하기</strong></p>
+
+    <p>꼭 필요한 단계는 아니지만, 본격적으로 <code class="language-plaintext highlighter-rouge">rbenv</code>를 사용하여 ruby 버전을 관리하기 전의 상태가 어떤지 확인해줬다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> rbenv version
+<span class="k">*</span> system
+
+<span class="o">&gt;</span> ruby <span class="nt">--version</span>
+ruby 2.6.10p210
+</code></pre></div>    </div>
+
+    <p><code class="language-plaintext highlighter-rouge">rbenv</code>를 통해 ruby 버전을 관리하기전 설치되었던 ruby의 버전은 <code class="language-plaintext highlighter-rouge">2.6.10</code>이다. 나는 글 작성 기준 가장 안정된 버전인 <code class="language-plaintext highlighter-rouge">3.4.2</code>로 ruby의 버전을 관리할 계획이다.</p>
+
+    <p>실제 터미널 실행 결과 이미지:</p>
+
+    <p><img width="438" alt="rbenv 설치 버전 없음" src="https://github.com/user-attachments/assets/68122962-4dd5-4f4a-969b-0cab7889ccb2" /></p>
+  </li>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">rbenv</code>를 활용하여 Ruby 버전 설치 (버전: <code class="language-plaintext highlighter-rouge">3.4.2</code>)</strong></p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rbenv <span class="nb">install </span>3.4.2
+</code></pre></div>    </div>
+
+    <p>실제 터미널 실행 결과 이미지:</p>
+
+    <p><img width="493" alt="rbenv 버전 설치" src="https://github.com/user-attachments/assets/a121d90d-9656-477c-b08f-5e794f83364a" /></p>
+
+    <p>설치가 정상적으로 되었다면, version 확인을 했을 때 아래와 같이 출력된다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> rbenv version
+system
+<span class="k">*</span> 3.4.2
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">rbenv</code>로 global 버전을 <code class="language-plaintext highlighter-rouge">3.4.2</code>로 설정 및 확인</strong></p>
+
+    <p><code class="language-plaintext highlighter-rouge">rbenv</code>로 global 버전 또한 <code class="language-plaintext highlighter-rouge">3.4.2</code>로 설정해준다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> rbenv global 3.4.2
+
+<span class="o">&gt;</span> rbenv version
+3.4.2 <span class="o">(</span><span class="nb">set </span>by /Users/사용자이름/.rbenv/version<span class="o">)</span>
+<span class="o">&gt;</span> ruby <span class="nt">--version</span>
+ruby 3.4.2 <span class="o">(</span>2025-02-15 revision d2930f8e7a<span class="o">)</span>
+</code></pre></div>    </div>
+
+    <p>global 버전 설정 이전에 ruby 버전을 확인해보면 이전에 설치되어있던 버전으로 뜬다. (<code class="language-plaintext highlighter-rouge">rbenv</code>의 버전을 <code class="language-plaintext highlighter-rouge">3.4.2</code>로 설치한 후 임에도.)<br />
+global 버전 설정을 한 후 ruby 버전을 다시 확인하면 <code class="language-plaintext highlighter-rouge">3.4.2</code> 버전으로 설치되어 있는 것을 확인할 수 있다.</p>
+
+    <p>실제 터미널 실행 결과 이미지:</p>
+
+    <p><img width="431" alt="ruby 설치 버전 확인" src="https://github.com/user-attachments/assets/e483ebe3-5600-46bc-8e74-05b62224b295" /></p>
+  </li>
+  <li>
+    <p><strong>쉘 설정 파일에 <code class="language-plaintext highlighter-rouge">rbenv</code> 설정 추가</strong></p>
+
+    <p>쉘 설정 파일을 수정하기 위해 아래 코드를 터미널에 실행하여 쉘 설정 파일을 vscode로 열어준다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>code ~/.zshrc
+</code></pre></div>    </div>
+
+    <p>그리고 <code class="language-plaintext highlighter-rouge">.zshrc</code> 파일을 열어 아래 코드를 추가한다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[[</span> <span class="nt">-d</span> ~/.rbenv <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="se">\</span>
+  <span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span>/.rbenv/bin:<span class="k">${</span><span class="nv">PATH</span><span class="k">}</span> <span class="o">&amp;&amp;</span> <span class="se">\</span>
+  <span class="nb">eval</span> <span class="s2">"</span><span class="si">$(</span>rbenv init -<span class="si">)</span><span class="s2">"</span>
+</code></pre></div>    </div>
+
+    <h4 id="코드-설명">코드 설명</h4>
+
+    <p><img width="506" alt="쉘 파일 코드 추가" src="https://github.com/user-attachments/assets/86e204d4-82f4-493b-bb28-94b7cb8866f2" /></p>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">[[ -d ~/.rbenv ]]</code>: rbenv가 설치되어 있는지 확인한다. rbenv가 설치되어 있지 않다면 이후 명령어들이 실행되지 않아 불필요한 오류를 방지할 수 있다.</li>
+      <li><code class="language-plaintext highlighter-rouge">export PATH=${HOME}/.rbenv/bin:${PATH}</code>: rbenv 명령어를 터미널에서 인식할 수 있도록 경로를 추가한다.</li>
+      <li><code class="language-plaintext highlighter-rouge">eval "$(rbenv init -)"</code>: rbenv 초기화 스크립트를 실행하여 Ruby 버전 관리 기능을 활성화한다.</li>
+    </ul>
+
+    <p>이 코드는 <code class="language-plaintext highlighter-rouge">rbenv</code>가 설치된 경우에만 <code class="language-plaintext highlighter-rouge">rbenv</code>의 경로를 추가하고 초기화를 진행하여, 이후에 ruby 버전 관리를 원활하게 할 수 있도록 도와준다.</p>
+
+    <p>즉, 이 코드를 쉘 설정 파일(<code class="language-plaintext highlighter-rouge">.zshrc</code> 등)에 추가하면, 매번 터미널을 열 때마다 <code class="language-plaintext highlighter-rouge">rbenv</code>가 자동으로 초기화되어 ruby 버전을 쉽게 관리할 수 있게 된다. 만약 이 코드를 추가하지 않으면, <code class="language-plaintext highlighter-rouge">rbenv</code> 명령어를 인식하지 못하거나, ruby 버전 전환 등의 기능을 제대로 사용할 수 없게 된다.</p>
+  </li>
+  <li>
+    <p><strong>변경한 쉘 설정 적용</strong></p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">source</span> ~/.zshrc
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>자, 이제 모든 작업은 끝이 났다. 이제 정상적으로 작동하는지 확인해보자.</p>
+
+<h3 id="bundle이-정상적으로-실행되는-지-실행하기"><code class="language-plaintext highlighter-rouge">bundle</code>이 정상적으로 실행되는 지 실행하기</h3>
+
+<p>이제 다시 블로그 루트 디렉토리에서 <code class="language-plaintext highlighter-rouge">bundle</code> 명령어를 실행한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> bundle
+Bundle <span class="nb">complete</span><span class="o">!</span> 3 Gemfile dependencies, 47 gems now installed.
+Use <span class="sb">`</span>bundle info <span class="o">[</span>gemname]<span class="sb">`</span> to see where a bundled gem is installed.
+</code></pre></div></div>
+
+<p>위와 같은 실행 결과가 나타났다면 정상적으로 <code class="language-plaintext highlighter-rouge">bundle</code> 설치가 완료된 것이다!</p>
+
+<hr />
+
+<h3 id="4-jekyll-sitemap-플러그인-설치하기">4. <code class="language-plaintext highlighter-rouge">jekyll-sitemap</code> 플러그인 설치하기</h3>
+
+<p>아래 명령어를 실행하여 <code class="language-plaintext highlighter-rouge">jekyll-sitemap</code> 플러그인을 설치해보자. 해당 플러그인은 jekyll의 sitemap을 자동으로 만들어준다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem <span class="nb">install </span>jekyll-sitemap
+</code></pre></div></div>
+
+<p>아래와 같이 응답 결과가 출력되었다면 정상적으로 플러그인이 설치가 된 것이다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Successfully installed jekyll-sitemap-1.4.0
+1 gem installed
+</code></pre></div></div>
+
+<p>실제 실행 결과 이미지:</p>
+
+<p><img width="467" alt="jekyll-sitemap 플러그인 설치 성공" src="https://github.com/user-attachments/assets/30ca6dbf-1de7-4c34-a325-c094568aa018" /></p>
+
+<h3 id="5-github에-변경사항을-커밋하고-푸시하기">5. GitHub에 변경사항을 커밋하고 푸시하기</h3>
+
+<p>변경사항을 github에 push하면 자동으로 사이트맵이 생성된다.<br />
+로컬에서는 파일이 보이지 않을 수 있지만, 실제 블로그 사이트에서 확인을 해보면 <code class="language-plaintext highlighter-rouge">sitemap.xml</code> 파일이 정상적으로 생성된 것을 확인할 수 있다.</p>
+
+<p><img width="1415" alt="Image" src="https://github.com/user-attachments/assets/95ae0f25-87dd-4c01-92f1-8893e0d0efd2" /></p>
+
+<h2 id="-참고">📚 참고</h2>
+
+<ul>
+  <li><a href="https://seo.tbwakorea.com/blog/how-to-create-and-submit-a-sitemap/">사이트맵(sitemap.xml) 쉽게 만들고 제출하기!</a></li>
+  <li><a href="https://velog.io/@fitf_/GitHub-PagesJekyll-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8-%EC%82%AC%EC%9A%A9%ED%95%98%EC%97%AC-sitemap.xml-%EC%83%9D%EC%84%B1%ED%95%98%EA%B8%B0-%EA%B5%AC%EA%B8%80-%EC%BD%98%EC%86%94%EC%97%90-%EB%93%B1%EB%A1%9D-%EC%84%B1%EA%B3%B5">GitHub Pages: Jekyll 플러그인 사용하여 sitemap.xml 생성하기 (구글 콘솔에 등록 성공!)</a></li>
+  <li><a href="https://ccomccomhan.tistory.com/282">ERROR: - While executing gem … (Gem::FilePermissionError)에러 해결(Mac에서 Gem::FilePermissionError 에러 해결)</a></li>
+</ul>]]></content><author><name>soha</name></author><category term="TIL" /><category term="TIL" /><category term="ERROR" /><summary type="html"><![CDATA[🗺️ sitemap이란?]]></summary></entry><entry><title type="html">매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)</title><link href="https://soi-ha.github.io/til/2025/02/28/M3D-Session-Local-Storage.html" rel="alternate" type="text/html" title="매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)" /><published>2025-02-28T00:00:00+00:00</published><updated>2025-02-28T00:00:00+00:00</updated><id>https://soi-ha.github.io/til/2025/02/28/M3D-Session-Local-Storage</id><content type="html" xml:base="https://soi-ha.github.io/til/2025/02/28/M3D-Session-Local-Storage.html"><![CDATA[<h2 id="-session-storage">📄 Session Storage</h2>
+
+<p><strong>Session Storage(세션 스토리지)</strong> 는 탭(세션) 단위로 데이터를 저장하는 저장소이다. 브라우저 탭을 닫으면 데이터가 사라진다.</p>
+
+<ul>
+  <li>데이터 지속성: <strong>브라우저 탭을 닫으면 삭제.</strong> (세션 동안만 유지)</li>
+  <li>저장 용량: 약 5MB</li>
+  <li>도메인 단위 저장: 같은 도메인 내에서만 접근 가능하지만, <strong>탭별로 구분됨.</strong></li>
+  <li>보안: 서버와 자동으로 주고받지 않음.</li>
+  <li>사용 예시: 임시 로그인 정보, 폼 데이터 임시 저장 (탭을 닫으면 사라지는 데이터)</li>
+</ul>
+
+<h3 id="️-예제-코드">⚒️ 예제 코드</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 데이터 저장</span>
+<span class="nx">sessionStorage</span><span class="p">.</span><span class="nf">setItem</span><span class="p">(</span><span class="dl">'</span><span class="s1">sessionKey</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">123456</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="c1">// 데이터 가져오기</span>
+<span class="kd">const</span> <span class="nx">sessionData</span> <span class="o">=</span> <span class="nx">sessionStorage</span><span class="p">.</span><span class="nf">getItem</span><span class="p">(</span><span class="dl">'</span><span class="s1">sessionKey</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">sessionData</span><span class="p">);</span> <span class="c1">// "123456"</span>
+
+<span class="c1">// 데이터 삭제</span>
+<span class="nx">sessionStorage</span><span class="p">.</span><span class="nf">removeItem</span><span class="p">(</span><span class="dl">'</span><span class="s1">sessionKey</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="c1">// 전체 삭제</span>
+<span class="nx">sessionStorage</span><span class="p">.</span><span class="nf">clear</span><span class="p">();</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-local-storage">🏠 Local Storage</h2>
+
+<p><strong>Local Storage(로컬 스토리지)</strong> 는 브라우저에 데이터를 영구적으로 저장하는 저장소이다. 사용자가 브라우저를 닫고 다시 열어도 데이터가 유지된다.</p>
+
+<ul>
+  <li>데이터 지속성: 브라우저를 닫아도 유지. (영구 저장)</li>
+  <li>저장 용량: 약 5MB</li>
+  <li>도메인 단위 저장: 같은 도메인 내에서는 모든 페이지에서 접근 가능, <strong>탭 별로 공유 가능.</strong></li>
+  <li>보안: 서버와 자동으로 주고받지 않음. → 보안이 비교적 높음</li>
+  <li>사용 예시: 사용자의 다크 모드 설정, 자동 로그인 유지</li>
+</ul>
+
+<h3 id="️-예제-코드-1">⚒️ 예제 코드</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 데이터 저장</span>
+<span class="nx">localStorage</span><span class="p">.</span><span class="nf">setItem</span><span class="p">(</span><span class="dl">'</span><span class="s1">username</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">soha</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="c1">// 데이터 가져오기</span>
+<span class="kd">const</span> <span class="nx">username</span> <span class="o">=</span> <span class="nx">localStorage</span><span class="p">.</span><span class="nf">getItem</span><span class="p">(</span><span class="dl">'</span><span class="s1">username</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">username</span><span class="p">);</span> <span class="c1">// "soha"</span>
+
+<span class="c1">// 데이터 삭제</span>
+<span class="nx">localStorage</span><span class="p">.</span><span class="nf">removeItem</span><span class="p">(</span><span class="dl">'</span><span class="s1">username</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="c1">// 전체 삭제</span>
+<span class="nx">localStorage</span><span class="p">.</span><span class="nf">clear</span><span class="p">();</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-cookie">🍪 Cookie</h2>
+
+<p><strong>Cookie(쿠키)</strong> 는 작은 데이터를 클라이언트에 저장하고 서버와 자동으로 주고받을 수 있는 저장소이다. 주로 사용자 인증과 세션 관리를 위해 사용된다.</p>
+
+<ul>
+  <li>데이터 지속성: 유효기간 설정 가능. (기본적으로 브라우저 종료 시 삭제)</li>
+  <li>저장 용량: 약 4KB (가장 작음)</li>
+  <li>도메인 단위 저장: 특정 도메인 및 경로에서만 접근 가능, <strong>탭 별로 공유 가능.</strong></li>
+  <li>보안: 기본적으로 HTTP 요청마다 서버와 자동으로 주고받음. → 보안 설정이 중요함 (<code class="language-plaintext highlighter-rouge">Secure</code>, <code class="language-plaintext highlighter-rouge">HttpOnly</code>, <code class="language-plaintext highlighter-rouge">SameSite</code> 등 옵션 활용)</li>
+  <li>사용 예시: 세션 유지, 사용자 인증 (JWT 토큰), 방문 기록</li>
+</ul>
+
+<h3 id="️-예제-코드-프론트엔드에서-쿠키-저장">⚒️ 예제 코드 (프론트엔드에서 쿠키 저장)</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 쿠키 저장 (expires로 유효기간 설정 가능)</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">username=soha; expires=Fri, 31 Dec 2025 23:59:59 GMT; path=/</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="c1">// 쿠키 가져오기</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span><span class="p">);</span> <span class="c1">// "username=soha"</span>
+
+<span class="c1">// 쿠키 삭제 (유효기간을 과거로 설정)</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">username=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/</span><span class="dl">'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>이 쿠키는 <code class="language-plaintext highlighter-rouge">example.com(현재 실행한 도메인)</code> 내 모든 페이지에서 접근 가능하다. 다른 탭에서 <code class="language-plaintext highlighter-rouge">document.cookie</code>를 실행해도 같은 <code class="language-plaintext highlighter-rouge">username=soha</code> 값을 얻을 수 있다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">expires(유효 일자)</code>나 <code class="language-plaintext highlighter-rouge">max-age(만료 기간)</code> 옵션이 지정되어있지 않으면 브라우저가 닫힐 때 쿠키도 함께 삭제된다. 이런 쿠키를 <strong>세션 쿠키(session cookie)</strong> 라고 한다.</p>
+
+<p>⛔️ <strong>도메인 제한 (domain 속성)</strong></p>
+
+<ul>
+  <li>
+    <p><strong>서브 도메인까지 공유하기</strong></p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">user=soha; domain=example.com</span><span class="dl">'</span><span class="p">;</span>
+</code></pre></div>    </div>
+
+    <p><code class="language-plaintext highlighter-rouge">example.com</code>뿐만 아니라 <code class="language-plaintext highlighter-rouge">sub.example.com</code>에서도 이 쿠키를 사용할 수 있다.</p>
+  </li>
+  <li>
+    <p><strong>서브도메인에서는 쿠키를 못 쓰게 하기</strong></p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">user=soha; domain=example.com</span><span class="dl">'</span><span class="p">;</span>
+<span class="c1">// 혹은</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">user=soha;</span><span class="dl">'</span><span class="p">;</span> <span class="c1">// 실행한 도메인(example.com)에서만 사용 가능</span>
+</code></pre></div>    </div>
+
+    <p><code class="language-plaintext highlighter-rouge">example.com</code>에서만 쿠키를 사용할 수 있고, <code class="language-plaintext highlighter-rouge">sub.example.com</code>에서는 사용할 수 없다.</p>
+  </li>
+</ul>
+
+<p>⛔️ <strong>경로 제한 (path 속성)</strong></p>
+
+<ul>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">/admin</code> 경로에서만 쿠키 사용하기</strong></p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">role=admin; path=/admin</span><span class="dl">'</span><span class="p">;</span>
+</code></pre></div>    </div>
+
+    <p>이 쿠키는 <code class="language-plaintext highlighter-rouge">https://example.com/admin</code> 페이지에서만 접근 가능하고,
+<code class="language-plaintext highlighter-rouge">https://example.com/user</code>에서는 <code class="language-plaintext highlighter-rouge">document.cookie</code>로 가져올 수 없다.</p>
+  </li>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">/(루트)</code>에서 설정하면 모든 경로에서 사용 가능</strong></p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">theme=dark; path=/</span><span class="dl">'</span><span class="p">;</span>
+</code></pre></div>    </div>
+
+    <p><code class="language-plaintext highlighter-rouge">example.com</code>의 모든 경로에서 쿠키를 사용할 수 있다.</p>
+  </li>
+</ul>
+
+<p>⛔️ <strong>https 통신 제한 (secure 속성)</strong></p>
+
+<ul>
+  <li>
+    <p><strong>https로 통신하는 경우에만 쿠키 전송</strong></p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// (https:// 로 통신하고 있다고 가정 중)</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">user=soha; secure</span><span class="dl">'</span><span class="p">;</span>
+</code></pre></div>    </div>
+
+    <p><code class="language-plaintext highlighter-rouge">secure</code> 옵션을 설정한 경우 <code class="language-plaintext highlighter-rouge">https://example.com</code>에서 설정한 쿠키는<code class="language-plaintext highlighter-rouge"> http://example.com</code>에서 접근할 수 없다. 쿠키에 민감한 내용이 저장되어 암호화되지 않은 HTTP 연결을 통해 전달되는 걸 원치 않을 경우 사용하면 좋다.</p>
+  </li>
+  <li>
+    <p><strong>프로토콜 상관 없이 쿠키 전송</strong></p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">user=soha;</span><span class="dl">'</span><span class="p">;</span>
+</code></pre></div>    </div>
+
+    <p><code class="language-plaintext highlighter-rouge">secure</code> 옵션이 없으면 <code class="language-plaintext highlighter-rouge">http://example.com</code>에서 생성한 쿠키를 <code class="language-plaintext highlighter-rouge">https://example.com</code>에서 읽을 수 있다. 즉, 서로 쿠키를 공유하게 된다. 쿠키는 도메인만 확인하고 프로토콜을 따지지 않기 때문이다.</p>
+  </li>
+</ul>
+
+<h3 id="-주의">🚨 주의</h3>
+
+<p>쿠키 저장은 프론트엔드에서도 가능하고, 백엔드에서도 가능하다.
+하지만 <strong>보안이 중요한 쿠키 (예: 로그인 토큰) 는 보통 백엔드에서 설정</strong>하는게 안전하다. 브라우저에서 <code class="language-plaintext highlighter-rouge">document.cookie</code>로 쉽게 접근할 수 있기 때문에, <strong>악성 스크립트(XSS 공격)에 노출될 위험이 있기 때문</strong>이다.</p>
+
+<h3 id="️-예제-코드-백엔드에서-쿠키-저장-예제--expressjs">⚒️ 예제 코드 (백엔드에서 쿠키 저장 예제 / Express.js)</h3>
+
+<p>백엔드에서는 응답 헤더에 Set-Cookie를 추가해서 쿠키를 저장한다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">res</span><span class="p">.</span><span class="nf">cookie</span><span class="p">(</span><span class="dl">'</span><span class="s1">token</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">secureToken123</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+	<span class="na">httpOnly</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+	<span class="na">secure</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+	<span class="na">sameSite</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Strict</span><span class="dl">'</span><span class="p">,</span>
+	<span class="na">maxAge</span><span class="p">:</span> <span class="mi">1000</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">24</span><span class="p">,</span> <span class="c1">// 1일 동안 유지</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">httpOnly: true</code> → JS에서 접근 불가능 (XSS 공격 방지)</li>
+  <li><code class="language-plaintext highlighter-rouge">secure: true</code> → HTTPS에서만 쿠키 전송</li>
+  <li><code class="language-plaintext highlighter-rouge">sameSite: "Strict"</code> → CSRF 공격 방지</li>
+  <li><code class="language-plaintext highlighter-rouge">maxAge</code> → 쿠키 유효 시간 설정 (밀리초 단위)</li>
+</ul>
+
+<p>백엔드에서 이렇게 설정하면 클라이언트에서는 <code class="language-plaintext highlighter-rouge">document.cookie</code>로 접근할 수 없고, HTTP 요청 시 자동으로 쿠키가 전송된다.</p>
+
+<hr />
+
+<h2 id="-정리">📝 정리</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>특징</th>
+      <th>Session Storage</th>
+      <th>Local Storage</th>
+      <th>Cookie</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>데이터 지속성</strong></td>
+      <td>탭을 닫으면 삭제</td>
+      <td>브라우저 닫아도 유지</td>
+      <td>설정한 유효기간까지 유지</td>
+    </tr>
+    <tr>
+      <td><strong>저장 용량</strong></td>
+      <td>약 5MB</td>
+      <td>약 5MB</td>
+      <td>약 4KB (가장 작음)</td>
+    </tr>
+    <tr>
+      <td><strong>브라우저에서 접근</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">sessionStorage</code> API 사용</td>
+      <td><code class="language-plaintext highlighter-rouge">localStorage</code> API 사용</td>
+      <td><code class="language-plaintext highlighter-rouge">document.cookie</code> 사용</td>
+    </tr>
+    <tr>
+      <td><strong>서버와의 통신</strong></td>
+      <td>서버로 전송되지 않음</td>
+      <td>서버로 전송되지 않음</td>
+      <td>HTTP 요청 시 자동 전송 가능</td>
+    </tr>
+    <tr>
+      <td><strong>보안</strong></td>
+      <td>비교적 안전</td>
+      <td>비교적 안전</td>
+      <td><code class="language-plaintext highlighter-rouge">HttpOnly</code>, <code class="language-plaintext highlighter-rouge">Secure</code> 설정 필요</td>
+    </tr>
+    <tr>
+      <td><strong>사용 예시</strong></td>
+      <td>임시 데이터 저장, 입력 폼 보존</td>
+      <td>사용자 설정 저장, 다크 모드</td>
+      <td>로그인 세션 유지, 인증 토큰 저장</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="-어떤-걸-써야-할까">🤔 어떤 걸 써야 할까?</h3>
+
+<ul>
+  <li><strong>탭을 닫으면 사라져야 하는 데이터</strong> → <code class="language-plaintext highlighter-rouge">Session Storage</code></li>
+  <li><strong>장기적인 데이터 저장</strong> → <code class="language-plaintext highlighter-rouge">Local Storage</code></li>
+  <li><strong>서버와 자동으로 데이터를 주고받아야 하는 경우</strong> → <code class="language-plaintext highlighter-rouge">Cookie</code></li>
+</ul>
+
+<h2 id="-참고">📚 참고</h2>
+
+<ul>
+  <li><a href="https://ko.javascript.info/localstorage">localStorage와 sessionStorage</a></li>
+  <li><a href="https://ko.javascript.info/cookie">쿠키와 document.cookie</a></li>
+  <li><a href="https://velog.io/@abcwockd95/%EA%B8%B0%EC%88%A0%EB%A9%B4%EC%A0%91-%EB%A1%9C%EC%BB%AC%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80-%EC%84%B8%EC%85%98%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80-%EC%BF%A0%ED%82%A4">기술면접: 로컬스토리지, 세션스토리지, 쿠키</a></li>
+  <li><a href="https://erwinousy.medium.com/%EC%BF%A0%ED%82%A4-vs-%EB%A1%9C%EC%BB%AC%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80-%EC%B0%A8%EC%9D%B4%EC%A0%90%EC%9D%80-%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C-28b8db2ca7b2">쿠키 vs 로컬스토리지: 차이점은 무엇일까?</a></li>
+</ul>]]></content><author><name>soha</name></author><category term="TIL" /><category term="TIL" /><category term="매3개" /><summary type="html"><![CDATA[📄 Session Storage]]></summary></entry><entry><title type="html">매3개 | Git의 다양한 Merge 방법 (merge, rebase, squash)</title><link href="https://soi-ha.github.io/til/2025/02/25/M3D-Git-Merge.html" rel="alternate" type="text/html" title="매3개 | Git의 다양한 Merge 방법 (merge, rebase, squash)" /><published>2025-02-25T00:00:00+00:00</published><updated>2025-02-25T00:00:00+00:00</updated><id>https://soi-ha.github.io/til/2025/02/25/M3D-Git-Merge</id><content type="html" xml:base="https://soi-ha.github.io/til/2025/02/25/M3D-Git-Merge.html"><![CDATA[<p>github에서 pr을 생성하고 해당 pr들을 merge를 하려고 클릭하면 다양한 방식의 merge 방법이 존재하는 것을 볼 수 있다.</p>
+
+<p><img width="345" alt="깃허브 merge 선택 화면" src="https://github.com/user-attachments/assets/b99d46ee-0fda-43eb-8f08-0217892299f2" /></p>
+
+<p>각 merge 방법들이 무엇인지 알아보도록 하자.</p>
+
+<h2 id="-목차">📋 목차</h2>
+
+<ul>
+  <li><a href="#-git-merge-feat-fast-forward">🫱🏻‍🫲🏼 Git Merge</a></li>
+  <li><a href="#-git-rebase">🔖 Git Rebase and Merge</a></li>
+  <li><a href="#-git-squash-merge">✊ Git Squash and Merge</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-git-merge-feat-fast-forward">🫱🏻‍🫲🏼 Git Merge (feat. fast-forward)</h2>
+
+<p><code class="language-plaintext highlighter-rouge">git merge</code>는 서로 다른 브랜치의 변경 사항을 하나의 브랜치에 통합하는 명령이다.<br />
+이 방식은 두 브랜치의 히스토리를 모두 보존하며, 보통 새로운 merge 커밋을 생성한다.</p>
+
+<p>단, 대상 브랜치(main)가 feature 브랜치의 기반(commit) 상태로 아무런 추가 변경 사항이 없을 경우에는 <strong><code class="language-plaintext highlighter-rouge">fast-forward merge</code></strong> 가 발생한다. fast-forward merge는 <strong>별도의 merge 커밋 없이</strong> <strong>브랜치 포인터만 앞으로 이동</strong>시켜 히스토리를 단순하게 유지한다.</p>
+
+<h3 id="-커밋-기록">✍🏻 커밋 기록</h3>
+
+<p>일반 Merge의 경우, feature 브랜치의 모든 커밋이 그대로 남고 새로운 merge 커밋이 추가된다.</p>
+
+<p>반면, fast-forward Merge의 경우는 main 브랜치의 포인터만 이동되므로, merge 커밋이 생성되지 않고 feature 브랜치의 커밋들이 그대로 이어진다.</p>
+
+<h3 id="-커밋-기록-예시">🪢 커밋 기록 예시</h3>
+
+<h4 id="일반-merge">일반 Merge</h4>
+
+<p><strong>Merge 전:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A --- B --- C        (main)
+      \
+      D --- E --- F  (feature)
+</code></pre></div></div>
+
+<p><strong>Merge 후:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A --- B --- C --- M   (main)
+      \         /
+      D --- E --- F  (feature)
+</code></pre></div></div>
+
+<p>여기서 M 커밋은 merge 커밋으로, feature 브랜치의 커밋(D, E, F)과 main의 커밋(C)을 모두 포함한다. 따라서 main 브랜치에는 <strong>feature 브랜치의 각 커밋이 그대로 기록</strong>되어 있다.</p>
+
+<h4 id="fast-forward-merge">fast-forward Merge:</h4>
+
+<p>fast-forward merge가 가능할 경우에 옵션을 사용하여 원하는 형태로 merge가 가능하다.</p>
+
+<p><strong>Merge 전:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A --- B --- C   (main)
+        \
+          D --- E  (feature)
+</code></pre></div></div>
+
+<p><strong>Merge 후:</strong></p>
+
+<ul>
+  <li>
+    <p><strong>fast-forward 병합 (<code class="language-plaintext highlighter-rouge">--no-ff</code> 옵션 미사용):</strong></p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A --- B --- C --- D --- E   (main)
+</code></pre></div>    </div>
+
+    <p>위 경우, merge 커밋이 생성되지 않는다.</p>
+  </li>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">--no-ff</code> 옵션 사용</strong>:</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A --- B --- C --- M   (main)
+              /
+      D --- E  (feature)
+</code></pre></div>    </div>
+
+    <p>여기서 M 커밋은 feature 브랜치의 변경사항을 포함하는 merge 커밋으로, feature가 병합되었다는 사실을 명확하게 기록한다.</p>
+  </li>
+</ul>
+
+<h3 id="-명령어">💬 명령어</h3>
+
+<h4 id="일반-merge-1">일반 Merge</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout main
+git merge feature
+</code></pre></div></div>
+
+<p>위 명령어는 feature 브랜치의 변경 사항을 main 브랜치에 병합하며, fast-forward가 가능한 경우 별도의 merge 커밋 없이 포인터만 이동한다.</p>
+
+<h4 id="강제-merge-fast-forward-방지">강제 Merge (fast-forward 방지)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout main
+git merge <span class="nt">--no-ff</span> feature
+</code></pre></div></div>
+
+<p>위 명령어는 fast-forward가 가능한 상황에서도 merge 커밋을 강제로 생성하여 병합 기록을 명확하게 남긴다.</p>
+
+<h3 id="-실제-커밋-로그-예시">📝 실제 커밋 로그 예시</h3>
+
+<h4 id="일반-merge-merge-커밋-생성">일반 Merge (merge 커밋 생성)</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*   3e1d2f0 (HEAD -&gt; main) Merge branch 'feature'
+|\
+| * 9c8b7a6 (feature) Add feature part 3
+| * 8b7a6c5 Add feature part 2
+| * 7a6c5b4 Add feature part 1
+* | 6d5c4b3 Fix typo in main file
+* | 5c4b3a2 Update documentation
+* | 4b3a291 Initial commit
+</code></pre></div></div>
+
+<h4 id="fast-forward-merge-merge-커밋-없이-포인터-이동">fast-forward Merge (merge 커밋 없이 포인터 이동)</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* 9c8b7a6 (HEAD -&gt; main, feature) Add feature part 3
+* 8b7a6c5 Add feature part 2
+* 7a6c5b4 Add feature part 1
+* 6d5c4b3 Fix typo in main file
+* 5c4b3a2 Update documentation
+* 4b3a291 Initial commit
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-git-rebase">🔖 Git Rebase</h2>
+
+<p><code class="language-plaintext highlighter-rouge">git rebase</code>는 feature 브랜치의 커밋들을 <strong>대상 브랜치(main)의 최신 커밋 이후로 재배치</strong>하는 명령이다.<br />
+이를 통해 <strong>커밋 히스토리가 선형으로 정리</strong>되어 깔끔하게 보인다. 다만, 이미 공유된 커밋에 대해 rebase를 수행하면 충돌이나 협업에 문제가 발생할 수 있으므로 주의하여 사용해야 한다.</p>
+
+<h3 id="-커밋-기록-1">✍🏻 커밋 기록</h3>
+
+<p>Rebase를 사용하면 feature 브랜치의 커밋들이 새로운 커밋(해시가 변경됨)으로 재작성되어 main 브랜치에 순서대로 기록된다. 이때 merge 커밋은 생성되지 않으며, 커밋 간의 관계가 단순한 선형 구조를 이룬다.</p>
+
+<h3 id="-커밋-기록-예시-1">🪢 커밋 기록 예시</h3>
+
+<p><strong>Rebase 전:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A --- B --- C        (main)
+      \
+      D --- E --- F  (feature)
+</code></pre></div></div>
+
+<p><strong>Rebase 후 (feature 브랜치가 main의 최신 커밋 뒤로 재배치됨):</strong></p>
+
+<ul>
+  <li>
+    <p>feature 브랜치가 main 브랜치의 최신 커밋(C) 뒤로 재배치됨을 강조</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A --- B --- C        (main)
+            \
+            D' --- E' --- F'  (feature)
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>feature의 구조</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A --- B --- C --- D' --- E' --- F'  (feature)
+</code></pre></div>    </div>
+
+    <p>feature 브랜치는 선형 구조를 가지게 된다.</p>
+  </li>
+</ul>
+
+<p>이후 fast-forward 방식으로 main에 병합한다면, main 브랜치는 아래와 같이 된다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A --- B --- C --- D' --- E' --- F'  (main)
+</code></pre></div></div>
+
+<p>feature 브랜치의 각 커밋(D’, E’, F’)이 하나씩 순서대로 main 브랜치에 들어간다.</p>
+
+<h4 id="rebase-and-merge시-충돌-주의">rebase and merge시, 충돌 주의</h4>
+
+<p>다른 개발자가 로컬에서 아직 rebase 이전의 feature 브랜치를 기반으로 작업하여 추가 커밋을 진행한 상태라고 가정해보자.</p>
+
+<p>rebase된 feature 브랜치(D’, E’, F’)와 기존 로컬 브랜치(D, E, F)의 히스토리 차이로 인해 병합 시 충돌이나 혼란이 발생할 수 있다. feature 브랜치의 커밋들이 rebase를 통해 해시가 변경된 새로운 커밋을 가지기 때문이다.</p>
+
+<p>다른 개발자가 가진 rebase가 실행되지 않은 feature 브랜치에 새로운 커밋을 찍고 rebase된 브랜치(공유됨)에 merge를 실행할 경우 커밋의 해시 값이 다르기 때문에 충돌이 발생한다.</p>
+
+<h3 id="-명령어-1">💬 명령어</h3>
+
+<ul>
+  <li>
+    <p><strong>Rebase 수행</strong></p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout feature
+git rebase main
+</code></pre></div>    </div>
+
+    <p>위 명령어는 feature 브랜치의 커밋들을 main 브랜치의 최신 커밋 뒤로 재배치한다.</p>
+  </li>
+  <li>
+    <p><strong>충돌 해결 후 rebase 계속 진행</strong></p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git rebase <span class="nt">--continue</span>
+</code></pre></div>    </div>
+
+    <p>만약 rebase 과정에서 충돌이 발생하면, 충돌을 해결한 후 위 명령어로 rebase를 이어간다.</p>
+  </li>
+  <li>
+    <p><strong>Rebase 완료 후 main에 통합 (fast-forward)</strong></p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout main
+git merge feature
+</code></pre></div>    </div>
+
+    <p>rebase가 완료된 feature 브랜치는 main 브랜치에 fast-forward 방식으로 병합할 수 있다.</p>
+  </li>
+</ul>
+
+<h3 id="-실제-커밋-로그-예시-1">📝 실제 커밋 로그 예시</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* 9c8b7a6 (HEAD -&gt; main, feature) Add feature part 3 (rebased)
+* 8b7a6c5 Add feature part 2 (rebased)
+* 7a6c5b4 Add feature part 1 (rebased)
+* 6d5c4b3 Fix typo in main file
+* 5c4b3a2 Update documentation
+* 4b3a291 Initial commit
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-git-squash-merge">✊ Git Squash Merge</h2>
+
+<p><code class="language-plaintext highlighter-rouge">git squash merge</code>는 feature 브랜치의 여러 커밋들을 <strong>하나의 커밋으로 압축</strong>하여 대상 브랜치에 병합하는 방식이다.<br />
+이 방법을 사용하면 기능 개발 과정의 중간 커밋들을 합쳐서 <strong>깔끔한 커밋 이력</strong>을 유지할 수 있다. 단, <strong>개별 커밋의 세부 기록은 남지 않으므</strong>로, 상세한 변경 이력을 확인하기 어렵다는 단점이 있다.</p>
+
+<h3 id="-커밋-기록-2">✍🏻 커밋 기록</h3>
+
+<p>Squash Merge를 수행하면, feature 브랜치의 여러 커밋이 하나의 커밋으로 압축되어 main 브랜치에 반영된다. 이 경우, feature 브랜치의 세부적인 커밋 내역은 사라지고, 하나의 통합 커밋으로 나타난다.</p>
+
+<h3 id="-커밋-기록-예시-2">🪢 커밋 기록 예시</h3>
+
+<p><strong>Squash Merge 전:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A --- B --- C         (main)
+      \
+      D --- E --- F   (feature)
+</code></pre></div></div>
+
+<p><strong>Squash Merge 후:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A --- B --- C --- S   (main)
+</code></pre></div></div>
+
+<p>여기서 S 커밋은 feature 브랜치의 변경 사항(D, E, F)을 모두 합친 하나의 커밋이다. 따라서 main 브랜치에는 feature 브랜치의 개별 커밋들이 아닌, 하나의 압축된 커밋만 기록된다.</p>
+
+<h3 id="-명령어-2">💬 명령어</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout main
+git merge <span class="nt">--squash</span> feature
+git commit <span class="nt">-m</span> <span class="s2">"Squash merge: feature 브랜치의 변경 사항 통합"</span>
+</code></pre></div></div>
+
+<p>위 명령어는 먼저 main 브랜치로 전환한 후 feature 브랜치의 모든 변경 사항을 하나로 합치고, 마지막으로 커밋 메시지를 작성하여 하나의 커밋으로 통합한다.</p>
+
+<h3 id="-실제-커밋-로그-예시-2">📝 실제 커밋 로그 예시</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* abcdef0 (HEAD -&gt; main) Squash merge: feature 브랜치의 변경 사항 통합
+* 6d5c4b3 Fix typo in main file
+* 5c4b3a2 Update documentation
+* 4b3a291 Initial commit
+</code></pre></div></div>
+
+<hr />
+
+<p>위와 같이 Git Merge, Rebase, Squash Merge 방식은 각각의 목적과 상황에 따라 사용되며, 커밋 기록 방식에도 차이가 있다. 프로젝트의 관리 방식과 기록의 세부사항 유지 여부에 따라 적절한 방식을 선택하여 사용하면 된다.</p>
+
+<h2 id="-정리">📝 정리</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>병합 방식</th>
+      <th>설명</th>
+      <th>장점</th>
+      <th>단점</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>git merge</td>
+      <td>두 브랜치의 변경사항을 병합하며 별도의 merge commit 생성</td>
+      <td>작업 내역이 명확하게 남음</td>
+      <td>히스토리가 복잡해질 수 있음</td>
+    </tr>
+    <tr>
+      <td>rebase merge</td>
+      <td>커밋들을 대상 브랜치 위에 재배치하여 선형 히스토리 유지</td>
+      <td>깔끔하고 추적이 쉬운 히스토리</td>
+      <td>공유된 커밋에 사용 시 혼란 발생 가능</td>
+    </tr>
+    <tr>
+      <td>squash merge</td>
+      <td>여러 커밋을 하나로 합쳐 이력을 단순하게 정리</td>
+      <td>커밋 이력이 간결해짐</td>
+      <td>세부 변경 내역 확인이 어려워짐</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="-참고">📚 참고</h2>
+
+<ul>
+  <li><a href="https://blog.outsider.ne.kr/1704">Merge vs. Rebase vs. Squash</a></li>
+  <li><a href="https://velog.io/@kwonh/Git-Rebase%EB%9E%80">Git Rebase란?</a></li>
+  <li><a href="https://git-scm.com/book/ko/v2/Git-%EB%B8%8C%EB%9E%9C%EC%B9%98-Rebase-%ED%95%98%EA%B8%B0">3.6 Git 브랜치 - Rebase 하기</a></li>
+  <li><a href="https://git-scm.com/book/ko/v2/Git-%EB%B8%8C%EB%9E%9C%EC%B9%98-%EB%B8%8C%EB%9E%9C%EC%B9%98%EC%99%80-Merge-%EC%9D%98-%EA%B8%B0%EC%B4%88">3.2 Git 브랜치 - 브랜치와 Merge 의 기초</a></li>
+  <li><a href="https://git-scm.com/book/ko/v2/%EB%B6%84%EC%82%B0-%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C%EC%9D%98-Git-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%97%90-%EA%B8%B0%EC%97%AC%ED%95%98%EA%B8%B0">5.2 분산 환경에서의 Git - 프로젝트에 기여하기</a></li>
+</ul>]]></content><author><name>soha</name></author><category term="TIL" /><category term="Git" /><category term="TIL" /><category term="매3개" /><summary type="html"><![CDATA[github에서 pr을 생성하고 해당 pr들을 merge를 하려고 클릭하면 다양한 방식의 merge 방법이 존재하는 것을 볼 수 있다.]]></summary></entry><entry><title type="html">매3개 | Git stash와 clean</title><link href="https://soi-ha.github.io/til/2025/02/07/M3D-Git-stash-clean.html" rel="alternate" type="text/html" title="매3개 | Git stash와 clean" /><published>2025-02-07T00:00:00+00:00</published><updated>2025-02-07T00:00:00+00:00</updated><id>https://soi-ha.github.io/til/2025/02/07/M3D-Git-stash-clean</id><content type="html" xml:base="https://soi-ha.github.io/til/2025/02/07/M3D-Git-stash-clean.html"><![CDATA[<h2 id="-git-stash">👛 Git stash</h2>
+
+<p><code class="language-plaintext highlighter-rouge">git stash</code>는 현재 작업 중인 변경 사항을 <strong>임시로 저장</strong>하는 명령어다. 작업 도중 코드 변경 사항이 있지만 바로 커밋할 수 없는 상황에서 유용하게 사용할 수 있다.</p>
+
+<h3 id="언제-사용할까">언제 사용할까?</h3>
+
+<ul>
+  <li><strong>다른 브랜치로 이동해야 할 때:</strong> 작업 도중 브랜치를 변경해야 하지만 아직 변경 사항을 커밋할 준비가 안 된 경우 stash를 사용한다.</li>
+  <li><strong>작업 중 코드 백업:</strong> 임시로 코드 변경 사항을 저장하고, 나중에 복원하여 이어서 작업할 때 사용한다.</li>
+  <li><strong>실험적인 코드 작성:</strong> 특정 코드 시도를 stash에 저장해두고 이후 필요에 따라 되돌리거나 삭제할 수 있다.</li>
+</ul>
+
+<h3 id="사용-방법">사용 방법</h3>
+
+<h4 id="변경-사항-임시-저장">변경 사항 임시 저장</h4>
+
+<p>변경 사항이 모두 stash에 저장되고 워킹 디렉터리가 깨끗한 상태가 된다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git stash
+</code></pre></div></div>
+
+<p>아래는 <code class="language-plaintext highlighter-rouge">git stash</code>와 같이 사용할 수 있는 다양한 옵션들이다.</p>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">--keep-index</code> 옵션<br />
+스테이징된(인덱스된) 변경 사항은 유지하고 워킹 디렉터리 변경만 stash에 저장한다.<br />
+기본적으로 <code class="language-plaintext highlighter-rouge">git stash</code>는 스테이징된 변경 사항도 stash에 포함하지만, 이 옵션은 스테이징된 변경 사항을 보존하고 워킹 디렉터리 변경만 저장하는 특징이 있다.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">--all</code>옵션<br />
+워킹 디렉터리의 모든 변경 사항(추적된 파일 + 추적되지 않은 파일)을 stash에 저장한다.<br />
+기본적으로 <code class="language-plaintext highlighter-rouge">git stash</code>는 추적된 파일만 저장하므로, 추가적으로 <code class="language-plaintext highlighter-rouge">.gitignore</code>에 포함된 파일이나 추적되지 않은 파일까지 임시 저장하려면 <code class="language-plaintext highlighter-rouge">--all</code> 옵션이 필요하다.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">--include-untracked</code> or <code class="language-plaintext highlighter-rouge">-u</code> 옵션<br />
+추적 중이지 않은 파일을 같이 저장한다.<br />
+기본적으로 <code class="language-plaintext highlighter-rouge">git stash</code>는 추적 중인 파일만 저장한다.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">--patch</code> 옵션<br />
+수정된 모든 사항을 저장하지 않는다. 대신 대화형 프롬프트가 뜨며 변경된 데이터 중 저장할 것과 저장하지 않을 것을 지정할 수 있다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git stash <span class="nt">--patch</span>
+diff <span class="nt">--git</span> a/lib/simplegit.rb b/lib/simplegit.rb
+index 66d332e..8bb5674 100644
+<span class="nt">---</span> a/lib/simplegit.rb
++++ b/lib/simplegit.rb
+@@ <span class="nt">-16</span>,6 +16,10 @@ class SimpleGit
+        <span class="k">return</span> <span class="sb">`</span><span class="c">#{git_cmd} 2&gt;&amp;1`.chomp</span>
+      end
+    end
++
++    def show<span class="o">(</span>treeish <span class="o">=</span> <span class="s1">'master'</span><span class="o">)</span>
++      <span class="nb">command</span><span class="o">(</span><span class="s2">"git show #{treeish}"</span><span class="o">)</span>
++    end
+
+end
+<span class="nb">test
+</span>Stash this hunk <span class="o">[</span>y,n,q,a,d,/,e,?]? y
+
+Saved working directory and index state WIP on master: 1b65b17 added the index file
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h4 id="특정-메시지를-추가해-저장">특정 메시지를 추가해 저장</h4>
+
+<p>저장된 stash 목록에 설명이 추가되어 구분하기 쉽다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git stash save <span class="s2">"작업 내용 설명 메시지"</span>
+</code></pre></div></div>
+
+<h4 id="저장된-stash-목록-확인">저장된 stash 목록 확인</h4>
+
+<p>각 stash에 대한 식별 정보가 출력된다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git stash list
+</code></pre></div></div>
+
+<h4 id="stash-복원">stash 복원</h4>
+
+<p>가장 최근 stash를 워킹 디렉터리에 적용한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git stash apply
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">--index</code> 옵션<br />
+Staged 상태까지 적용한다.<br />
+기본적으로 stash를 적용할 때 Staged 상태였던 파일을 자동으로 다시 Staged 상태로 만들어 주지 않는다. 따라서 해당 옵션을 사용해야 원래 작업하던 상태로 돌아올 수 있다.</li>
+</ul>
+
+<h4 id="특정-stash-적용">특정 stash 적용</h4>
+
+<p>stash 목록에서 특정 인덱스(<code class="language-plaintext highlighter-rouge">stash@{번호}</code>)에 해당하는 항목을 적용한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git stash apply stash@<span class="o">{</span>2<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="stash-삭제">stash 삭제</h4>
+
+<p>특정 stash 항목을 삭제한다.<br />
+<code class="language-plaintext highlighter-rouge">apply</code> 옵션은 단순히 stash를 적용하는 것뿐이다. stash는 여전히 목록에 남아 있다.<code class="language-plaintext highlighter-rouge"> git stash drop</code> 명령을 사용하여 해당 stash를 제거한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git stash drop stash@<span class="o">{</span>0<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="stash-복원-후-제거">stash 복원 후 제거</h4>
+
+<p>stash를 적용한 후 해당 stash를 목록에서 제거한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git stash pop
+</code></pre></div></div>
+
+<h4 id="모든-stash-삭제">모든 stash 삭제</h4>
+
+<p>모든 stash 항목을 삭제한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git stash clear
+</code></pre></div></div>
+
+<h2 id="-git-clean">🧹 Git clean</h2>
+
+<p><code class="language-plaintext highlighter-rouge">git clean</code>은 Git 저장소에서 <strong>추적되지 않은 파일(Untracked files)을 삭제</strong>하는 명령어다. 추적되지 않은 파일이란 Git이 관리하지 않는 파일(예: 새로 생성한 파일 또는 빌드 결과물)을 의미한다.</p>
+
+<h3 id="언제-사용할까-1">언제 사용할까?</h3>
+
+<ul>
+  <li><strong>빌드 파일 제거:</strong> 빌드 과정에서 생성된 파일을 깔끔하게 제거할 때 사용한다.</li>
+  <li><strong>불필요한 파일 정리:</strong> 프로젝트에 더 이상 필요하지 않은 임시 파일이나 테스트 파일을 제거할 때 유용하다.</li>
+  <li><strong>코드 환경 초기화:</strong> 작업 환경을 깔끔하게 초기화하여 불필요한 파일이 문제를 일으키지 않도록 할 때 사용한다.</li>
+</ul>
+
+<h3 id="사용하는-방법">사용하는 방법</h3>
+
+<h4 id="추적되지-않은-파일-삭제">추적되지 않은 파일 삭제</h4>
+
+<p>untracked 파일을 삭제한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clean <span class="nt">-f</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">-f(force)</code> 옵션은 파일 삭제를 강제하는 옵션이다.</p>
+
+<p>기본적으로 <code class="language-plaintext highlighter-rouge">git clean</code>은 <code class="language-plaintext highlighter-rouge">-f</code> 옵션 없이 동작하지 않기 때문에 실제로 사용하는 경우가 없다. Git은 실수로 파일을 삭제하는 것을 방지하기 위해 이 명령어를 반드시 강제 옵션과 함께 사용하도록 설계했다.</p>
+
+<h4 id="디렉터리까지-삭제">디렉터리까지 삭제</h4>
+
+<p>디렉터리와 파일 모두 삭제한다. 해당 명령 옵션은 하위 디렉토리까지 모두 지워버린다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clean <span class="nt">-f</span> <span class="nt">-d</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">-d (directory)</code> 옵션은 디렉터리 삭제를 허용한다. 이 옵션이 없으면 파일만 삭제되며 디렉터리는 남는다.</p>
+
+<h4 id="삭제-대상-확인">삭제 대상 확인</h4>
+
+<p>삭제될 파일 목록만 미리 확인할 수 있다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clean <span class="nt">-n</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">-n(dry run)</code> 옵션은 실제로 파일을 삭제하지 않고 어떤 파일이 삭제될지 미리 보여준다.</p>
+
+<h4 id="강제-삭제">강제 삭제</h4>
+
+<p><code class="language-plaintext highlighter-rouge">.gitignore</code>에 포함된 파일과 디렉터리도 삭제한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clean <span class="nt">-f</span> <span class="nt">-d</span> <span class="nt">-x</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">-x(exclude .gitignore)</code> 옵션은 <code class="language-plaintext highlighter-rouge">.gitignore</code>에 포함된 파일도 강제로 삭제한다.</p>
+
+<h4 id="특정-경로만-삭제">특정 경로만 삭제</h4>
+
+<p>지정된 경로(예: <code class="language-plaintext highlighter-rouge">build</code> 폴더)만 정리한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clean <span class="nt">-f</span> ./build
+</code></pre></div></div>
+
+<h2 id="️-stash와-clean-비교-정리">🍽️ stash와 clean 비교 정리</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>구분</th>
+      <th>git stash</th>
+      <th>git clean</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>목적</strong></td>
+      <td>변경 사항 임시 저장</td>
+      <td>추적되지 않은 파일 삭제</td>
+    </tr>
+    <tr>
+      <td><strong>작업 대상</strong></td>
+      <td>Git이 추적하는 변경 파일</td>
+      <td>Git이 추적하지 않는 파일</td>
+    </tr>
+    <tr>
+      <td><strong>명령어</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">git stash</code>, <code class="language-plaintext highlighter-rouge">git stash pop</code> 등</td>
+      <td><code class="language-plaintext highlighter-rouge">git clean -f</code>, <code class="language-plaintext highlighter-rouge">git clean -df</code> 등</td>
+    </tr>
+    <tr>
+      <td><strong>사용 상황</strong></td>
+      <td>브랜치 이동 또는 코드 백업</td>
+      <td>불필요한 파일 제거 및 환경 초기화</td>
+    </tr>
+    <tr>
+      <td><strong>영향</strong></td>
+      <td>변경 사항이 보존됨</td>
+      <td>삭제된 파일은 복구 불가</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="-정리">📝 정리</h2>
+
+<ul>
+  <li>stash는 변경 사항을 보존하며 나중에 복원.</li>
+  <li>clean은 추적되지 않은 파일을 깔끔하게 삭제하여 작업 환경을 정리하는데 적합.</li>
+</ul>
+
+<h2 id="-참고">📚 참고</h2>
+
+<ul>
+  <li><a href="https://git-scm.com/book/ko/v2/Git-%EB%8F%84%EA%B5%AC-Stashing%EA%B3%BC-Cleaning">Git 도구 - Stashing과 Cleaning</a></li>
+</ul>]]></content><author><name>soha</name></author><category term="TIL" /><category term="Git" /><category term="TIL" /><category term="매3개" /><summary type="html"><![CDATA[👛 Git stash]]></summary></entry><entry><title type="html">백준허브 크롬 확장프로그램 커스텀 방법</title><link href="https://soi-ha.github.io/til/2025/02/06/BH-Custom.html" rel="alternate" type="text/html" title="백준허브 크롬 확장프로그램 커스텀 방법" /><published>2025-02-06T00:00:00+00:00</published><updated>2025-02-06T00:00:00+00:00</updated><id>https://soi-ha.github.io/til/2025/02/06/BH-Custom</id><content type="html" xml:base="https://soi-ha.github.io/til/2025/02/06/BH-Custom.html"><![CDATA[<p>코딩 테스트를 준비하기 위해서 코테 문제 풀이 인증 스터디에 참가하게 되었다. 여기서 <code class="language-plaintext highlighter-rouge">백준허브</code>라는 크롬 확장자를 새롭게 알게 되었다.</p>
+
+<p>예전부터 사용하던 깃허브 코딩테스트 레포지토리에 해당 확장자를 연결하여 사용하는데.. 세상에? 디렉토리 구조랑 파일명, 그리고 리드미가 생성… 되고 있다! 기존에 사용해오던 구조와 너무나도 달랐기 때문에 나는 바로 커스텀을 할 수 있는 방법을 찾게 되었다.</p>
+
+<p>그리고 해당 글은 나 같이 커스텀하고 싶은 사람들을 위해 글을 적어둔다.</p>
+
+<h2 id="-백준허브-크롬-확장-프로그램-커스텀">🎨 백준허브 크롬 확장 프로그램 커스텀</h2>
+
+<p>🚨 <strong>커스텀 방법을 알아보기에 앞서 주의할 점</strong></p>
+
+<p>백준허브 코드를 살펴보면 각 문제풀이 사이트(프로그래머스, 백준 등)의 폴더마다 파일명을 동일하지만 내부 함수명이 좀 다르다. (구조도 조금 다른 것 같기도)</p>
+
+<p>따라서, <strong>프로그래머스가 아닌 경우에는 다음 내용을 참고만 하는 것</strong>이 좋다. <del>실제로 나의 경우에도 백준 사이트만 커스텀한 분의 글을 그대로 따라했다가.. 버그가 발생했다.. 이건 아래 글 참고</del></p>
+
+<p>그리고 꼭! <strong>아래 글을 끝까지 정독하고 참고하기를 추천</strong>한다. 아니면.. <strong>버그를 만날 수 있다</strong>.. 그러니 진짜 꼭 끝까지 글을 읽고 참고해야 한다!</p>
+
+<p>그러면 이제 어떻게 백준허브를 커스텀 할 수 있는지 차근차근 살펴보자.</p>
+
+<h3 id="백준허브-깃허브-레포지토리를-fork">백준허브 깃허브 레포지토리를 fork</h3>
+
+<p>아래 링크가 백준허브 깃허브 레포지토리이다. 해당 링크로 접속하여 자신의 깃허브에 fork하면 된다.</p>
+
+<p><a href="https://github.com/BaekjoonHub/BaekjoonHub">🔗 GitHub - BaekjoonHub/BaekjoonHub: 백준 자동 푸시 익스텐션(Auto Git Push for BOJ)</a></p>
+
+<h3 id="로컬에-해당-fork한-레포를-clone하고-열어-주기">로컬에 해당 fork한 레포를 clone하고 열어 주기</h3>
+
+<h3 id="원하는-문제풀이-사이트-폴더의-parsingjs로-이동">원하는 문제풀이 사이트 폴더의 parsing.js로 이동</h3>
+
+<p>나의 경우에는 프로그래머스에서 문제를 대부분 풀이하기 때문에, programmers 폴더의 parsing.js를 수정해줬다.</p>
+
+<h3 id="커스텀하고-싶은-내용-수정--makedata-함수"><strong>커스텀하고 싶은 내용 수정</strong> | <code class="language-plaintext highlighter-rouge">makeData</code> 함수</h3>
+
+<p>이동한 파일의 <code class="language-plaintext highlighter-rouge">makeData</code> 함수를 살펴보면 쉽게 커스텀을 진행할 수 있다. 아래는 친절하게 주석으로 작성해두신 내용이다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">-</span> <span class="nx">directory</span> <span class="p">:</span> <span class="nx">레포에</span> <span class="nx">기록될</span> <span class="nx">폴더명</span>
+  <span class="o">-</span> <span class="nx">message</span> <span class="p">:</span> <span class="nx">커밋</span> <span class="nx">메시지</span>
+  <span class="o">-</span> <span class="nx">fileName</span> <span class="p">:</span> <span class="nx">파일명</span>
+  <span class="o">-</span> <span class="nx">readme</span> <span class="p">:</span> <span class="nx">README</span><span class="p">.</span><span class="nx">md에</span> <span class="nx">작성할</span> <span class="nx">내용</span>
+  <span class="o">-</span> <span class="nx">code</span> <span class="p">:</span> <span class="nx">소스코드</span> <span class="nx">내용</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">makeData</code> 함수에서 변경하고 싶은 부분을 본인의 입맛에 맞게 수정하면 된다.</p>
+
+<p>나의 경우에는 거의 모든 것을 바꿔줬다. <code class="language-plaintext highlighter-rouge">directory</code>, <code class="language-plaintext highlighter-rouge">message</code>, <code class="language-plaintext highlighter-rouge">fileName</code>을 변경해줬는데, Readme.md는 같이 업로드 하지 않을 것이기 때문에 커밋 메세지에 Date(문제 풀이한 날짜 및 시각)가 포함될 수 있도록 수정해줬다.</p>
+
+<p>이때, Date가 출력되는 포맷도 변경해주기 위해서 해당 폴더의 utils 폴더 내부에 있는 <code class="language-plaintext highlighter-rouge">getDateString</code>의 return 값도 변경해줬다.</p>
+
+<h3 id="readme-업로드-막기--uploadfunctionsjs의-upload-함수"><strong>Readme 업로드 막기</strong> | uploadfunctions.js의 upload 함수</h3>
+
+<p>나의 경우에는 Readme.md 파일을 업로드하지 않을 예정이라 아래 코드 한 줄을 주석처리 해줬다. <strong>그리고 이 주석은.. 엄청난 파장을 불러오는데..😱</strong></p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">readme</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">git</span><span class="p">.</span><span class="nf">createBlob</span><span class="p">(</span><span class="nx">readmeText</span><span class="p">,</span> <span class="nx">$</span><span class="p">{</span><span class="nx">directory</span><span class="p">}</span><span class="sr">/README.md</span><span class="se">)</span><span class="sr">; /</span><span class="o">/</span> <span class="nx">readme</span> <span class="nx">파일</span>
+</code></pre></div></div>
+
+<h3 id="확장-프로그램-이름-변경--manifestjson의-name"><strong>확장 프로그램 이름 변경</strong> | manifest.json의 <code class="language-plaintext highlighter-rouge">name</code></h3>
+
+<p>커스텀한 내용의 확장 프로그램으로 새롭게 크롬에 설치를 해줘야, 커스텀한 내용이 적용된다. 그렇기 때문에 확장 프로그램 이름을 변경해주지 않으면 이게 커스텀한 건지… 안한건지.. 헷갈릴 수 있다. <del>내가 그랬다</del></p>
+
+<p>그래서 아래와 같이 manifest.json 파일에서 <code class="language-plaintext highlighter-rouge">name</code> 부분을 원하는 이름으로 변경해주면 된다. 나는 뒤에 Custom만 추가로 넣어줬다.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"백준허브(BaekjoonHub) Custom"</span><span class="err">,</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="-커스텀한-확장-프로그램-크롬에-적용하기">🐉 커스텀한 확장 프로그램 크롬에 적용하기</h2>
+
+<p>자, 이제 커스텀을 끝냈다. 그러면 이 커스텀한 코드를 어떻게 우리가 크롬에 사용할 수 있는지를 알아보자.</p>
+
+<h3 id="확장-프로그램-관리-페이지에-접속">확장 프로그램 관리 페이지에 접속</h3>
+
+<p>본인의 크롬 브라우저에 다음과 같이 url을 넣어주면 확장 프로그램 관리 페이지에 바로 접근할 수 있다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">chrome://extensions/</code></p>
+
+<h3 id="개발자-모드-토글을-클릭">개발자 모드 토글을 클릭</h3>
+
+<p><img width="1512" alt="확장 프로그램 적용 방법" src="https://github.com/user-attachments/assets/bd2b48af-de06-42ae-8816-281b02fcde8f" /></p>
+
+<h3 id="압축해제된-확장-프로그램을-로드합니다-클릭"><code class="language-plaintext highlighter-rouge">압축해제된 확장 프로그램을 로드합니다.</code> 클릭</h3>
+
+<p>위 이미지를 참고하여 넘버링된 순서에 맞게 클릭해주면 된다.</p>
+
+<h3 id="clone했던-폴더-업로드">clone했던 폴더 업로드</h3>
+
+<p>위에서 수정을 진행해줬던 폴더를 업로드 한다. 그럼 끝이다.</p>
+
+<p><img width="824" alt="확장 프로그램 선택" src="https://github.com/user-attachments/assets/29824de3-f699-40a2-8b06-5fa87d048166" /></p>
+
+<h3 id="커스텀-폴더가-잘-적용되었는지-확인하기">커스텀 폴더가 잘 적용되었는지 확인하기</h3>
+
+<p>아래 이미지와 같이 이미지 하단에 빨간 아이콘이 존재하고 변경했던 확장 프로그램 이름이 잘 반영되어있다면? 커스텀했던 백준허브가 우리의 크롬 확장 프로그램으로 잘 들어온 것이다.</p>
+
+<p><img width="432" alt="커스텀 확장 프로그램 적용 확인" src="https://github.com/user-attachments/assets/bbfd3c4d-e160-42e6-a5bf-958337709cc7" /></p>
+
+<p>이후에는 기존에 백준허브를 사용했던 것과 동일하게 원하는 레포지토리를 생성 혹은 연결해주면 끝이다. 사용 방법은 기존 백준허브와 완전히 동일하다.</p>
+
+<p>그럼 어디 커스텀 백준허브가 잘 작동되었는지 확인해보자!</p>
+
+<p>.</p>
+
+<p>.</p>
+
+<p>.</p>
+
+<h2 id="-업로드-되지-않는-버그-발생">🚨 업로드 되지 않는 버그 발생</h2>
+
+<p>… 그렇다. 버그가 발생했다… 간단하게 뚝딱 될 줄 알았는데.. 어… 역시 뭘 하던 버그는 마주칠 수 밖에 없는 문제인 것 같다… 하하..</p>
+
+<p>위에 내가 설명한 대로 수정을 진행하면 아래와 같이 설정한 레포지토리에 정상적으로 커밋되지 않는 문제가 발생한다.</p>
+
+<p><img width="762" alt="버그1" src="https://github.com/user-attachments/assets/ec014a54-4a1b-4d9b-979c-722a965e405e" /></p>
+
+<p>원인을 찾기 위해서 수정했던 파일 중에 문제를 일으킬 만한 것을 살펴보았지만 아무리 봐도 없었다.. 그러던 중…</p>
+
+<h3 id="문제-원인-발견">문제 원인 발견</h3>
+
+<p>서얼마.. <strong><code class="language-plaintext highlighter-rouge">readme</code>를 주석처리 해서</strong>.. 이게 혹시 원인..?이란 생각이 들어서 주석을 해제하고 시도하니.. 다음과 같이 정상적으로 커밋이 되었다.</p>
+
+<p><img width="839" alt="커스텀 성공1" src="https://github.com/user-attachments/assets/9e20ec25-92d6-4bb7-9608-2a5f5c5c6400" /></p>
+
+<p><img width="729" alt="커스텀 성공2" src="https://github.com/user-attachments/assets/9ddea118-5757-4947-8761-f17860b6a6d5" /></p>
+
+<h2 id="️-readme-파일을-업로드하지-않도록-하기-retry">♻️ Readme 파일을 업로드하지 않도록 하기 (Retry)</h2>
+
+<p>일단 위에서 설명했던 <strong>5번의 코드는 주석을 진행해도 된다.</strong> 다만, <strong>같이 해줘야 하는 작업이 있다.</strong></p>
+
+<h3 id="treesha-상수-수정"><code class="language-plaintext highlighter-rouge">treeSHA</code> 상수 수정</h3>
+
+<p>아래와 같이 <code class="language-plaintext highlighter-rouge">treeSHA</code>의 상수 값을 수정해줘야 한다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">readme</code> 값을 <strong>주석처리 했기 때문에 현재 <code class="language-plaintext highlighter-rouge">readme</code>라는 상수는 존재하지 않게 되었다</strong>. 그런데 <code class="language-plaintext highlighter-rouge">treeSHA</code>에서 <strong><code class="language-plaintext highlighter-rouge">readme</code>를 사용하려고 하고 있다.</strong> 어라라? 존재하지 않는 값을 사용한다..? 역시.. 말이 안되는 행위이다..</p>
+
+<p>따라서 treeSHA에서 readme 값을 제거해준다. 그러면 사라진 readme 라는 상수는 사용되지 않아 여기서 문제가 발생하지 않을 것이다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 변경전</span>
+<span class="kd">const</span> <span class="nx">treeSHA</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">git</span><span class="p">.</span><span class="nf">createTree</span><span class="p">(</span><span class="nx">refSHA</span><span class="p">,</span> <span class="p">[</span><span class="nx">source</span><span class="p">,</span> <span class="nx">readme</span><span class="p">]);</span>
+<span class="c1">// 변경후</span>
+<span class="kd">const</span> <span class="nx">treeSHA</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">git</span><span class="p">.</span><span class="nf">createTree</span><span class="p">(</span><span class="nx">refSHA</span><span class="p">,</span> <span class="p">[</span><span class="nx">source</span><span class="p">]);</span>
+
+<span class="kd">const</span> <span class="nx">commitSHA</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">git</span><span class="p">.</span><span class="nf">createCommit</span><span class="p">(</span><span class="nx">commitMessage</span><span class="p">,</span> <span class="nx">treeSHA</span><span class="p">,</span> <span class="nx">refSHA</span><span class="p">);</span>
+<span class="k">await</span> <span class="nx">git</span><span class="p">.</span><span class="nf">updateHead</span><span class="p">(</span><span class="nx">ref</span><span class="p">,</span> <span class="nx">commitSHA</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>+) 추가로 <code class="language-plaintext highlighter-rouge">source</code> 값 하나만 존재하니까 배열로 안 감싸도 되지 않을까? 라는 생각을 한 나는.. <code class="language-plaintext highlighter-rouge">[source]</code>가 아닌 <code class="language-plaintext highlighter-rouge">source</code>로 작성했는데 이러면 안된다.. 확장 프로그램에서는 커밋되었다는 초록색 check 표시가 뜨는데, 페이크이다.. 실제 레포지토리에 가면 커밋되어있지 않다.</p>
+
+<h3 id="updateobjectdatafrompath-주석">updateObjectDataFromPath 주석</h3>
+
+<p>여기도 역시 <code class="language-plaintext highlighter-rouge">readme</code>라는 상수는 사라졌는데 사용하고 있으니 동일하게 주석처리를 해주면 된다!</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* stats의 값을 갱신합니다. */</span>
+<span class="nf">updateObjectDatafromPath</span><span class="p">(</span><span class="nx">stats</span><span class="p">.</span><span class="nx">submission</span><span class="p">,</span> <span class="s2">`</span><span class="p">${</span><span class="nx">hook</span><span class="p">}</span><span class="s2">/</span><span class="p">${</span><span class="nx">source</span><span class="p">.</span><span class="nx">path</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="nx">source</span><span class="p">.</span><span class="nx">sha</span><span class="p">);</span>
+<span class="c1">// updateObjectDatafromPath(stats.submission, `${hook}/${readme.path}`, readme.sha);</span>
+</code></pre></div></div>
+
+<h2 id="-결과">✌🏻 결과</h2>
+
+<p>원하는 디렉토리 형태와 파일명, 그리고 Readme.md 없이 잘 커밋되어있는 것을 확인할 수 있다.</p>
+
+<p><img width="1477" alt="커스텀 결과" src="https://github.com/user-attachments/assets/27bb50ec-dc8c-4c08-be69-384e790f4c28" /></p>
+
+<h3 id="실제-커스텀한-백준허브-깃허브-리포지토리">실제 커스텀한 백준허브 깃허브 리포지토리</h3>
+
+<p>혹시 어떻게 코드를 변경했는지 참고하고 싶다면 아래 링크에 접속하여 참고하면 된다.</p>
+
+<p>참고로 나의 경우에는 기존의 백준허브 코드를 지우지 않고 주석처리 해뒀다. 그래서 다소.. 코드가.. 좀.. 더러울 것이다.</p>
+
+<p><a href="https://github.com/soi-ha/BaekjoonHubCustom">🔗 GitHub - soi-ha/BaekjoonHubCustom: 백준 자동 푸시 익스텐션(Auto Git Push for BOJ) 커스텀 repo</a></p>
+
+<h2 id="-생각-끄적이기">✍🏻 생각 끄적이기</h2>
+
+<p>사실 readme 상수를 주석처리 하면서도 음.. 아래에서 사용하고 있는데 이거 문제 생길 것 같은데.. 근데 참고한 글은 냅다 주석해도 되었다는 걸 보면 괜찮겠지? 라는 생각을 가지고 그냥 냅다 따라했다. 그랬다가 나의 1시간을 순삭당했는데..</p>
+
+<p>이번에 정말 온 몸으로 깨달은 것은 무작정 글을 믿고 따라하면 안된다는 것이다. 사람은 사고를 하는 동물 아닌가? 그러니 해당 <strong>글은 참고만 하고 생각을 하면서 개발을 해야 하는 것을 잊지 말아야겠다.</strong> 이래서.. 생각 없이 무작정 사용하는 것을 지양하고 무언가를 할 때 <strong>꼭 어떤 이유에서 이렇게 코드를 작성했는지 생각</strong>하라는게.. 이래서구나~ 라는 걸 깨닫게 되는 과정이었다.</p>
+
+<p>그리고 해당 코드가 타입스크립트가 아니라 자바스크립트라.. 이게 생각보다 불편하더라. 해당 값의 형태가.. string인지.. 꼭 object 형태여야 하는 건지.. 이런 것을 알 수가 없었다. 타입추론이 안되니 굉장히 불편하구나를 1년동안 ts만 쓰면서 처음으로 깨달았다.</p>
+
+<h2 id="참고-문서">📚 참고 문서</h2>
+
+<ul>
+  <li><a href="https://velog.io/@nayu1105/LeetHub-%ED%8F%B4%EB%8D%94-%EA%B5%AC%EC%A1%B0-%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0">LeetHub 폴더 구조 변경하기</a></li>
+  <li><a href="https://2jun0.tistory.com/80">백준 허브 커스터마이징</a></li>
+</ul>]]></content><author><name>soha</name></author><category term="TIL" /><category term="TIL" /><category term="확장 프로그램" /><summary type="html"><![CDATA[코딩 테스트를 준비하기 위해서 코테 문제 풀이 인증 스터디에 참가하게 되었다. 여기서 백준허브라는 크롬 확장자를 새롭게 알게 되었다.]]></summary></entry><entry><title type="html">매3개 | Git 저장소의 구조와 흐름 &amp;amp; 파일 상태 변화</title><link href="https://soi-ha.github.io/til/2025/01/23/M3D-Git-working-tree.html" rel="alternate" type="text/html" title="매3개 | Git 저장소의 구조와 흐름 &amp;amp; 파일 상태 변화" /><published>2025-01-23T00:00:00+00:00</published><updated>2025-01-23T00:00:00+00:00</updated><id>https://soi-ha.github.io/til/2025/01/23/M3D-Git-working-tree</id><content type="html" xml:base="https://soi-ha.github.io/til/2025/01/23/M3D-Git-working-tree.html"><![CDATA[<h2 id="-git">🌿 Git?</h2>
+
+<p>Git은 분산 버전 관리 시스템으로, 개발자가 코드를 효율적으로 관리하고 협업할 수 있도록 돕는다. 이런 Git 저장소는 총 4가지로 작업 디렉터리, 스테이징 영역, 지역 저장소, 원격 저장소가 있다.</p>
+
+<p>이 중에서 주요 영역은 작업 디렉터리, 스테이징 영역, 지역 저장소 3가지로 Git의 데이터 흐름을 파악하기 위해 꼭 알아야 한다. 이 3가지 영역은 Git의 주요 데이터 관리 구조로 Git이 추적(관리)하는 파일과 추적하지 않는 파일을 구분하고, 추적하는 파일들의 상태를 구분짓는다.</p>
+
+<p>일단 Git의 데이터 흐름을 알아보기 전에 Git의 저장소 4가지가 어떤 역할을 하는지 알아보자.</p>
+
+<h2 id="️-git-저장소의-구조">🗄️ Git 저장소의 구조</h2>
+
+<h3 id="1-작업-디렉터리working-directory">1. 작업 디렉터리(Working Directory)</h3>
+
+<p>작업 디렉터리(Working Directory)는 작업 중인 파일들이 실제로 있는 공간으로, <strong>사용자가 직접 수정하고 편집하는 파일이 위치</strong>한다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">git init</code> 명령어를 통해 현재 디렉터리(컴퓨터에서 작업 중인 폴더)를 Git 저장소로 초기화한다. 초기화가 완료되면 Git은 변경된 파일을 추적하기 시작한다.</p>
+
+<p>작업 디렉터리는 Working Tree라고도 부르는데, 이 두 가지 용어는 동일한 의미로 사용된다. Git 공식 문서에서도 두 용어가 같은 의미로 사용되며 혼용된다.</p>
+
+<p><img width="641" alt="working tree Git 공식문서 설명" src="https://github.com/user-attachments/assets/21e9781e-d541-498e-a9c4-41dfc9f93a44" /></p>
+
+<p><em>working tree Git 공식문서 설명</em></p>
+
+<p>이는 Git의 상태를 트래킹하고 파일 시스템의 특정 상태를 나타내는데 있어서 같은 역할을 하기 때문이다. 따라서, 작업 디렉터리와 작업 트리 모두 “사용자가 직접 편집하는 파일들이 위치한 영역”을 지칭한다.</p>
+
+<p><img width="250" alt="Image" src="https://github.com/user-attachments/assets/3079a540-d67b-49ee-92b9-06ff3290ada0" /></p>
+
+<p><em>작업 내용이 없을 경우 <code class="language-plaintext highlighter-rouge">git status</code> 명령을 했을 때 띄워지는 문구</em></p>
+
+<h3 id="2-스테이징-영역staging-area">2. 스테이징 영역(Staging Area)</h3>
+
+<p>스테이징 영역은 커밋(commit)하기 전에 변경된 파일을 <strong>임시로 저장하는 공간</strong>이다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">git add</code> 명령어를 사용하여 작업 디렉터리에서 변경된 파일을 스테이징 영역으로 추가할 수 있다. 이를 통해 커밋 시 어떤 변경 사항이 포함될지 선택적으로 관리할 수 있다.</p>
+
+<h3 id="3-지역-저장소local-repository">3. 지역 저장소(Local Repository)</h3>
+
+<p>지역 저장소는 사용자의 컴퓨터에 위치하며, <strong>모든 버전 히스토리를 저장</strong>한다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">git commit</code> 명령어를 통해 스테이징 영역에 있는 변경 사항을 지역 저장소에 기록한다. 지역 저장소는 <code class="language-plaintext highlighter-rouge">.git</code> 디렉터리로 관리되며, 버전 기록을 안전하게 보관한다.</p>
+
+<h3 id="4-원격-저장소remote-repository">4. 원격 저장소(Remote Repository)</h3>
+
+<p>원격 저장소는 GitHub, GitLab과 같은 플랫폼에서 호스팅되며, 협업을 위해 사용된다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">git push</code> 명령어를 사용하여 <strong>지역 저장소의 데이터를 원격 저장소로 업로드</strong>할 수 있다. 반대로, 원격 저장소에 있는 최신 데이터를 지역 저장소로 가져오려면 <code class="language-plaintext highlighter-rouge">git pull</code> 명령어를 사용한다. 새로운 저장소를 처음 복제할 때는 <code class="language-plaintext highlighter-rouge">git clone</code> 명령어를 사용하여 원격 저장소의 내용을 지역 저장소로 복사한다.</p>
+
+<h4 id="쉽게-기억하기">쉽게 기억하기</h4>
+
+<ul>
+  <li>작업 디렉토리: 내가 실제로 일하는 공간.</li>
+  <li>스테이징 영역: 커밋하기 전에 임시로 저장하는 곳.</li>
+  <li>지역 저장소: 내 작업을 안전하게 저장하는 곳.</li>
+  <li>원격 저장소: 협업 및 백업을 하기 위해 작업을 저장하는 곳.</li>
+</ul>
+
+<h2 id="-git의-데이터-흐름">🌊 Git의 데이터 흐름</h2>
+
+<p>Git 저장소에 대해 설명하면서 Git의 데이터 흐름에 대해서도 설명을 했다. 그러나 이렇게 글로 설명해서는 잘 이해되지 않을 것이다. 아래 그림을 보면서 간략하게 Git의 데이터 흐름에 대해서 다시 한번 살펴보자.</p>
+
+<p><img width="1392" alt="git 저장소의 구조와 흐름" src="https://github.com/user-attachments/assets/d51a1640-bbde-4cb7-ab3d-4b4a3d66a759" /></p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">git init</code>을 통해 현재 디렉토리를 Git 저장소로 초기화하고 변경된 파일을 추적한다.</li>
+  <li>작업 디렉터리에서 코드를 수정하고 변경 사항을 생성한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">git add</code> 명령어로 변경 사항을 스테이징 영역에 추가한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">git commit</code> 명령어로 스테이징 영역의 변경 사항을 지역 저장소에 저장한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">git push</code> 명령어를 사용해 지역 저장소의 변경 사항을 원격 저장소로 전송한다.</li>
+  <li>다른 작업자의 변경 사항을 통합하려면 <code class="language-plaintext highlighter-rouge">git pull</code> 명령어를 사용한다.</li>
+</ol>
+
+<p>+) 만약 새로운 저장소를 작업 중인 컴퓨터로 복제하고 싶은 경우, <code class="language-plaintext highlighter-rouge">git clone</code> 명령어를 사용하여 원격 저장소의 내용을 지역 저장소로 복사한다.</p>
+
+<p>Git의 저장소 구조와 데이터 흐름을 이해했다면, 이제 작업을 진행하며 파일의 상태가 어떻게 변화하는지 알아볼 차례다. 파일의 상태 변화는 Git이 파일을 관리하는 과정을 이해하는 핵심으로, 효율적인 버전 관리를 위해 반드시 알아야 할 개념이다.</p>
+
+<h2 id="️-git에서의-파일-상태-변화">🕊️ Git에서의 파일 상태 변화</h2>
+
+<p>Git에서 파일의 상태 변화는 파일이 Git에서 어떻게 관리되고 있는지를 보여주는 중요한 요소다. 이 과정은 파일이 작업 디렉터리(Working Directory)와 스테이징 영역(Staging Area) 사이를 이동하며 상태가 변화하는 방식으로 나타난다.</p>
+
+<p>아래 그림을 참고하여 어떻게 파일 상태 변화가 나타나는지 알아보자.</p>
+
+<p><img width="1312" alt="git의 파일 상태 변화" src="https://github.com/user-attachments/assets/fe95cc25-5171-4548-a9ce-8924aa7a350d" /></p>
+
+<h3 id="1-untracked-상태">1. Untracked 상태</h3>
+
+<p>작업 디렉터리에 새로 추가된 파일은 처음에는 Git에 의해 추적되지 않는 상태인 <strong>Untracked</strong>로 분류된다. 이 상태는 Git이 파일을 아직 버전 관리에 포함하지 않았음을 의미한다.</p>
+
+<p><img width="483" alt="untracked file" src="https://github.com/user-attachments/assets/cd0296db-ae7c-4b6b-b3d4-70ed2c5a0e71" /></p>
+
+<ul>
+  <li>
+    <p><strong>→ <code class="language-plaintext highlighter-rouge">git add</code> 명령어</strong></p>
+
+    <p><code class="language-plaintext highlighter-rouge">git add</code> 명령어를 실행하면 Untracked 상태의 파일이 스테이징 영역에 추가되고, <strong>Tracked 상태</strong>로 전환된다.</p>
+  </li>
+</ul>
+
+<h3 id="2-tracked-상태">2. Tracked 상태</h3>
+
+<p>Tracked 상태는 Git이 해당 파일을 버전 관리하고 있음을 의미한다.</p>
+
+<p><img width="389" alt="tracked file" src="https://github.com/user-attachments/assets/2d396235-5f26-4182-acfb-464b1a2f3fe1" /></p>
+
+<p>Tracked 상태의 파일은 아래 세 가지 하위 상태로 나뉜다.</p>
+
+<ul>
+  <li><strong>Unmodified</strong>: 마지막 커밋 이후 파일에 변경이 없는 상태. <code class="language-plaintext highlighter-rouge">git add</code>를 실행하지 않은 상태의 파일이 여기에 해당.</li>
+  <li><strong>Modified</strong>: 파일이 수정되었으나 아직 스테이징 영역에 반영되지 않은 상태.</li>
+  <li><strong>Staged</strong>: 수정된 파일이 <code class="language-plaintext highlighter-rouge">git add</code> 명령어로 스테이징 영역에 추가된 상태.</li>
+</ul>
+
+<h3 id="3-unmodified--modified">3. Unmodified → Modified</h3>
+
+<p>Tracked 상태의 파일이 수정되면, 파일은 <strong>Modified 상태</strong>로 변경된다. 이 상태는 파일이 변경되었으나 아직 스테이징 영역에 반영되지 않았음을 나타낸다.</p>
+
+<p><img width="456" alt="modified file" src="https://github.com/user-attachments/assets/ed1eb917-c86f-4b70-9fd7-3058383d9ace" /></p>
+
+<h3 id="4--git-add-명령어">4. → <code class="language-plaintext highlighter-rouge">git add</code> 명령어</h3>
+
+<p>수정된 파일에 대해 다시 <code class="language-plaintext highlighter-rouge">git add</code> 명령어를 실행하면, 파일은 다시 <strong>Staged 상태</strong>로 전환된다. Staged 상태의 파일은 이후 커밋(commit) 시 기록된다.</p>
+
+<h2 id="-정리">📝 정리</h2>
+
+<ul>
+  <li><strong>작업 디렉터리 (Working Directory)</strong>: 실제로 파일을 수정/편집하는 공간</li>
+  <li><strong>스테이징 영역 (Staging Area)</strong>: 커밋 전 변경 사항을 임시 저장하는 공간</li>
+  <li><strong>지역 저장소 (Local Repository)</strong>: 모든 버전 히스토리를 저장하는 공간</li>
+  <li><strong>원격 저장소 (Remote Repository)</strong>: 협업 및 백업용 저장 공간 (GitHub, GitLab 등)</li>
+  <li><strong>Git의 핵심 흐름</strong>: 작업 디렉터리 → 스테이징 영역 → 지역 저장소 → 원격 저장소</li>
+  <li><strong>Untracked</strong>: Git이 추적하지 않는 새 파일</li>
+  <li><strong>Tracked 상태</strong>
+    <ul>
+      <li><strong>Unmodified</strong>: 마지막 커밋 이후 변경 없음</li>
+      <li><strong>Modified</strong>: 파일 수정됨</li>
+      <li><strong>Staged</strong>: 수정 파일이 <code class="language-plaintext highlighter-rouge">git add</code>로 스테이징 영역에 반영</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="-참고">📚 참고</h2>
+
+<ul>
+  <li><a href="https://git-scm.com/docs/gitglossary">Git -git-glossary</a></li>
+  <li><a href="https://velog.io/@calm0_0/GIT-Git-%EC%9E%91%EC%97%85-%ED%8A%B8%EB%A6%AC-%EC%BB%A4%EB%B0%8B-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-working-tree-git-add-commit-push">GIT: 작업 트리, 커밋 이해하기 (working tree, git add, commit, push)</a></li>
+  <li><a href="https://velog.io/@khakhid/%EC%B4%88%EB%B3%B4%EC%9E%90%EB%A5%BC-%EC%9C%84%ED%95%9C-%EA%B9%83%EA%B9%83%ED%97%88%EB%B8%8C">📖 초보자를 위한 깃&amp;깃허브</a></li>
+  <li><a href="https://inpa.tistory.com/entry/GIT-%E2%9A%A1%EF%B8%8F-%EB%B2%84%EC%A0%84-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0-init-add-commit">GIT: ⚡️ 버전 관리하기 (git init / add / commit / log / diff)</a></li>
+</ul>]]></content><author><name>soha</name></author><category term="TIL" /><category term="Git" /><category term="TIL" /><category term="매3개" /><summary type="html"><![CDATA[🌿 Git?]]></summary></entry><entry><title type="html">매3개 | Git: checkout, switch, restore (부제: 원격 브랜치를 로컬에 그대로 생성하기)</title><link href="https://soi-ha.github.io/til/2025/01/21/M3D-Creating-a-local-branch-identical-to-a-remote-branch.html" rel="alternate" type="text/html" title="매3개 | Git: checkout, switch, restore (부제: 원격 브랜치를 로컬에 그대로 생성하기)" /><published>2025-01-21T00:00:00+00:00</published><updated>2025-01-21T00:00:00+00:00</updated><id>https://soi-ha.github.io/til/2025/01/21/M3D-Creating-a-local-branch-identical-to-a-remote-branch</id><content type="html" xml:base="https://soi-ha.github.io/til/2025/01/21/M3D-Creating-a-local-branch-identical-to-a-remote-branch.html"><![CDATA[<p>때는 행동대장 프로젝트를 진행하면서…<br />
+새로운 이슈를 처리하기 위해 원격에서 만들어둔 브랜치를 로컬로 가져오려고 시도했다. 그러나 만들어진 브랜치의 마지막 log를 확인해보니 원격 브랜치의 log와 달랐다! 나는 원격 브랜치를 그대로 로컬로 가져오는 방법을 검색했고.. git의 checkout을 통해 성공할 수 있었다.</p>
+
+<p>도대체 이 checkout이 무엇을 수행하는 명령어이길래 원격 브랜치를 그대로 로컬에 생성할 수 있는지 알아보도록 하자. 그리고 checkout과 유사한 일을 수행하는 switch와 restore은 무엇인지도 같이 알아보자!</p>
+
+<h2 id="-checkout">✅ checkout?</h2>
+
+<p>checkout 명령어는 브랜치 변경, 특정 커밋 체크아웃, 파일 복원 등 여러 작업에 사용된다.</p>
+
+<h3 id="checkout으로-할-수-있는-기능">checkout으로 할 수 있는 기능</h3>
+
+<h4 id="1-브랜치-변경">1. 브랜치 변경</h4>
+
+<p>현재 작업 중인 브랜치를 다른 브랜치로 변경하는 데 사용된다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout &lt;branch-name&gt;
+</code></pre></div></div>
+
+<ul>
+  <li>현재 브랜치를 <code class="language-plaintext highlighter-rouge">branch-name</code>으로 변경한다.</li>
+  <li>작업 디렉토리는 변경된 브랜치의 마지막 commit 상태로 업데이트된다.</li>
+  <li>단, commit 혹은 stash하지 않은 작업이 존재할 경우(즉, working directory에 존재) 다른 브랜치로 변경할 수 없다.</li>
+</ul>
+
+<h4 id="2-새-브랜치-생성-및-이동">2. 새 브랜치 생성 및 이동</h4>
+
+<p>브랜치를 생성하고 바로 이동할 때 사용한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">-b</span> &lt;new-branch-name&gt;
+</code></pre></div></div>
+
+<ul>
+  <li>새로운 브랜치를 생성하고 해당 브랜치로 이동한다.</li>
+  <li>
+    <p>만약 <strong>원격 브랜치를 추적하는 로컬 브랜치를 생성하고 이동</strong>하고 싶을 경우 다음과 같다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">-b</span> &lt;new-branch-name&gt; &lt;remote&gt;/&lt;remote-branch-name&gt;
+
+or
+
+git checkout <span class="nt">--track</span> &lt;remote&gt;/&lt;remote-branch-name&gt;
+</code></pre></div>    </div>
+
+    <p>예로, origin에 있는 feature1이라는 브랜치를 로컬에 바로 생성하고 이동하고 싶다면 다음과 같다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">-b</span> feature1 origin/feature1
+
+or
+
+git checkout <span class="nt">--track</span> origin/feature1
+</code></pre></div>    </div>
+
+    <p>origin의 브랜치 이름과 다른 이름을 사용할 수 있다. feature1이 아니라 feat1로 만들고 싶다면</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">-b</span> feat1 origin/feature1
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h4 id="3-특정-커밋-체크아웃">3. 특정 커밋 체크아웃</h4>
+
+<p>특정 커밋으로 working directory를 업데이트한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout &lt;commit-hash&gt;
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">commit-hash</code>로 지정된 커밋의 파일들을 작업 디렉토리에 반영한다.</li>
+  <li>이 상태는 “detached HEAD” 상태라고 불리며, 이후 작업은 브랜치가 아닌 <strong>해당 커밋을 기준</strong>으로 진행된다.</li>
+</ul>
+
+<h4 id="4-파일-복원">4. 파일 복원</h4>
+
+<p>특정 파일을 이전 커밋의 상태로 복원한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout &lt;branch-name&gt; <span class="nt">--</span> &lt;file-path&gt;
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&lt;file-path&gt;</code>에 있는 파일을 지정된 브랜치 또는 커밋의 상태로 되돌린다.</li>
+  <li>이 명령은 주로 잘못된 수정 내용을 되돌릴 때 유용하다.</li>
+</ul>
+
+<h3 id="checkout의-기능이-분리">checkout의 기능이 분리?</h3>
+
+<p>Git 2.23 이후, <code class="language-plaintext highlighter-rouge">checkout</code>의 일부 기능이 <strong><code class="language-plaintext highlighter-rouge">switch</code></strong>(브랜치 변경)와 <strong><code class="language-plaintext highlighter-rouge">restore</code></strong>(파일 복원)로 분리되었다. 각각의 명령은 특정 작업에 초점이 맞춰져 있어 더 직관적이고 명확하게 사용할 수 있다. 그렇지만 <code class="language-plaintext highlighter-rouge">checkout</code>은 여전히 사용 가능하다.</p>
+
+<p>하지만 기능이 분리되었기 때문에, 이제는 switch와 restore를 사용하는 것을 더 권장한다. (아무래도 checkout은 책임 분리가 덜 된 구조였기 때문인 듯 하다.)</p>
+
+<p>그렇다면 <code class="language-plaintext highlighter-rouge">checkout</code>에서 사용하던 기능을 switch와 restore로 어떻게 대체할 수 있는지 알아보자!</p>
+
+<h2 id="️-switch">🕹️ switch</h2>
+
+<p>브랜치를 이동하거나 새로 생성하는 작업에만 사용된다. <code class="language-plaintext highlighter-rouge">checkout</code>이 한꺼번에 처리하던 다양한 작업 중 브랜치와 관련된 작업만 분리한 명령이다.</p>
+
+<h3 id="주요-기능">주요 기능</h3>
+
+<h4 id="1-브랜치-전환">1. 브랜치 전환</h4>
+
+<p>현재 작업 중인 브랜치를 <code class="language-plaintext highlighter-rouge">&lt;branch-name&gt;</code>으로 변경한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git switch &lt;branch-name&gt;
+</code></pre></div></div>
+
+<h4 id="2-새-브랜치-생성-및-이동-1">2. 새 브랜치 생성 및 이동</h4>
+
+<p>새 브랜치를 생성하고 해당 브랜치로 이동한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git switch <span class="nt">-c</span> &lt;new-branch-name&gt;
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>만약 <strong>원격 브랜치를 추적하는 로컬 브랜치를 생성하고 이동</strong>하고 싶을 경우 다음과 같다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git switch <span class="nt">-c</span> &lt;new-branch-name&gt; &lt;remote&gt;/&lt;remote-branch-name&gt;
+
+or
+
+git switch <span class="nt">--track</span> &lt;remote&gt;/&lt;remote-branch-name&gt;
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h4 id="3-강제-전환">3. 강제 전환</h4>
+
+<p>작업 중인 변경 사항을 무시하고 강제로 브랜치를 변경한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git switch <span class="nt">-f</span> &lt;branch-name&gt;
+</code></pre></div></div>
+
+<h2 id="️-restore">♻️ restore</h2>
+
+<p>특정 파일을 이전 상태로 복원하는 작업에 초점을 맞춘 명령이다. 이는 <code class="language-plaintext highlighter-rouge">checkout</code>의 파일 복원 기능을 대체한다.</p>
+
+<h3 id="주요-기능-1">주요 기능</h3>
+
+<h4 id="1-작업-디렉토리에서-파일-복원">1. 작업 디렉토리에서 파일 복원</h4>
+
+<p>스테이징된 변경 사항이나 working directory의 변경 사항을 마지막 커밋 상태로 되돌린다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git restore &lt;file-path&gt;
+</code></pre></div></div>
+
+<h4 id="2-스테이징-영역에서-복원">2. 스테이징 영역에서 복원</h4>
+
+<p>스테이징 영역(Staging Area)에 있는 파일을 언스테이징한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git restore <span class="nt">--staged</span> &lt;file-path&gt;
+</code></pre></div></div>
+
+<h4 id="3-특정-커밋-기준으로-파일-복원">3. 특정 커밋 기준으로 파일 복원</h4>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;commit-hash&gt;</code>에 해당하는 커밋 상태로 파일을 복원한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git restore <span class="nt">--source</span><span class="o">=</span>&lt;commit-hash&gt; &lt;file-path&gt;
+</code></pre></div></div>
+
+<h2 id="-checkout-vs-switch--restore">🥊 checkout vs switch &amp; restore</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>기능</strong></th>
+      <th><strong>checkout</strong></th>
+      <th><strong>switch</strong></th>
+      <th><strong>restore</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>브랜치 변경</td>
+      <td>O</td>
+      <td>O</td>
+      <td>X</td>
+    </tr>
+    <tr>
+      <td>새 브랜치 생성 및 이동</td>
+      <td><code class="language-plaintext highlighter-rouge">git checkout -b &lt;branch&gt;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">git switch -c &lt;branch&gt;</code></td>
+      <td>X</td>
+    </tr>
+    <tr>
+      <td>파일 복원</td>
+      <td><code class="language-plaintext highlighter-rouge">git checkout &lt;branch&gt; -- &lt;file-path&gt;</code></td>
+      <td>X</td>
+      <td><code class="language-plaintext highlighter-rouge">git restore &lt;file-path&gt;</code></td>
+    </tr>
+    <tr>
+      <td>스테이징 영역 복원</td>
+      <td><code class="language-plaintext highlighter-rouge">git checkout -- &lt;file-path&gt;</code></td>
+      <td>X</td>
+      <td><code class="language-plaintext highlighter-rouge">git restore --staged &lt;file-path&gt;</code></td>
+    </tr>
+    <tr>
+      <td>특정 커밋 기반 파일 복원</td>
+      <td><code class="language-plaintext highlighter-rouge">git checkout &lt;commit-hash&gt; -- &lt;file&gt;</code></td>
+      <td>X</td>
+      <td><code class="language-plaintext highlighter-rouge">git restore --source=&lt;commit-hash&gt;</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="-정리">📝 정리</h2>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">checkout</code></strong>: 브랜치 변경, 특정 커밋 체크아웃, 파일 복원 등 여러 작업에 사용.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">switch</code></strong>: 브랜치를 전환하거나 생성하는 데만 사용.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">restore</code></strong>: 파일 복원 및 스테이징 관련 작업에 사용.</li>
+  <li><code class="language-plaintext highlighter-rouge">switch</code>와 <code class="language-plaintext highlighter-rouge">restore</code>는 Git 2.23 이상에서만 사용할 수 있다. 구버전에서는 <code class="language-plaintext highlighter-rouge">checkout</code>을 사용해야 한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">switch</code>와 <code class="language-plaintext highlighter-rouge">restore</code>를 사용하면 작업의 목적과 의도가 명확히 드러나므로, 사용을 권장한다.</li>
+</ul>
+
+<h2 id="-참고">📚 참고</h2>
+
+<ul>
+  <li><a href="https://git-scm.com/docs/git-checkout">Git -git-checkout Documentation</a></li>
+  <li><a href="https://git-scm.com/docs/git-switch">Git -git-switch Documentation</a></li>
+  <li><a href="https://git-scm.com/docs/git-restore">Git -git-restore Documentation</a></li>
+  <li><a href="https://www.freecodecamp.org/korean/news/git-cekeuause-daehan-seolmyeong-giteseo-beuraencireul-cekeuaus-byeongyeong-ddoneun-jeonhwan-haneun-bangbeob/">Git 체크아웃에 대한 설명: Git에서 브랜치를 체크아웃(변경 또는 전환)하는 방법</a></li>
+  <li><a href="https://zoosso.tistory.com/729">Git 깃: git checkout</a></li>
+</ul>]]></content><author><name>soha</name></author><category term="TIL" /><category term="Git" /><category term="TIL" /><category term="매3개" /><summary type="html"><![CDATA[때는 행동대장 프로젝트를 진행하면서… 새로운 이슈를 처리하기 위해 원격에서 만들어둔 브랜치를 로컬로 가져오려고 시도했다. 그러나 만들어진 브랜치의 마지막 log를 확인해보니 원격 브랜치의 log와 달랐다! 나는 원격 브랜치를 그대로 로컬로 가져오는 방법을 검색했고.. git의 checkout을 통해 성공할 수 있었다.]]></summary></entry><entry><title type="html">매3개 | Git: HEAD와 detached HEAD</title><link href="https://soi-ha.github.io/til/2025/01/21/M3D-Git-HEAD-and-detached-HEAD.html" rel="alternate" type="text/html" title="매3개 | Git: HEAD와 detached HEAD" /><published>2025-01-21T00:00:00+00:00</published><updated>2025-01-21T00:00:00+00:00</updated><id>https://soi-ha.github.io/til/2025/01/21/M3D-Git-HEAD-and-detached-HEAD</id><content type="html" xml:base="https://soi-ha.github.io/til/2025/01/21/M3D-Git-HEAD-and-detached-HEAD.html"><![CDATA[<h2 id="-head">📩 HEAD?</h2>
+
+<p><strong>HEAD</strong>는 Git에서 현재 작업 중인 <strong>브랜치를 가리키는 포인터</strong>이다. 일반적으로 HEAD는 특정 브랜치(예: <code class="language-plaintext highlighter-rouge">main</code>, <code class="language-plaintext highlighter-rouge">develop</code>)를 가리키며, 해당 브랜치의 마지막 커밋을 기준으로 작업을 진행한다.</p>
+
+<h2 id="-detached-head">💘 detached HEAD?</h2>
+
+<p><strong>detached HEAD</strong>는 HEAD가 브랜치를 가리키는 대신, <strong>특정 커밋</strong>을 직접 가리키는 상태를 말한다. 즉, <strong>브랜치와 연결되지 않은 채</strong> 특정 커밋에서 작업을 시작한다.</p>
+
+<p>어떻게 detached HEAD 상태가 될 수 있는지 예시를 통해 알아보자.</p>
+
+<h3 id="dtached-head-상태로-만들기">dtached HEAD 상태로 만들기</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout &lt;commit-hash&gt;
+</code></pre></div></div>
+
+<p>위 명령어를 실행하면 Git은 브랜치를 기준으로 작업하지 않고, <code class="language-plaintext highlighter-rouge">&lt;commit-hash&gt;</code>로 지정된 특정 커밋에서 작업을 시작한다. 이제 HEAD는 브랜치가 아닌 특정 커밋을 가리키게 된다.</p>
+
+<p>그렇다면 detached HEAD 상태에서 작업을 하면 어떤 일이 일어나는 걸까?</p>
+
+<h3 id="detached-head-상태에서-작업의-특징">detached HEAD 상태에서 작업의 특징</h3>
+
+<h4 id="1-임시-상태">1. 임시 상태</h4>
+
+<p>새로운 커밋을 생성하면, 이 커밋은 <strong>기존 브랜치와 연결되지 않는다.</strong> 브랜치로 연결하지 않으면, 이후 Git 작업 중 <strong>이 커밋을 잃어버릴 위험</strong>이 있다.</p>
+
+<h4 id="2-기본-브랜치로-돌아가면-변경-사항이-사라질-수-있음">2. 기본 브랜치로 돌아가면 변경 사항이 사라질 수 있음</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout main
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">detached HEAD</code> 상태에서 다른 브랜치로 이동하면, 이전에 작업한 내용이 그대로 버려질 수 있다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout &lt;commit-hash&gt;
+<span class="nb">echo</span> <span class="s2">"Changes"</span> <span class="o">&gt;</span> file.txt
+git add file.txt
+git commit <span class="nt">-m</span> <span class="s2">"detached commit"</span>
+
+git checkout main
+</code></pre></div></div>
+
+<p>만약 <code class="language-plaintext highlighter-rouge">detached HEAD</code> 상태에서 작업한 내용을 커밋하고 기본 브랜치로 돌아왔다면, 해당 커밋은 <strong>보이지 않게</strong> 될 수 있지만, <strong>완전히 사라지지는 않는다.</strong></p>
+
+<p>그렇다면 어떻게 <code class="language-plaintext highlighter-rouge">detached HEAD</code>에서 작업한 내용을 저장해둘 수 있을까?</p>
+
+<h3 id="detached-head-상태에서-작업-보존">detached HEAD 상태에서 작업 보존</h3>
+
+<p><code class="language-plaintext highlighter-rouge">detached HEAD</code> 상태에서 작업을 유지하려면 브랜치를 생성하거나 변경 사항을 명시적으로 저장해야 한다.</p>
+
+<h4 id="방법-1-새로운-브랜치-생성">방법 1: 새로운 브랜치 생성</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">-b</span> &lt;new-branch&gt;
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">detached HEAD</code> 상태에서 브랜치를 생성하면, 해당 브랜치에 현재 상태가 저장된다.</p>
+
+<h4 id="방법-2-stash로-저장">방법 2: stash로 저장</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git stash
+</code></pre></div></div>
+
+<p>작업 내용을 stash로 저장한 후, 다시 브랜치로 돌아가서 pop을 통해 복원할 수 있다.</p>
+
+<p>이렇게 <code class="language-plaintext highlighter-rouge">detached HEAD</code>에 대해서 알아보았다. 그렇다면 이건 도대체 언제 사용하는 걸까?</p>
+
+<h3 id="detached-head-상태가-필요한-경우">detached HEAD 상태가 필요한 경우</h3>
+
+<ul>
+  <li>특정 커밋 기반으로 새로운 작업을 시작하고 싶을 때</li>
+  <li>과거 커밋의 상태를 확인하거나 임시로 작업하려 할 때</li>
+  <li>특정 태그나 커밋을 기반으로 빌드하거나 디버깅하려 할 때</li>
+</ul>
+
+<p>위와 같은 경우에 <code class="language-plaintext highlighter-rouge">detached HEAD</code>를 사용하게 된다. 자, 이제 <code class="language-plaintext highlighter-rouge">detached HEAD</code>가 뭔지 알아보았으니 어떻게 사용하는지 예시를 통해 알아보자.</p>
+
+<h3 id="예시로-이해하기">예시로 이해하기</h3>
+
+<ol>
+  <li>
+    <p><strong>현재 브랜치 상태</strong></p>
+
+    <p>현재 HEAD는 <code class="language-plaintext highlighter-rouge">main</code> 브랜치를 가리킨다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout main
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>detached HEAD 상태로 전환</strong></p>
+
+    <p>HEAD가 특정 커밋(<code class="language-plaintext highlighter-rouge">1234abcd</code>)을 가리키고, <code class="language-plaintext highlighter-rouge">main</code> 브랜치와의 연결이 끊긴다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout 1234abcd
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>detached HEAD 상태에서 커밋 생성</strong></p>
+
+    <p>이 커밋은 브랜치와 연결되지 않아 나중에 잃어버릴 위험이 있다. 그러나 완전히 사라지는 것은 아니다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"Test"</span> <span class="o">&gt;</span> file.txt
+git add file.txt
+git commit <span class="nt">-m</span> <span class="s2">"Detached HEAD commit"</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>브랜치를 생성하여 커밋 보존</strong></p>
+
+    <p>커밋을 안전하게 새로운 브랜치에 저장할 수 있다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">-b</span> &lt;new-branch&gt;
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>여기서 만약? <code class="language-plaintext highlighter-rouge">detached HEAD</code> 상태에서 작업한 커밋을 브랜치를 생성하여 바로 저장하지 않고 그냥 기존 브랜치(<code class="language-plaintext highlighter-rouge">main</code>)로 변경해버렸다면? 어떻게 다시 <code class="language-plaintext highlighter-rouge">detached HEAD</code> 상태에서 작업한 커밋을 찾아서 저장할 수 있을까?</p>
+
+<h3 id="잃어버린-커밋-찾고-저장하기">잃어버린 커밋 찾고 저장하기</h3>
+
+<p>절차는 다음과 같다.</p>
+
+<ol>
+  <li>잃어버린 커밋 해시 찾기</li>
+  <li>해당 커밋 해시를 기반으로 새로운 브랜치 생성</li>
+</ol>
+
+<p>끝이다! 2번 절차는 위에서 이미 알아봤으니 우리는 1번 절차만 어떻게 하는지 알면 된다.</p>
+
+<h4 id="잃어버린-커밋-해시-찾기">잃어버린 커밋 해시 찾기</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git log
+
+or
+
+git reflog
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">git log</code> 명령을 사용하여 최근 커밋들을 확인하거나, <code class="language-plaintext highlighter-rouge">git reflog</code>를 사용해 최근의 모든 작업을 확인할 수 있다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">git log</code>의 경우에는 HEAD되어 있는 브랜치에서 작업했던 내용들만 확인할 수 있다.</li>
+  <li><code class="language-plaintext highlighter-rouge">git reflog</code>는 최근에 작업했던 모든 내용들. 즉, 현재 HEAD된 브랜치가 무엇이던 간에 브랜치에 상관없이 작업했던 모든 내용(<code class="language-plaintext highlighter-rouge">checkout</code>하거나 <code class="language-plaintext highlighter-rouge">commit</code> 하거나 등)들과 hash 값을 확인할 수 있다.</li>
+</ul>
+
+<p>이렇게 잃어버린 커밋의 hash 값을 찾았다면 이 것을 기반으로 새로운 브랜치를 생성하면 된다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git switch <span class="nt">-c</span> &lt;new-branch&gt; &lt;잃어버린 커밋의 <span class="nb">hash</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<h2 id="-정리">📝 정리</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>상태</th>
+      <th>HEAD가 가리키는 위치</th>
+      <th>브랜치와의 연결 여부</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>일반 브랜치 상태</td>
+      <td>특정 브랜치 (<code class="language-plaintext highlighter-rouge">main</code>)</td>
+      <td>연결됨</td>
+    </tr>
+    <tr>
+      <td>detached HEAD 상태</td>
+      <td>특정 커밋 (<code class="language-plaintext highlighter-rouge">1234abcd</code>)</td>
+      <td>연결되지 않음</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="-참고">📚 참고</h2>
+
+<ul>
+  <li><a href="https://velog.io/@ss-won/Git-Detached-Head">Git/번역: Detached HEAD</a></li>
+  <li><a href="https://castellan.tistory.com/78">Git - Detached HEAD 당황하지 말자</a></li>
+  <li><a href="https://devcamus.tistory.com/6">Detached Head</a></li>
+</ul>]]></content><author><name>soha</name></author><category term="TIL" /><category term="Git" /><category term="TIL" /><category term="매3개" /><summary type="html"><![CDATA[📩 HEAD?]]></summary></entry><entry><title type="html">행동대장: Google 스프레드시트 사용 실패 경험 정리</title><link href="https://soi-ha.github.io/til/project/2025/01/10/HD-google-spreadsheets-fail.html" rel="alternate" type="text/html" title="행동대장: Google 스프레드시트 사용 실패 경험 정리" /><published>2025-01-10T00:00:00+00:00</published><updated>2025-01-10T00:00:00+00:00</updated><id>https://soi-ha.github.io/til/project/2025/01/10/HD-google-spreadsheets-fail</id><content type="html" xml:base="https://soi-ha.github.io/til/project/2025/01/10/HD-google-spreadsheets-fail.html"><![CDATA[<p><strong>🚨 해당 <a href="https://github.com/woowacourse-teams/2024-haeng-dong/pull/913">issue</a>는 구현에 실패했으며, 해당 PR은 실패 사유에 대해 공유하는 글입니다.</strong></p>
+
+<h2 id="구현-목적">구현 목적</h2>
+
+<h3 id="회원-탈퇴-기능을-왜-구현해야-하죠">회원 탈퇴 기능을 왜 구현해야 하죠?</h3>
+
+<p>행동대장 서비스는 카카오로 회원가입 및 로그인이 도입되면서, 회원 탈퇴에 대한 기능이 필수적으로 필요하게 되었습니다(개인정보보호법). 따라서 회원 탈퇴 기능을 구현하게 되었습니다. 그리고 <a href="https://github.com/woowacourse-teams/2024-haeng-dong/pull/858">이전 이슈</a>에서 언급한 것처럼 회원가입을 진행한 유저가 탈퇴를 하는 사유에 대해 트래킹을 해야 한다고 생각했습니다. 탈퇴 사유를 수집함으로 우리 서비스의 문제를 보완해 나갈 수 있기 때문입니다.</p>
+
+<h3 id="구글-스프레드시트를-데이터베이스로-사용한-이유">구글 스프레드시트를 데이터베이스로 사용한 이유</h3>
+
+<p>탈퇴 사유를 백엔드의 api를 통해 저장할 수 있지만, 저희에게는 현재 서버 비용에 한계가 존재합니다. 서비스를 통해 금전적인 이득을 취하는 상황이 아니기 때문이죠. 그렇기에 회원 탈퇴 이용에 큰 영향을 끼치지 않는 선에서 서비 비용을 줄여야 한다고 생각했습니다. 이렇게 생각하여 찾은 방법이 구글의 스프레드시트 api를 활용하는 것이었습니다.</p>
+
+<p>구글 스프레드시트를 데이터베이스로 활용하여 회원 사용자의 탈퇴 사유를 저장합니다. 구글 스프레드시트는 잘 만들어진 서비스로 우리가 추후 탈퇴 사유에 대한 데이터를 분석하고 싶을 때 쉽게 확인할 수 있을 것입니다.</p>
+
+<h2 id="구현-방법">구현 방법</h2>
+
+<p>해당 파트는 이런 프로세스로 구글 스프레드시트를 활용할 수 있음을 정리한 것입니다. 아래 설명 할 방법처럼 구현을 하려고 했으나 제 판단으로는 프론트엔드만으로는 구현이 불가능하였다는 점..</p>
+
+<h3 id="구글-spreadsheet-api-사용을-위한-단계">구글 spreadsheet api 사용을 위한 단계</h3>
+
+<ol>
+  <li>구글 클라우드 프로젝트 생성 및 서비스 계정 생성</li>
+  <li>스프레드 시트에 접근할 수 있도록 구글 계정 인증</li>
+  <li>http 요청</li>
+</ol>
+
+<h3 id="1-구글-클라우드-프로젝트-생성">1. 구글 클라우드 프로젝트 생성</h3>
+
+<ul>
+  <li>구글 클라우드에서 프로젝트를 생성합니다.</li>
+  <li>해당 프로젝트의 API에 Google Sheets를 추가합니다.</li>
+  <li>서비스 계정을 생성합니다.</li>
+  <li>계정 생성으로 얻게된 credential 파일을 클라이언트 폴더에 추가합니다.
+해당 파일에는 구글 스프레드시트에 접근하고 편집 가능할 수 있도록 하는 다양한 인증 id, key 등이 존재합니다.</li>
+  <li>구글 스프레드시트에서 연결하고자 하는 시트를 생성합니다.</li>
+  <li>해당 시트에 편집자로 서비스 계정 생성을 통해 얻은 이메일을 등록하고 편집자 권한을 부여합니다.</li>
+  <li>해당 시트의 url에서 sheet id를 가져와 클라이언트 파일에서 사용할 수 있도록 저장해둡니다.</li>
+</ul>
+
+<h3 id="2-스프레드-시트에-접근--두가지-방법-근데-에러를-곁들인">2. 스프레드 시트에 접근 | 두가지 방법 (근데 에러를 곁들인..)</h3>
+
+<p>스프레드 시트에 접근하기 위해서 다음 범위(scope) 중 하나가 필요합니다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">https://www.googleapis.com/auth/drive</code></li>
+  <li><code class="language-plaintext highlighter-rouge">https://www.googleapis.com/auth/drive.file</code></li>
+  <li><code class="language-plaintext highlighter-rouge">https://www.googleapis.com/auth/spreadsheets</code></li>
+</ul>
+
+<p>우리는 위에 언급한 범위를 승인 받기 위해서 아까 위에서 생성된 서비스 계정의 이메일로 접근해야 합니다. 이때 우리는 이 승인을 각각 다른 라이브러리를 활용하여 진행할 수 있습니다.</p>
+
+<p><strong><a href="https://www.npmjs.com/package/googleapis?activeTab=readme">googleapis</a> 라이브러리 활용</strong></p>
+
+<ul>
+  <li>googleapis 라이브러리에서 google import</li>
+  <li>google.auth를 사용하여 인증</li>
+</ul>
+
+<p><strong><a href="https://www.npmjs.com/package/google-auth-library">google-auth-library</a> 활용</strong></p>
+
+<ul>
+  <li>google-auth-library에서 JWT import</li>
+  <li>new JWT를 생성하여 인증</li>
+  <li>단, 해당 라이브러리를 사용하여 구글 스프레드시트에 인증을 받을 때는 <a href="https://www.npmjs.com/package/google-spreadsheet?activeTab=readme">google-spreadsheet</a> 라이브러리를 활용합니다.
+google-spreadsheet는 외부에서 제작한 라이브러리이기 때문에 변화에 즉각 대응하기 어렵습니다. 하지만 비교적 구현하기 쉽습니다.</li>
+</ul>
+
+<p><strong>🚨두 방법 모두 공통적인 문제 발생</strong></p>
+
+<p>두가지 방법을 각각 시도하면서 공통적인 문제가 발생했습니다. 무려 에러의 갯수는 총 35개…</p>
+
+<p><img width="611" alt="webpack_v5_error_1" src="https://github.com/user-attachments/assets/f330e54d-8d03-42e4-87d0-bb2976e7c266" /></p>
+
+<p>에러의 유형은 다음과 같습니다.</p>
+
+<ul>
+  <li>webpack 버전 5 사용으로 인해 폴리필 에러<br />
+<code class="language-plaintext highlighter-rouge">webpack &lt; 5 used to include polyfills for node.js core modules by default</code></li>
+  <li>child_process를 찾을 수 없는 에러<br />
+<code class="language-plaintext highlighter-rouge">Module not found: Error: Can't resolve 'child_process’</code></li>
+  <li>net, tls를 찾을 수 없는 에러
+<code class="language-plaintext highlighter-rouge">Module not found: Error: Can't resolve 'net’</code></li>
+</ul>
+
+<p><strong><a href="https://soi-ha.github.io/2025/01/10/2025-01-10-HD-child-process-not-find-module.html">폴리필 에러는 해결이 가능했습니다만</a></strong>… 남은 두 에러는 해결이 불가능했습니다..
+위의 두 에러는 <strong>Node.js 환경에서 동작해야 할 코드가 브라우저 환경에서 실행</strong>하려고 할 때 발생하는 것이기 때문이었죠..<br />
+<a href="https://soi-ha.github.io/til/project/2025/01/10/HD-polyfills-error.html">(이 에러를 발견한 상황을 보고 싶다면 여기를 클릭..)</a></p>
+
+<p>네.. 저는 클라이언트에서 서버 코드를 실행하고 있었던 것이었스빈다!!ㅜ</p>
+
+<p><strong>👉결론👈</strong></p>
+
+<p>구글 스프레드시트 api를 사용하고 싶으면 백엔드가 필요하다… 입니다…</p>
+
+<h3 id="3-http-요청">3. http 요청</h3>
+
+<p>해당 코드가 실행되면 403에러가 발생하는 것을 보아하니 제대로 된 코드는 맞는 것 같습니다. 아까워서… 이렇게라도 남겨봐요…</p>
+
+<p>잘 작동하는지 테스트하기 위해서 값들은 냅다 넣었습니다. <del>흐린눈.. 부탁드립니다.</del><br />
+(참고로 아래 코드에서 사용한 requestPostWithResponse는 행동대장 클라이언트 코드에서 제작한 api 요청을 위한 메서드입니다.)</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">const</span> <span class="nx">requestPostGoogleSpreadSheets</span> <span class="o">=</span> <span class="k">async </span><span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+	<span class="k">await</span> <span class="nf">requestPostWithResponse</span><span class="p">({</span>
+		<span class="na">baseUrl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://sheets.googleapis.com/v4/spreadsheets</span><span class="dl">'</span><span class="p">,</span>
+		<span class="na">endpoint</span><span class="p">:</span> <span class="s2">`/</span><span class="p">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">GOOGLE_SPREADSHEET_ID</span><span class="p">}</span><span class="s2">/values/Sheet1!A1:E1:append`</span><span class="p">,</span>
+		<span class="na">queryParams</span><span class="p">:</span> <span class="p">{</span>
+			<span class="na">valueInputOption</span><span class="p">:</span> <span class="dl">'</span><span class="s1">RAW</span><span class="dl">'</span><span class="p">,</span>
+		<span class="p">},</span>
+		<span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+			<span class="dl">'</span><span class="s1">Access-Control-Allow-Credentials</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">true</span><span class="dl">'</span><span class="p">,</span>
+		<span class="p">},</span>
+		<span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+			<span class="na">range</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Sheet1!A1:E1</span><span class="dl">'</span><span class="p">,</span>
+			<span class="na">majorDimension</span><span class="p">:</span> <span class="dl">'</span><span class="s1">ROWS</span><span class="dl">'</span><span class="p">,</span>
+			<span class="na">values</span><span class="p">:</span> <span class="p">[</span>
+				<span class="p">[</span><span class="dl">'</span><span class="s1">Door</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">$15</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">2</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">3/15/2016</span><span class="dl">'</span><span class="p">],</span>
+				<span class="p">[</span><span class="dl">'</span><span class="s1">Engine</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">$100</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">1</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">3/20/2016</span><span class="dl">'</span><span class="p">],</span>
+			<span class="p">],</span>
+		<span class="p">},</span>
+	<span class="p">});</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h2 id="참고">참고</h2>
+
+<ul>
+  <li><a href="https://developers.google.com/sheets/api/samples/writing?hl=ko#append_values">기본 쓰기 : Google Sheets : Google for Developers</a></li>
+</ul>]]></content><author><name>soha</name></author><category term="TIL" /><category term="Project" /><category term="Wooteco" /><category term="행동대장" /><summary type="html"><![CDATA[🚨 해당 issue는 구현에 실패했으며, 해당 PR은 실패 사유에 대해 공유하는 글입니다.]]></summary></entry></feed>

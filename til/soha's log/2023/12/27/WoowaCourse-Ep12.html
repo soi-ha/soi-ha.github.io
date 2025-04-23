@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 우테코: 최종 코딩테스트 복기 &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">우테코: 최종 코딩테스트 복기</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">27 Dec 2023</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/sohaLog.html">
+          Soha's Log
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h1 id="1차-합격-최종-코딩테스트">1차 합격, 최종 코딩테스트</h1>
+
+<h2 id="메일-12월-11일">메일, 12월 11일</h2>
+
+<p><img width="642" alt="우테코 1차 합격 메일" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/b15f5010-021e-4679-b512-3aea9c061f70" /></p>
+
+<p>12월 16일 잠실에 있는 우테코 캠퍼스에서 최종 코딩테스트를 보러 가게 됐다. 사실 프리코스가 종료되고 1차 합격 결과까지 대략 한 달의 공백이 존재했기 때문에, 1차 결과 발표날을 약간 잊고 살았다. 당일에 달력에 적어둔 걸 보고 ‘오늘이 1차 발표날이군.’ 정도만 인식했다. 그리고 대망의 15시가 되었고, 1차 합격 발표 메일을 받게 되었다.</p>
+
+<h2 id="준비-12월-12일--15일">준비, 12월 12일 ~ 15일</h2>
+
+<p>1차 합격 발표를 받고 5일의 시간이 존재했다. (1차 합격 메일은 12월 11일에 받았고 시험은 12월 16일이었다.)<br />
+12일에 대학교 마지막 시험이 남아있었기에 11일은 기말고사 공부를 하고 그 주에 해당하던 모든 약속을 취소하고.. 코딩테스트 공부에 매진했다.<br />
+최종 코딩테스트 준비 과정은 <a href="https://soi-ha.github.io/soha's%20log/2023/12/28/WoowaCourse-Ep13.html">해당 글</a>에서 확인할 수 있다.</p>
+
+<h2 id="최종-코딩테스트-12월-16일">최종 코딩테스트, 12월 16일</h2>
+
+<p>최종 코딩테스트날 눈이 펑펑 내리고 갑자기 한파가 시작된 날이었다. 마치 수능을 치러 가는 것 같았다. 잠실로 가는 버스를 타고 근처 스타벅스에서 음료를 사서 시간을 때웠다. 너무 긴장이 돼서… 아무것도 하지 않고 그냥 노래 들으면서 커피를 마셨다. 스타벅스에 사람이 굉장히 많았는데, 노트북 보는 사람이 많았다. 확실하진 않지만 나처럼 우테코 최종 코테 시험을 보러 온 사람들 같았다.</p>
+
+<p><img width="342" alt="우테코 잠실 캠퍼스 사진1" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/3b390e04-a075-472a-9f26-f63023c02138" /></p>
+
+<p>카페에서 조금 시간을 보내다가 우테코 잠실 캠퍼스에 미리 갔다. 먼저 온 사람들이 생각보다 많았고, 복도에서 대기하다가 입실시간에 맞춰 신분증 확인을 진행한 후 시험장에 입실했다.</p>
+
+<p><img width="342" alt="우테코 잠실 캠퍼스 사진2" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/81865c73-dcd2-4073-b051-002ea54f4667" /></p>
+
+<p>신분증 확인 후, 배민 굿즈를 받았다. 작은 노트와 펜 2개, 스티커였다. 펜에 적혀있는 ‘어머, 펜이에요~’가 센스 넘친다고 생각했다.</p>
+
+<p><img width="342" alt="우테코 잠실 캠퍼스 사진3" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/f21bbb3d-084f-4e3a-bc96-90276456adbb" /></p>
+
+<p>시험생들을 위해 간식과 물도 준비되어있었다. 안 먹을 줄 알았는데.. 시험 시간이 5시간이 되다보니 나도 모르게 긴장이 완전히 풀리면서 배가 고파져서.. 간식을 가져와서 먹었던 기억이 난다.</p>
+
+<p><img width="342" alt="우테코 잠실 캠퍼스 사진4" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/5d82f7e4-7806-42d1-ae32-41f57d5cd7ac" /></p>
+
+<p>약간 긴장은 됐으나 최대한 긴장을 풀려고 노력했다. 노래 듣고 음료 마시면서 릴렉스 하려고 했고 캠퍼스도 구경했다. (코치님들이 언제 올 수 있을지 모르니 맘껏 구경하라고 하셨다.)</p>
+
+<p><img width="342" alt="우테코 잠실 캠퍼스 사진5" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/023a6def-b0ef-4242-85d9-8da8f7529905" /></p>
+
+<p>인터넷 연결로 인해 시험시간이 30분 늦춰져서 다시 긴장이 올라올뻔 했으나, 문제 해결 후 그냥 대기하는 시간이 주어지다보니 긴장이 완전히 풀렸다. 오죽했으면, 시험보면서 노래 듣는데 리듬에 맞춰서 몸을 움직였다..ㅎ; 그래서 덕분에 온전한 실력이 잘 나온 것 같다.</p>
+
+<p><img width="342" alt="우테코 잠실 캠퍼스 사진6" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/000411f0-b385-417e-aa9a-265f2e65e03a" /></p>
+
+<p>시험 종료 1시간 전에 한가지 기능 구현 미완성과.. 에러로 인해.. 갑자기 긴장이 엄청 됐지만.. 나의 영원한 친구 Chat GPT 덕분에 에러를 잘 찾아서 해결할 수 있었다.. 기능 구현도 잘 완료했고!</p>
+
+<h1 id="시험을-치르며">시험을 치르며</h1>
+
+<h2 id="oncall-미션-기능-구현">OnCall 미션 기능 구현</h2>
+
+<p>5시간의 제한 시간동안 해당 문제를 테스트코드까지 완벽하게 작성하기에는 다소 시간이 부족했다. 난이도도 약간 있었다고 생각이 든다. 문제 설명이 굉장히 길고, 기능을 이해하는데도 시간이 좀 걸리는 문제였다고 생각이 든다. 그리고 개발자가 생각해야 할 요소가 다분히 존재하는 문제인 것 같다.</p>
+
+<p><a href="https://github.com/soi-ha/javascript-oncall-6-soi-ha?tab=readme-ov-file">최종 코딩테스트: 개발자 비상근무(oncall) Repository</a></p>
+
+<p><img width="777" alt="예제 테스트 실행 결과" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/9a37aa23-73a6-414b-9307-1755dd09692f" /></p>
+
+<p>그래도 나의 목표인 예제 테스트는 잘 실행을 완료할 수 있었다. 이것으로 굉장히 만족한다.</p>
+
+<h2 id="에러-해결">에러 해결</h2>
+
+<p><strong>EmergencyShiftNumber 클래스를 실행하면 weekdays와 holidys의 값이 이상하게 변경되는 문제 (sort의 잘못된 사용)</strong><br />
+이번 미션을 진행하면서 해결하는데 가장 오래 걸린 문제였다.</p>
+
+<p><strong>값 에러 이유</strong><br />
+#validateListSameValue(weekdays, holidays)를 통해 두 배열의 입력된 값이 동일한지 확인한다. 이때, 동일한 값인지 빠르게 확인하고자 sort()를 활용하였다. weekdays와 holidays를 sort하여 정렬하면 두 배열의 값과 순서가 모두 동일하게 될 것이다. 따라서 sort를 사용하였다. 이게 에러의 원인이었다.<br />
+sort 할때 처음에 그냥 week.sort()로 했다. 이러면 안된다.. sort()를 사용하면 원본 배열에도 영향을 준다.<br />
+나의 코드는 <code class="language-plaintext highlighter-rouge">const week = weekdays.sort();</code> 였는데, week에만 정렬되는 것이 아닌 weekdays에도 sort()가 적용되어 해당 클래스를 사용하고 난 후, weekdays를 출력하면 값이 변경됐던 것이다.</p>
+
+<p><strong>EmergencyShiftNumberContorller 코드</strong>
+<img width="356" alt="EmergencyShiftNumberContorller 코드" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/1d55c7da-d21f-4cb8-994c-6a69c629a080" /></p>
+
+<p><strong>에러 해결</strong><br />
+에러를 해결하는 방법은 구조분해할당을 하여 weekdays의 모든 값을 구조분해하여 새롭게 배열을 생성하고 그 배열을 정렬하면 된다.<br />
+<code class="language-plaintext highlighter-rouge">const week = [...weekdays].sort();</code>를 해야 원하는 결과로 잘 출력된다. 이렇게 하면 원본 배열인 weekdays에도 영향을 주지 않고 유효성검사를 할 수 있다!</p>
+
+<p><strong>EmergencyShiftNumber 클래스의 #validateListSameValue()</strong>
+<img width="316" alt="EmergencyShiftNumber 에러 해결 코드" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/44f6fd95-27e0-4b2b-9dcb-62341224be40" /></p>
+
+<h1 id="최종-코딩테스트-마친-소감">최종 코딩테스트 마친 소감</h1>
+
+<p>시험 메일에서 언급했던 것 처럼. 돌아가는 쓰레기를… 만든 것 같다.ㅎ<br />
+하지만, 일단 제한 시간이 주어진 이상. 어떻게든 돌아가게 기능을 구현하는 것이 중요하다고 생각한다. 그래서 기존에는 기능을 구현하면서 테스트코드도 바로 작성했었는데, 최종 코딩테스트에서도 이렇게 하면 시간이 매우 부족할 것으로 예상됐다. 그래서 테스트코드는 쿨하게 버리고. 일단은 기능 구현을 중점으로 두었다.<br />
+그리고 이 선택은 잘 한 선택이었다. 테스트코드도 작성하면서 기능을 구현했더라면 제 시간에 맞춰서 기능을 완성할 수 없었을 것이다.. 종료 30분전에 기능 구현을 완료했었고, 남은 시간에 how to solve와 테스트코드 하나를 작성하니.. 시간이 종료되었다!<br />
+선택과 집중을 잘 한 것 같다.</p>
+
+<p>시험을 종료한 후에 느낌이 굉장히 좋았다. 그래서 N인 나는 집 가는 버스에서 행복회로를 오지게 돌리면서 갔다..<br />
+일단 전날부터 너무 걱정됐던 ‘5시간안에 기능 구현 완료’를 못해서 예제 테스트 실패하면 어쩌지? 예제 테스트만 성공시키자.를 목표로 잡았는데, 해당 목표를 이룰 수 있어서 너무 만족스러웠다.<br />
+기능 구현도 생각보다 잘 되었다. 비록 테스트코드는 거의 작성하지 못했고 how to solve도 잘 작성하지는 못한 것 같았지만, 이상하게 종료된 후에 기분이 굉장히 홀가분하고 합격할 것 같은 느낌이 확 들었다.</p>
+
+<p>그래서 일까.. 결과 및 준비과정은…! <a href="https://soi-ha.github.io/soha's%20log/2023/12/28/WoowaCourse-Ep13.html">여기서.</a></p>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#woowacourse">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">WoowaCourse</span>
+    </a>
+  
+    
+    <a href="/tags.html#js">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">JS</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

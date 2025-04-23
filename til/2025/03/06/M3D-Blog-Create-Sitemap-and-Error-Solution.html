@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법 &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">06 Mar 2025</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h2 id="️-sitemap이란">🗺️ sitemap이란?</h2>
+
+<p>sitemap이란 검색엔진이 크롤링하여 색인할 수 있도록 모든 웹페이지를 나열한 XML 파일이다. 검색엔진 크롤러가 접근하기 어려운 페이지를 포함한 모든 페이지의 정보를 제공하여 빠짐없이 색인될 수 있도록 돕는다.<br />
+주의할 점은 sitemap이 직접적으로 검색엔진 결과의 순위를 올려주지는 않는다는 것이다.</p>
+
+<h2 id="-sitemap-생성-방법-jekyll로-생성한-github-블로그-기준">💡 sitemap 생성 방법 (jekyll로 생성한 GitHub 블로그 기준)</h2>
+
+<p>아래 설명은 jekyll로 생성한 깃허브 블로그에 sitemap을 생성하는 것을 기준으로 한다. 만약 jekyll로 생성한 깃허브 블로그가 아니라면 아래 방법으로는 sitemap 파일을 생성할 수 없다.</p>
+
+<h3 id="1-로컬의-githubio-폴더의-gemfile-파일에-다음-코드를-추가하기">1. 로컬의 <code class="language-plaintext highlighter-rouge">.github.io</code> 폴더의 <code class="language-plaintext highlighter-rouge">Gemfile</code> 파일에 다음 코드를 추가하기</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s1">'jekyll-sitemap'</span>
+</code></pre></div></div>
+
+<p>여기서 <code class="language-plaintext highlighter-rouge">Gemfile</code>은 ruby 프로젝트에 필요한 gem의 목록과 버전을 관리해주는 파일이다. 프로젝트에서 사용하는 라이브러리(이를 gem이라고 부름)를 관리하는 역할을 한다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Gemfile</code>을 통해 프로젝트에서 사용할 gem들을 명시하고, 이를 <code class="language-plaintext highlighter-rouge">Bundler</code>라는 툴이 관리해준다. <code class="language-plaintext highlighter-rouge">Bundler</code>는 <code class="language-plaintext highlighter-rouge">Gemfile</code>에 명시된 gem들이 서로 호환되는 버전으로 설치되도록 도와준다.</p>
+
+<h3 id="2-_configyml에-다음과-같이-플러그인을-추가하기">2. <code class="language-plaintext highlighter-rouge">_config.yml</code>에 다음과 같이 플러그인을 추가하기</h3>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">plugins</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">jekyll-sitemap</span>
+</code></pre></div></div>
+
+<h3 id="3-터미널에서-bundle-명령어를-실행하기">3. 터미널에서 <code class="language-plaintext highlighter-rouge">bundle</code> 명령어를 실행하기</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">bundle</code>(=== <code class="language-plaintext highlighter-rouge">bundle install</code>) 명령어는 다음과 같은 일을 진행한다.</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">Gemfile</code>을 읽어서 필요한 gem들을 확인하고</li>
+  <li><code class="language-plaintext highlighter-rouge">Gemfile.lock</code> 파일이 있으면, 그 파일에 기록된 정확한 버전을 설치하고,</li>
+  <li><code class="language-plaintext highlighter-rouge">Gemfile.lock</code> 파일이 없으면 호환 가능한 최신 버전으로 설치한 후 <code class="language-plaintext highlighter-rouge">Gemfile.lock</code> 파일을 생성해준다.</li>
+</ol>
+
+<p>그래서 보통 Rails나 Ruby 프로젝트를 처음 설치하거나 업데이트할 때, 자주 쓰는 명령어이다.</p>
+
+<p>즉, <code class="language-plaintext highlighter-rouge">bundle</code> 명령어는 Bundler를 이용해서 <code class="language-plaintext highlighter-rouge">Gemfile</code>에 적힌 gem들을 설치한다.</p>
+
+<p>실행 결과 예시:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Bundle <span class="nb">complete</span><span class="o">!</span> 3 Gemfile dependencies, 47 gems now installed.
+Use <span class="sb">`</span>bundle info <span class="o">[</span>gemname]<span class="sb">`</span> to see where a bundled gem is installed.
+</code></pre></div></div>
+
+<p>터미널에 bundle 실행이 정상적으로 진행됐을 때 결과 이미지:</p>
+
+<p><img width="450" alt="bundle 명령어 실행 결과" src="https://github.com/user-attachments/assets/41945983-54e0-4e37-ad38-135e9e484560" /></p>
+
+<p>위와 같이 명령어 실행 결과가 나타났다면, 와우! 당신은 이제 더이상 할게 없다. <a href="#4-jekyll-sitemap-설치">바로 4번을 실행</a>해주면 된다.</p>
+
+<p>그러나 만약 bundle 명령어를 실행했는데 아래 이미지와 같이 에러가 발생다면?</p>
+
+<p><img width="482" alt="bundle 명령어 실행 에러" src="https://github.com/user-attachments/assets/283232ee-7fbc-43aa-a1b9-522372f55917" /></p>
+
+<p>그리고 <code class="language-plaintext highlighter-rouge">gem install bundler</code> 명령어를 실행해봤는데 또 에러가 발생했다면? 글을 계속 내려 에러를 해결해보자.</p>
+
+<p><img width="506" alt="gem bundler 설치 에러" src="https://github.com/user-attachments/assets/2b60699b-08a3-48bb-8b97-7c63eb9753ae" /></p>
+
+<hr />
+
+<h2 id="-error-while-executing-gem--gemfilepermissionerror-에러-해결-방법">🚨 <code class="language-plaintext highlighter-rouge">ERROR: While executing gem ... (Gem::FilePermissionError)</code> 에러 해결 방법</h2>
+
+<h3 id="에러-발생-원인">에러 발생 원인</h3>
+
+<p>해당 에러는 macOS에 기본으로 설치되어 있는 ruby의 gem 디렉토리(<code class="language-plaintext highlighter-rouge">/Library/Ruby/Gems/2.6.0</code>)에 쓰기 권한이 없어서 발생한 것이다. macOS의 기본 ruby는 보안상 사용자에게 gem 설치 권한을 제공하지 않는다.</p>
+
+<p>따라서 gem 설치 시(아래 명령어) 권한 에러가 발생한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem <span class="nb">install </span>bundler
+</code></pre></div></div>
+
+<p>에러 발생 이미지:</p>
+
+<p><img width="506" alt="gem bundler 설치 에러" src="https://github.com/user-attachments/assets/2b60699b-08a3-48bb-8b97-7c63eb9753ae" /></p>
+
+<p>해당 에러의 해결 방법은 두 가지가 있다.</p>
+
+<h4 id="1️⃣-관리자-권한으로-설치하기">1️⃣ 관리자 권한으로 설치하기</h4>
+
+<p>권장하지 않는 방법이다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>gem <span class="nb">install </span>bundler
+</code></pre></div></div>
+
+<p>단, sudo를 사용하면 관리자 권한으로 명령어가 실행되기 때문에, 만약 설치하려는 gem이나 명령어에 문제가 발생하면 시스템 전체에 영향을 줄 수 있어 위험할 수 있다. 따라서 해당 방법은 권장되지 않는다.</p>
+
+<h4 id="2️⃣-ruby-버전-관리-도구rbenv를-활용하기">2️⃣ Ruby 버전 관리 도구(<code class="language-plaintext highlighter-rouge">rbenv</code>)를 활용하기</h4>
+
+<p>가장 안전하고 권장되는 방법이다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">rbenv</code>같은 ruby 버전 관리 도구를 사용하면 사용자 디렉토리 내에서 ruby를 별도로 관리할 수 있어서, 시스템 디렉토리에 접근할 필요가 없다. 이 방법을 사용하면 권한 문제를 피할 수 있다.</p>
+
+<p>이 글에서는 <code class="language-plaintext highlighter-rouge">rbenv</code>를 활용하여 에러를 해결할 것이다.</p>
+
+<h3 id="-rbenv를-활용하여-에러-해결하기">😎 <code class="language-plaintext highlighter-rouge">rbenv</code>를 활용하여 에러 해결하기</h3>
+
+<ul>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">rbenv</code> 설치</strong></p>
+
+    <p>homebrew를 활용하여 <code class="language-plaintext highlighter-rouge">rbenv</code>와 <code class="language-plaintext highlighter-rouge">ruby-build</code>를 설치한다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew update
+brew <span class="nb">install </span>rbenv ruby-build
+</code></pre></div>    </div>
+
+    <p>여기서 <code class="language-plaintext highlighter-rouge">ruby-build</code>는 <code class="language-plaintext highlighter-rouge">rbenv</code>와 함께 사용되는 플러그인으로, 다양한 ruby 버전을 쉽게 설치할 수 있도록 지원해준다. <code class="language-plaintext highlighter-rouge">rbenv</code>와 함께 <code class="language-plaintext highlighter-rouge">ruby-build</code>를 설치하면 ruby 버전 관리와 함께 새로운 ruby 버전 설치도 한 번에 준비할 수 있어서 더 편리하다.</p>
+  </li>
+  <li>
+    <p><strong>설치한 <code class="language-plaintext highlighter-rouge">rbenv</code>와 ruby 버전 확인하기</strong></p>
+
+    <p>꼭 필요한 단계는 아니지만, 본격적으로 <code class="language-plaintext highlighter-rouge">rbenv</code>를 사용하여 ruby 버전을 관리하기 전의 상태가 어떤지 확인해줬다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> rbenv version
+<span class="k">*</span> system
+
+<span class="o">&gt;</span> ruby <span class="nt">--version</span>
+ruby 2.6.10p210
+</code></pre></div>    </div>
+
+    <p><code class="language-plaintext highlighter-rouge">rbenv</code>를 통해 ruby 버전을 관리하기전 설치되었던 ruby의 버전은 <code class="language-plaintext highlighter-rouge">2.6.10</code>이다. 나는 글 작성 기준 가장 안정된 버전인 <code class="language-plaintext highlighter-rouge">3.4.2</code>로 ruby의 버전을 관리할 계획이다.</p>
+
+    <p>실제 터미널 실행 결과 이미지:</p>
+
+    <p><img width="438" alt="rbenv 설치 버전 없음" src="https://github.com/user-attachments/assets/68122962-4dd5-4f4a-969b-0cab7889ccb2" /></p>
+  </li>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">rbenv</code>를 활용하여 Ruby 버전 설치 (버전: <code class="language-plaintext highlighter-rouge">3.4.2</code>)</strong></p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rbenv <span class="nb">install </span>3.4.2
+</code></pre></div>    </div>
+
+    <p>실제 터미널 실행 결과 이미지:</p>
+
+    <p><img width="493" alt="rbenv 버전 설치" src="https://github.com/user-attachments/assets/a121d90d-9656-477c-b08f-5e794f83364a" /></p>
+
+    <p>설치가 정상적으로 되었다면, version 확인을 했을 때 아래와 같이 출력된다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> rbenv version
+system
+<span class="k">*</span> 3.4.2
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">rbenv</code>로 global 버전을 <code class="language-plaintext highlighter-rouge">3.4.2</code>로 설정 및 확인</strong></p>
+
+    <p><code class="language-plaintext highlighter-rouge">rbenv</code>로 global 버전 또한 <code class="language-plaintext highlighter-rouge">3.4.2</code>로 설정해준다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> rbenv global 3.4.2
+
+<span class="o">&gt;</span> rbenv version
+3.4.2 <span class="o">(</span><span class="nb">set </span>by /Users/사용자이름/.rbenv/version<span class="o">)</span>
+<span class="o">&gt;</span> ruby <span class="nt">--version</span>
+ruby 3.4.2 <span class="o">(</span>2025-02-15 revision d2930f8e7a<span class="o">)</span>
+</code></pre></div>    </div>
+
+    <p>global 버전 설정 이전에 ruby 버전을 확인해보면 이전에 설치되어있던 버전으로 뜬다. (<code class="language-plaintext highlighter-rouge">rbenv</code>의 버전을 <code class="language-plaintext highlighter-rouge">3.4.2</code>로 설치한 후 임에도.)<br />
+global 버전 설정을 한 후 ruby 버전을 다시 확인하면 <code class="language-plaintext highlighter-rouge">3.4.2</code> 버전으로 설치되어 있는 것을 확인할 수 있다.</p>
+
+    <p>실제 터미널 실행 결과 이미지:</p>
+
+    <p><img width="431" alt="ruby 설치 버전 확인" src="https://github.com/user-attachments/assets/e483ebe3-5600-46bc-8e74-05b62224b295" /></p>
+  </li>
+  <li>
+    <p><strong>쉘 설정 파일에 <code class="language-plaintext highlighter-rouge">rbenv</code> 설정 추가</strong></p>
+
+    <p>쉘 설정 파일을 수정하기 위해 아래 코드를 터미널에 실행하여 쉘 설정 파일을 vscode로 열어준다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>code ~/.zshrc
+</code></pre></div>    </div>
+
+    <p>그리고 <code class="language-plaintext highlighter-rouge">.zshrc</code> 파일을 열어 아래 코드를 추가한다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[[</span> <span class="nt">-d</span> ~/.rbenv <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="se">\</span>
+  <span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span>/.rbenv/bin:<span class="k">${</span><span class="nv">PATH</span><span class="k">}</span> <span class="o">&amp;&amp;</span> <span class="se">\</span>
+  <span class="nb">eval</span> <span class="s2">"</span><span class="si">$(</span>rbenv init -<span class="si">)</span><span class="s2">"</span>
+</code></pre></div>    </div>
+
+    <h4 id="코드-설명">코드 설명</h4>
+
+    <p><img width="506" alt="쉘 파일 코드 추가" src="https://github.com/user-attachments/assets/86e204d4-82f4-493b-bb28-94b7cb8866f2" /></p>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">[[ -d ~/.rbenv ]]</code>: rbenv가 설치되어 있는지 확인한다. rbenv가 설치되어 있지 않다면 이후 명령어들이 실행되지 않아 불필요한 오류를 방지할 수 있다.</li>
+      <li><code class="language-plaintext highlighter-rouge">export PATH=${HOME}/.rbenv/bin:${PATH}</code>: rbenv 명령어를 터미널에서 인식할 수 있도록 경로를 추가한다.</li>
+      <li><code class="language-plaintext highlighter-rouge">eval "$(rbenv init -)"</code>: rbenv 초기화 스크립트를 실행하여 Ruby 버전 관리 기능을 활성화한다.</li>
+    </ul>
+
+    <p>이 코드는 <code class="language-plaintext highlighter-rouge">rbenv</code>가 설치된 경우에만 <code class="language-plaintext highlighter-rouge">rbenv</code>의 경로를 추가하고 초기화를 진행하여, 이후에 ruby 버전 관리를 원활하게 할 수 있도록 도와준다.</p>
+
+    <p>즉, 이 코드를 쉘 설정 파일(<code class="language-plaintext highlighter-rouge">.zshrc</code> 등)에 추가하면, 매번 터미널을 열 때마다 <code class="language-plaintext highlighter-rouge">rbenv</code>가 자동으로 초기화되어 ruby 버전을 쉽게 관리할 수 있게 된다. 만약 이 코드를 추가하지 않으면, <code class="language-plaintext highlighter-rouge">rbenv</code> 명령어를 인식하지 못하거나, ruby 버전 전환 등의 기능을 제대로 사용할 수 없게 된다.</p>
+  </li>
+  <li>
+    <p><strong>변경한 쉘 설정 적용</strong></p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">source</span> ~/.zshrc
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>자, 이제 모든 작업은 끝이 났다. 이제 정상적으로 작동하는지 확인해보자.</p>
+
+<h3 id="bundle이-정상적으로-실행되는-지-실행하기"><code class="language-plaintext highlighter-rouge">bundle</code>이 정상적으로 실행되는 지 실행하기</h3>
+
+<p>이제 다시 블로그 루트 디렉토리에서 <code class="language-plaintext highlighter-rouge">bundle</code> 명령어를 실행한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> bundle
+Bundle <span class="nb">complete</span><span class="o">!</span> 3 Gemfile dependencies, 47 gems now installed.
+Use <span class="sb">`</span>bundle info <span class="o">[</span>gemname]<span class="sb">`</span> to see where a bundled gem is installed.
+</code></pre></div></div>
+
+<p>위와 같은 실행 결과가 나타났다면 정상적으로 <code class="language-plaintext highlighter-rouge">bundle</code> 설치가 완료된 것이다!</p>
+
+<hr />
+
+<h3 id="4-jekyll-sitemap-플러그인-설치하기">4. <code class="language-plaintext highlighter-rouge">jekyll-sitemap</code> 플러그인 설치하기</h3>
+
+<p>아래 명령어를 실행하여 <code class="language-plaintext highlighter-rouge">jekyll-sitemap</code> 플러그인을 설치해보자. 해당 플러그인은 jekyll의 sitemap을 자동으로 만들어준다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem <span class="nb">install </span>jekyll-sitemap
+</code></pre></div></div>
+
+<p>아래와 같이 응답 결과가 출력되었다면 정상적으로 플러그인이 설치가 된 것이다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Successfully installed jekyll-sitemap-1.4.0
+1 gem installed
+</code></pre></div></div>
+
+<p>실제 실행 결과 이미지:</p>
+
+<p><img width="467" alt="jekyll-sitemap 플러그인 설치 성공" src="https://github.com/user-attachments/assets/30ca6dbf-1de7-4c34-a325-c094568aa018" /></p>
+
+<h3 id="5-github에-변경사항을-커밋하고-푸시하기">5. GitHub에 변경사항을 커밋하고 푸시하기</h3>
+
+<p>변경사항을 github에 push하면 자동으로 사이트맵이 생성된다.<br />
+로컬에서는 파일이 보이지 않을 수 있지만, 실제 블로그 사이트에서 확인을 해보면 <code class="language-plaintext highlighter-rouge">sitemap.xml</code> 파일이 정상적으로 생성된 것을 확인할 수 있다.</p>
+
+<p><img width="1415" alt="Image" src="https://github.com/user-attachments/assets/95ae0f25-87dd-4c01-92f1-8893e0d0efd2" /></p>
+
+<h2 id="-참고">📚 참고</h2>
+
+<ul>
+  <li><a href="https://seo.tbwakorea.com/blog/how-to-create-and-submit-a-sitemap/">사이트맵(sitemap.xml) 쉽게 만들고 제출하기!</a></li>
+  <li><a href="https://velog.io/@fitf_/GitHub-PagesJekyll-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8-%EC%82%AC%EC%9A%A9%ED%95%98%EC%97%AC-sitemap.xml-%EC%83%9D%EC%84%B1%ED%95%98%EA%B8%B0-%EA%B5%AC%EA%B8%80-%EC%BD%98%EC%86%94%EC%97%90-%EB%93%B1%EB%A1%9D-%EC%84%B1%EA%B3%B5">GitHub Pages: Jekyll 플러그인 사용하여 sitemap.xml 생성하기 (구글 콘솔에 등록 성공!)</a></li>
+  <li><a href="https://ccomccomhan.tistory.com/282">ERROR: - While executing gem … (Gem::FilePermissionError)에러 해결(Mac에서 Gem::FilePermissionError 에러 해결)</a></li>
+</ul>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#error">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">ERROR</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/25/M3D-Git-Merge.html">
+            매3개 | Git의 다양한 Merge 방법 (merge, rebase, squash)
+            <small>25 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

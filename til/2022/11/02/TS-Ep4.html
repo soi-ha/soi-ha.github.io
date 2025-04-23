@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 TypeScript: Basic Types Ep.4 (any, unknown, never, void) &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">TypeScript: Basic Types Ep.4 (any, unknown, never, void)</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">02 Nov 2022</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h2 id="any"><strong>any</strong></h2>
+<hr />
+<p>any는 어떤 것이든 할 수 있다라는 의미이다. <br />
+어떤 타입이어도 상관이 없는 타입이지만, 최대한 사용하지 않는 것이 좋다.<br />
+컴파일 타임에 타입 체크가 정상적으로 이루어지지 않기 때문이다. 그래서 컴파일 옵션 중에는 any를 써야하는데 쓰지 않으면 오류를 뱉는 옵션도 있다.(nolmplicitAny)</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">returnAny</span><span class="p">(</span><span class="nx">message</span><span class="p">:</span> <span class="kr">any</span><span class="p">):</span> <span class="kr">any</span> <span class="p">{</span>
+	<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">any1</span> <span class="o">=</span> <span class="nf">returnAny</span><span class="p">(</span><span class="dl">"</span><span class="s2">리턴은 아무거나</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">any1</span><span class="p">.</span><span class="nf">toString</span><span class="p">();</span>
+</code></pre></div></div>
+<p>returnAny의 인자값은 어떤 값이든 들어올 수 있다. any이기 때문이다.<br />
+any1은 any이기 때문에 문자열만 사용할 수 있는 것도 사용이 가능하다.</p>
+
+<ul>
+  <li>
+    <p>any의 전파</p>
+
+    <p>any는 개체를 통해 계속 전파한다. 이로인해 타입의 안정성을 잃게 된다. <br />
+타입 안정성은 타입스크립트를 사용하는 주요 동기 중 하나이다. 그렇기에 필요하지 않은 경우에는 any를 사용하지 않도록 해야한다.</p>
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">looselyTyped</span><span class="p">:</span> <span class="kr">any</span> <span class="o">=</span> <span class="p">{};</span>
+  
+<span class="kd">let</span> <span class="nx">d</span> <span class="o">=</span> <span class="nx">looselyTyped</span><span class="p">.</span><span class="nx">a</span><span class="p">.</span><span class="nx">b</span><span class="p">.</span><span class="nx">c</span><span class="p">.</span><span class="nx">d</span><span class="p">;</span>
+</code></pre></div>    </div>
+    <p><code class="language-plaintext highlighter-rouge">looselyTyped.a.b.c.d;</code>를 해도 Error가 나지 않는다. 그리고 이 결과는 d에 any로 들어가게 된다. 해당 any들이 개체를 통해서 전파된다는 것이다.</p>
+
+    <ul>
+      <li>any 전파 문제점
+        <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">leakingAny</span><span class="p">(</span><span class="nx">obj</span><span class="p">:</span> <span class="kr">any</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">num</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">a</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+    
+<span class="kd">const</span> <span class="nx">c</span> <span class="o">=</span> <span class="nf">leakingAny</span><span class="p">({</span> <span class="na">num</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span>
+</code></pre></div>        </div>
+        <p>a도 any, b도 any, c또한 any이다. c는 number로 규정되어 나와야 하는데 말이다. 이것이 any의 전파로 인한 문제이다.</p>
+      </li>
+      <li>누수 막기
+        <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">leakingAny</span><span class="p">(</span><span class="nx">obj</span><span class="p">:</span> <span class="kr">any</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">a</span><span class="p">:</span> <span class="kr">number</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">num</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">a</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+    
+<span class="kd">const</span> <span class="nx">c</span> <span class="o">=</span> <span class="nf">leakingAny</span><span class="p">({</span> <span class="na">num</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span>
+</code></pre></div>        </div>
+        <p>해당 문제점을 해결하고 싶다면 a에 number를 추가해준다. 이로인해 누수가 막히면서 b도 number, c도 number가 된다.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="unknown"><strong>unknown</strong></h2>
+<hr />
+<p>any가 가지고 있는 타입의 불안정한 요소를 해소시켜준다.<br />
+any와 짝꿍이며 any보다 타입 안정성이 있다.<br />
+unknown은 any처럼 아무거나 할당할 수 있다. <br />
+그러나, 컴파일러가 타입을 추론할 수 있게끔 타입의 유형을 좁히거나, 타입을 정해주지 않으면 다른 곳에 할당할 수 없고, 사용할 수 없다.</p>
+
+<p>우리는 응용 프로그램을 작성할 때 모르는 변수의 타입을 묘사해야 할 수도 있다. 보통 모르는 변수의 타입을 any로 묘사했었다. <br />
+이러한 값은 API를 얻어서 오는 동적 콘텐츠 같은 것이다. 이러한 경우, 컴파일러와 다른 사람이 해당 코드를 읽을 때 해당 변수가 동적이기 때문에 어떤 것이든 될 수 있다는 것을 알려주는 타입이 필요했다. 기존에는 any로 사용했지만 any 이후에 오는 코드들이 any의 영향을 받으면서 코드 안정성을 해치는 문제가 생긴다.<br />
+이러한 부분을 타입적으로 강제하기 위해서 unknown을 사용하게 되었다.</p>
+
+<ul>
+  <li>
+    <p>unknown은 number로 지정할 수 없다.</p>
+
+    <p>unknown의 타입을 한정시켜야 한다.</p>
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">declare</span> <span class="kd">const</span> <span class="nx">maybe</span><span class="p">:</span> <span class="nx">unknown</span><span class="p">;</span>
+  
+<span class="kd">const</span> <span class="nx">aNumber</span><span class="p">:</span> <span class="kr">number</span> <span class="o">=</span> <span class="nx">maybe</span><span class="p">;</span>
+<span class="c1">// Type 'unknown' is not assignable to type 'number'.</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="never"><strong>never</strong></h2>
+<hr />
+<p>never은 보통 return에 사용된다.<br />
+never 타입은 모든 타입의 subtype이며, 모든 타입에 할당할 수 있다.   그러나 never에는 어떤 것도 할당할 수가 없다. any조차도 never에 할당할 수 없다.<br />
+never은 잘못된 타입을 넣는 실수를 막고자 할 때 사용할 수 있다.</p>
+
+<ul>
+  <li>
+    <p>throw never</p>
+
+    <p>throw를 하게 되면 해당 코드 밑으로는 내려오지 않게 된다. (해당 코드 다음부터는 읽지 않는다) 즉, 해당 코드에서 함수가 끝나버린다.<br />
+해당 함수는 throw하는 경우에 대해서 어떠한 형태도 return되지 않는 다는 것으로 never키워드를 사용한다.</p>
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">error</span><span class="p">(</span><span class="nx">message</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="nx">never</span> <span class="p">{</span>
+  <span class="k">throw</span> <span class="k">new</span> <span class="nc">Error</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>never 추론</p>
+
+    <p>error 함수를 사용하면서 return을 하게 되어도, never로 추론이 된다.</p>
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">fail</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nf">error</span><span class="p">(</span><span class="dl">"</span><span class="s2">failed</span><span class="dl">"</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>함수 내용적 never</p>
+
+    <p>해당 함수에서는 while이 계속 true이기 때문에 멈추지 않고 계속해서 루프가 돌아간다. 그렇기 때문에 return에 대해 never를 사용할 수 있다.</p>
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">infiniteLoop</span><span class="p">():</span> <span class="nx">never</span> <span class="p">{</span>
+  <span class="k">while </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>타입 입력 실수를 막기
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">a</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">hello</span><span class="dl">'</span><span class="p">;</span>
+  
+<span class="k">if </span><span class="p">(</span><span class="nx">typeOf</span> <span class="nx">a</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">string</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">a</span><span class="p">;</span> <span class="c1">// never</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <p>a가 string인데 if문을 통해 a가 string이 아니라면(string - string = never)  a의 타입은 never가 나오게 된다. a에는 아무것도 할 수 없게 되면서 잘못된 타입을 넣는 실수를 막아준다.</p>
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">type</span> <span class="nx">Indexable</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nx">T</span> <span class="kd">extends</span> <span class="kr">string</span> <span class="p">?</span> <span class="nx">T</span> <span class="o">&amp;</span> <span class="p">{</span> <span class="p">[</span><span class="na">index</span><span class="p">:</span> <span class="kr">string</span><span class="p">]:</span> <span class="kr">any</span> <span class="p">}</span> <span class="p">:</span> <span class="nx">never</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">ObjectIndexable</span> <span class="o">=</span> <span class="nx">Indexable</span><span class="o">&lt;</span><span class="p">{}</span><span class="o">&gt;</span><span class="p">;</span> <span class="c1">// never</span>
+</code></pre></div>    </div>
+    <p>Indexable이라는 제네릭(Generic)타입을 만들어서 T가 만약에 string이면 <code class="language-plaintext highlighter-rouge">{ [index: string]: any }</code>를 만든다. 나머지인 경우에는 never로 지정한다.</p>
+  </li>
+  <li>typeOf Guard
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">declare</span> <span class="kd">const</span> <span class="nx">a</span><span class="p">:</span> <span class="kr">string</span> <span class="o">|</span> <span class="kr">number</span><span class="p">;</span>
+  
+<span class="k">if </span><span class="p">(</span><span class="nx">typeOf</span> <span class="nx">a</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">string</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">a</span><span class="p">;</span> <span class="c1">// number</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <p>string + number - string = number를 나오게 해서 a의 타입으로는 number을 나오게 하는 가드가 가능하다.</p>
+  </li>
+</ul>
+
+<h2 id="void"><strong>void</strong></h2>
+<hr />
+<p>void는 어떤 타입도 가지지 않은 빈 상태를 의미한다. 값은 없고 타입만 있어서 void라는 값은 사용할 수 가 없다.<br />
+값을 반환하지 않는 undefined를 return하는 상태에 사용한다. 그 외에는 사용할 일이 잘 없다.<br />
+return 타입이 void라는 것은 함수의 return을 가지고 무엇이든 하지 않겠다는 명시적인 표시이다.</p>
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">returnVoid</span><span class="p">(</span><span class="nx">message</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+
+	<span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">r</span> <span class="o">=</span> <span class="nf">returnVoid</span><span class="p">(</span><span class="dl">"</span><span class="s2">리턴이 없다.</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div></div>
+<p>해당 함수 return 타입의 추론은 void로 나오게 된다.<br />
+아무 값도 반환하지 않는 return을 넣게 되어도 해당 함수의 return 타입 추론은 void로 나온다.<br />
+r의 타입 또한  void이다.</p>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#ts">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TS</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

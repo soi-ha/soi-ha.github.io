@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 매3개 | Git: checkout, switch, restore (부제: 원격 브랜치를 로컬에 그대로 생성하기) &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">매3개 | Git: checkout, switch, restore (부제: 원격 브랜치를 로컬에 그대로 생성하기)</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">21 Jan 2025</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <p>때는 행동대장 프로젝트를 진행하면서…<br />
+새로운 이슈를 처리하기 위해 원격에서 만들어둔 브랜치를 로컬로 가져오려고 시도했다. 그러나 만들어진 브랜치의 마지막 log를 확인해보니 원격 브랜치의 log와 달랐다! 나는 원격 브랜치를 그대로 로컬로 가져오는 방법을 검색했고.. git의 checkout을 통해 성공할 수 있었다.</p>
+
+<p>도대체 이 checkout이 무엇을 수행하는 명령어이길래 원격 브랜치를 그대로 로컬에 생성할 수 있는지 알아보도록 하자. 그리고 checkout과 유사한 일을 수행하는 switch와 restore은 무엇인지도 같이 알아보자!</p>
+
+<h2 id="-checkout">✅ checkout?</h2>
+
+<p>checkout 명령어는 브랜치 변경, 특정 커밋 체크아웃, 파일 복원 등 여러 작업에 사용된다.</p>
+
+<h3 id="checkout으로-할-수-있는-기능">checkout으로 할 수 있는 기능</h3>
+
+<h4 id="1-브랜치-변경">1. 브랜치 변경</h4>
+
+<p>현재 작업 중인 브랜치를 다른 브랜치로 변경하는 데 사용된다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout &lt;branch-name&gt;
+</code></pre></div></div>
+
+<ul>
+  <li>현재 브랜치를 <code class="language-plaintext highlighter-rouge">branch-name</code>으로 변경한다.</li>
+  <li>작업 디렉토리는 변경된 브랜치의 마지막 commit 상태로 업데이트된다.</li>
+  <li>단, commit 혹은 stash하지 않은 작업이 존재할 경우(즉, working directory에 존재) 다른 브랜치로 변경할 수 없다.</li>
+</ul>
+
+<h4 id="2-새-브랜치-생성-및-이동">2. 새 브랜치 생성 및 이동</h4>
+
+<p>브랜치를 생성하고 바로 이동할 때 사용한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">-b</span> &lt;new-branch-name&gt;
+</code></pre></div></div>
+
+<ul>
+  <li>새로운 브랜치를 생성하고 해당 브랜치로 이동한다.</li>
+  <li>
+    <p>만약 <strong>원격 브랜치를 추적하는 로컬 브랜치를 생성하고 이동</strong>하고 싶을 경우 다음과 같다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">-b</span> &lt;new-branch-name&gt; &lt;remote&gt;/&lt;remote-branch-name&gt;
+
+or
+
+git checkout <span class="nt">--track</span> &lt;remote&gt;/&lt;remote-branch-name&gt;
+</code></pre></div>    </div>
+
+    <p>예로, origin에 있는 feature1이라는 브랜치를 로컬에 바로 생성하고 이동하고 싶다면 다음과 같다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">-b</span> feature1 origin/feature1
+
+or
+
+git checkout <span class="nt">--track</span> origin/feature1
+</code></pre></div>    </div>
+
+    <p>origin의 브랜치 이름과 다른 이름을 사용할 수 있다. feature1이 아니라 feat1로 만들고 싶다면</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">-b</span> feat1 origin/feature1
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h4 id="3-특정-커밋-체크아웃">3. 특정 커밋 체크아웃</h4>
+
+<p>특정 커밋으로 working directory를 업데이트한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout &lt;commit-hash&gt;
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">commit-hash</code>로 지정된 커밋의 파일들을 작업 디렉토리에 반영한다.</li>
+  <li>이 상태는 “detached HEAD” 상태라고 불리며, 이후 작업은 브랜치가 아닌 <strong>해당 커밋을 기준</strong>으로 진행된다.</li>
+</ul>
+
+<h4 id="4-파일-복원">4. 파일 복원</h4>
+
+<p>특정 파일을 이전 커밋의 상태로 복원한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout &lt;branch-name&gt; <span class="nt">--</span> &lt;file-path&gt;
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&lt;file-path&gt;</code>에 있는 파일을 지정된 브랜치 또는 커밋의 상태로 되돌린다.</li>
+  <li>이 명령은 주로 잘못된 수정 내용을 되돌릴 때 유용하다.</li>
+</ul>
+
+<h3 id="checkout의-기능이-분리">checkout의 기능이 분리?</h3>
+
+<p>Git 2.23 이후, <code class="language-plaintext highlighter-rouge">checkout</code>의 일부 기능이 <strong><code class="language-plaintext highlighter-rouge">switch</code></strong>(브랜치 변경)와 <strong><code class="language-plaintext highlighter-rouge">restore</code></strong>(파일 복원)로 분리되었다. 각각의 명령은 특정 작업에 초점이 맞춰져 있어 더 직관적이고 명확하게 사용할 수 있다. 그렇지만 <code class="language-plaintext highlighter-rouge">checkout</code>은 여전히 사용 가능하다.</p>
+
+<p>하지만 기능이 분리되었기 때문에, 이제는 switch와 restore를 사용하는 것을 더 권장한다. (아무래도 checkout은 책임 분리가 덜 된 구조였기 때문인 듯 하다.)</p>
+
+<p>그렇다면 <code class="language-plaintext highlighter-rouge">checkout</code>에서 사용하던 기능을 switch와 restore로 어떻게 대체할 수 있는지 알아보자!</p>
+
+<h2 id="️-switch">🕹️ switch</h2>
+
+<p>브랜치를 이동하거나 새로 생성하는 작업에만 사용된다. <code class="language-plaintext highlighter-rouge">checkout</code>이 한꺼번에 처리하던 다양한 작업 중 브랜치와 관련된 작업만 분리한 명령이다.</p>
+
+<h3 id="주요-기능">주요 기능</h3>
+
+<h4 id="1-브랜치-전환">1. 브랜치 전환</h4>
+
+<p>현재 작업 중인 브랜치를 <code class="language-plaintext highlighter-rouge">&lt;branch-name&gt;</code>으로 변경한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git switch &lt;branch-name&gt;
+</code></pre></div></div>
+
+<h4 id="2-새-브랜치-생성-및-이동-1">2. 새 브랜치 생성 및 이동</h4>
+
+<p>새 브랜치를 생성하고 해당 브랜치로 이동한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git switch <span class="nt">-c</span> &lt;new-branch-name&gt;
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>만약 <strong>원격 브랜치를 추적하는 로컬 브랜치를 생성하고 이동</strong>하고 싶을 경우 다음과 같다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git switch <span class="nt">-c</span> &lt;new-branch-name&gt; &lt;remote&gt;/&lt;remote-branch-name&gt;
+
+or
+
+git switch <span class="nt">--track</span> &lt;remote&gt;/&lt;remote-branch-name&gt;
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h4 id="3-강제-전환">3. 강제 전환</h4>
+
+<p>작업 중인 변경 사항을 무시하고 강제로 브랜치를 변경한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git switch <span class="nt">-f</span> &lt;branch-name&gt;
+</code></pre></div></div>
+
+<h2 id="️-restore">♻️ restore</h2>
+
+<p>특정 파일을 이전 상태로 복원하는 작업에 초점을 맞춘 명령이다. 이는 <code class="language-plaintext highlighter-rouge">checkout</code>의 파일 복원 기능을 대체한다.</p>
+
+<h3 id="주요-기능-1">주요 기능</h3>
+
+<h4 id="1-작업-디렉토리에서-파일-복원">1. 작업 디렉토리에서 파일 복원</h4>
+
+<p>스테이징된 변경 사항이나 working directory의 변경 사항을 마지막 커밋 상태로 되돌린다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git restore &lt;file-path&gt;
+</code></pre></div></div>
+
+<h4 id="2-스테이징-영역에서-복원">2. 스테이징 영역에서 복원</h4>
+
+<p>스테이징 영역(Staging Area)에 있는 파일을 언스테이징한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git restore <span class="nt">--staged</span> &lt;file-path&gt;
+</code></pre></div></div>
+
+<h4 id="3-특정-커밋-기준으로-파일-복원">3. 특정 커밋 기준으로 파일 복원</h4>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;commit-hash&gt;</code>에 해당하는 커밋 상태로 파일을 복원한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git restore <span class="nt">--source</span><span class="o">=</span>&lt;commit-hash&gt; &lt;file-path&gt;
+</code></pre></div></div>
+
+<h2 id="-checkout-vs-switch--restore">🥊 checkout vs switch &amp; restore</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>기능</strong></th>
+      <th><strong>checkout</strong></th>
+      <th><strong>switch</strong></th>
+      <th><strong>restore</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>브랜치 변경</td>
+      <td>O</td>
+      <td>O</td>
+      <td>X</td>
+    </tr>
+    <tr>
+      <td>새 브랜치 생성 및 이동</td>
+      <td><code class="language-plaintext highlighter-rouge">git checkout -b &lt;branch&gt;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">git switch -c &lt;branch&gt;</code></td>
+      <td>X</td>
+    </tr>
+    <tr>
+      <td>파일 복원</td>
+      <td><code class="language-plaintext highlighter-rouge">git checkout &lt;branch&gt; -- &lt;file-path&gt;</code></td>
+      <td>X</td>
+      <td><code class="language-plaintext highlighter-rouge">git restore &lt;file-path&gt;</code></td>
+    </tr>
+    <tr>
+      <td>스테이징 영역 복원</td>
+      <td><code class="language-plaintext highlighter-rouge">git checkout -- &lt;file-path&gt;</code></td>
+      <td>X</td>
+      <td><code class="language-plaintext highlighter-rouge">git restore --staged &lt;file-path&gt;</code></td>
+    </tr>
+    <tr>
+      <td>특정 커밋 기반 파일 복원</td>
+      <td><code class="language-plaintext highlighter-rouge">git checkout &lt;commit-hash&gt; -- &lt;file&gt;</code></td>
+      <td>X</td>
+      <td><code class="language-plaintext highlighter-rouge">git restore --source=&lt;commit-hash&gt;</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="-정리">📝 정리</h2>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">checkout</code></strong>: 브랜치 변경, 특정 커밋 체크아웃, 파일 복원 등 여러 작업에 사용.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">switch</code></strong>: 브랜치를 전환하거나 생성하는 데만 사용.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">restore</code></strong>: 파일 복원 및 스테이징 관련 작업에 사용.</li>
+  <li><code class="language-plaintext highlighter-rouge">switch</code>와 <code class="language-plaintext highlighter-rouge">restore</code>는 Git 2.23 이상에서만 사용할 수 있다. 구버전에서는 <code class="language-plaintext highlighter-rouge">checkout</code>을 사용해야 한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">switch</code>와 <code class="language-plaintext highlighter-rouge">restore</code>를 사용하면 작업의 목적과 의도가 명확히 드러나므로, 사용을 권장한다.</li>
+</ul>
+
+<h2 id="-참고">📚 참고</h2>
+
+<ul>
+  <li><a href="https://git-scm.com/docs/git-checkout">Git -git-checkout Documentation</a></li>
+  <li><a href="https://git-scm.com/docs/git-switch">Git -git-switch Documentation</a></li>
+  <li><a href="https://git-scm.com/docs/git-restore">Git -git-restore Documentation</a></li>
+  <li><a href="https://www.freecodecamp.org/korean/news/git-cekeuause-daehan-seolmyeong-giteseo-beuraencireul-cekeuaus-byeongyeong-ddoneun-jeonhwan-haneun-bangbeob/">Git 체크아웃에 대한 설명: Git에서 브랜치를 체크아웃(변경 또는 전환)하는 방법</a></li>
+  <li><a href="https://zoosso.tistory.com/729">Git 깃: git checkout</a></li>
+</ul>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#git">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">Git</span>
+    </a>
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#매3개">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">매3개</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 Uncaught TypeError: Array.map is not a function &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">Uncaught TypeError: Array.map is not a function</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">19 Oct 2023</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/project.html">
+          Project
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <p>프로젝트를 진행하면 해당 에러 <code class="language-plaintext highlighter-rouge">Uncaught TypeError: Array.map is not a function</code>가 지속적으로 나타났다.<br />
+에러가 뜨는 이유는 배열이 비었기 때문이었다. 서버와 통신하기 전에는 임의로 배열을 만든 상태에서 테스트를 진행했기 때문에 해당 에러가 나타나지 않았던거였다. 통신을 진행한 후에는 게시글을 작성해야 배열에 값이 들어오게 되는데, 게시글을 작성하지 않았기 때문에 배열에 값이 존재하지 않아서 map 에러가 발생했던 것이다.</p>
+
+<h3 id="arraymap-에러-해결">Array.map 에러 해결</h3>
+
+<hr />
+
+<p>해당 에러를 해결하는 방법은 매우 간단하다. 하지만 에러를 해결하기에 앞서 우리가 알아야 할 JS 지식이 있다.</p>
+
+<h4 id="array가-빈배열일때-boolean값">array가 빈배열일때 boolean값</h4>
+
+<hr />
+
+<p>JS를 잘 모른다면 arr라는 배열이 존재하는데 값이 빈배열이라면, boolean값은 흔히 false라고 생각하게 될 것이다. (내가 그랬다)<br />
+하지만 아니다! 빈 배열이라면 boolean값은 true이다.<br />
+이유를 명확히는 알지 못하지만, JS에서 그렇게 정의한다. (그래서 그냥 받아들이기로 했다)</p>
+
+<p>비교연산자(===)를 사용하지 않았을 때, false가 나오는 것은 다음과 같다.</p>
+
+<ul>
+  <li>0</li>
+  <li>false</li>
+  <li>undefined</li>
+  <li>null</li>
+  <li>’’ 혹은 “” (빈 문자열)</li>
+  <li>NaN</li>
+</ul>
+
+<p>빈 배열은 위에 해당하지 않기 때문에 true가 나온다..! 이 뿐만아니라 <code class="language-plaintext highlighter-rouge">{}, function(){}, "0", "false", "null"</code> 등도 true값을 가진다.</p>
+
+<p>여기서 주의해야 할 것은 위의 결과값은 동등 연산자(==)일 때의 값이라는 것이다. 비교 연산자(===)는 값과 타입을 모두 비교하기 때문에 빈 배열일때 false를 반환한다. 주의하도록 하자!</p>
+
+<h4 id="chrome-console에서는-arr--true는-false">Chrome console에서는 <code class="language-plaintext highlighter-rouge">arr == true</code>는 false?!</h4>
+
+<hr />
+
+<p>사실 위의 이론을 직접 확인하고 싶어서 크롬 console 란에 코드를 작성해서 확인해봤다. 근데 빈배열이 false라고 하는 것이다..? <code class="language-plaintext highlighter-rouge">arr == true</code>라고 작성했는데.. 그래서 <code class="language-plaintext highlighter-rouge">Boolean(arr)</code>라고 작성해보니 true값이 나왔다.</p>
+
+<p><img width="172" alt="스크린샷 2023-10-19 13 28 30" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/b112a28f-3384-4810-9b69-363f7ec11ddc" /></p>
+
+<p>왜 위의 개념과 다른 값이 나오는지 궁굼해서 Bard에게 물어봤다.</p>
+
+<p><img width="475" alt="스크린샷 2023-10-19 13 16 57" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/967ecf84-0b4e-4ac7-8efa-9fb88ba5ebc3" /></p>
+
+<p>그렇다. 내가 동등 연산자(==)로 입력했어도 크롬 console은 비교 연산자(===)를 사용하는 것이다. 그렇기에 true가 아닌 false로 반환하는 것이었다. Boolean으로 했을 경우에는 값만 확인하기 때문에 true를 반환하는 것이고!<br />
+혹시 나 같은 사람이 또 있을까봐.. 적어봤다ㅎ</p>
+
+<h3 id="arraymap-error-해결하기">Array.map Error 해결하기</h3>
+
+<hr />
+
+<p>위 개념처럼 빈 배열 array는 true를 반환하기 때문에 map을 사용하는 조건으로 그냥 array가 아닌 array.length를 사용하면 된다.<br />
+빈 배열 array는 true이지만 <strong>array.length는 값이 0 이기 때문에 비교연산자에서 false를 반환한다!</strong></p>
+
+<p><img width="184" alt="스크린샷 2023-10-19 13 34 25" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/76cda852-8b89-4fe6-ba86-387079e3678f" /></p>
+
+<p>따라서 빈 배열로 인한 map TypeError는 length를 활용하여 해결하자.</p>
+
+<p><img width="407" alt="스크린샷 2023-10-19 12 59 39" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/efc0b33f-2535-4552-804b-46b52676091e" /></p>
+
+<p>해당 코드를 확인하면 meetingList가 빈 배열일때 meetingList.length는 0이므로 false이기에 논리 연산자 (&amp;&amp;)의 조건(모두 true)에 성립하지 않는다. 따라서 map 함수가 실행되지 않기에 TypeError는 발생하지 않는다.<br />
+만약 meetingList가 빈배열이 아니고 값이 1개라도 존재한다면, meetingList.length는 최소 1이 되기 때문에 true값을 가져서 map함수가 실행될 것이다. 배열이 빈배열이 아니기 때문에 map TypeError도 발생하지 않는다.</p>
+
+<blockquote>
+  <p>참고<br />
+<a href="https://velog.io/@hyunn/Array.map-is-not-a-function-%EC%97%90%EB%9F%AC">Array.map is not a function 에러</a><br />
+<a href="https://marshallku.com/web/tips/%EC%99%9C-%ED%85%85-%EB%B9%88-array%EB%8A%94-true%EC%9D%B8%EA%B0%80">왜 텅 빈 Array는 true인가</a><br />
+Bard: Chrome console에서 빈배열이 false인 이유</p>
+</blockquote>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#unive-us">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">UNIVE.US</span>
+    </a>
+  
+    
+    <a href="/tags.html#js">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">JS</span>
+    </a>
+  
+    
+    <a href="/tags.html#react">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">React</span>
+    </a>
+  
+    
+    <a href="/tags.html#error">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">Error</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

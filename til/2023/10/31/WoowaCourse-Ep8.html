@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 우테코: 프리코스 1주차 미션 복기 (feat. git 대소문자 구분 설정) &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">우테코: 프리코스 1주차 미션 복기 (feat. git 대소문자 구분 설정)</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">31 Oct 2023</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <p>2주차가 곧 끝나가는 시점이지만.. 지금이라도 1주차 미션을 복기해보려고 한다.</p>
+
+<p>나는 그간 React를 조금 한 것 말고는 바닐라 JS로 기능을 구현해본 적이 없다. 있다면 그나마, 학교 강의시간에 간단한 기능 구현정도만? (정말 간단한 기능들…)</p>
+
+<p>그렇기에 처음 1주차를 시작할때는 정말.. 쉽지 않았다. 솔직히 좀 어려웠다. 그나마 프로젝트를 진행한다고 node나 git 등을 다뤄봐서 다행이지, 한번도 사용해보지 않았더라면 프로젝트 설정에서 막혔을 것이다.</p>
+
+<p>그리고 처음 보는 것들이 많았어서 그거에 대한 궁금증 때문에 정작 기능구현은 그리 빨리 시작하지 못했다. 1주차를 하면서 정말 크게 느낀 것은 선택과 집중을 잘 해야 한다는 것이었다.<br />
+다른 것을 신경쓰다가 가장 중요한 기능 구현은 실패헀을 수도 있다..</p>
+
+<p>다행이도.. 그간 코딩좀 타탁거렸던 실력으로.. 정말 많은 난관들이 있었지만.. 잘 해결해서 테스트 실행을 통과시킬 수 있었다.</p>
+
+<p><a href="https://github.com/soi-ha/javascript-baseball-6/tree/soi-ha">1주차: 숫자 야구 Repository</a>
+<img width="785" alt="스크린샷 2023-10-31 23 56 56" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/10ab6f0a-d828-413e-b601-b049de4f5b50" /></p>
+
+<p>서론은 여기서 마치고 1주차 미션을 진행하면서 발생했었던 일들에 대해 작성해보고자 한다.</p>
+
+<h2 id="테스트-실패">테스트 실패</h2>
+
+<hr />
+
+<p>아무리 이상하다 싶은 코드를 수정하고, chatGPT랑 Bard에게 물어봐도.. 테스트에 실패하는 원인을 찾을 수가 없었다. 이거 찾는게 진짜 굉장히 오래 걸렸다.. 근데, 이 원인은 나의 바보같은^^.. 행동으로 인해 발생한 것이었다.</p>
+
+<ul>
+  <li>
+    <p><strong>pickUniqueNumbersInRange()의 달콤한 유혹</strong></p>
+
+    <p>나는 처음에 랜덤 숫자를 추출할때 <code class="language-plaintext highlighter-rouge">pickUniqueNumbersInRange()</code>를 사용하였다.
+<img width="597" alt="pickUniqueNumbersInRange 사용 코드" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/7c73f89a-dbf6-4d04-a54f-18c6039f7297" /></p>
+
+    <p>모든 기능 구현을 완료한 후, 로컬에서 테스트를 실행하니 모든 테스트가 실패했다. 무엇이 문제일지 한참 고민하다가, ApplicatioinTest.js에 작성된 코드를 하나 하나 잘 읽어보니 랜덤 숫자를 추출할때 <code class="language-plaintext highlighter-rouge">pickNumberInRange()</code>를 사용하고 있었다.<br />
+설마..? 사용한 함수가 달라서 테스트가 실패하는 것은 아닐까..? 라는 생각에 <code class="language-plaintext highlighter-rouge">pickNumberInRange()</code>를 사용하도록 코드를 변경하니..<br />
+테스트가 잘 실행되어 테스트에 성공했다..</p>
+
+    <p>그렇다. 이 사항은 README 프로그래밍 요구사항에 적혀있었다.
+<img width="852" alt="리드미파일 프로그래밍 요구사항" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/bd88798d-8229-4be1-a4d2-a973cd5d1a8b" />
+… 꼭.. 요구사항은.. 진짜.. 꼼꼼히 살펴야 겠다고 몸소 느꼈다..<br />
+<del>이것때문에 몇시간을 버린거야 진짜…</del></p>
+  </li>
+  <li>
+    <p><strong>error 출력문 문제</strong></p>
+
+    <p>이상하게 예외 테스트만 실행하면 아래 사진과 같은 에러가 계속 발생했다.</p>
+
+    <p><img width="460" alt="예외 테스트 실패" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/3522b123-ba42-4b4c-932a-797d37832da7" /></p>
+
+    <p>이 에러만 이틀?정도 계속 찾았던 것 같은데, 에러의 원인은 정말^^.. 허무했다.</p>
+
+    <p><img width="550" alt="에러 원인 코드" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/ee800b2b-a640-48be-8b14-746f7b3ed6e6" /></p>
+
+    <p>위 사진에서 어떤 코드가 에러를 발생시킨 것일까?<br />
+두번째 else if문을 보면.. throw를 <code class="language-plaintext highlighter-rouge">new Exception</code>으로 던지고 있다. 여기서 Exception은 위에 내가 만들었던 것이다.<br />
+그렇다. <code class="language-plaintext highlighter-rouge">new Error</code>가 아닌 <code class="language-plaintext highlighter-rouge">new Exception</code>으로 에러를 던지고 있기에 “[ERROR]”형식이 맞지 않다는 이유로 해당 테스트가 실패했던 것이다..<br />
+<code class="language-plaintext highlighter-rouge">new Exception</code>은 처음 throw를 적용하면서 봤던 글에서 사용하던 방식인데, 이게 나의 발목을 잡을 줄이야.. 앞으로는 조심하도록 하자..</p>
+  </li>
+</ul>
+
+<h2 style="color:red;">예기치 못한 오류로 인하여 실행에 실패하였습니다.</h2>
+
+<hr />
+
+<p>그렇다. 나는 일명 ‘예기치씨’라고 부른다. 위 문구는 이번 미션에서 날 환장하게 만든 문구이다.<br />
+왜 날 환장하게 만들었냐. local에서 test를 실행했을 때는 잘.. 예제 테스트 실행이 되었지만, 제출을 한 후에 페이지에서 에제 테스트를 실행하면 위 문구가 뜨면서 예제 테스트에 실패했다..<br />
+정말 해당 문제를 해결하느라 힘들었다..</p>
+
+<ul>
+  <li>
+    <p><strong>new App() 코드문 삭제</strong></p>
+
+    <p>빌드가 실패된 첫번째 이유는 <code class="language-plaintext highlighter-rouge">new App()</code> 코드를 주석처리했기 때문이다.<br />
+로컬에서 test를 할 때에는 해당 코드가 필요 없다. 그래서 주석처리를 해뒀었는데, 이로 인하여 우테코 페이지에서 예제 테스트를 실행했을 때 빌드가 실패한 것이다.<br />
+절대.. 빼먹지 말고.. 작성하자..</p>
+  </li>
+  <li>
+    <p><strong>파일명 변경으로 이전 파일명이 적용</strong></p>
+
+    <p>빌드 실패의 두번째 이유는 파일명이 엉켜 import에 실패한 것이다.<br />
+처음에 파일명이 <code class="language-plaintext highlighter-rouge">InputNumber.js</code>였다고 한다면, 리팩토링을 진행하면서 파일명을 <code class="language-plaintext highlighter-rouge">inputNumber.js</code>로 변경했다. <del>지금에서야 알게된 사실은 변경할 필요가 없었다..</del></p>
+
+    <p>파일명이 변경되면서 App.js에 import 했던 경로의 파일명도 변경해줬다. 그리고 로컬에서 test를 실행했을 때 테스트에 성공했다. 그러나 빌드에서는 실패했다.</p>
+
+    <p>로컬에서는 변경한 이름(<code class="language-plaintext highlighter-rouge">inputNumber.js</code>)을 이전 이름(<code class="language-plaintext highlighter-rouge">InputNumber.js</code>)과 동일하게 여겨 import를 진행하여 테스트가 통과됐던 것이었다. 이 사실을 알고 <code class="language-plaintext highlighter-rouge">git status</code>를 확인했을 때, 변경한 이름이 아닌 이전 이름(<code class="language-plaintext highlighter-rouge">InputNumber.js</code>)으로 변경사항 일어났다고 되어있었다.<br />
+<strong>즉, 나는 파일명을 파스칼케이스에서 카멜케이스로 변경했지만 로컬에서는 파일명 변경이 이뤄지지 않았다고 판단한 것이다!!</strong></p>
+
+    <p>나: 파스칼 -&gt; 카멜로 파일명 변경 (철자는 동일, 대소문자만 변경)<br />
+나: App.js에도 import할때 파일 경로 카멜케이스로 작성한 이름으로 변경<br />
+로컬: App.js에 <code class="language-plaintext highlighter-rouge">inputNumber.js</code>로 작성했네? <code class="language-plaintext highlighter-rouge">inputNumber.js</code> 파일 존재하네! ㅇㅋ <code class="language-plaintext highlighter-rouge">inputNumber.js</code> 파일 불러오겠음<br />
+git: <code class="language-plaintext highlighter-rouge">inputNumber.js</code>랑 <code class="language-plaintext highlighter-rouge">InputNumber.js</code>랑 철자 동일한데? 난 대소문자 구분할 줄 몰랑. 그러니 파일명 변경된거 없음ㅇㅇ! ( <code class="language-plaintext highlighter-rouge">InputNumber.js</code>로 저장)<br />
+<strong>=&gt; 결론, pull request에는 파일명 바뀐거 없음</strong></p>
+
+    <p>그러나 우테코 페이지에서는 pull request에 반영된 마지막 커밋을 가지고 빌드를 진행하는데, App.js에 import한 경로가 <code class="language-plaintext highlighter-rouge">inputNumber.js</code>로 작성되어져 있고 저장된 파일명은 <code class="language-plaintext highlighter-rouge">InputNumber.js</code>로 되어있으니, 해당 파일을 찾을 수 없다면서 빌드 실패(예기치씨 등장)가 된 것이다.</p>
+
+    <p><strong>진짜 최종 결론, git 글로벌 설정으로 대소문자를 구분하자</strong></p>
+
+    <ul>
+      <li>
+        <p>git 글로벌 대소문자 구분 설정</p>
+
+        <p><code class="language-plaintext highlighter-rouge">git config core.ignorecase false</code><br />
+단, 이미 push된 파일에는 해당 설정으로 꼬일 수 있다. 따라서 아래 방법을 사용하자.</p>
+      </li>
+      <li>
+        <p>원하는 파일만 이름 변경</p>
+
+        <p><code class="language-plaintext highlighter-rouge">git mv user.js User.js</code><br />
+user.js에서 User.js로 변경됨</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="미션을-진행하면서-배운점">미션을 진행하면서 배운점</h2>
+
+<hr />
+
+<ul>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">typeof Number('string')</code>의 결과값</strong></p>
+
+    <p>플레이어에게 값을 입력 받을 때, 여러 예외처리를 해야 했다. 이때, 입력 받은 값은 무조건 문자열로 들어오게 되는데 이 입력받은 문자열을 숫자로 변환되는지 안되는지를 가지고 예외처리를 하려고 했다.<br />
+그래서 <code class="language-plaintext highlighter-rouge">'안녕하세요'</code>를 입력받았을 때 해당 값을 숫자로 변경하면 <code class="language-plaintext highlighter-rouge">NaN</code>을 반환하기를 기대했다.<br />
+그래서 확인하기 위해서 <code class="language-plaintext highlighter-rouge">typeof Number('string')</code>을 실행했더니 값이 NaN이 아니라 number로.. 나오는 것이다..?!<br />
+이 결과가 도저히 이해가 안돼서 우리의 영원한 두번째 친구, Bard에게 물어봤다.</p>
+
+    <p><img width="1020" alt="bard의 답변" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/ad673a6b-6189-44dd-9984-54881869690e" /></p>
+
+    <p>음 그렇다! <code class="language-plaintext highlighter-rouge">typeof Number(아무거나)</code> 실행하면 <code class="language-plaintext highlighter-rouge">Number()</code>로 인해 무조건 number로 결과가 나오는 것이다.</p>
+
+    <p>이런 결과를 이번 미션을 진행하면서 처음 알게 되었다.<br />
+이 외에도 새로 알게된 사항은 글로 적어뒀다.</p>
+  </li>
+  <li><a href="https://soi-ha.github.io/til/2023/10/19/WoowaCourse-Ep1.html">좋은 깃 커밋 메세지</a></li>
+  <li><a href="https://soi-ha.github.io/til/2023/10/20/WoowaCourse-Ep3.html">npm permission denined 에러</a></li>
+  <li><a href="https://soi-ha.github.io/til/2023/10/27/WoowaCourse-Ep6.html">git reset -hard 경로 : 원하는 시점으로 되돌리기</a></li>
+  <li><a href="https://soi-ha.github.io/til/2023/10/26/WoowaCourse-Ep5.html">throw를 통한 예외처리</a></li>
+  <li><a href="https://soi-ha.github.io/til/2023/10/28/WoowaCourse-Ep7.html">기명 함수표현식?</a></li>
+</ul>
+
+<h2 id="코드리뷰">코드리뷰</h2>
+
+<hr />
+
+<p>1주차 미션이 종료되고 내가 작성한 코드를 다른 분들에게 리뷰를 받을 수 있는 기회가 생겼다! 그래서 용기를 내서 코드리뷰를 부탁드렸다.</p>
+
+<p>코드리뷰를 처음 받아보는데, 이번에 느낀 것은 코드리뷰는 기회가 생긴다면 꼭 받아야한다! 였다. 내가 보지 못했던 부분들을 짚어주시고 더 좋게 보완할 수 있는 사항들을 알려주셨다.</p>
+
+<p><strong>코드리뷰 정리</strong></p>
+
+<ul>
+  <li>
+    <p>변수 네이밍컨벤션<br />
+const를 사용한다고 무조건 상수 네이밍컨벤션이 아닌, lowerCamelCase를 사용하는 변수 네이밍켄벤션을 사용할 것</p>
+  </li>
+  <li>
+    <p>메서드 안의 지역변수라면 대문자 스네이크케이스보다 카멜케이스를 사용하기</p>
+  </li>
+  <li>
+    <p>boolean형 변수들 이름은 <code class="language-plaintext highlighter-rouge">is__</code>형식을 주로 많이 사용</p>
+  </li>
+  <li>
+    <p>for문은 break나 return 사용이 아니라면 고차함수 (forEach / map / filter / reduce)를 사용하는 것을 추천</p>
+  </li>
+  <li>
+    <p>매직넘버 사용하기<br />
+의미 전달이 확실하기에 사용을 매우 추천</p>
+  </li>
+  <li>
+    <p>print를 할때 변수가 없다면 ``가 아닌 ‘’ 사용</p>
+  </li>
+  <li>
+    <p>변경되지 않는 값이라면 변수로 만들어서 명시적으로 알릴 것</p>
+  </li>
+  <li>
+    <p>Set 자료구조를 이용하여 중복 제거하기</p>
+  </li>
+</ul>
+
+<p>코드리뷰를 해주신 친절하신 분들 덕분에 정말 많이 배울 수 있었다..💜<br />
+처음 알게된 개념들도 많았고 내가 놓치고 있던 개념들도 다시 공부하게 되는 계기가 됐다.<br />
+실제로 2주차 미션을 진행하면서 리뷰 받았던 사항들을 거의 다 적용해봤다! 덕분에 코드가 한결 이해하기 쉬워진 것 같다.</p>
+
+<h2 id="마무리">마무리</h2>
+
+<hr />
+
+<p>1주차 프리코스 미션을 진행하면서 정말 많이 성장할 수 있었다. 비록 일주일이라는 길고도 짧은 시간이었지만 새로 알게된 내용들이 엄청나게 많았다. 그동안 내가 모르고 해왔던 나쁜 습관들도 잡을 수 있게 되었고, 새롭게 알게된 내용을 통해 코딩을 하는 것에 있어 많이 자신감을 얻을 수 있었다.</p>
+
+<p>이번 1주차 미션을 진행하면서 느낀 것은 우테코에 최종 선발이 되면 너무너무 좋겠지만, 선발되지 않더라도 프리코스를 통해 배운점이 너무나도 많기 때문에 후회되지 않은 정말 뜻 깊은 시간이었다라고 생각할 내 미래의 나의 모습이 벌써부터 보였다.</p>
+
+<p>그리고 우테코에서 왜 코딩테스트를 하기 전에 프리코스라는 기간을 두는지의 이유와, 이 프리코스가 단순히 선발을 위해서가 아닌 많은 사람들에게 성장의 기회를 주기 위한 것이라는 걸 몸소 느꼈다.<br />
+프리코스라는 성장의 기회를 준 우테코에게 정말 고맙다는 말을 전해드리고 싶다! <del>(선발돼서 직접 말씀드릴 수 있게 되면 좋겠다ㅎ)</del></p>
+
+<p>그럼 앞으로 남은 3주 (<del>글 작성 현재 2주</del>) 화이팅하자!</p>
+
+<blockquote>
+  <p>학습 참고자료<br />
+<a href="https://loshy244110.medium.com/git-%EB%8C%80%EC%86%8C%EB%AC%B8%EC%9E%90-%EA%B5%AC%EB%B6%84-%EC%9D%B4%EC%8A%88-b600e93b5b9d">Git: 대소문자 구분 이슈</a><br />
+<a href="https://v3.leedo.me/devs/15">git 파일명 대소문자 변경했을 때 제대로 인식하지 못하는 문제</a></p>
+</blockquote>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#woowacourse">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">WoowaCourse</span>
+    </a>
+  
+    
+    <a href="/tags.html#git">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">Git</span>
+    </a>
+  
+    
+    <a href="/tags.html#js">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">JS</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

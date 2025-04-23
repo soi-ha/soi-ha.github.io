@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 우테코: 페이먼츠 & 페이먼츠 모듈 미션 회고  &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">우테코: 페이먼츠 & 페이먼츠 모듈 미션 회고 </h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">01 Jul 2024</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/sohaLog.html">
+          Soha's Log
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <p><img width="325" alt="단체 인생네컷" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/faff179d-9d9c-4dd5-9926-4a2e4e63b0bb" /></p>
+
+<p>Level2가 모두 종료되고 당장 내일 Level3를 앞둔 시점에서야 작성하는 Level2의 미션들 회고다.ㅋㅋ<br />
+Level2 회고를 위해 옵시디언에 매일 회고를 작성했던 것을 다시 읽는데, Level2 처음에 분명 게으른 J를 탈출해보겠다느니.. 게으른 J는 P보다 못하다느니.. 뭐.. 작성해뒀는데.. 음.. 그래도 나름 Level2는 조금씩 개인 공부도 진행하면서 미션을 했어서 Level1보다 성장한 것은 맞는 것 같다. 그렇다고 계획했던 것을 모두 실행한 건 아니라서 으엄청 만족스럽지는 않지만. 그래도 다음 Level로 넘어갈 때마다 성장을 했으니까. 이 부분에 의의를 둬야겠다.</p>
+
+<h1 id="나의-페이스를-지키자">나의 페이스를 지키자</h1>
+
+<p><img width="325" alt="선정릉 산책" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/b60be9ca-fd98-4491-b45b-8f3261094fba" /></p>
+
+<p>Level2의 첫번째 미션으로 방학 일주일동안 노트북을 한번도 열지를 않았더니.. 공부 페이스를 다시 잡기가 너무 힘들었다. 하지만 첫번째 페어인 토다리와 기능구현 관련해서 이야기만 2시간을 하면서 재밌게 미션을 시작했다.<br />
+그리고 Level2의 첫 시작인 만큼 저번 레벨과는 다르게 루틴을 만들었다. 캠퍼스에서 20시에 떠나기! 페어 미션이 아니더라도 20시까지 캠퍼스에서 저녁먹고 공부하다가 운동을 가거나 집을 갔다. 그리고 집 와서는 바로 씻고 일찍 잠들고 일찍 일어나서 이전 레벨보다 더 일찍 출근하고! 이게 굉장히 좋았던게 일찍 자고 일어나니 머리가 상쾌해서 커피를 안 찾아서 좋았다. 또한, 아침, 저녁으로 개인 공부를 할 시간이 생겨서 하루의 시작과 마무리를 알차게 보낼 수 있었다!</p>
+
+<p>페이먼츠 미션에서는 리액트 초보인 나는 useRef, useMemo, useContext와 커스텀 hook 등을 처음 사용해보았다. 그동안 했던 리액트 프로젝트들은 도대체.. 1년?동안 뭘 공부했던 건지 의문이 들 정도로 신세계였다. 이래서 공부는 혼자가 아니라 여럿이서 해야 하는 것 같다. (그리고 나보다 잘 하는 사람들과 공부를 해야 실력이 빠르게 늘어나는 것 같다!)</p>
+
+<p>이번 미션은 처음 사용해보는 훅들이 너무 많아서 힘들었긴 했다. step2때 많이 삽질을 했는데.. 그래도 그만큼 이전에 구현해보지 않았던 기능들을 만들어서 너무 재밌었다! 특히 useContext를 처음 적용했을 때가 기억에 남는다. 이론을 이해하기 위해서 여러 글을 찾아보고 GPT도 엄청 사용하면서 GPT 활용 능력도 많이 눌었다. 또한, 지저분하게 분산되어있던 데이터들을 useContext를 사용함으로 최상위 요소에서 한번에 내려주는게 진짜 신세계였다. 새벽에 혼자 끙끙 앓으면서 2-3시간 동안 useContext 하나를 못해서 애먹었지만 정상적으로 작동했을 때의 그 짜릿함은 역시 이루 말할 수 없다.<br />
+이번 페이먼츠 미션은 몰랐던 리액트의 진짜 세계에 발을 디딘것 같아서 흥미롭고 재밌었다!</p>
+
+<p>물론, 이번 미션을 하면서 나 자신에 대해서 완전히 깨달은 부분도 존재했다. 글을 느리게 읽는 것은 알았지만, 글을 읽으면서 학습하는 능력은 다소 떨어진다는 것. (이래서 내가 학창시절에 영어를 그렇게 해도 2등급으로 못 올렸나..?ㅎ 수학을 좋아했던 이유..) 예전부터 느끼기는 했지만, 이번에 우테코에서 스터디를 하면서 더욱 깨달은 사실이다. 내가 다른 사람들보다 글을 읽으며 습득하는 지식은 잘 기억을 하지 못한다. 이해는 뭔가 되는데 와닿지가 않아서 그런가? 기억은 잘 안 남는다. 그래서 스터디를 진행하며 다른 크루들이 말로 설명해주는 것이 더 머리에 남았다. (스터디 하길 잘 했다…!)</p>
+
+<p>그리고 이번 미션에서 <em>내가 잠을 많이 자나?</em> 고민을 했다.<br />
+원래 잠이 많은 사람인건 알고 있었다. 그런데 이런 황금같은 기간에도 잠을 너무 챙기나 생각이 들었다. 하지만, 잠을 줄여가며 나를 굴린다면 저번 레벨처럼 몸과 멘탈이 무너질 것이 예상되었다. 이것 또한 어찌보면 합리화일 수도 있겠지만.. 그래도 나는 내가 잘 알잖아? 나 자신에 대한 것은 내가 생각한 것이 맞을 것이라는 결론을 내렸다. 그래서 운동도 꼬박꼬박 챙기고 수면시간도 정말 잘 지키려고 노력을 많이했다.</p>
+
+<p>수면이던 학습 능력이던 남과 너무 비교하지 말고 나의 페이스를 잘 지켜내는 것이 정말 중요한 것 같다. 이때 휘둘리지 않고 나의 페이스를 지켰던 것이 Level2를 마친 지금 보았을 때, 정말 잘 한 일이라고 생각한다. 덕분에 Level2는 큰 근심 걱정과 체력 이슈없이 잘 마칠 수 있었으니까!</p>
+
+<h1 id="입덕-야구에">입덕 (야구에..)</h1>
+
+<p><img width="325" alt="행궁동에서" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/1ba66ac1-a786-4945-9b4b-54590fefeec8" /></p>
+
+<p>두번째 미션은 <em>페이먼츠 모듈</em> 이다. 이 전 미션에서 했던 페이먼츠 기능들을 모듈도 다시 다! 만들어 보는 것이었다.<br />
+이미 했던 기능을 모듈로 만드는 것이라서 그런가? 기능 구현을 하는 것에는 그닥 재미를 느끼진 못했다. 그래도 했던 기능 구현이라고 페어인 다르랑 즐겁게 이야기 하면서 촉박하지 않고 효율적으로 step1 기능을 구현했다! 이렇게 잠 잘자면서 진행한 페어 미션이라니… (너무 행복했다.. 사람은 잠을 자야해..)</p>
+
+<p>이번 미션은 기능 구현이 했던 것이라 크게 어려운 것도 재밌던 것도 없어서 그런가? 야구에 입덕해버렸다.ㅋ<br />
+야구는 보는거 아니라고 배웠는데.. 이걸 빠져버렸다.. 그래도 덕분에 집 가는 길이 지루하지 않고 즐거워서 좋다!</p>
+
+<h1 id="이래서-루틴이-중요해">이래서 루틴이 중요해</h1>
+
+<p>Level2의 첫 시작에 루틴을 딱 잡아둬서 그런가? 멘탈이나 체력적으로 크게 힘들만한 것들이 없었다! 장기전으로 이끌 수 있는 좋은 스타트다.</p>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#wooteco">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">Wooteco</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

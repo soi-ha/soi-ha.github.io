@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 매3개 | null 병합 연산자 (nullish, falsy) &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">매3개 | null 병합 연산자 (nullish, falsy)</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">09 Jan 2025</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <p>때는 이번주 월요일. 행동대장 프로젝트에서 버그를 발견했다.<br />
+버그는 <a href="https://github.com/woowacourse-teams/2024-haeng-dong/pull/917">카카오 프로필 이미지를 연동하지 않았을 경우 회원 프로필 이미지가 alt로 출력</a>되는 버그였다. 이 <strong>버그의 원인</strong>은 <strong>null 병합 연산자 <code class="language-plaintext highlighter-rouge">??</code>의 사용</strong>이었다. 나도 이전까지는 모르고 사용했던 연산자였다. 최근에 자바스크립트 딥 다이브를 읽고 정확한 개념을 알게 되었다.</p>
+
+<p>나와 같이 null 병합 연산자가 삼항 연산자와 유사하게 동작할 것이라고 혼동했던 사람들이 존재할 것이라고 생각 된다. 그래서 이번에 null 병합 연산자가 무엇인지 정확히 알아보겠다!</p>
+
+<h1 id="null-병합-연산자">null 병합 연산자</h1>
+
+<p>null 병합 연산자 (nullish coalescing) <code class="language-plaintext highlighter-rouge">??</code>는 좌항의 피연산자가 nullish 값일 경우 우항의 피연산자를 반환한다. nullish 값이 아닐 경우에는 좌항의 피연산자를 반환한다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">soha</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">foo</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">soha</span> <span class="o">??</span> <span class="dl">'</span><span class="s1">없음</span><span class="dl">'</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">foo</span><span class="p">());</span> <span class="c1">// '없음'</span>
+
+<span class="nx">soha</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">soha</span><span class="dl">'</span><span class="p">;</span> <span class="c1">// soha로 재할당</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">foo</span><span class="p">());</span> <span class="c1">// 'soha'</span>
+</code></pre></div></div>
+
+<p>null 병합 연산자의 경우에는 논리 연산자 <code class="language-plaintext highlighter-rouge">||</code>를 사용하여 단축 평가를 했을 때 보다 예기치 않은 동작을 방지할 수 있어서 좋다. 논리 연산자 <code class="language-plaintext highlighter-rouge">||</code>의 경우에는 좌항의 피연산자가 falsy 값일 경우에 우항의 피연산자를 반환하기 때문이다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">soha</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">foo</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">soha</span> <span class="o">??</span> <span class="dl">'</span><span class="s1">없음</span><span class="dl">'</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">foo</span><span class="p">());</span> <span class="c1">// ''</span>
+
+<span class="kd">const</span> <span class="nx">boo</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">soha</span> <span class="o">||</span> <span class="dl">'</span><span class="s1">없음</span><span class="dl">'</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">boo</span><span class="p">());</span> <span class="c1">// '없음'</span>
+</code></pre></div></div>
+
+<p>자, 위 설명에서 nullish와 falsy라는 용어가 나왔다. nullish와 falsy는 무엇일까?</p>
+
+<h2 id="nullish">nullish</h2>
+
+<p>nullish는 값이 <code class="language-plaintext highlighter-rouge">null</code> 또는 <code class="language-plaintext highlighter-rouge">undefined</code>인 경우를 말한다.</p>
+
+<h3 id="nullish-값">nullish 값</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">null</code>: 값이 “비어 있음”을 명시적으로 나타내는 값
+    <ul>
+      <li>프로그래머가 의도적으로 값이 없음을 지정할 때 사용.</li>
+      <li>객체의 기본 값이나 초기화되지 않은 상태를 나타낼 수 있음.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">undefined</code>: 값이 “정의되지 않음”을 나타내는 값
+    <ul>
+      <li>선언된 변수에 값이 할당되지 않았을 때 기본적으로 설정되는 값.</li>
+      <li>함수가 명시적으로 반환값을 설정하지 않을 때도 반환되는 값.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="falsy">falsy</h2>
+
+<p>falsy는 조건문에서 “거짓처럼 평가되는 값”을 말한다.</p>
+
+<h3 id="falsy-값">falsy 값</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">false</code>: 불리언 타입의 거짓 값</li>
+  <li><code class="language-plaintext highlighter-rouge">0</code>: 숫자형 타입의 0</li>
+  <li><code class="language-plaintext highlighter-rouge">-0:</code> 숫자형 타입의 음수 0</li>
+  <li><code class="language-plaintext highlighter-rouge">0n</code>: BigInt 타입의 0</li>
+  <li><code class="language-plaintext highlighter-rouge">""</code>: 문자열 타입의 빈 값</li>
+  <li><code class="language-plaintext highlighter-rouge">null</code></li>
+  <li><code class="language-plaintext highlighter-rouge">undefined</code></li>
+  <li><code class="language-plaintext highlighter-rouge">NaN</code>: 숫자 연산이 실패했음을 나타내는 특수 숫자 값
+    <ul>
+      <li>“Not a Number”(숫자가 아님)의 약자.</li>
+      <li>숫자형 타입이지만 계산 불가능한 값이나 잘못된 숫자 연산의 결과를 나타냄.
+ex) <code class="language-plaintext highlighter-rouge">0 / 0</code> , <code class="language-plaintext highlighter-rouge">parseInt("abc")</code>.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="다시-보기">다시 보기</h2>
+
+<p>nullish와 falsy가 무엇인지 알았으니 위에서 설명했던 코드를 다시 보자.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">soha</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">foo</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">soha</span> <span class="o">??</span> <span class="dl">'</span><span class="s1">없음</span><span class="dl">'</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">foo</span><span class="p">());</span> <span class="c1">// ''</span>
+
+<span class="kd">const</span> <span class="nx">boo</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">soha</span> <span class="o">||</span> <span class="dl">'</span><span class="s1">없음</span><span class="dl">'</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">boo</span><span class="p">());</span> <span class="c1">// '없음'</span>
+</code></pre></div></div>
+
+<p>null 병합 연산자는 soha의 값이 빈 문자열(falsy)이기 때문에 soha 값(<code class="language-plaintext highlighter-rouge">’’</code>)을 출력했다.
+논리 연산자 <code class="language-plaintext highlighter-rouge">||</code>는 soha의 값이 falsy이기 때문에 <code class="language-plaintext highlighter-rouge">‘없음’</code>을 출력했다.</p>
+
+<h3 id="참고">참고</h3>
+
+<ul>
+  <li>[도서] 모던 자바스크립트 Deep Dive</li>
+</ul>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#매3개">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">매3개</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

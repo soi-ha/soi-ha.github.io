@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 매3개 | Git 저장소의 구조와 흐름 & 파일 상태 변화 &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">매3개 | Git 저장소의 구조와 흐름 & 파일 상태 변화</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">23 Jan 2025</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h2 id="-git">🌿 Git?</h2>
+
+<p>Git은 분산 버전 관리 시스템으로, 개발자가 코드를 효율적으로 관리하고 협업할 수 있도록 돕는다. 이런 Git 저장소는 총 4가지로 작업 디렉터리, 스테이징 영역, 지역 저장소, 원격 저장소가 있다.</p>
+
+<p>이 중에서 주요 영역은 작업 디렉터리, 스테이징 영역, 지역 저장소 3가지로 Git의 데이터 흐름을 파악하기 위해 꼭 알아야 한다. 이 3가지 영역은 Git의 주요 데이터 관리 구조로 Git이 추적(관리)하는 파일과 추적하지 않는 파일을 구분하고, 추적하는 파일들의 상태를 구분짓는다.</p>
+
+<p>일단 Git의 데이터 흐름을 알아보기 전에 Git의 저장소 4가지가 어떤 역할을 하는지 알아보자.</p>
+
+<h2 id="️-git-저장소의-구조">🗄️ Git 저장소의 구조</h2>
+
+<h3 id="1-작업-디렉터리working-directory">1. 작업 디렉터리(Working Directory)</h3>
+
+<p>작업 디렉터리(Working Directory)는 작업 중인 파일들이 실제로 있는 공간으로, <strong>사용자가 직접 수정하고 편집하는 파일이 위치</strong>한다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">git init</code> 명령어를 통해 현재 디렉터리(컴퓨터에서 작업 중인 폴더)를 Git 저장소로 초기화한다. 초기화가 완료되면 Git은 변경된 파일을 추적하기 시작한다.</p>
+
+<p>작업 디렉터리는 Working Tree라고도 부르는데, 이 두 가지 용어는 동일한 의미로 사용된다. Git 공식 문서에서도 두 용어가 같은 의미로 사용되며 혼용된다.</p>
+
+<p><img width="641" alt="working tree Git 공식문서 설명" src="https://github.com/user-attachments/assets/21e9781e-d541-498e-a9c4-41dfc9f93a44" /></p>
+
+<p><em>working tree Git 공식문서 설명</em></p>
+
+<p>이는 Git의 상태를 트래킹하고 파일 시스템의 특정 상태를 나타내는데 있어서 같은 역할을 하기 때문이다. 따라서, 작업 디렉터리와 작업 트리 모두 “사용자가 직접 편집하는 파일들이 위치한 영역”을 지칭한다.</p>
+
+<p><img width="250" alt="Image" src="https://github.com/user-attachments/assets/3079a540-d67b-49ee-92b9-06ff3290ada0" /></p>
+
+<p><em>작업 내용이 없을 경우 <code class="language-plaintext highlighter-rouge">git status</code> 명령을 했을 때 띄워지는 문구</em></p>
+
+<h3 id="2-스테이징-영역staging-area">2. 스테이징 영역(Staging Area)</h3>
+
+<p>스테이징 영역은 커밋(commit)하기 전에 변경된 파일을 <strong>임시로 저장하는 공간</strong>이다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">git add</code> 명령어를 사용하여 작업 디렉터리에서 변경된 파일을 스테이징 영역으로 추가할 수 있다. 이를 통해 커밋 시 어떤 변경 사항이 포함될지 선택적으로 관리할 수 있다.</p>
+
+<h3 id="3-지역-저장소local-repository">3. 지역 저장소(Local Repository)</h3>
+
+<p>지역 저장소는 사용자의 컴퓨터에 위치하며, <strong>모든 버전 히스토리를 저장</strong>한다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">git commit</code> 명령어를 통해 스테이징 영역에 있는 변경 사항을 지역 저장소에 기록한다. 지역 저장소는 <code class="language-plaintext highlighter-rouge">.git</code> 디렉터리로 관리되며, 버전 기록을 안전하게 보관한다.</p>
+
+<h3 id="4-원격-저장소remote-repository">4. 원격 저장소(Remote Repository)</h3>
+
+<p>원격 저장소는 GitHub, GitLab과 같은 플랫폼에서 호스팅되며, 협업을 위해 사용된다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">git push</code> 명령어를 사용하여 <strong>지역 저장소의 데이터를 원격 저장소로 업로드</strong>할 수 있다. 반대로, 원격 저장소에 있는 최신 데이터를 지역 저장소로 가져오려면 <code class="language-plaintext highlighter-rouge">git pull</code> 명령어를 사용한다. 새로운 저장소를 처음 복제할 때는 <code class="language-plaintext highlighter-rouge">git clone</code> 명령어를 사용하여 원격 저장소의 내용을 지역 저장소로 복사한다.</p>
+
+<h4 id="쉽게-기억하기">쉽게 기억하기</h4>
+
+<ul>
+  <li>작업 디렉토리: 내가 실제로 일하는 공간.</li>
+  <li>스테이징 영역: 커밋하기 전에 임시로 저장하는 곳.</li>
+  <li>지역 저장소: 내 작업을 안전하게 저장하는 곳.</li>
+  <li>원격 저장소: 협업 및 백업을 하기 위해 작업을 저장하는 곳.</li>
+</ul>
+
+<h2 id="-git의-데이터-흐름">🌊 Git의 데이터 흐름</h2>
+
+<p>Git 저장소에 대해 설명하면서 Git의 데이터 흐름에 대해서도 설명을 했다. 그러나 이렇게 글로 설명해서는 잘 이해되지 않을 것이다. 아래 그림을 보면서 간략하게 Git의 데이터 흐름에 대해서 다시 한번 살펴보자.</p>
+
+<p><img width="1392" alt="git 저장소의 구조와 흐름" src="https://github.com/user-attachments/assets/d51a1640-bbde-4cb7-ab3d-4b4a3d66a759" /></p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">git init</code>을 통해 현재 디렉토리를 Git 저장소로 초기화하고 변경된 파일을 추적한다.</li>
+  <li>작업 디렉터리에서 코드를 수정하고 변경 사항을 생성한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">git add</code> 명령어로 변경 사항을 스테이징 영역에 추가한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">git commit</code> 명령어로 스테이징 영역의 변경 사항을 지역 저장소에 저장한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">git push</code> 명령어를 사용해 지역 저장소의 변경 사항을 원격 저장소로 전송한다.</li>
+  <li>다른 작업자의 변경 사항을 통합하려면 <code class="language-plaintext highlighter-rouge">git pull</code> 명령어를 사용한다.</li>
+</ol>
+
+<p>+) 만약 새로운 저장소를 작업 중인 컴퓨터로 복제하고 싶은 경우, <code class="language-plaintext highlighter-rouge">git clone</code> 명령어를 사용하여 원격 저장소의 내용을 지역 저장소로 복사한다.</p>
+
+<p>Git의 저장소 구조와 데이터 흐름을 이해했다면, 이제 작업을 진행하며 파일의 상태가 어떻게 변화하는지 알아볼 차례다. 파일의 상태 변화는 Git이 파일을 관리하는 과정을 이해하는 핵심으로, 효율적인 버전 관리를 위해 반드시 알아야 할 개념이다.</p>
+
+<h2 id="️-git에서의-파일-상태-변화">🕊️ Git에서의 파일 상태 변화</h2>
+
+<p>Git에서 파일의 상태 변화는 파일이 Git에서 어떻게 관리되고 있는지를 보여주는 중요한 요소다. 이 과정은 파일이 작업 디렉터리(Working Directory)와 스테이징 영역(Staging Area) 사이를 이동하며 상태가 변화하는 방식으로 나타난다.</p>
+
+<p>아래 그림을 참고하여 어떻게 파일 상태 변화가 나타나는지 알아보자.</p>
+
+<p><img width="1312" alt="git의 파일 상태 변화" src="https://github.com/user-attachments/assets/fe95cc25-5171-4548-a9ce-8924aa7a350d" /></p>
+
+<h3 id="1-untracked-상태">1. Untracked 상태</h3>
+
+<p>작업 디렉터리에 새로 추가된 파일은 처음에는 Git에 의해 추적되지 않는 상태인 <strong>Untracked</strong>로 분류된다. 이 상태는 Git이 파일을 아직 버전 관리에 포함하지 않았음을 의미한다.</p>
+
+<p><img width="483" alt="untracked file" src="https://github.com/user-attachments/assets/cd0296db-ae7c-4b6b-b3d4-70ed2c5a0e71" /></p>
+
+<ul>
+  <li>
+    <p><strong>→ <code class="language-plaintext highlighter-rouge">git add</code> 명령어</strong></p>
+
+    <p><code class="language-plaintext highlighter-rouge">git add</code> 명령어를 실행하면 Untracked 상태의 파일이 스테이징 영역에 추가되고, <strong>Tracked 상태</strong>로 전환된다.</p>
+  </li>
+</ul>
+
+<h3 id="2-tracked-상태">2. Tracked 상태</h3>
+
+<p>Tracked 상태는 Git이 해당 파일을 버전 관리하고 있음을 의미한다.</p>
+
+<p><img width="389" alt="tracked file" src="https://github.com/user-attachments/assets/2d396235-5f26-4182-acfb-464b1a2f3fe1" /></p>
+
+<p>Tracked 상태의 파일은 아래 세 가지 하위 상태로 나뉜다.</p>
+
+<ul>
+  <li><strong>Unmodified</strong>: 마지막 커밋 이후 파일에 변경이 없는 상태. <code class="language-plaintext highlighter-rouge">git add</code>를 실행하지 않은 상태의 파일이 여기에 해당.</li>
+  <li><strong>Modified</strong>: 파일이 수정되었으나 아직 스테이징 영역에 반영되지 않은 상태.</li>
+  <li><strong>Staged</strong>: 수정된 파일이 <code class="language-plaintext highlighter-rouge">git add</code> 명령어로 스테이징 영역에 추가된 상태.</li>
+</ul>
+
+<h3 id="3-unmodified--modified">3. Unmodified → Modified</h3>
+
+<p>Tracked 상태의 파일이 수정되면, 파일은 <strong>Modified 상태</strong>로 변경된다. 이 상태는 파일이 변경되었으나 아직 스테이징 영역에 반영되지 않았음을 나타낸다.</p>
+
+<p><img width="456" alt="modified file" src="https://github.com/user-attachments/assets/ed1eb917-c86f-4b70-9fd7-3058383d9ace" /></p>
+
+<h3 id="4--git-add-명령어">4. → <code class="language-plaintext highlighter-rouge">git add</code> 명령어</h3>
+
+<p>수정된 파일에 대해 다시 <code class="language-plaintext highlighter-rouge">git add</code> 명령어를 실행하면, 파일은 다시 <strong>Staged 상태</strong>로 전환된다. Staged 상태의 파일은 이후 커밋(commit) 시 기록된다.</p>
+
+<h2 id="-정리">📝 정리</h2>
+
+<ul>
+  <li><strong>작업 디렉터리 (Working Directory)</strong>: 실제로 파일을 수정/편집하는 공간</li>
+  <li><strong>스테이징 영역 (Staging Area)</strong>: 커밋 전 변경 사항을 임시 저장하는 공간</li>
+  <li><strong>지역 저장소 (Local Repository)</strong>: 모든 버전 히스토리를 저장하는 공간</li>
+  <li><strong>원격 저장소 (Remote Repository)</strong>: 협업 및 백업용 저장 공간 (GitHub, GitLab 등)</li>
+  <li><strong>Git의 핵심 흐름</strong>: 작업 디렉터리 → 스테이징 영역 → 지역 저장소 → 원격 저장소</li>
+  <li><strong>Untracked</strong>: Git이 추적하지 않는 새 파일</li>
+  <li><strong>Tracked 상태</strong>
+    <ul>
+      <li><strong>Unmodified</strong>: 마지막 커밋 이후 변경 없음</li>
+      <li><strong>Modified</strong>: 파일 수정됨</li>
+      <li><strong>Staged</strong>: 수정 파일이 <code class="language-plaintext highlighter-rouge">git add</code>로 스테이징 영역에 반영</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="-참고">📚 참고</h2>
+
+<ul>
+  <li><a href="https://git-scm.com/docs/gitglossary">Git -git-glossary</a></li>
+  <li><a href="https://velog.io/@calm0_0/GIT-Git-%EC%9E%91%EC%97%85-%ED%8A%B8%EB%A6%AC-%EC%BB%A4%EB%B0%8B-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-working-tree-git-add-commit-push">GIT: 작업 트리, 커밋 이해하기 (working tree, git add, commit, push)</a></li>
+  <li><a href="https://velog.io/@khakhid/%EC%B4%88%EB%B3%B4%EC%9E%90%EB%A5%BC-%EC%9C%84%ED%95%9C-%EA%B9%83%EA%B9%83%ED%97%88%EB%B8%8C">📖 초보자를 위한 깃&amp;깃허브</a></li>
+  <li><a href="https://inpa.tistory.com/entry/GIT-%E2%9A%A1%EF%B8%8F-%EB%B2%84%EC%A0%84-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0-init-add-commit">GIT: ⚡️ 버전 관리하기 (git init / add / commit / log / diff)</a></li>
+</ul>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#git">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">Git</span>
+    </a>
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#매3개">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">매3개</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

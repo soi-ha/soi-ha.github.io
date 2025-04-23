@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 영화 검색 사이트: Vuex (중앙 집중식 상태 관리) &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">영화 검색 사이트: Vuex (중앙 집중식 상태 관리)</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">11 Feb 2023</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/project.html">
+          Project
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h2 id="vuex-데이터를-한-곳에서-처리하기"><strong>Vuex: 데이터를 한 곳에서 처리하기</strong></h2>
+<hr />
+
+<p>Search 부분과 MovieList 부분의 형제컴포넌트 관계이다.<br />
+Home.vue에서 사용한 컴포넌트를 확인하면 Search 컴포넌트와 MovieList 컴포넌트는 같은 라인에 존재하는 형제 컴포넌트임을 확인할 수 있다.</p>
+
+<p>부모와 자식관계에서는 props와 emit을 사용하고, 상위와 하위 컴포넌트 관계(부모,자식을 넘어선)에서는 provide와 inject 기능을 통해 데이터를 통신한다.  <br />
+그렇다면, 형제 컴포넌트의 경우에는 어떻게 데이터를 통신할까?</p>
+
+<ul>
+  <li>
+    <p>Vuex</p>
+
+    <p>데이터를 한 곳에 몰아둔 다음에 데이터를 통신하도록 한다. 해당 방법은 <strong>Vuex</strong>를 사용한다.</p>
+
+    <p>Vuex는 <strong>중앙 집중식 상태관리 라이브러리</strong>이다.<br />
+통상적으로 해당 방법들을 <strong>store</strong>라고 부른다.</p>
+  </li>
+  <li>
+    <p>현재 프로젝트 상태</p>
+
+    <p><img width="1000" alt="프로젝트 상태" src="https://user-images.githubusercontent.com/77609591/218268491-30d2cbb5-af96-4f35-8967-882acd621ccb.png" /></p>
+
+    <p>해당 이미지는 영화 검색 사이트의 상태를 나타내고 있다.<br />
+우리는 Search 컴포넌트를, Movie 컴포넌트와 MovieList, MovieItem 컴포넌트에서 활용을 할 것이다.<br />
+Search는 형제 컴포넌트인 MovieList와 데이터 통신을 해야 할 뿐 아니라, 복잡한 관계인 Movie 컴포넌트와도 데이터를 통신해야 한다.<br />
+이런 복잡한 관계들에서 데이터 통신을 보다 편하게 사용하도록 store(Vuex)를 사용한다.</p>
+  </li>
+  <li>
+    <p>Store를 사용한 상태</p>
+
+    <p><img width="516" alt="스토어를 사용한 상태" src="https://user-images.githubusercontent.com/77609591/218268496-2e62ccc9-29c2-48e3-9078-24a3435394a1.png" /></p>
+
+    <p>프로젝트에, 데이터를 중앙집중화(store)할 수 있는 장소를 만든다.<br />
+스토어에 다이렉트로 해당하는 컴포넌트들의 데이터를 연결해서 사용한다.<br />
+관계가 복잡해지더라도 중간 매개체(스토어)를 단 하나만 사용하면 된다는 편리함이 있다. 또, 하나의 매개체를 통해서 프로젝트 내부에 있는 어떤 곳의 컴포넌트에도 데이터를 전달할 수 있다는 장점이 있다.</p>
+  </li>
+  <li>
+    <p>모듈</p>
+
+    <p>우리는 스토어에 영화검색만 할 것이 아니라 about 페이지에서 사용할 기본적인 개발자 정보도 스토어에서 관리할 것이다.<br />
+스토어에서 관리할 데이터의 종류는 영화의 목록(movie), 영화의 상세 정보(movie), 개발자 정보(about)가 있다. 해당 정보들은 결이 다른 정보들이기 때문에 별도의 모듈(movie, about)로 분리해서 스토어로 관리할 것이다.</p>
+
+    <p>모듈로 분리하는 이유는 프로젝트가 커질 수록 취급해야 하는 데이터의 종류들이 달라질 수 있고 훨씬 많은 종류들이 붙을 수 있기 때문에 모듈화를 한다.</p>
+  </li>
+  <li>
+    <p>상태</p>
+
+    <p>스토어의 개념에서는 데이터를 상태라고 부른다.<br />
+따라서 중앙 집중식 상태 관리, 데이터를 관리해주는 하나의 개념이며 패턴이라고 부른다.<br />
+정리하면 중앙 집중식 상태 관리 패턴 라이브러리이며, 우리가 사용할 라이브러리가 Vuex인 것이다.</p>
+  </li>
+</ul>
+
+<h2 id="vuex-store-구성"><strong>Vuex: store 구성</strong></h2>
+<hr />
+
+<blockquote>
+  <p><a href="https://vuex.vuejs.org/">Vuex4: What is Vuex?</a><br />
+<a href="https://v3.vuex.vuejs.org/kr/">Vuex3: Vuex가 무엇인가요?(한글)</a></p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>vuex 설치</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm i vuex@next
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>store 생성</p>
+
+    <p>src 폴더 내부에 store 폴더 생성, 내부에 index.js 파일 생성</p>
+
+    <ul>
+      <li>
+        <p>modules</p>
+
+        <p>movie, about에 대한 데이터 타입들의 모듈이 연결되는 구조이다.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>main.js에 index.js 파일 연결</p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">createApp</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">vue</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">App</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./App.vue</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">router</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./routes/index.js</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">store</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./store/index.js</span><span class="dl">'</span>
+  
+<span class="nf">createApp</span><span class="p">(</span><span class="nx">App</span><span class="p">)</span>
+  <span class="p">.</span><span class="nf">use</span><span class="p">(</span><span class="nx">router</span><span class="p">)</span> 
+  <span class="p">.</span><span class="nf">use</span><span class="p">(</span><span class="nx">store</span><span class="p">)</span>
+  <span class="p">.</span><span class="nf">mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div>    </div>
+
+    <p><strong>추가 Tip!!</strong><br />
+특정한 폴더에 있는 index라는 이름을 가진 파일은 생략이 가능하다!!<br />
+폴더 이름만 작성하면 index라는 이름의(특히 자바스크립트 파일)의 파일을 우선 적용하는 구조이기 때문이다.<br />
+따라서, 폴더에서 기본적으로 사용하는 파일의 이름을 정할때는 index 이름을 사용하는 것이 좋다.</p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">createApp</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">vue</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">App</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./App.vue</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">router</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./routes</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">store</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./store</span><span class="dl">'</span>
+  
+<span class="nf">createApp</span><span class="p">(</span><span class="nx">App</span><span class="p">)</span>
+  <span class="p">.</span><span class="nf">use</span><span class="p">(</span><span class="nx">router</span><span class="p">)</span> 
+  <span class="p">.</span><span class="nf">use</span><span class="p">(</span><span class="nx">store</span><span class="p">)</span>
+  <span class="p">.</span><span class="nf">mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>store 폴더에 movie, about 파일 생성</p>
+    <ul>
+      <li>
+        <p>movie.js 파일</p>
+
+        <p>영화 검색과 관련된 데이터를 취급한다.</p>
+
+        <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="c1">// module</span>
+  <span class="na">namespaced</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="c1">// data</span>
+  <span class="na">state</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">({</span>
+    <span class="na">movies</span><span class="p">:</span> <span class="p">[]</span>
+  <span class="p">}),</span>
+  <span class="c1">// computed</span>
+  <span class="na">getters</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nf">movieIds</span><span class="p">(</span><span class="nx">state</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">state</span><span class="p">.</span><span class="nx">movies</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="nx">m</span> <span class="o">=&gt;</span> <span class="nx">m</span><span class="p">.</span><span class="nx">imdbID</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="c1">// methods</span>
+  <span class="c1">// 변이</span>
+  <span class="na">mutations</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nf">resetMovies</span><span class="p">(</span><span class="nx">state</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">state</span><span class="p">.</span><span class="nx">movies</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1">// 빈 배열로 초기화</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="c1">// 비동기</span>
+  <span class="na">actions</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nf">searchMovies</span><span class="p">()</span> <span class="p">{</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>        </div>
+
+        <ul>
+          <li>
+            <p>namespaced</p>
+
+            <p>movie.js가 하나의 스토어에서 모듈화돼서 사용될 수 있다는 것을 나타내는 옵션이다.<br />
+값으로 true를 넣게되면, moive.js를 index.js의 modules 부분에 명시해서 별개의 개념으로 활용할 수 있다.</p>
+          </li>
+          <li>
+            <p>state</p>
+
+            <p>실제로 취급해야 하는 각각의 데이터들을 의미한다.<br />
+데이터를 상태(state)라고 부른다!</p>
+          </li>
+          <li>
+            <p>getters</p>
+
+            <p>계산된 상태를 만들어낸다.<br />
+계산된 데이터를 만들어내는 computed와 동일하다고 보면 된다.<br />
+즉, 데이터는 상태(state)이고 comptued는 getters.</p>
+          </li>
+          <li>
+            <p>mutations, actions</p>
+
+            <p>methods와 유사하다.<br />
+해당 옵션 부분에 함수를 만들어서 movie.js에 있는 여러 데이터들을 활용할 수 있다.</p>
+            <ul>
+              <li>
+                <p><strong>mutations</strong></p>
+
+                <p>변이라는 뜻을 가진다. (돌연변이의 변이)<br />
+mutaions를 통해서 관리하는 데이터를 변경해줄 수 있다.</p>
+
+                <p>movie.js에서 관리하는 state에 있는 각각의 데이터들은 mutations로 변경하는 것을 제외하고는 getters나 actions나 다른 컴포넌트에서 데이터가 수정되는 것을 허용하지 않는다는 것을 의미한다.</p>
+
+                <p><strong>즉, 오직 mutations에서만 데이터를 변경할 수 있다!</strong><br />
+각 컴포넌트들에서 데이터를 수정할 수 있게 되면 관리가 어려워지기 때문에 mutations에 정의된 개념만을 이용하게 한 것이다.</p>
+              </li>
+              <li>
+                <p>actions</p>
+
+                <p>데이터 변경을 제외한 메소드를 작성한다.<br />
+데이터 변경은 mutations에서만 진행한다.</p>
+
+                <p><strong>주의사항! actions는 비동기로 동작한다.</strong><br />
+actions에 만들어내는 함수들은 비동기로 처리되도록 구성되어져 있다. 따라서 async, await를 작성하지 않아도 비동기로 처리가 된다!</p>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>about.js 파일</p>
+
+        <p>개발자의 정보, 사용자의 정보를 취급한다.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#vue-js">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">Vue.js</span>
+    </a>
+  
+    
+    <a href="/tags.html#project">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">project</span>
+    </a>
+  
+    
+    <a href="/tags.html#vuex">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">Vuex</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

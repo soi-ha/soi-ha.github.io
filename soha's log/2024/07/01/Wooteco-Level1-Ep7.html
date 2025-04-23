@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 우테코: 테코톡 발표 회고 (FrontEnd에서의 RESTful API) &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">우테코: 테코톡 발표 회고 (FrontEnd에서의 RESTful API)</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">01 Jul 2024</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/sohaLog.html">
+          Soha's Log
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <p><img width="500" alt="발표 첫 화면" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/fec01fec-bac3-42f9-b604-a13d308c831b" /></p>
+
+<p>Level2도 종료한 뒤에야 테코톡 회고를 작성하여 기억이 많이 휘발되었다. 또한, 테코톡을 준비하던 기간은 굉장히 정신 없고 바빴기에 그 순간들이 뚜렷하게 기억나지는 않는다. 그럼에도 안 적는 것 보다는 나으니까! 이제라도 적어본다.</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/713TQsfpVUA?si=Mvkq3U2qsMUp6gQF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+
+<h1 id="level1에-테코톡">Level1에 테코톡?</h1>
+
+<p>첫 우테코 슬랙방에 들어왔을 때, 나는 보았다. 이미 거쳐간 우테코 크루들의 조언을. <em>테코톡은 최대한 빨리 하세요~</em><br />
+그렇다. 그래서 나는 level1에 테코톡을 냅다 질렀다. 이건 참 우테코 다니면서 가장 잘한 일 Top3에 들어갈 만한 행동이었다.</p>
+
+<p>여러모로 level1에 하는게 좋은게</p>
+
+<ol>
+  <li>그나마 가장 시간적으로 여유로움</li>
+  <li>먼저 해치우니 세상 너무 행복함. 앞으로 수료 걱정 -100</li>
+  <li>남들의 부러움을 받을 수 있음 (테코톡 끝내서 부럽다.. 등)</li>
+</ol>
+
+<p>그러니 테코톡을 최대한 일찍. level1에 하자. level2부터는 준비할 시간 없다..</p>
+
+<h1 id="나의-테코톡-방향">나의 테코톡 방향</h1>
+
+<p>나의 테코톡의 타겟층은 <em>프론트엔드 개발자</em> 이다.<br />
+여기에 더 첨가하자면 이제 막 API를 사용해보는!이다. 그래서 REST에 대해서 잘 모르는 사람도 이해할 수 있도록 최대한 쉽지만 핵심은 모두 들어가게 내용을 구성하는 것이 나의 테코톡 방향이었다.</p>
+
+<p>아, 그리고 왜 타겟층에 프론트엔드 개발자를 넣었는가 하면 이전에도 테코톡 주제로 매년 REST는 등장했다. 백엔드, 안드로이드, 프론트엔드 할 것 없이. 그래서 뭔가 다른 점을 추가하고 싶었다.<br />
+서비스를 기획할 때에도 타겟층을 심도 있게 잡아두는 것으로 알고 있는데 그래서 나는 개발에서 더 나아가 <strong>프론트엔드</strong>를 주 타겟층으로 잡았다.<br />
+그래서 ppt 발표의 제목도 <strong>Frontend에서의 RESTful API</strong>이다. (참 아쉬운게 발표 유튜브 영상에서는 그냥 RESTful API로 올라갔다.. 힝) 어떻게 REST에 대한 내용에 프론트엔드를 첨가했는지는 유튜브 영상을 참고하세요! ☺️</p>
+
+<h1 id="발표를-준비하며">발표를 준비하며</h1>
+
+<p>나는 나름 ppt 제작에 열과성을 다하는 사람이다. 사실 이건 퍼블리싱할 때도 들어나는 부분이긴 한데. 디자인을 잘 하지는 못하지만 어떻게든 내 머릿속에서 나올 수 있는 한도의 디자인을 쥐어짜서 가장 괜찮은 것을 만들어 내려고 한다.<br />
+그래서.. 이번에도 ppt를 만들 때 깔끔하게 디자인에 크게 신경을 쓰지 않려고 했으나, 사람의 본성이 어디에 가겠는가. 나도 모르게 또.. 너무 신경써버려서 행성이 몸 동작 하나하나 짜 맞춰서 만들었다.. (이 당시 행성이 이미지 안 올려주셨음) ppt 디자인 하는데 5-6시간 정도 사용한 것 같다. (행성이 만드는데 3시간ㅋ)</p>
+
+<p>발표 자료를 찾아볼 때는 신빙성이 있는, 당당히 출처를 작성할 수 있는 곳을 최우선적으로 살펴본다. 다행이 REST는 많은 메이저한 기업들에서 기술 글을 작성했기 때문에 쉽게 신뢰성 있는 글을 찾을 수 있었다. 그래서 자료를 찾는 것에는 큰 어려움은 없던 것 같다.</p>
+
+<p>다만, REST는 패턴이기 때문에 글마다 약간씩 용어라 해야 할까.. 완전히 일치하지 않는 것들이 존재했다. 그래서 이 부분을 어떻게 확실하게 정의할지 고민을 많이 했다. (어떤 것이 더 이해 되는지 여러 사람들한테 물어보고 다녔다)</p>
+
+<h1 id="대망의-테코톡">대망의 테코톡…!!</h1>
+
+<p><img width="315" alt="긴장하며 기다리는 중" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/c017e527-469b-4cf9-9191-f4f2fa224155" /></p>
+
+<p>이 날 테코톡 발표자는 총 3명으로 AN 크루 1분, 나, 러기였다.<br />
+앞선 안드 크루분이 발표를 떨지 않고 너무 잘하셔서 즐겁게 테코톡을 들으며 긴장을 풀 수 있었다. (이 분이 너무 떨었다면 나도 엄청 떨었을 것 같다.)</p>
+
+<p><img width="315" alt="테코톡 중인 나" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/6fff068c-4c6d-49be-bfe7-1558a0c3e445" /></p>
+
+<p>대망의 내 차례가 왔다. 사실 이 10분은 어.. 기억은 나는데 크게 막! 왁! 기억남는게 없다. 긴장하긴 했지만 엄청 긴장하진 않았는데, 이야기를 와랄ㄹ랄~ 뱉어 내느라 기억에 남는 감정은 크게 없었다.<br />
+발표를 하면서는 든 감정은 없는데, 마지막 멘트 후 박수를 받는 순간 <em>끝났다…!</em> 하는 큰 산을 넘은 후련함과 안도감이 들었다.<br />
+내가 생각하고 연습했던 것 보다 실전에서 발표를 훨씬 잘해서 만족스러웠기도 했고, 내가 의도했던 방향대로 발표를 잘 이끌어 나간 것 같아서 행복했다.</p>
+
+<p>물론, 발표 후에 프론트엔드 크루들의 엄청난 질문 공세가 이어졌지만? 다 준비했던 부분이기 떄문에 (질문하라고 의도한 부분을 딱 말해줬당ㅎ) 당당하게 답변할 수 있었다. 물론 마지막 지니 질문을 잘 못 들어서 (정신줄 놔서 뇌에 질문이 입력되지 못했었음) 그냥 <em>녜.</em> 하고 답변했는데.. 어.. 미안해요.. 지니… 무슨 질문이었는지 사실 모르고 답변했어요..ㅎ..</p>
+
+<h1 id="도움을-준-사람들">도움을 준 사람들</h1>
+
+<p><img width="315" alt="구왼조의 사랑의 빵" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/933dd2e3-eb10-4c64-837e-77f1fb85db8d" /></p>
+
+<p>ppt를 만들면서 가장 큰 도움을 준 사람은 프론트엔드 개발자도 아니고 백엔드 개발자도 아닌 데이터 분석가 친구이다. (오랜 친구 신씨)<br />
+신씨는 T 인간으로 명료한 피드백을 항상 잘 주는 친구이다. 또한 나의 테코톡 방향을 위에도 말했다 싶이 <em>REST를 모르는 사람도 이해할 수 있도록</em> 인데 이 친구가 가장 적합했다.<br />
+개발은 하지 않았기에 REST가 뭔지 모르지만 API는 사용하기에 해당 발표를 들으면 궁금증이 들고 이해할 수 있는 사람! 아주 딱 적합한 발표 연습 대상자였다.</p>
+
+<p>그래서 ppt 완성 후에 신씨를 붙잡고 발표 연습을 했는데 아주 유의미한 결과를 얻을 수 있었다. REST를 모르는 사람이기에 해당 발표가 어떻게 받아들여 지는지 확실하게 알 수 있었다. 그리고 친구의 질문을 바탕으로 내용을 가다듬고 추가하기도 했다.<br />
+그리고 나름 칭찬받았던 부분이 발표 ppt에 프로그레스 바를 넣었는데, 해당 기능을 추가하게 된 것도 이 친구의 의견 덕분이었다. 발표가 언제 끝날지 모르니까 진행 상황을 나타낼수 있도록 페이징 표시를 하는게 어떻냐고 의견을 줬다. 그래서 나는 프론트엔드 적으로(?) 해당 ppt 디자인에 프로그레스 바를 넣는 것이 어울릴 것 같아서 추가했다. (프로그레스 바 이거 반응 좋았다구 ~)</p>
+
+<p>그리고 나와 같은 날에 발표하는 사람이 있었는데, 구왼조의 일원인 러기다.<br />
+러기랑 같이 계~속 발표 연습하고 서로 ppt 내용과 발표를 피드백하면서 테코톡 준비를 했었다. 혼자 준비한 것이 아닌 같이 옆에서 이 난관을 헤쳐나갈 사람이 있어서 외롭지 않고 좋았다.<br />
+혼자였다면 많이.. 힘들었을 것이다.. 다른 크루들에게 계속 도움을 받을 수도 없으니까.</p>
+
+<p>이 외에도 발표 연습 보면서 피드백준 구왼조 사람들과 마위의 깜짝 초대로 미리 발표를 보게된 쿠키, 지니.. 진짜 시간 쪼개서 피드백 주셔서 다들 너무 무한 감사..ㅜ</p>
+
+<p><img width="315" alt="점심 사다준 구왼조" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/3acc0768-ac72-48be-8286-d1d70e479d81" /></p>
+
+<p>그리고 발표 당일에 긴장해서 밥도 못 먹으니까 빵 사와주시고.. 발표 끝나고 먹을 밥도 대신 포장 받아와준 구왼조.. 꼬마워요 ㅜㅜ</p>
+
+<h1 id="테코톡을-마치며">테코톡을 마치며</h1>
+
+<p>우테코 크루라면 누구나 겪어야 할 테코톡. 만족스럽게 잘 끝낼 수 있어서 너무 행복했다. 발표 내용과 방향도 만족스럽게 잘 선정한 것 같아 뿌듯했다. 또, 내가 의도한 것을 탁탁! 알아 봐 주는 사람들이 있어서 발표를 하면서 행복했다!<br />
+도움을 준 모든 분들, 발표 보러 와준 크루들 모두 고마워요!</p>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#wooteco">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">Wooteco</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

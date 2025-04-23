@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 UNIVE.US: radio와 input 스타일 &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">UNIVE.US: radio와 input 스타일</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">26 Jul 2023</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/project.html">
+          Project
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h3 id="input-typetext-값이-들어왔을-때-배경색-변경하기"><strong><code class="language-plaintext highlighter-rouge">input type='text'</code> 값이 들어왔을 때, 배경색 변경하기</strong></h3>
+
+<hr />
+
+<p>값이 들어왔을 떄, 배경색을 변경시켜주는 걸 css로 구현하기 위해서는 일단 input에 required 속성을 추가해야 한다. <del>값으로 required를 넣어, <code class="language-plaintext highlighter-rouge">required="required"</code>를 input 태그 안에 추가한다.</del><br />
+글을 작성하다가, <code class="language-plaintext highlighter-rouge">required="required"</code>의 내용은 안 나와서.. 그냥 <code class="language-plaintext highlighter-rouge">required</code>를 작성하면 동작하지 않을까? 라는 의문이 들어서 테스트를 해본 결과 그냥 <code class="language-plaintext highlighter-rouge">required</code>를 작성해도 잘 작동된다…!</p>
+
+<p><img width="270" alt="input text 코드" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/1d463dd3-d334-4eca-a45c-7827bed3779e" /></p>
+
+<p>해당 속성을 추가하고 css는 <code class="language-plaintext highlighter-rouge">input:valid</code>일시, 즉 input에 값이 들어있을 때 배경색상을 흰색으로 변경하게 한다.</p>
+
+<p><img width="344" alt="text valid css" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/4503cd31-f3f5-4c7f-9e3c-7ef19904e9f0" /></p>
+
+<p>🚨주의🚨<br />
+input에 required 속성을 추가하지 않으면, 값을 입력했다가 다시 모든 값을 지우고 focus를 해제했을 때, 배경색상이 회색(값이 없을 때)으로 변경되지 않고 흰색(값이 있을 때)으로 유지된다.</p>
+
+<h3 id="input-typeradio-값을-checked-했을-때-label-색상-변경하기"><strong><code class="language-plaintext highlighter-rouge">input type='radio'</code> 값을 checked 했을 때, label 색상 변경하기</strong></h3>
+
+<hr />
+
+<p>radio를 checked 했을 때, radio와 연결된 label의 색상을 변경시켜주기 위한 코드(css)는 다음과 같다.</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">input</span><span class="nd">:checked</span> <span class="o">+</span> <span class="nt">label</span> <span class="p">{</span>
+	<span class="nl">color</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>input이 checked 되었을 때, 인접 형제 요소인 label의 color를 변경하는 css 코드이다.<br />
+그런데, 해당 코드를 작성하면 스타일이 적용되지 않는 문제가 발생했다. 나의 html 코드는 다음과 같았다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div&gt;</span>
+	<span class="nt">&lt;label&gt;</span>라디오와 연결된 라벨<span class="nt">&lt;/label&gt;</span>
+	<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p>위와 같이, label이 먼저 오고 input이 그 다음에 오는 형태이다. 이 순서가 가장 큰 문제였다…</p>
+
+<p>radio가 checked시, label에 스타일을 적용하기 위해서는 radio가 먼저 오고 label이 그 다음에 왔을 때만 css 코드가 작동했다.</p>
+
+<p>Bard에 물어본 결과 다음과 같은 답을 받았다.</p>
+
+<p><img width="1115" alt="Bard 답변" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/5d79931c-b32b-42f8-b377-334433c72ce9" /></p>
+
+<p>그렇다고 한다… radio 앞에 label을 배치하게 되면 radio를 가리게 되어 작동하지 않는다고 한다..ㅜ<br />
+label을 앞에 했을 때, html은 잘 작동을 하는데 (label 클릭시, 연결된 radio가 체크되는) 스타일은 적용되지 않으니… 순서를 바꿔주기로 했다.</p>
+
+<p><img width="344" alt="input radio 코드" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/d763ea40-6b76-4494-a6e3-0b23fd8bfea5" /></p>
+
+<p>순서를 변경해주니 css 코드가 잘 작동했다.</p>
+
+<p><img width="256" alt="radio checked css" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/fa68c277-43b8-48f1-be09-a074d513f0d7" /></p>
+
+<p>그리고, checked일 때, radio 버튼의 색상을 변경할 때 그냥 color로 하면 스타일이 적용되지 않았다. 서칭을 해보니 <code class="language-plaintext highlighter-rouge">accent-color</code>로 적용하면 색상이 잘 적용되었다.<br />
+<code class="language-plaintext highlighter-rouge">accent-color</code>는 UI 컨트롤의 색상을 변경시켜줄 때 사용한다고 한다.</p>
+
+<p><img src="/assets/images/078f6ec4-1f5c-443c-a6f5-609121ce5da2" alt="구현영상" /></p>
+
+<h3 id="마무리"><strong>마무리</strong></h3>
+
+<hr />
+
+<p>이번 기능들은 js가 아닌, css로도 충분히 가능할 것 같아서 css로 구현해보았다. css로 해서 금방 끝날 줄 알았는데… 생각보다 많은 난관에 봉착하여^^… 시간이 꽤 걸렸다. 역시, 코딩의 세계는 만만하지 않아…ㅜ</p>
+
+<blockquote>
+  <p>참고<br />
+<a href="https://hdg3052.tistory.com/68">CSS 선택자</a><br />
+<a href="https://mygumi.tistory.com/359">label 태그</a><br />
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/accent-color">accent-color</a><br />
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:checked">checked</a></p>
+</blockquote>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#unive-us">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">UNIVE.US</span>
+    </a>
+  
+    
+    <a href="/tags.html#css">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">CSS</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

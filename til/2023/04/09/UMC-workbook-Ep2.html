@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 UMC: 마켓컬리 클론코딩, JS 기능 추가하기 &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">UMC: 마켓컬리 클론코딩, JS 기능 추가하기</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">09 Apr 2023</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <p>2주차의 워크북 내용은 1주차에 제작했었던 html, css에 기능을 추가하는 것이었다.<br />
+나는 배너 화면이 자동으로 넘어가도록 하는 swiper 기능을 직접 js로 구현하기로 했다. 사실 Swiper를 사용하면 되지만… 그러면 딱히 하는 것이 없으므로 직접 구현을 도전했다.</p>
+
+<p>하지만.. 이건 잘못된 선택이었을지도…?</p>
+
+<p><strong>JS 코드</strong></p>
+
+<p><img width="484" alt="마켓컬리 클론코딩 swiper 구현" src="https://user-images.githubusercontent.com/77609591/230783249-fdee35e6-91c4-43a9-9a23-6b2bbf88493d.png" /></p>
+
+<p><strong>트러블 슈팅</strong></p>
+
+<ul>
+  <li>
+    <p>for문 내부에서 bannerList[i] 출력시 모든 리스트 내용 한번에 출력</p>
+
+    <p>해결? -&gt; 알고보니 그냥 빠르게 로직이 돌아가서 한번에 출력한 것 처럼 보인 거였음…ㅎ</p>
+  </li>
+  <li>
+    <p>view로 변경했던 것을 다시 non-view로 변경하기</p>
+
+    <p>해결 -&gt; bannerList를 i -1로 출력하여 replace를 view를 non-view로 변경하게 했다.</p>
+  </li>
+  <li>
+    <p>무한루프 만들기</p>
+
+    <p>이미지 변경을 무한루프로 만들려고 했다.</p>
+
+    <p>j 변수를 새로 생성했다. j는 i를 5로 나눈 나머지 값이다.<br />
+bannerList를 i가 아닌 j로 하여, 나머지가 0,1,2,3,4 다시 0,1,2,3,4 …로 돌아가기 때문에 인덱싱할 변수를 j로 한다.<br />
+하지만 그럼에도 무한루프로는 만들지 못했다… → 완벽하게 문제 해결 못함 ㅜ</p>
+  </li>
+  <li>
+    <p>첫번째 루프가 돌고 난 후, 마지막 이미지 non-view 안됨</p>
+
+    <p>i의 값이 0이 아니고 j의 값이 0일때, bnnerList[4] 값을 replace하여 view를 non-view로 변경하였다!<br />
+j의 값이 0이라는 것은 i의 값이 0,5,10 … 이라는 것이다. 이때, i는 0일때는 첫 시작이므로 non-view의 값이 view로 잘 변경되고 다시 non-view로 잘 변경된다.</p>
+
+    <p>하지만 i가 5,10…의 값들은 j의 값이 0인데, bannerList[0-1]이 되므로 -1을 인덱싱하면 에러가 발생하게 된다.(-1을 인덱싱할 수 없어서!)<br />
+따라서 i의 값이 0이 아니면서 j의 값이 0일때, bannerList[4]를 view를 non-view로 변경시켜준다!</p>
+  </li>
+  <li>
+    <p>setTimeout 시간을 2000이상으로 변경시 루프 오류</p>
+
+    <p>이미지가 변경되는 시간을 조금 더 길게 주기 위해서 7000으로 변경했더니 갑자기 빠르게 루프가 돌면서 이상해졌다…<br />
+정확한 에러 원인을 잘 모르겠어서 해결하지 못했다…ㅜ</p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Failed</span> <span class="nx">to</span> <span class="nx">load</span> <span class="nx">resource</span><span class="p">:</span> <span class="nx">the</span> <span class="nx">server</span> <span class="nx">responded</span> <span class="kd">with</span> <span class="nx">a</span> <span class="nx">status</span> <span class="k">of</span> <span class="mi">400</span> <span class="p">()</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="종합소감"><strong>종합소감</strong></h2>
+
+<hr />
+
+<p>이번에 기능을 구현하려고 하면서 느낀 점은… 자바스크립트 공부를 더 열심히 해야 겠다는 것이었다.<br />
+현재의 나는 이론은 아는데 활용을 전혀 못하고 있는 상태라고 느꼈다. 이게.. 개발을 하면서 확 느껴지니까 굉장히 내 자신이 답답하더라..<br />
+강의로 공부하면 해당 강의를 보고 코드를 따라서 작성하니까, 이론은 이해를 하지만 실제로 혼자서 적용하려니까 엄청 애를 먹었다..<br />
+그래서 내린 결론은, 중간고사 끝나면 자바스크립트 코테 문제들을 풀어볼까 생각중이다. 일단 문제를 풀면 어떻게 사용할 지 혼자서 생각하게 되니까 도움이 되지 않을까 싶다…!</p>
+
+<p>그리고 또 느낀 점은.. 자바스크립트 공부 괜히 미뤄뒀다가 막판에 고생하는구나..를 느꼈다.. 약간 무서운..? 느낌이 들어서 미룬 경향이 없지않아 매우 많은데..^^… 괜히 미뤘다. 진작할 걸.. 엄청 후회된다악!<br />
+그러니 지금 부터라도 열심히 달린다. 이번 2023년 갈려보즈아!</p>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#umc">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">UMC</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

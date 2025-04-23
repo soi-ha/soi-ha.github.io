@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 SCSS: SCSS Ep.4 &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">SCSS: SCSS Ep.4</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">20 Dec 2022</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h2 id="재활용mixins"><strong>재활용(Mixins)</strong></h2>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item"</span><span class="nt">&gt;</span>
+		Mixin
+	<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.container</span> <span class="p">{</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="no">orange</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">200px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">200px</span><span class="p">;</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+  <span class="nl">align-items</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+  <span class="nl">justify-content</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.container</span> <span class="nc">.item</span> <span class="p">{</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="no">blue</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+  <span class="nl">align-items</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+  <span class="nl">justify-content</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>가운데 정렬하는 부분이 반복적으로 사용되고 있다. (각 클래스 하단 3개의 코드줄)<br />
+이렇게 반복되는 코드 작성을 ‘<strong>mixin</strong>’을 통해 줄여준다.</p>
+
+<ul>
+  <li>
+    <p><strong>mixin 사용하기</strong></p>
+
+    <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@mixin</span> <span class="nf">center</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+  <span class="nl">align-items</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+  <span class="nl">justify-content</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+<span class="p">}</span>
+  
+<span class="nc">.container</span> <span class="p">{</span>
+  <span class="k">@include</span> <span class="nd">center</span><span class="p">;</span>
+    <span class="nc">.item</span> <span class="p">{</span>
+      <span class="k">@include</span> <span class="nd">center</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+  
+<span class="nc">.box</span> <span class="p">{</span>
+  <span class="k">@include</span> <span class="nd">center</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>‘@mixin’에 재활용할 코드를 넣어준다. mixin 키워드 뒤에 설정할 이름또한 정해준다.</li>
+      <li>‘@include’를 통해서 재활용한 코드를 사용한다.</li>
+      <li>재활용이 가능하기 때문에 새로운 클래스인 box에도 사용이 가능하다.</li>
+    </ul>
+  </li>
+  <li>
+    <p>세부 값 변경해서 사용하기</p>
+
+    <p>container 클래스의 width 값을 변경하고 싶을때, mixin 사용을 버리고 따로 작성해야 할까? No!</p>
+    <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@mixin</span> <span class="nf">box</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="no">tomato</span><span class="p">;</span>
+<span class="p">}</span>
+  
+<span class="nc">.container</span> <span class="p">{</span>
+  <span class="k">@include</span> <span class="nd">box</span><span class="p">;</span>
+  <span class="nc">.item</span> <span class="p">{</span>
+    <span class="k">@include</span> <span class="nd">box</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+  
+<span class="nc">.box</span> <span class="p">{</span>
+  <span class="k">@include</span> <span class="nd">box</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+
+    <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.container</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="no">tomato</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.container</span> <span class="nc">.item</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="no">tomato</span><span class="p">;</span>
+<span class="p">}</span>
+  
+<span class="nc">.box</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="no">tomato</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <p>mixin에서 제공하는 <strong>인수</strong>를 통해 원하는 세부 값을 변경해서 사용할 수 있다.</p>
+
+    <ul>
+      <li>mixin에서 인수 사용하기
+        <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@mixin</span> <span class="nf">box</span><span class="p">(</span><span class="nv">$size</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="nv">$size</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="nv">$size</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="no">tomato</span><span class="p">;</span>
+<span class="p">}</span>
+    
+<span class="nc">.container</span> <span class="p">{</span>
+  <span class="k">@include</span> <span class="nd">box</span><span class="p">(</span><span class="m">200px</span><span class="p">);</span>
+  <span class="nc">.item</span> <span class="p">{</span>
+    <span class="k">@include</span> <span class="nd">box</span><span class="p">(</span><span class="m">100px</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+    
+<span class="nc">.box</span> <span class="p">{</span>
+  <span class="k">@include</span> <span class="nd">box</span><span class="p">(</span><span class="m">100px</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>        </div>
+
+        <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.container</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">200px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">200px</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="no">tomato</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.container</span> <span class="nc">.item</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="no">tomato</span><span class="p">;</span>
+<span class="p">}</span>
+    
+<span class="nc">.box</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="no">tomato</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>        </div>
+        <ul>
+          <li>mixin 으로 설정한 이름 옆에 소괄호를 만들어 해당 괄호 안에 변수를 넣어준다.</li>
+          <li>mixin 안에 변수로 사용할 부분에 해당 변수명을 넣어준다.</li>
+          <li>include로 호출할때 각 mixin 소괄호 안에 인수 값을 지정해서 넣어준다. (꼭 넣어줘야지만 error 없이 작동한다.)</li>
+        </ul>
+      </li>
+      <li>인수 default값 지정하기
+        <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@mixin</span> <span class="nf">box</span><span class="p">(</span><span class="nv">$size</span><span class="o">:</span> <span class="m">100px</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="nv">$size</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="nv">$size</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="no">tomato</span><span class="p">;</span>
+<span class="p">}</span>
+    
+<span class="nc">.container</span> <span class="p">{</span>
+  <span class="k">@include</span> <span class="nd">box</span><span class="p">(</span><span class="m">200px</span><span class="p">);</span>
+  <span class="nc">.item</span> <span class="p">{</span>
+    <span class="k">@include</span> <span class="nd">box</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+    
+<span class="nc">.box</span> <span class="p">{</span>
+  <span class="k">@include</span> <span class="nd">box</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>        </div>
+        <ul>
+          <li>매개변수 부분에 변수뒤에 기본값으로 지정하고 싶은 값을 넣어준다.</li>
+          <li>기본값과 다르게 하고 싶은 부분에만 소괄호를 사용하여 해당 괄호 안에 원하는 값을 넣어준다.</li>
+          <li>변경을 원하지 않는 부분에는 mixin의 이름만 작성한다. (소괄호, 인수를 넣지 않아도 error가 발생하지 않는다.)</li>
+        </ul>
+      </li>
+      <li>매개변수 여러개 만들기
+        <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@mixin</span> <span class="nf">box</span><span class="p">(</span><span class="nv">$size</span><span class="o">:</span> <span class="m">100px</span><span class="o">,</span> <span class="nv">$color</span><span class="o">:</span> <span class="no">tomato</span><span class="p">;</span><span class="o">)</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="nv">$size</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="nv">$size</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="nv">$color</span><span class="o">:</span><span class="p">;</span>
+<span class="p">}</span>
+    
+<span class="nc">.container</span> <span class="p">{</span>
+  <span class="k">@include</span> <span class="nd">box</span><span class="p">(</span><span class="m">200px</span><span class="o">,</span> <span class="no">red</span><span class="p">);</span>
+  <span class="nc">.item</span> <span class="p">{</span>
+    <span class="k">@include</span> <span class="nd">box</span><span class="p">(</span><span class="m">100px</span><span class="o">,</span><span class="no">green</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+    
+<span class="nc">.box</span> <span class="p">{</span>
+  <span class="k">@include</span> <span class="nd">box</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>        </div>
+
+        <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.container</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">200px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">200px</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.container</span> <span class="nc">.item</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="no">green</span><span class="p">;</span>
+<span class="p">}</span>
+    
+<span class="nc">.box</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="no">tomato</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>        </div>
+        <p>매개변수 입력하는 소괄호 안에 원하는 변수를 만들면 된다.<br />
+사용할 때에는 include 소괄호 안에 해당하는 값을 넣어주면 된다.</p>
+
+        <ul>
+          <li>매개변수 두개 중에 변경을 원하는 값이 하나라면?
+            <ul>
+              <li>변경을 원하지 않는 부분에는 기본 값 넣어서 사용하기
+                <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@mixin</span> <span class="nf">box</span><span class="p">(</span><span class="nv">$size</span><span class="o">:</span> <span class="m">100px</span><span class="o">,</span> <span class="nv">$color</span><span class="o">:</span> <span class="no">tomato</span><span class="p">;</span><span class="o">)</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="nv">$size</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="nv">$size</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="nv">$color</span><span class="o">:</span><span class="p">;</span>
+<span class="p">}</span>
+        
+<span class="nc">.container</span> <span class="p">{</span>
+  <span class="k">@include</span> <span class="nd">box</span><span class="p">(</span><span class="m">200px</span><span class="o">,</span> <span class="no">red</span><span class="p">);</span>
+  <span class="nc">.item</span> <span class="p">{</span>
+    <span class="k">@include</span> <span class="nd">box</span><span class="p">(</span><span class="m">100px</span><span class="o">,</span><span class="no">green</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>                </div>
+                <p>100px 없이 green만 작성했을 경우에, green값이 width와 height로 들어간다. 그렇기에 꼭, 인수 순서를 지켜서 값을 작성해야 올바르게 값이 들어갈 수 있다.</p>
+              </li>
+              <li>인수부분에 변경을 원하는 변수의 값을 명시해서 변경하기
+                <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@mixin</span> <span class="nf">box</span><span class="p">(</span><span class="nv">$size</span><span class="o">:</span> <span class="m">100px</span><span class="o">,</span> <span class="nv">$color</span><span class="o">:</span> <span class="no">tomato</span><span class="p">;</span><span class="o">)</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="nv">$size</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="nv">$size</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="nv">$color</span><span class="o">:</span><span class="p">;</span>
+<span class="p">}</span>
+        
+<span class="nc">.container</span> <span class="p">{</span>
+  <span class="k">@include</span> <span class="nd">box</span><span class="p">(</span><span class="m">200px</span><span class="o">,</span> <span class="no">red</span><span class="p">);</span>
+  <span class="nc">.item</span> <span class="p">{</span>
+    <span class="k">@include</span> <span class="nd">box</span><span class="p">(</span><span class="nv">$color</span><span class="o">:</span> <span class="no">green</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>                </div>
+                <p>해당 방법을 <strong>키워드 인수</strong>라고 부른다.<br />
+인수를 사용하는데, 인수 앞에 매개변수의 이름을 지정하는데 이때, 이 매개변수를 <strong>키워드</strong>라고 부른다. 키워드의 인수를 넣어주었기 때문에 키워드 인수이다.</p>
+
+                <p>해당 방법은 인수의 순서와 상관없이 해당하는 변수에 값이 들어간다.</p>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#scss">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">SCSS</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

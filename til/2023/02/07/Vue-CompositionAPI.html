@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 Vue.js: 컴포지션 API  &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">Vue.js: 컴포지션 API </h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">07 Feb 2023</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h2 id="개요"><strong>개요</strong></h2>
+<hr />
+
+<blockquote>
+  <p><a href="https://v3-docs.vuejs-korea.org/guide/extras/composition-api-faq.html">Vue.js: 컴포지션 API FAQ</a><br />
+<a href="https://v3-docs.vuejs-korea.org/api/composition-api-setup.html">Vue.js: 컴포지션 API: setup()</a></p>
+</blockquote>
+
+<h3 id="컴포지션-api"><strong>컴포지션 API</strong></h3>
+
+<p>컴포지션(Composition) API는 옵션을 선언하는 대신 import한 함수를 사용하여 Vue 컴포넌트를 작성할 수 있는 API 세트이다.</p>
+
+<h3 id="컴포지션-api-사용이유"><strong>컴포지션 API 사용이유</strong></h3>
+
+<ul>
+  <li>
+    <p>더 나은 로직 재사용성</p>
+
+    <p>컴포지션 API의 가장 큰 장점은 컴포저블 함수의 형태로 깔끔하고 효율적인 로직 재사용이 가능하다는 것이다. 옵션 API의 기본 로직 재사용 메커니즘인 mixins의 모든 단점을 해결한다.</p>
+  </li>
+  <li>
+    <p><strong>보다 유연한 코드 구성</strong></p>
+
+    <p>동일한 논리적 문제를 처리하는 코드가 파일의 여러 부분에 분할되어있다. <br />
+추후 해당 로직을 이해하는데 위아래 스크롤을 통해 확인을 해야 한다. 이러한 점들은 코드의 길이가 수백 줄이 넘어가면 어려움이 발생하게 된다. <br />
+또한 논리적 문제를 재사용 가능한 유틸리티로 추출하려는 경우, 파일의 다른 부분에서 올바른 코드 조각을 찾아 추출하는 것이 어려워진다.</p>
+
+    <p><img src="/assets/images/composition-api-after.e3f2c350.png" alt="Composition API" /></p>
+
+    <p>하지만, 컴포지션 API를 사용하게 되면 이런 어려웠던 점들이 훨씬 간편해진다.<br />
+더 이상 다른 옵션 블록 사이를 이동할 필요가 없어지며, 추출을 위해 코드를 섞을 필요가 없기 때문에 보다 간편하게 코드 그룹을 외부 파일로 이동시킬 수 있다.<br />
+따라서, 컴포지션 API를 사용하는 것 만으로도 리팩토링을 위한 소모 시간이 감소하게 되어 대규모 코드베이스에서 장기적인 유지 관리에 큰 도움을 준다.</p>
+  </li>
+  <li>
+    <p>더 나은 타입 추론</p>
+
+    <p>컴포지션 API는 기본적으로 유형 친화적인 일반 변수와 함수를 주로 사용한다. 컴포지션 API로 작성된 코드는 수동 유형 힌트가 거의 필요 없어 전체 유형 추론에 큰 도움을 준다.</p>
+  </li>
+  <li>
+    <p>더 작은 프로덕션 번들 및 더 적은 오버헤드</p>
+
+    <p>컴포지션 API와 script setup으로 작성된 코드는 옵션 API에 비해 더 효율적이고 축소하기 쉽다. 모든 변수 이름을 안전하게 단축할 수 있기 때문에 더 간편하게 코드 작성이 가능하다.</p>
+  </li>
+</ul>
+
+<h2 id="반응형-데이터반응성"><strong>반응형 데이터(반응성)</strong></h2>
+<hr />
+
+<blockquote>
+  <p><a href="https://v3-docs.vuejs-korea.org/api/reactivity-core.html">Vue.js: 반응형 API: 핵심</a></p>
+</blockquote>
+
+<p><code class="language-plaintext highlighter-rouge">ref()</code>및 <code class="language-plaintext highlighter-rouge">reactive()</code>를 사용하여 반응형 상태, 계산된 상태, 감시자를 생성한다. 해당 함수를 사용해야지만 컴포지션 API로 정리한 후, 반응성을 띈다.</p>
+
+<ul>
+  <li>
+    <p>컴포지션 API 사용 X</p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="err">@</span><span class="na">click</span><span class="p">=</span><span class="s">"increase"</span><span class="p">&gt;</span>
+    9
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+  
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+export default <span class="si">{</span>
+  <span class="nf">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">count</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nx">methods</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nf">increase</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="p">}</span>
+  <span class="si">}</span>
+}
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>컴포지션 API 사용 O</p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="err">@</span><span class="na">click</span><span class="p">=</span><span class="s">"increase"</span><span class="p">&gt;</span>
+    9
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+  
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+export default <span class="si">{</span>
+  <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="kd">function</span> <span class="nf">increase</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="p">}</span>
+  
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">count</span><span class="p">,</span>
+      <span class="nx">increase</span>
+    <span class="p">}</span>
+  <span class="si">}</span>
+}
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>    </div>
+
+    <p>반응성을 가지지 않음. count 값이 갱신되지 않는다.</p>
+  </li>
+  <li>
+    <p>컴포지션 API 사용 및 반응성</p>
+
+    <p>ref 기능을 사용하여 반응성을 가지도록 만든다.</p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="err">@</span><span class="na">click</span><span class="p">=</span><span class="s">"increase"</span><span class="p">&gt;</span>
+    9
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+  
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+import <span class="si">{</span> <span class="nx">ref</span> <span class="si">}</span> from 'vue'
+export default <span class="si">{</span>
+  <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">count</span> <span class="o">=</span> <span class="nf">ref</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="kd">function</span> <span class="nf">increase</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">count</span><span class="p">.</span><span class="nx">value</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="p">}</span>
+  
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">count</span><span class="p">,</span>
+      <span class="nx">increase</span>
+    <span class="p">}</span>
+  <span class="si">}</span>
+}
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>    </div>
+
+    <p>count에 바로 숫자를 할당하는 것이 아니라 ref 함수를 호출하여 할당할 값인 0을 적어준다. ref가 실행이 되면서 반응성을 가지는 객체 데이터가 반환이 된다. 따라서 count는 반응성을 가질 수 있게 된다.<br />
+하지만, 하나의 ‘객체’ 데이터가 반환이 되는 것이다 보니, count를 데이터로 직접 사용할 수 없다. 데이터로 활용하기 위해서 count의 객체 데이터의 value 속성을 통해 우리가 원하는 데이터에 접근 할 수 있다.</p>
+  </li>
+</ul>
+
+<h2 id="기본-옵션과-라이프사이클"><strong>기본 옵션과 라이프사이클</strong></h2>
+<hr />
+
+<blockquote>
+  <p><a href="https://v3-docs.vuejs-korea.org/api/composition-api-lifecycle.html">Vue.js: 컴포지션 API: 수명주기 훅</a></p>
+</blockquote>
+
+<p>라이프사이클 훅에 접두사 ‘on’을 추가함으로 컴포넌트의 라이프사이클 훅에 접근할 수 있다.</p>
+
+<ul>
+  <li>
+    <p>computed</p>
+
+    <p><strong>컴포지션 API 미사용</strong></p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">computed</span><span class="p">:</span> <span class="p">{</span>
+  <span class="nf">doubleCount</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">count</span> <span class="o">*</span> <span class="mi">2</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+
+    <p><strong>컴포지션 API 사용</strong></p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">computed</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">vue</span><span class="dl">'</span>
+<span class="p">...</span>
+<span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">doubleCount</span> <span class="o">=</span> <span class="nf">computed</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">count</span><span class="p">.</span><span class="nx">value</span> <span class="o">*</span> <span class="mi">2</span>
+  <span class="p">})</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>watch</p>
+
+    <p><strong>컴포지션 API 미사용</strong></p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">watch</span><span class="p">:</span> <span class="p">{</span>
+  <span class="nf">message</span><span class="p">(</span><span class="nx">newvalue</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">newValue</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+
+    <p><strong>컴포지션 API 사용</strong></p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">watch</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">vue</span><span class="dl">'</span>
+<span class="p">...</span>
+<span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nf">watch</span><span class="p">(</span><span class="nx">message</span><span class="p">,</span> <span class="nx">newValue</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">newValue</span><span class="p">)</span>
+  <span class="p">})</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>created</p>
+
+    <p>created는 컴포넌트가 생성된 직후에서 실행이 되는 라이프사이클이다.</p>
+
+    <p><strong>컴포지션 API 미사용</strong></p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">created</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">message</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+
+    <p><strong>컴포지션 API 사용</strong></p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+
+    <p>setup이라는 메소드는 컴포넌트가 생성된 직후에 실행이 되기 때문에 setup 메소드 내부에서 실행되는 기본적인 로직은 created에 작성하는 것과 동일한 효과를 갖는다.<br />
+따라서, created는 따로 import를 해야 할 것도, 메소드는 사용할 것도 없이 그냥 setup 내부에 작성하면 된다. (setup 내부 어디에서든지 사용해도 된다.)</p>
+  </li>
+  <li>
+    <p>mounted (onMounted)</p>
+
+    <p>mounted는 html과 컴포넌트가 연결이 된 직후에 실행이 되는 라이프사이클이다.</p>
+
+    <p><strong>컴포지션 API 미사용</strong></p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">mounted</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">count</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+
+    <p><strong>컴포지션 API 사용</strong></p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">onMounted</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">vue</span><span class="dl">'</span>
+<span class="p">...</span>
+<span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nf">onMounted</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">count</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span>
+  <span class="p">})</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+
+    <p>mounted를 컴포지션 API에서 사용하려면 onMounted로 작성해야 한다.</p>
+  </li>
+</ul>
+
+<h2 id="props-context"><strong>props, context</strong></h2>
+<hr />
+
+<p>기존에는 this를 통해서 color (props 옵션에 정의된)에 바로 접근을 할 수 있었다.<br />
+this를 통해 $attrs(상속받은 모든 속성 개체)를 가져올 수 있었다.</p>
+
+<p>컴포지션API에서는 this를 사용할 수 없기 때문에 <code class="language-plaintext highlighter-rouge">this.color</code>를 <code class="language-plaintext highlighter-rouge">props.color</code>로, <code class="language-plaintext highlighter-rouge">this.$attrs</code>를 <code class="language-plaintext highlighter-rouge">context.attrs</code>로 바꿔서 사용할 수 있다.</p>
+
+<p><strong>컴포지션 API 미사용</strong></p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">props</span><span class="p">:</span> <span class="p">{</span>
+	<span class="nl">color</span><span class="p">:</span> <span class="p">{</span>
+		<span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+		<span class="na">default</span><span class="p">:</span> <span class="dl">'</span><span class="s1">gray</span><span class="dl">'</span>
+	<span class="p">}</span>
+<span class="p">},</span>
+<span class="nx">emits</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">hello</span><span class="dl">'</span><span class="p">],</span>
+<span class="nf">mounted</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">color</span><span class="p">)</span>
+	<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">$attrs</span><span class="p">)</span>
+<span class="p">},</span>
+<span class="nx">methods</span><span class="p">:</span> <span class="p">{</span>
+	<span class="nf">hello</span><span class="p">()</span> <span class="p">{</span>
+		<span class="k">this</span><span class="p">.</span><span class="nf">$emit</span><span class="p">(</span><span class="dl">'</span><span class="s1">hello</span><span class="dl">'</span><span class="p">)</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>컴포지션 API 사용</strong></p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">onMounted</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">vue</span><span class="dl">'</span>
+<span class="p">...</span>
+<span class="nx">props</span><span class="p">:</span> <span class="p">{</span>
+	<span class="nl">color</span><span class="p">:</span> <span class="p">{</span>
+		<span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+		<span class="na">default</span><span class="p">:</span> <span class="dl">'</span><span class="s1">gray</span><span class="dl">'</span>
+	<span class="p">}</span>
+<span class="p">},</span>
+<span class="nx">emits</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">hello</span><span class="dl">'</span><span class="p">],</span>
+<span class="nf">setup</span><span class="p">(</span><span class="nx">props</span><span class="p">,</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+	<span class="kd">function</span> <span class="nf">hello</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">context</span><span class="p">.</span><span class="nf">emit</span><span class="p">(</span><span class="dl">'</span><span class="s1">hello</span><span class="dl">'</span><span class="p">)</span>
+	<span class="p">}</span>
+	<span class="nf">onMounted</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+		<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">props</span><span class="p">.</span><span class="nx">color</span><span class="p">)</span>
+		<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">attrs</span><span class="p">)</span>
+	<span class="p">})</span>
+
+	<span class="k">return</span> <span class="p">{</span>
+		<span class="nx">hello</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>props</p>
+
+    <p>setup함수의 첫 번째 인자는 props이다.   
+setup함수 내부의 props는 반응형이며, 새 props가 전달되면 업데이트된다.<br />
+props 객체를 분해할 경우, 분해 된 변수는 반응성을 잃게 되기에 항상 props.xxx 형태처럼 접근해야 한다.</p>
+  </li>
+  <li>
+    <p>context</p>
+
+    <p>setup함수에 전달되는 두 번째 인자는 context객체이다. <br />
+context 객체는 setup 내부에서 유용할 수 있는 다른 값을 노출한다.   context 객체는 반응형이 아니기에 안전하게 분해 할당될 수 있다.</p>
+  </li>
+</ul>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#vue-js">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">Vue.js</span>
+    </a>
+  
+    
+    <a href="/tags.html#js">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">JS</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

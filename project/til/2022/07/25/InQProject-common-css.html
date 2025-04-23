@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 InQ Project Manager: 공통 CSS 파일 만들기 &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">InQ Project Manager: 공통 CSS 파일 만들기</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">25 Jul 2022</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/project.html">
+          Project
+        </a>
+      
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h2 id="공통-css-파일-필요성"><strong>공통 CSS 파일 필요성</strong></h2>
+<hr />
+
+<p>내가 이번에 진행하는 프로젝트는 하나의 페이지만 존재하는 것이 아닌, 페이지 수가 최소 3장 이상인 프로젝트이다.<br />
+이 프로젝트 페이지를 하나하나 만들때마다 공통으로 사용되는 것들이 존재한다. 버튼이라던가, 카드, header, footer, 글자 사이즈 및 색상 등…<br />
+이 스타일들을 매번 각 페이지에 작성하기에는 비효율적이고 관리하는데도 복잡한 점이 많다. 색상이나 글자 사이즈를 하나 변경시에 관련된 다른 페이지의 모든 것들을 하나하나 수정해야하기 때문이다.<br />
+그래서 모든 페이지에서 공통적으로 사용할 스타일들을 <strong>common.css</strong>파일에 작성해두었다. 그리고 모든 html파일에 해당 파일을 연결시켜줬다. 이로인해 유지보수를 하는데 효율성이 매우 상승하였다!</p>
+
+<p><br /></p>
+
+<h2 id="commoncss"><strong>common.css</strong></h2>
+<hr />
+<p>내가 작성했던 스타일 코드들을 기능별로 나누어 설명하고자 한다.<br />
+나는 해당 파일에 내가 설정한 css 속성, 기본 설정, button, card, header, footer, 그 외의 내용을 작성했다.<br />
+common.css에 작성했던 것 중에 header와 footer의 스타일은 <a href="./2022-06-16-InQProject-header-footer.md">저번 글</a>에 작성하였으므로 제외하고 작성하겠다.</p>
+
+<p><br /></p>
+
+<h3 id="사용자-지정-css-속성"><strong>사용자 지정 css 속성</strong></h3>
+<p>사용자 지정 속성(css 변수, 종속 변수)은 내가 직접 정의한 개체를 의미한다. 현재 진행중인 프로젝트에서 전반적으로 재사용할 값들을 담을 때 주로 사용한다. 표기법과 사용법은 다음과 같다.</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">:root</span> <span class="p">{</span>
+  <span class="py">--inq-blue</span><span class="p">:</span> <span class="m">#0088BD</span><span class="p">;</span>
+  <span class="py">--inq-yellow</span><span class="p">:</span> <span class="m">#FFD303</span><span class="p">;</span>
+  <span class="py">--inq-white</span><span class="p">:</span> <span class="m">#f4fbff</span><span class="p">;</span>
+  <span class="py">--font-black</span><span class="p">:</span> <span class="m">#1f1e1e</span><span class="p">;</span>
+  <span class="py">--recruit-color</span><span class="p">:</span> <span class="m">#FC8B79</span><span class="p">;</span>
+  <span class="py">--execution-color</span><span class="p">:</span><span class="m">#FFD303</span><span class="p">;</span>
+  <span class="py">--complete-color</span><span class="p">:</span> <span class="m">#A1ED85</span><span class="p">;</span>
+  <span class="py">--title-font</span><span class="p">:</span> <span class="m">80px</span><span class="p">;</span>
+  <span class="py">--sub-title-font</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+  <span class="py">--large-font</span><span class="p">:</span> <span class="m">40px</span><span class="p">;</span>
+  <span class="py">--mideum-font</span><span class="p">:</span> <span class="m">32px</span><span class="p">;</span>
+  <span class="py">--small-font</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+  <span class="py">--btn-font</span><span class="p">:</span> <span class="m">30px</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ul>
+  <li>표기법 :root
+    <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/* 표기법 */</span>
+<span class="nd">:root</span> <span class="p">{</span>
+  <span class="py">--main-color</span><span class="p">:</span> <span class="m">#FC8B79</span><span class="p">;</span>
+  <span class="py">--sub-color</span><span class="p">:</span> <span class="m">#0088BD</span><span class="p">;</span>
+  <span class="py">--main-font</span><span class="p">:</span> <span class="m">60px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <p><code class="language-plaintext highlighter-rouge">:root{--변수명: 값;}</code> 형태로 작성한다. 이렇게 작성하면 나중에 색상이나 전반적인 글자 크기를 수정할 때 해당 파일에서 값 하나만 바꿔주면 모든 파일에서 해당 값들이 변경된다. 이로인해 수정할 때 오류없이 간단하게 바꿀 수 있다.<br />
+그리고 이렇게 속성을 지정하면 해당 값들이 의미하는 것이 무엇인지 직관적으로 알 수 있어서 이해하기 좋다. 그저 색상을 #0088BD로 적는 것 보다 –sub-color로 작성했을 때가 해당 속성이 의미하는 것이 무엇인지 한번에 이해가 가능하다는 장점이 있다.</p>
+  </li>
+  <li>사용법 var()
+    <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/* 사용법 */</span>
+<span class="nt">p</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--main-color</span><span class="p">);</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--main-font</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <p>지정한 속성을 사용할때는 꼭 <code class="language-plaintext highlighter-rouge">var()</code>안에 넣어 사용해야 한다.<br />
+<strong>var()</strong> 함수안에 넣어 사용해야 사용자가 지정한 속성이라는 것을 인식해서 제대로 코드가 작동할 수 있게 된다.</p>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="기본-설정"><strong>기본 설정</strong></h3>
+<p>공통적으로 자주 사용하는 태그들의 기본 속성들을 내가 원하는 스타일로 설정했다. 해당 태그를 사용할때마다 속성을 변경하기에는 효율성이 떨어지니 common 스타일 파일에 작성하였다. 덕분에 매번 속성을 변경해야하는 번거로움을 줄일 수 있었다.</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/* COMMON */</span>
+<span class="nt">body</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--font-black</span><span class="p">);</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--mideum-font</span><span class="p">);</span>
+  <span class="nl">font-weight</span><span class="p">:</span> <span class="m">400</span><span class="p">;</span>
+  <span class="nl">line-height</span><span class="p">:</span> <span class="m">1.4</span><span class="p">;</span> <span class="c">/*글자의 행간을 줌 (줄높이)*/</span>
+  <span class="nl">font-family</span><span class="p">:</span> <span class="s2">'Noto Sans KR'</span><span class="p">,</span> <span class="nb">sans-serif</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">img</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="nb">block</span><span class="p">;</span>
+  <span class="c">/* 이제 이미지는 더이상 인라인 요소가 아닌 블럭요소가 된다 */</span>
+<span class="p">}</span>
+<span class="nt">a</span> <span class="p">{</span>
+  <span class="c">/* 모든 a태그의 밑줄을 없애기 */</span>
+  <span class="nl">text-decoration</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--font-black</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nt">a</span><span class="nd">:hover</span> <span class="p">{</span>
+  <span class="nl">text-decoration</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--font-black</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nt">input</span><span class="o">,</span>
+<span class="nt">select</span> <span class="p">{</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--mideum-font</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nc">.inner</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">720px</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span> <span class="nb">auto</span><span class="p">;</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">relative</span><span class="p">;</span> <span class="c">/* 자식요소 때문에 position값을 넣는 것이기에 문제가 되지 않기 위해 relative로 함 */</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ul>
+  <li><strong>body</strong><br />
+따로 속성을 부여하지 않은 것에는 해당 속성들이 적용된다.</li>
+  <li><strong>img</strong><br />
+img태그는 인라인 요소이다. 나는 img 태그를 사용할때 블럭처럼 사용하고 싶었기 때문에  <code class="language-plaintext highlighter-rouge">display:block;</code>을 사용하여 블럭요소로 변경하였다.</li>
+  <li><strong>a</strong><br />
+a태그 사용시 파란 색상과 밑줄이 발생한다. 해당 요소를 없애고 싶어 위와같이 색상을 검정색으로 변경했다.<br />
+밑줄을 없애기 위해서 <code class="language-plaintext highlighter-rouge">text-decoration: none;</code>을 사용하였다. 밑줄을 없앤다(none)는 의미이다.</li>
+  <li><strong>a:hover</strong><br />
+a태그에 hover를 하고 나면 색상과 밑줄이 발생하였기 때문에 <br />
+<del>마우스를 올린 것만이 아닌 a태그를 클릭하고 나면 방문했다는 것을 나타내기 위해 색상이 변경되고 밑줄이 발생하는 것</del><br />
+a태그와 동일하게 속성을 작성했다.</li>
+  <li><strong>input,select</strong><br />
+input과 select요소를 사용할때마다 해당 파일에 글자 크기를 변경하는 번거로움을 줄이기 위해서 common 스타일 파일에 글자 크기를 정의하였다.</li>
+  <li><strong>.inner</strong><br />
+inner 클래스는 내가 만들 클래스이다.<br />
+페이지를 만들 때 내용들을 꽉차게 넣는 것이 아닌 양쪽에 수직으로 여백을 넣어주는 것을 흔히 볼 수 있다. 그렇게 하기 위해 내용을 넣을 부분의 너비 사이즈를 정해준 것이다. <code class="language-plaintext highlighter-rouge">width: 720px;</code><br />
+그리고 가운데 정렬을 위해 <code class="language-plaintext highlighter-rouge">margin: 0 auto;</code>를 작성하였다.<br />
+<code class="language-plaintext highlighter-rouge">position: relative;</code>는 다른 속성들이 부모요소를 기준으로 위치를 조정할 때가 빈번히 발생하게 되는데 그때 대부분 부모요소가 해당 inner이 된다. 그대마다 매번 작성하기 번거로우니 common 파일에 정의해두었다.</li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="버튼-css"><strong>버튼 css</strong></h3>
+<p>모든 페이지에서 버튼은 굉장히 많이 사용한다. 버튼의 스타일이 대부분 동일하고 약간의 색상 변화를 주는 경우가 대다수였기에 common 파일에 버튼 스타일을 정의해두어 각 페이지에서 사용할때마다 해당 클래스명만을 입력하여 버튼 스타일을 사용하였다.</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/* Button */</span>
+<span class="nc">.bton</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">250px</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+  <span class="nl">border-radius</span><span class="p">:</span> <span class="m">4px</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--font-black</span><span class="p">);</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="nb">transparent</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--btn-font</span><span class="p">);</span>
+  <span class="nl">font-weight</span><span class="p">:</span> <span class="m">500</span><span class="p">;</span>
+  <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span> <span class="c">/*박스 안에서 글자 가운데 정렬*/</span>
+  <span class="nl">cursor</span><span class="p">:</span> <span class="nb">pointer</span><span class="p">;</span>
+  <span class="c">/* box-sizing: border-box; 패딩, 보더가 들어간 만큼 요소가 커지지 않도록 */</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="nb">block</span><span class="p">;</span> <span class="c">/* a나 span태그에 버튼 클래스를 부여했을 때도 버튼이 정상적으로 나오도록 */</span>
+  <span class="nl">transition</span><span class="p">:</span> <span class="m">.4s</span><span class="p">;</span> <span class="c">/* hover시 자연스럽게 색상이 바뀌도록 */</span>
+<span class="p">}</span>
+<span class="nc">.bton</span><span class="nd">:hover</span> <span class="p">{</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--inq-yellow</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nc">.bton.btn--reverse</span> <span class="p">{</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--inq-yellow</span><span class="p">);</span>
+  <span class="nl">border</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">white</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.bton.btn--reverse</span><span class="nd">:hover</span> <span class="p">{</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="m">#ffa703</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.bton.btn--blue</span> <span class="p">{</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="nb">transparent</span><span class="p">;</span>
+  <span class="nl">border</span><span class="p">:</span> <span class="m">2px</span> <span class="nb">solid</span> <span class="n">var</span><span class="p">(</span><span class="n">--inq-blue</span><span class="p">);</span>
+  <span class="nl">border-radius</span><span class="p">:</span> <span class="m">4px</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--inq-blue</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nc">.bton.btn--blue</span><span class="nd">:hover</span> <span class="p">{</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--inq-blue</span><span class="p">);</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--inq-white</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nc">.bton.btn--blue-reverse</span> <span class="p">{</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--inq-blue</span><span class="p">);</span>
+  <span class="nl">border</span><span class="p">:</span> <span class="m">2px</span> <span class="nb">solid</span> <span class="n">var</span><span class="p">(</span><span class="n">--inq-blue</span><span class="p">);</span>
+  <span class="nl">border-radius</span><span class="p">:</span> <span class="m">4px</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--inq-white</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nc">.bton.btn--blue-reverse</span><span class="nd">:hover</span> <span class="p">{</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="nb">transparent</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--inq-blue</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ul>
+  <li><strong>bton</strong><br />
+가장 기본적인 버튼 스타일 속성이다. 해당 클래스명을 작성하면 내가 작성한 기본적인 버튼 속성이 적용된다.</li>
+  <li><strong>CSS선택자: 일치 선택자</strong><br />
+선택자 ABC와 XYZ를 동시에 만족하는 요소를 선택할 때 사용한다.
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"abc xyz"</span><span class="nt">&gt;</span>hello<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"ght"</span><span class="nt">&gt;</span>world<span class="nt">&lt;/span&gt;</span>
+</code></pre></div>    </div>
+    <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.abc.xyz</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">span</span><span class="nc">.ght</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">blue</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <p>위의 경우에는 hello는 빨간색, world는 파란색으로 결과가 나온다.<br />
+나는 일치 선택자를 기본적으로 적용한 버튼 스타일 속성에서 추가적으로 변경하고 싶은 속성이 있을 때 사용하였다.<br />
+예를 들어,.bton에서 글자 색상만을 바꾸고 싶을 때, 배경 색상을 변경하고 싶을 때 등등</p>
+  </li>
+  <li><strong>background: transparent</strong><br />
+<code class="language-plaintext highlighter-rouge">background: transparend</code>를 사용하여 배경색상을 투명하게 만든다.</li>
+  <li><strong>transition: 속성명 지속시간 타이밍함수 대기시간;</strong><br />
+<code class="language-plaintext highlighter-rouge">transition: .6s</code><br />
+요소의 전환(시작과 끝)효과를 지정하는 단축 속성이다. 이때, 지속시간은 필수적으로 작성해야 하는 속성이다.<br />
+지속시간을 입력하면 전환 효과의 시간을 지정한다. 기본은 <strong>0s</strong>로 전환 효과가 없다. 지속시간을 작성할때는 원하는 시간 뒤에 <strong>S</strong>를 붙혀 작성한다. 이때 <strong>S</strong>는 second를 의미한다.<br />
+만약 0.5초 지속시간을 주고 싶다면 앞의 0은 생략이 가능하다. (0.5s -&gt; .5s)</li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="카드-card"><strong>카드 Card</strong></h3>
+<p>홈 화면과, 프로젝트 홈 화면에서 사용하는 카드에 대한 스타일을 common 파일에 작성하였다. 아직은 두 페이지에서만 사용하지만 차후 업데이트를 하게 된다면 다른 곳에서 사용가능성이 높기 때문이다. 또, 두 페이지에서 사용하는 카드의 모양이 완전히 동일하기 때문에 각 페이지의 css파일에 작성하는 것 보다는 common 파일에 작성하는 것이 더 수정에 편리할 것이라 생각이 들어 common 파일에 작성하였다.</p>
+
+<p><img width="1494" alt="홈2" src="https://user-images.githubusercontent.com/77609591/182856650-25758d2f-57ab-4b57-9e62-31196ad1cf1b.png" /></p>
+
+<p><br /></p>
+
+<ul>
+  <li><strong>HTML</strong>
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">onclick=</span><span class="s">"location.href='./project/project_info.html'"</span> <span class="na">class=</span><span class="s">"card swiper-slide"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">"card-img-top"</span> <span class="na">src=</span><span class="s">"./images/inq_logo.png"</span> <span class="na">alt=</span><span class="s">"Card image cap"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-text card-title"</span><span class="nt">&gt;</span>[인큐] 프로젝트 관리 매니저<span class="nt">&lt;/div&gt;</span>
+              <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-info"</span><span class="nt">&gt;</span>
+                  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"info-left"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"info-date"</span><span class="nt">&gt;</span>
+                      모집기간
+                      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"recruit-date"</span><span class="nt">&gt;</span>22.05.10 - 22.05.20<span class="nt">&lt;/span&gt;</span>
+                    <span class="nt">&lt;/div&gt;</span>
+                  <span class="nt">&lt;/div&gt;</span>
+                  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"info-right"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"info-member"</span><span class="nt">&gt;</span>
+                      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"symbol material-icons"</span><span class="nt">&gt;</span>person<span class="nt">&lt;/span&gt;</span>
+                      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"member-personnel"</span><span class="nt">&gt;</span>
+                        2
+                        /
+                        5
+                      <span class="nt">&lt;/span&gt;</span>
+                    <span class="nt">&lt;/div&gt;</span>
+                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"info-progress recruit"</span><span class="nt">&gt;</span>모집중<span class="nt">&lt;/div&gt;</span>
+                  <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+              <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;/a&gt;</span>
+</code></pre></div>    </div>
+    <ul>
+      <li><strong>카드 구조</strong><br />
+카드의 구조는 크게 img, card-title, info-right, info-left로 나눌 수 있다.<br />
+img는 사용자가 등록하는 프로젝트의 이미지이다.<br />
+card-title은 등록한 프로젝트의 이름이다.<br />
+info는 두개로 나뉘어 info-right, info-left인데, info-right에는 모집기간, info-left에는 모집중인 인원과 참여 인원, 모집 상태가 나온다.</li>
+    </ul>
+  </li>
+  <li><strong>CSS</strong>
+    <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/* Card */</span>
+<span class="nc">.card</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">600px</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+  <span class="c">/* border: 3px solid var(--inq-blue); */</span>
+  <span class="nl">box-shadow</span><span class="p">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">17</span><span class="p">,</span> <span class="m">17</span><span class="p">,</span> <span class="m">26</span><span class="p">,</span> <span class="m">0.05</span><span class="p">)</span> <span class="m">0px</span> <span class="m">1px</span> <span class="m">0px</span><span class="p">,</span> <span class="n">rgba</span><span class="p">(</span><span class="m">17</span><span class="p">,</span> <span class="m">17</span><span class="p">,</span> <span class="m">26</span><span class="p">,</span> <span class="m">0.1</span><span class="p">)</span> <span class="m">0px</span> <span class="m">0px</span> <span class="m">8px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.card</span> <span class="nc">.card-body</span> <span class="p">{</span>
+  <span class="nl">margin-top</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.card</span> <span class="nc">.card-body</span> <span class="nc">.card-text.card-title</span> <span class="p">{</span>
+  <span class="nl">font-weight</span><span class="p">:</span> <span class="m">700</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--large-font</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nc">.card</span> <span class="nc">.card-body</span> <span class="nc">.card-text</span> <span class="nc">.card-info</span> <span class="nc">.info-left</span> <span class="p">{</span>
+  <span class="nl">margin</span><span class="p">:</span><span class="m">20px</span> <span class="m">0</span> <span class="m">20px</span> <span class="m">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.card</span> <span class="nc">.card-body</span> <span class="nc">.card-text</span> <span class="nc">.card-info</span> <span class="nc">.info-right</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.card</span> <span class="nc">.card-body</span> <span class="nc">.card-text</span> <span class="nc">.card-info</span> <span class="nc">.info-right</span> <span class="nc">.info-member</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.card</span> <span class="nc">.card-body</span> <span class="nc">.card-text</span> <span class="nc">.card-info</span> <span class="nc">.info-right</span> <span class="nc">.info-member</span> <span class="nc">.symbol</span> <span class="p">{</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#5b5b5b</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.card</span> <span class="nc">.card-body</span> <span class="nc">.card-text</span> <span class="nc">.card-info</span> <span class="nc">.info-right</span> <span class="nc">.info-member</span> <span class="nc">.member-personnel</span> <span class="p">{</span>
+  <span class="nl">margin-top</span><span class="p">:</span> <span class="m">7px</span><span class="p">;</span>
+  <span class="nl">margin-left</span><span class="p">:</span> <span class="m">15px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.card</span> <span class="nc">.card-body</span> <span class="nc">.card-text</span> <span class="nc">.card-info</span> <span class="nc">.info-right</span> <span class="nc">.info-progress</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+  <span class="nl">border-radius</span><span class="p">:</span> <span class="m">8px</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+  <span class="nl">margin-left</span><span class="p">:</span> <span class="m">150px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c">/* 모집중 */</span>
+<span class="nc">.card</span> <span class="nc">.card-body</span> <span class="nc">.card-text</span> <span class="nc">.card-info</span> <span class="nc">.info-right</span> <span class="nc">.info-progress.recruit</span> <span class="p">{</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--recruit-color</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c">/* 진행중 */</span>
+<span class="nc">.card</span> <span class="nc">.card-body</span> <span class="nc">.card-text</span> <span class="nc">.card-info</span> <span class="nc">.info-right</span> <span class="nc">.info-progress.execution</span> <span class="p">{</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--inq-yellow</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c">/* 완료 */</span>
+<span class="nc">.card</span> <span class="nc">.card-body</span> <span class="nc">.card-text</span> <span class="nc">.card-info</span> <span class="nc">.info-right</span> <span class="nc">.info-progress.complete</span> <span class="p">{</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--complete-color</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <ul>
+      <li><strong>모집상태 표시</strong><br />
+카드에는 해당 프로젝트의 모집상태가 나오게 되는데 모집중, 진행중, 완료 3가지이다. 모집상태에 따라 색상이 다르게 나온다.<br />
+모집중은 빨강, 진행중은 노랑, 완료는 초록이다. 상태표시 색상은 <strong>신호등</strong>을 착안하여 정했다.</li>
+      <li><strong>box-shadow</strong><br />
+카드 테두리에 그림자를 주었다. 내가 직접 설정해서 하기에는 이쁘게 만들기가 힘들었다. 그래서 서칭을 통해 다양한 box-shadow를 정리해둔 
+<a href="https://getcssscan.com/css-box-shadow-examples">box-shadow 사이트</a>를 찾았다.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="언더라인-underline"><strong>언더라인 underline</strong></h3>
+<p>홈 페이지와 프로젝트 홈 페이지에 적용되는 언더라인이 있다.<br />
+홈 페이지에서는 프로젝트 홈 페이지로 이동하는 버튼에서 <strong>프로젝트</strong>클릭시 언더라인이 나타나면서 이동한다.<br />
+프로젝트 홈 페이지에서는 검색을 할 때 모집중, 진행중, 완료를 선택한 후 검색을 할 수 있다. 이때, 프로젝트의 상태를 어떤 것을 선택했는지 나타내줄 때 언더라인을 사용한다.</p>
+
+<p><img width="1506" alt="언더라인" src="https://user-images.githubusercontent.com/77609591/182877048-62944ae2-93c4-4d56-94a7-69241ebdb687.png" /></p>
+
+<ul>
+  <li><strong>HTML</strong><br />
+사용하고자 하는 부분의 클래스에 <strong>underline</strong>을 작성한다.
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"text-title"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">onClick=</span><span class="s">"location.href='../project/project_home.html'"</span> <span class="na">class=</span><span class="s">"title title-cursor underline line"</span> <span class="na">title=</span><span class="s">"프로젝트 페이지로 이동"</span><span class="nt">&gt;</span>프로젝트<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>CSS</strong>
+    <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/* Underline */</span>
+<span class="nc">.underline</span> <span class="p">{</span>
+  <span class="nl">background-repeat</span><span class="p">:</span> <span class="nb">no-repeat</span><span class="p">;</span>
+  <span class="nl">background-size</span><span class="p">:</span> <span class="m">0%</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="nl">background-image</span><span class="p">:</span> <span class="n">linear-gradient</span><span class="p">(</span><span class="nb">transparent</span> <span class="m">60%</span><span class="p">,</span> <span class="n">var</span><span class="p">(</span><span class="n">--inq-yellow</span><span class="p">)</span> <span class="m">40%</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nc">.underline</span><span class="nd">:hover</span> <span class="p">{</span>
+  <span class="nl">background-size</span><span class="p">:</span> <span class="m">100%</span> <span class="m">100%</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.underline.click-line</span> <span class="p">{</span>
+  <span class="nl">background-size</span><span class="p">:</span> <span class="m">100%</span> <span class="m">100%</span><span class="p">;</span> 
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <ul>
+      <li><strong>background: linear-gradient();</strong><br />
+linear-gradient(방향 또는 각도, 색상과 정지 지점 … )<br />
+두개의 색상이 직선을 따라 점진적으로 색상이 변경되게 해준다.<br />
+내가 작성한 <code class="language-plaintext highlighter-rouge">background-image: linear-gradient(transparent 60%, var(--inq-yellow) 40%);</code>은, 투명 배경을 화면의 60%, 노란색 (–inq-yellow)을 40%로 설정했다.<br />
+이렇게 %로 원하는 화면의 비율을 설정할 수도 있다.<br />
+방향(각도)를 줌으로 자연스럽게 색상이 섞이게 하고 색상이 변경되는 방향도 설정할 수 있다.<br />
+<code class="language-plaintext highlighter-rouge">background-image: linear-gradient(90deg, red 20% ,yellow 80%)</code>  <br />
+해당 코드는 색상이 변경되는 각도는 90도(오른쪽) 빨강은 20%, 노랑은 80% 차지한다.</li>
+      <li><strong>background-size</strong><br />
+요소의 배경 이미지의 크기를 설정한다. 그대로 두거나, 늘리거나 줄이는 등을 할 수 있다. 배경 이미지로 덮히지 않는 부분은 <code class="language-plaintext highlighter-rouge">background-color</code> 속성으로 채워지며, 배경 이미지가 투명, 반투명해도 background-color 색상이 보인다.<br />
+background-size는 키워드값, 단일값, 두개값, 다중배경, 전역값이 있다. 이중에서 내가 사용한 것은 <strong>두개값</strong>이다.<br />
+<code class="language-plaintext highlighter-rouge">background-size: 0% 100%;</code>의 첫번째 값은 너비, 두번째 값은 높이를 설정한다.<br />
+hover와 click을 하지 않았을 때는 아무것도 없다. (너비 0% 높이 100%) 해당 언더라인 부분에 마우스를 올리거나 클릭했을때는 너비가 100%이 되면서 linear-gradient 속성이 보이게 된다.</li>
+    </ul>
+  </li>
+  <li><strong>JS</strong>
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.underline</span><span class="dl">'</span><span class="p">).</span><span class="nf">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">index</span><span class="p">){</span>
+  <span class="nf">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nf">attr</span><span class="p">(</span><span class="dl">'</span><span class="s1">underline-index</span><span class="dl">'</span><span class="p">,</span> <span class="nx">index</span><span class="p">);</span>
+<span class="p">}).</span><span class="nf">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+  <span class="cm">/*클릭된 &lt;div&gt;의 underline-index 값을 index 변수에 할당한다.*/</span>
+  <span class="kd">var</span> <span class="nx">index</span> <span class="o">=</span> <span class="nf">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nf">attr</span><span class="p">(</span><span class="dl">'</span><span class="s1">underline-index</span><span class="dl">'</span><span class="p">);</span>
+  <span class="cm">/*클릭한 &lt;div&gt;에  click-line 클래스 추가*/</span>
+  <span class="nf">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.underline[underline-index=</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">index</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">]</span><span class="dl">'</span><span class="p">).</span><span class="nf">addClass</span><span class="p">(</span><span class="dl">'</span><span class="s1">click-line</span><span class="dl">'</span><span class="p">);</span> 
+    <span class="cm">/*그 외 &lt;div&gt;는  click-line 클래스 삭제*/</span>
+  <span class="nf">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.underline[underline-index!=</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">index</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">]</span><span class="dl">'</span><span class="p">).</span><span class="nf">removeClass</span><span class="p">(</span><span class="dl">'</span><span class="s1">click-line</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>    </div>
+    <ul>
+      <li><strong>attr()</strong><br />
+attr()은 jQuery의 메소드이다. 선택자에 의해 선택된 요소중에서 가장 처음의 요소의 속성값을 가져온다.(즉 원하는 것을 찾는 애랄까?)<br />
+.attr(attributeName): 선택된 요소 집합에서 첫번째 요소의 attributeName에 해당하는 속성값을 가져온다.<br />
+.attr(attributeName, Value): 선택자에 의해 선택된 요소에 하나 이상의 속성을 부여할 수 있다.<br />
+<code class="language-plaintext highlighter-rouge">$(this).attr('underline-index', index);</code>는 underline-index에 index를 부여했다.<br />
+<em><a href="https://solbel.tistory.com/365">attr() 참고 글</a></em></li>
+      <li><strong>addClass와 removeClass</strong><br />
+jQuery의 메소드로, 원하는 클래스를 추가하거나 삭제할 수 있다.<br />
+나는 underline 클릭하면 click-line 클래스를 추가하여 linear-gradient가 적용되게, 클릭하지 않으면 click-line 클랙스를 삭제하게 하였다.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="마무리"><strong>마무리</strong></h2>
+<hr />
+<p>여러 파일에서 공통적으로 사용하는 것들을 잘 작성해야 계속 페이지를 구축하면서 귀찮은 일들을 줄일 수 있다는 것을 온몸으로 깨달았다.<br />
+어느 글에서 개발자들이 제일 귀차니즘이 심하다는 글을 봤었는데 맞는 것 같다. 나중에 귀찮지 않기 위해서 간단하지만 최대의 효율을 만들기 위해 머리를 쥐어 짠달까… 난 아직 한참 멀어서 온몸을 지배하는 귀차니즘을 이길 정도의 실력이 없지만, 나중에 점점 실력이 늘어나서 뚝딱뚝딱 만들고 싶다..!!</p>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#inq">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">InQ</span>
+    </a>
+  
+    
+    <a href="/tags.html#project">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">project</span>
+    </a>
+  
+    
+    <a href="/tags.html#inq-project-manager">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">InQ Project Manager</span>
+    </a>
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#css">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">CSS</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

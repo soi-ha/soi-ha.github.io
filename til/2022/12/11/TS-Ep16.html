@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 TypeScript: Generics Ep.2 &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">TypeScript: Generics Ep.2</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">11 Dec 2022</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h2 id="generics-class"><strong>Generics Class</strong></h2>
+<hr />
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Person</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="k">private</span> <span class="na">_name</span><span class="p">:</span> <span class="nx">T</span><span class="p">;</span>
+
+  <span class="nf">constructor</span><span class="p">(</span><span class="na">name</span><span class="p">:</span> <span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">new</span> <span class="nc">Person</span><span class="p">(</span><span class="dl">"</span><span class="s2">mark</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// string</span>
+<span class="c1">// new Person&lt;string&gt;(29); // error</span>
+</code></pre></div></div>
+
+<ul>
+  <li>T의 유효범위는 constructor나 private에서 발생하는 것이 아니라, 클래스 전체에서 타입의 유효범위가 발생한다.</li>
+  <li>따라서 generic으로 T를 선언해야 한다면 class 이름 뒤에 T를 지정한다.</li>
+  <li>Person의 T가 string으로 들어간다.</li>
+  <li>만약 generic을 미리 세팅한다면(string으로 지정), 인자 부분에는 string만 들어와야 한다. number가 들어오면 error</li>
+</ul>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Person</span><span class="o">&lt;</span><span class="nx">T</span><span class="p">,</span> <span class="nx">K</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="k">private</span> <span class="na">_name</span><span class="p">:</span> <span class="nx">T</span><span class="p">;</span>
+  <span class="k">private</span> <span class="na">_age</span><span class="p">:</span> <span class="nx">K</span><span class="p">;</span>
+
+  <span class="nf">constructor</span><span class="p">(</span><span class="na">name</span><span class="p">:</span> <span class="nx">T</span><span class="p">,</span> <span class="na">age</span><span class="p">:</span> <span class="nx">K</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_age</span> <span class="o">=</span> <span class="nx">age</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">new</span> <span class="nc">Person</span><span class="p">(</span><span class="dl">"</span><span class="s2">mark</span><span class="dl">"</span><span class="p">,</span> <span class="mi">29</span><span class="p">);</span> <span class="c1">// string</span>
+<span class="k">new</span> <span class="nx">Person</span><span class="o">&lt;</span><span class="kr">string</span><span class="p">,</span> <span class="kr">number</span><span class="o">&gt;</span><span class="p">(</span><span class="dl">"</span><span class="s2">Ban</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">Kan</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// error</span>
+</code></pre></div></div>
+
+<ul>
+  <li>generic을 하나 더 추가하기 위해서 그대로 그냥 추가해 주면 된다..!</li>
+  <li>인자를 두개 받아야 하기에 하나만 받으면 error가 발생한다.</li>
+  <li>generic을 통해 타입을 지정해주었을 때, 지정한 타입이 아닌 경우 error가 발생한다.</li>
+</ul>
+
+<h2 id="generics-with-extends"><strong>Generics with extends</strong></h2>
+<hr />
+
+<p>우리가 흔히 생각하는 상속의 개념과는 약간 다른 generic extends</p>
+
+<p>해당 개념을 사용하는 이유는 다른 사람이 나의 코드를 사용할 때, 예상치 못한 error을 막기 위함이다.<br />
+따라서, 유용하게 사용하면 좋은 키워드이다.</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">PersonExtends</span><span class="o">&lt;</span><span class="nx">T</span> <span class="kd">extends</span> <span class="kr">string</span> <span class="o">|</span> <span class="kr">number</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="k">private</span> <span class="na">_name</span><span class="p">:</span> <span class="nx">T</span><span class="p">;</span>
+
+  <span class="nf">constructor</span><span class="p">(</span><span class="na">name</span><span class="p">:</span> <span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">new</span> <span class="nc">PersonExtends</span><span class="p">(</span><span class="dl">"</span><span class="s2">Mark</span><span class="dl">"</span><span class="p">);</span>
+<span class="k">new</span> <span class="nc">PersonExtends</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+<span class="k">new</span> <span class="nc">PersonExtends</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span> <span class="c1">// error</span>
+</code></pre></div></div>
+
+<ul>
+  <li>class 이름 뒤에 T에 extends 키워드를 이용해서 타입을 추가로 넣어줄 수 있다.</li>
+  <li>extends 키워드 뒤에 union 타입을 추가해주게 된다. <br />
+이를 해석하면, “T는 string과 number만 타입으로 갖는 것이 가능하다.” 는 말이다.</li>
+</ul>
+
+<h2 id="keyof--type-lookup-system"><strong>keyof &amp; type lookup system</strong></h2>
+<hr />
+
+<p>(컴파일 타임에서) 타입을 적절히 찾아내고 활용하는 시스템 만들기</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">IPerson</span> <span class="p">{</span>
+  <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+  <span class="nl">age</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">IPer</span><span class="p">:</span> <span class="nx">IPerson</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Mark</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">age</span><span class="p">:</span> <span class="mi">19</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nf">getProp</span><span class="p">(</span><span class="nx">obj</span><span class="p">:</span> <span class="nx">IPerson</span><span class="p">,</span> <span class="nx">key</span><span class="p">:</span> <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span> <span class="o">|</span> <span class="dl">"</span><span class="s2">age</span><span class="dl">"</span><span class="p">):</span> <span class="kr">string</span> <span class="o">|</span> <span class="kr">number</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">obj</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nf">setProp</span><span class="p">(</span><span class="nx">obj</span><span class="p">:</span> <span class="nx">IPerson</span><span class="p">,</span> <span class="nx">key</span><span class="p">:</span> <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span> <span class="o">|</span> <span class="dl">"</span><span class="s2">age</span><span class="dl">"</span><span class="p">,</span> <span class="nx">value</span><span class="p">:</span> <span class="kr">string</span> <span class="o">|</span> <span class="kr">number</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
+  <span class="nx">obj</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>name일때, IPerson에 name을 넣은게 나와야 하고, age일때 IPerson에 age를 넣은게 나와야 하는데 union 타입이 되어서 작성하기 어렵고 타입에 문제가 발생한다.</li>
+</ul>
+
+<h3 id="keyof"><strong>keyof</strong></h3>
+
+<p>타입 앞에 붙여서 새로운 타입을 만들어 낸다.</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">IPerson</span> <span class="p">{</span>
+  <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+  <span class="nl">age</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">IPer</span><span class="p">:</span> <span class="nx">IPerson</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Mark</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">age</span><span class="p">:</span> <span class="mi">19</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1">// type Keys = keyof IPerson;</span>
+<span class="c1">// const keys: Keys = "name";</span>
+<span class="c1">// const keys: Keys = "age";</span>
+
+<span class="c1">// IPerson[keyof IPerson] </span>
+<span class="c1">// =&gt; IPerson[”name” | “age”] </span>
+<span class="c1">// =&gt; IPerson[”name”] | IPerson[”age”]</span>
+<span class="c1">// =&gt; string | number</span>
+<span class="kd">function</span> <span class="nf">getProp</span><span class="p">(</span><span class="nx">obj</span><span class="p">:</span> <span class="nx">IPerson</span><span class="p">,</span> <span class="nx">key</span><span class="p">:</span> <span class="kr">keyof</span> <span class="nx">IPerson</span><span class="p">):</span> <span class="nx">IPerson</span><span class="p">[</span><span class="kr">keyof</span> <span class="nx">IPerson</span><span class="p">]</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">obj</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nf">setProp</span><span class="p">(</span><span class="nx">obj</span><span class="p">:</span> <span class="nx">IPerson</span><span class="p">,</span> <span class="nx">key</span><span class="p">:</span> <span class="kr">keyof</span> <span class="nx">IPerson</span><span class="p">,</span> <span class="nx">value</span><span class="p">:</span> <span class="kr">string</span> <span class="o">|</span> <span class="kr">number</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
+  <span class="nx">obj</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>keys는 age, name을 가지고 있는 형태이다.</li>
+  <li>어떤 개체에 keyof를 붙이면 결과물이 type으로 나오는데, key의 이름으로 된 문자열 (name, age)의 union 타입으로 만들어진다.</li>
+  <li>따라서 <code class="language-plaintext highlighter-rouge">string | number</code>을 적어주었던 인수부분에 <code class="language-plaintext highlighter-rouge">keyof IPerson</code>을 적을 수 있다.</li>
+  <li>return되는 결과물에는 <code class="language-plaintext highlighter-rouge">IPerson[keyof IPerson]</code>으로 작성해 줄 수 있다.</li>
+  <li>단, 해당 결과물은 다음과 같이 나온다.<br />
+<code class="language-plaintext highlighter-rouge">IPerson[keyof IPerson] ⇒ IPerson[”name” | “age”] ⇒ IPerson[”name”] | IPerson[”age”]</code><br />
+결과적으로 string과 number의 union타입이 된다.</li>
+  <li>getProp을 넣었을 때, name을 넣으면 string이 결과물로 나오게끔 하지 못했다.</li>
+</ul>
+
+<h3 id="generic"><strong>Generic</strong></h3>
+
+<p>IPerson과 keyof IPerson을 이용해서 관계를 특정한 타입으로 지정을 해줘야 한다. 이를 위해 generic을 사용한다.</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">getProp</span><span class="o">&lt;</span><span class="nx">T</span><span class="p">,</span> <span class="nx">K</span> <span class="kd">extends</span> <span class="kr">keyof</span> <span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">obj</span><span class="p">:</span> <span class="nx">T</span><span class="p">,</span> <span class="nx">key</span><span class="p">:</span> <span class="nx">K</span><span class="p">):</span> <span class="nx">T</span><span class="p">[</span><span class="nx">K</span><span class="p">]</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">obj</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1">// getProp의 결과물</span>
+<span class="nf">getProp</span><span class="p">(</span><span class="nx">per</span> <span class="p">,</span><span class="dl">'</span><span class="s1">name</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// string</span>
+<span class="nf">getProp</span><span class="p">(</span><span class="nx">per</span><span class="p">,</span> <span class="dl">'</span><span class="s1">age</span><span class="dl">'</span><span class="p">)</span> <span class="c1">// numner</span>
+
+<span class="kd">function</span> <span class="nf">setProp</span><span class="o">&lt;</span><span class="nx">T</span><span class="p">,</span> <span class="nx">K</span> <span class="kd">extends</span> <span class="kr">keyof</span> <span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">obj</span><span class="p">:</span> <span class="nx">T</span><span class="p">,</span> <span class="nx">key</span><span class="p">:</span> <span class="nx">K</span><span class="p">,</span> <span class="nx">value</span><span class="p">:</span> <span class="nx">T</span><span class="p">[</span><span class="nx">K</span><span class="p">]):</span> <span class="k">void</span> <span class="p">{</span>
+  <span class="nx">obj</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nf">setProp</span><span class="p">(</span><span class="nx">per</span><span class="p">,</span> <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">,</span> <span class="mi">39</span><span class="p">)</span> <span class="c1">// name과 맞지 않는 타입이기에 error</span>
+<span class="nf">setProp</span><span class="p">(</span><span class="nx">per</span><span class="p">,</span> <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Anna</span><span class="dl">"</span><span class="p">)</span> <span class="c1">// 맞는 타입이기에 값 변경 완료. value는 string이 됨.</span>
+</code></pre></div></div>
+
+<ul>
+  <li>IPerson자리에 T를 대신 사용한다.</li>
+  <li>K를 만들어서 extends를 사용하여 제한을 걸어준다.<br />
+제한은 name과 age만 넣을 수 있도록 한다.<br />
+<code class="language-plaintext highlighter-rouge">&lt;T, K extends keyof T&gt;</code><br />
+K는 keyof T에 의해서 제한된 형태(name 혹은 age)가 된다.</li>
+  <li>따라서 keyof T 자리에 K를 대신 넣어 사용한다.<br />
+K는 들어오는 것에 따라 <strong>name 혹은 age로 딱! 지정</strong>된다.</li>
+  <li>해당 방법으로 인해 런타임을 하기 전에 문자를 잘 못 넣게 되면 error로 알려준다.</li>
+  <li>setProp은 value자리에 name혹은 age와 맞지 않은 타입이 들어가게 되면 error가 발생하고 적절한 타입을 넣어주면 값이 변경된다. <br />
+그리고 value의 타입이 해당 name 혹은 age의 타입으로 변경이 된다.</li>
+</ul>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#ts">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TS</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

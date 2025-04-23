@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 우테코: 점심 뭐 먹지? & 영화 리뷰 미션 회고 + Level1을 마치며  &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">우테코: 점심 뭐 먹지? & 영화 리뷰 미션 회고 + Level1을 마치며 </h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">13 May 2024</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/sohaLog.html">
+          Soha's Log
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <p><img width="300" alt="level1 수료 기념 케이크" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/8c5049bf-8617-4313-8d6a-7ec5129207d5" /></p>
+
+<p>에.. 매우 많이 늦은 회고 글이다..ㅎㅎ
+사실 Level1이 끝난지도 한참이라 기억이 많이 휘발되었지만..! 당시에 적었던 notion 글들을 참고하여 작성해 본다.</p>
+
+<h1 id="멘탈이-갈린다는게-이런-걸까">멘탈이 갈린다는게 이런 걸까</h1>
+
+<p><img width="325" alt="구왼조 출입증 사진" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/78537941-4c57-4d0d-8b4d-61eb44294c28" /></p>
+
+<p>Level1에서 멘탈적으로 가장 힘들었던 미션을 꼽으라면 단연코 점심 뭐 먹지를 꼽을 것이다.</p>
+
+<p>해당 미션에서는 TypeScript를 사용하여 미션을 진행하게 되었다. 나는 타입스크립트에 대해서는 아주아주 간단한 이론 지식만을 배운 적이 있다. (근데 사실 이것도 까먹었다.. 블로그에 정리까지 했는데.. 끄응..)<br />
+그런 상태에서 타입스크립트를 활용하여 미션을 하게 되었다. 사실 모든 미션을 타입스크립트를 사용하지 않아도 됐지만, 괜한 욕심을 부려서.. <del>하</del> 모든 기능을 타입스크립트를 사용하여 구현했다. (이게 문제였던 것 같기도?)</p>
+
+<p>그래서 잘 모르는 타입스크립트로 모든 기능을 구현하였기에 잘 모르는 나는 페어가 작성하는 코드를 이해하는 것에 많은 시간을 할애했다. 이 지점이 나를 힘들게 했다. 페어에게 민폐를 끼치는 느낌이 너무 강하게 들었다. 버스 타는 것을 굉장히 싫어하는데 그 싫어하는 것을 내가 하고 있는 것이다. 내가 의도해서 버스탄 것은 아니지만.. 그래도 버스를 타고 있는 내 자신이 정말 너무 싫었다.</p>
+
+<p>또한, 다들 타입스크립트로 잘 기능을 구현하는 것 같은데 나만 뒤처지는 느낌.. 멘탈적으로 정말 힘들었던 시기였다. (얼마나 내 실력에 분노했으면 노션에 폭풍 심정 글을 작성했다. <del>이건 추후 글쓰기에 큰 도움이 되었다</del>)</p>
+
+<p>추가로 나의 실력에 대한 회의감 (그간 뭘 해왔던거지.. 이런 것)과 버스타고 있는 나의 모습에 대한 실망감 + 리뷰어와 상성이 너무 안 맞음 문제가 겹쳤다.<br />
+코드에 대한 리뷰가 너무 무서웠다. 사실 이건 내 코드가 아니라는 느낌이 강했기 때문에 들었던 감정인 것 같다. 뭘 물어보든 잘 모르니까 답변을 못하겠더라.. 그래서 리뷰를 받는 것이 너무 무서워졌었다. 이 점은 아직도 조금은 존재하긴 하는데, 많이 사라지긴 했다!</p>
+
+<p>쨋든.. 이런 멘탈적으로 힘든 시간을 일주일동안 파파박 겪었지만, 이런 것 덕분이었을까? step2때는 조금 멘탈을 잡았고 step1때 힘들게 모든 기능을 타입스크립트로 구현했기에 단시간에 타입스크립트에 대한 이해도가 높아질 수 있었다. 힘들었지만, 돌이켜보면 그렇기에 급격히 성장할 수 있었다. 이 글을 작성하는 Level2의 내가 타입스크립트를 사용하는 것을 보면 Level1의 나는 굉장히 놀랄 것이다!</p>
+
+<p>결론 적으로 step1때는 멘탈 바사삭이었지만? step2때는 부서진 것을 다시 붙이면서 더욱 견고하게 다시 건물을 지을 수 있게 되었다.</p>
+
+<h1 id="이제는-체력이-안-받혀주네">이제는 체력이 안 받혀주네..</h1>
+
+<p><img width="325" alt="우테코 웰컴 키트 문구" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/1b2c5401-cbe3-48c1-8972-629d280b4389" /></p>
+
+<p>ㅋㅋ 그렇다.. 점심 뭐 먹지에서 멘탈이 갈렸다면? 영화리뷰에서는 체력이 갈렸다..ㅋㅋㅋㅋ…</p>
+
+<p>이때는 굉장히 멘탈적으로 너무나도~ 건강했다. 한번 부서진걸 이쁘게 세웠기 때문에 멘탈은 당분간 문제가 생기지 않을 수준이었다. 그런데.. 이제는 체력에서 이슈가 발생했다.</p>
+
+<p>점점 두통이 올라오더니 나중에는 가만히 앉아 있는데도 현기증이 나서 살짝 비틀거릴 정도였다.. (나 자신에게 너무 놀랐다.) 이렇게 두통이 심한적도 없는데.. 아니 스트레스도 안 받고 밥도 너무 잘 먹고.. 그러는데..<br />
+그래서 이 당시에는 수면만 4-5시간을 잤던 때라.. 잠이 부족해서 그런가? (최소한 7시간은 자 줘야 하는 사람) 싶어서 주말에 정말 잠을 많이 자 줬다. 그런데도 체력이 복구가 안되더라..</p>
+
+<p>페어 미션 때도 페어가 렛서라 로비에서 맨날 누워서 코딩하고.. step2 때도 둘이서 누워서 코딩했는데.. 아니 체력 비축을 그렇게 했는데도.. 두통을 포함한 체력 이슈는 나아지지 않았다.</p>
+
+<p>그렇게 힘든 체력을 가지고 영화리뷰 미션을 진행했다.<br />
+영화 리뷰에서는 처음으로 TMDB라는 외부 API를 사용하여 영화 데이터를 가져와서 웹 페이지를 구현했다. 그래서 굉장히 재밌었다! 나름 데이터 통신은 유니버스와 드로맵을 하면서 해봤기 때문에 크게 어렵지는 않았다.<br />
+그리고 타입스크립트에 대한 지식도 점심 뭐 먹지 미션을 진행하면서 많이 쌓았기 때문에 굉장히 행복하게 미션을 진행할 수 있었다.</p>
+
+<p>물론 이때, 테코톡도 같이 준비하느라 step2 미션을 굉장히 호다닥! 했지만~ 나름 뭐 테코톡과 미션 모두 만족하며 마무리했다.</p>
+
+<p>그리고 리뷰어는 갓 하루였는데, 이때 ‘스크린 리더’의 존재를 상기시킬 수 있었다. 알고는 있었지만 신경써본 적은 단 한 번도 없었는데, 이번 미션에 새로운 점들을 많이 배울 수 있었다. 그중에서 대표적인 것이 여러 태그를 활용하는 것인데, 나는 span과 div만을 가지고 웹을 만들었던 사람이다..ㅋㅋ.. 하지만 여러 태그들을 활용해야 스크린 리더를 사용하는 사용자에게 많은 도움이 된다는 것을 알게 되었다. (label 태그 사용도..!)</p>
+
+<p>그리고 역시 데이터를 받아서 사용하기 때문에 비동기 통신이 매우 중요했는데, 그간의 프로젝트에서는 나는 비동기 통신을 그냥 얼렁뚱땅 이해 없이 사용했다는 것을 깨달았다. 렛서와 페어하면서도 많이 배웠고, step2에서도 여러 크루들에게 도움을 받으며 비동기 통신에 대해서 이해할 수 있었다. 아직 딱! 이거야! 라고 설명할 자신은 없지만 내가 개발을 진행하면서 헷갈리지 않을 수 있는 수준이랄까?<br />
+흠.. 이렇게 글을 작성해 보니 아직 한참 멀은 것 같다. 남은 시간이라도 자바스크립트 공부를 좀 더 해야 할 것 같다.. 음음..</p>
+
+<p>결론적으로 영화 리뷰는 멘탈적으로 해피했지만 몸은 너무 힘들었던.. 하지만 행복했다!</p>
+
+<h1 id="level1을-마치며">Level1을 마치며</h1>
+
+<p><img width="325" alt="구왼조 단체 사진 왼손과 함께" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/b1d24ef8-5ee4-462b-a36d-68d6c845e31b" /></p>
+
+<p>현재 Level2를 마친 내가 Level1을 마치며를 적는 게 많이 웃기고 부끄럽지만 ^^…<br />
+순살 자바스크립트 지식이었던 것을 다 부숴버리고 새롭게 지지기반부터 깔끔하게 쌓아 올릴 수 있는 단계였다. 아직도 차근차근 한층 한층 쌓아 올리고 있지만, 이전보다는 견고한 지식이 될 것이라고 믿어 의심치 않는다. react를 하면서도 자바스크립트에 대해서 찾아본 적이 한두 번이 아니지만! 뭐 한 번에 어떻게 마스터를 하겠어~ 이렇게 사용할 때 찾아보고 그러는 거지 뭐!</p>
+
+<p>Level1 회고를 끝으로 내가 작성했던 Level1을 돌아보며 작성했던 글쓰기 미션 링크를 남긴다..</p>
+
+<p>이걸 작성한 당시는 영화리뷰 미션을 진행하던 시기이고, 해당 글의 바탕이 되었던 시기는 점심 뭐 먹지 미션때 이다. 위에서도 적었지만 멘탈이 나갔던 시기에 노션에 적었던 글을 기반으로 작성했다. 그렇기에 다소 많이 우울감과 분노가 느껴질 것이다.</p>
+
+<p>그래도 Level1을 하면서 정신적으로 성장했다고 글을 작성하면서 느꼈다. 예전에 나라면 이렇게 작성한 글을 누군가에게 보여주는 것이 많이 부끄럽고 약점이 된다고 생각해서 주변인에게 보여주지 않는데.. 이 글을 주변인에게 보여주고 싶었다. 그래서 실제로 공유하기도 했다.<br />
+우테코에서 바라는 소프트스킬적인 성장이 이런 것일까? 생각이 들기도 했다. 물론 아직은 대놓고 솔직하게 표현하기에는 부끄러워서 개구리에 빗대어 표현하긴 했다. 하지만 내용은 그 누구보다 솔직하고 직설적이게 적었다고 생각한다.</p>
+
+<blockquote>
+  <h3 id="-level1-글쓰기-미션-우물-안의-개구리"><a href="https://github.com/soi-ha/woowa-writing/blob/level1/level1.md">🔗 Level1 글쓰기 미션: 우물 안의 개구리</a></h3>
+</blockquote>
+
+<p><img width="325" alt="구왼조 단체 사진" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/cfd5549f-5ff0-4fb4-b729-8a4d47aaebf1" /></p>
+
+<p>아 그리고, Level1에서는 정말 좋은 사람들을 만났다. 우리 구왼조 9명의 사람들. 집에 늦게 가지만 구왼조 덕분에 지치지 않고 버틸 수 있었어요! 점심시간마다 즐겁게 해주고 중간중간 수다 떨면서 기운 나게 해준 사람들. 그리고 맛있는 거 같이 먹으로 가고! 축하할 일이 있으면 그 누구보다 진심으로 축하해 주는 사람들. 너무 고마워요 💙</p>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#wooteco">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">Wooteco</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

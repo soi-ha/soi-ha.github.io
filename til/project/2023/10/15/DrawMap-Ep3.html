@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 DrawMap: SelectBox 구현하기, 자식에서 부모로 값 전달하기/말줄임표 적용  &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">DrawMap: SelectBox 구현하기, 자식에서 부모로 값 전달하기/말줄임표 적용 </h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">15 Oct 2023</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/project.html">
+          Project
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <p><a href="https://soi-ha.github.io/til/project/2023/10/15/DrawMap-Ep2.html">지난편에 이어</a> selectBox 구현 글을 작성하겠다.<br />
+이번편이 굉장히.. 날 고통스럽게 만들었던 부분이다.</p>
+
+<p>해당 편에서 구현해야 할 기능</p>
+
+<ul>
+  <li>선택한 값을 select(<code class="language-plaintext highlighter-rouge">.sbtn-select</code>)에 띄우기</li>
+  <li>ButtonSelect 컴포넌트를 사용하는 페이지(CourseList)에 선택한 값들이 추가 박스(<code class="language-plaintext highlighter-rouge">.cl-location</code>)로 나타나게 하기</li>
+</ul>
+
+<p><strong>미리 보는 완성된 영상</strong></p>
+
+<p><img src="/assets/images/ea8b34ff-04c8-42da-b572-9eda22911bf4" alt="select 완성" /></p>
+
+<h3 id="sbtn-select에-선택한-값-띄우기"><code class="language-plaintext highlighter-rouge">.sbtn-select</code>에 선택한 값 띄우기</h3>
+
+<hr />
+
+<p>선택한 값이 들어갈 span 태그 <code class="language-plaintext highlighter-rouge">.sbtn-select</code>를 만들어주고, useState로 selectValue를 만든다.<br />
+저번편에 li태그 값들을 뿌려줬던 해당 코드에서 li태그 부분에 onClick 이벤트를 추가한다.<br />
+onClick 이벤트에 <code class="language-plaintext highlighter-rouge">setSelectValue(`${it.item}`)</code>를 넣어준다. 해당 코드는 li태그를 클릭하면 selectValue를 <code class="language-plaintext highlighter-rouge">it.item</code>값으로 변경해준다는 의미이다.<br />
+자, 그러면 원하는 li태그를 클릭했다면 해당 li 태그의 값이 selectValue에 들어가게 된다. 그러면 <code class="language-plaintext highlighter-rouge">.sbtn-select</code>에 selectValue 값을 넣어주면, 우리가 선택한 값이 띄워지게 되는 것이다.<br />
+여기서 추가로, html의 select 태그의 경우에는 값을 선택하기 전에 기본적으로 띄워주는 값을 설정할 수 있다. 그래서, 나도 해당 기능을 추가해주기로 했다.<br />
+ButtonSelect에 title이라는 props를 추가하여 부모 요소(CourseList)에서 title의 값을 받아준다. 해당 title이 값을 선택하기 전에 기본적으로 띄워줄 값이다.<br />
+<code class="language-plaintext highlighter-rouge">.sbtn-select</code>에서 삼항연산자를 통해 selectValue의 값이 있다면 selectValue를 뿌려주고, 값이 없다면(즉, 빈배열이라면) title값을 뿌리도록 해줬다.</p>
+
+<p><img width="404" alt="스크린샷 2023-10-15 12 15 15" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/d1a15c90-7c65-4ede-97e1-031d4c0acd91" />
+<img width="594" alt="스크린샷 2023-10-15 12 14 55" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/dd56d1bb-f738-4500-bca4-688df3cd19b2" /></p>
+
+<h4 id="sbtn-select에-말줄임-표시"><code class="language-plaintext highlighter-rouge">.sbtn-select</code>에 말줄임 표시</h4>
+
+<hr />
+
+<p><code class="language-plaintext highlighter-rouge">.sbtn-select</code>에 들어오는 값이 너무 길면 말줄임 표시를 해주도록 했다.</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">white-space</span><span class="o">:</span> <span class="nt">nowrap</span><span class="o">;</span>
+<span class="nt">overflow</span><span class="o">:</span> <span class="nt">hidden</span><span class="o">;</span>
+<span class="nt">text-overflow</span><span class="o">:</span> <span class="nt">ellipsis</span><span class="o">;</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">white-space:nowrap</code>을 통하여 자동으로 줄바꿈하는 것을 막아준다.<br />
+그리고 <code class="language-plaintext highlighter-rouge">overflow:hidden</code>을 통해 지정한 박스 사이즈를 넘어가게 되면 잘라준다.<br />
+<code class="language-plaintext highlighter-rouge">text-overflow:ellipsis</code>를 통해 넘어간 부분을 말줄임표(…) 처리가 되도록 한다.</p>
+
+<h3 id="자식에서-부모로-값-전달하기">자식에서 부모로 값 전달하기</h3>
+
+<hr />
+
+<p>우리가 props를 사용할때 대부분 부모에서 자식요소로 값을 전달해준다. 그러나 나는 자식에서 부모로 값을 전달해야 하는 경우가 발생했다.</p>
+
+<p>여기서 부모는 CourseList, 자식은 ButtonSelect이다.<br />
+CourseList는 page인데, 위의 완성 영상을 보면 값을 선택하면 select 박스 옆에 선택한 값의 박스(<code class="language-plaintext highlighter-rouge">.cl-location</code>)가 나타나야한다.<br />
+우리는 선택한 값을 자식에서만 다루는데, 이 자식에서 선택한 값을 부모로 보내서 해당 페이지(CourseList)에 작은 박스로 뿌려주도록 해야한다.</p>
+
+<p><strong>여튼, 결론은 자식에서 부모로 값을 전달해야 한다는 것</strong></p>
+
+<p>일단, 부모에 getTextValue(text)라는 함수를 만들어 준다. 그리고 자식에 props를 getTextValue를 만들어서 전달하는 값으로 getTextValue를 넘겨준다. 자식에게 해당 함수가 부모에 존재한다고 알려주는 것이다.</p>
+
+<p>그리고 자식에서 해당 함수를 실행시켜 준다. 이때, 우리는 참고한 글과 는 조금 다르게 실행시킨다. useEffect를 사용해주는 것이다.</p>
+
+<p>참고한 글 처럼 sendTextValue 함수(부모로 값 전달하는 함수)를 만들어서 실행시켜줘도 된다. 해당 방법으로 코드를 작성하면 li 태그의 onClick 이벤트가 실행되면서 sendTextValue 함수가 실행된다.
+그러나 이 방법은 선택한 값이 select의 <code class="language-plaintext highlighter-rouge">.sbtn-select</code>는 바로 적용되지만 <code class="language-plaintext highlighter-rouge">.cl-location</code>에는 한 박자 늦게 적용된다.<br />
+내가 가장 처음 1을 선택하면 <code class="language-plaintext highlighter-rouge">.cl-location</code>은 나타나지 않는다. 그 다음에 2를 선택해야 <code class="language-plaintext highlighter-rouge">.cl-location</code>에 1 값이 나타나게 된다.</p>
+
+<p>이런 기능적인 오류가 발생하는 이유를 추측하기로는 onClick에 두개의 함수(getTextValue랑 setSelectValue)가 있는데, selectValue 값이 getTextValue랑 동시에 실행돼서 selectValue값이 업데이트 되기 전에 getTextValue가 실행하는 것이 아닐까.. 따라서 값의 변경의 한 박자 느리게 반영된것이 아닐까 추측중이다.</p>
+
+<p>따라서, 해당 기능 오류를 해결하기 위해서 useEffect를 사용해줘야 한다. useEffect로 변화를 바로 감지할 수 있도록 하는 것이다.<br />
+useEffect의 deps로 selectValue를 하여 selectValue의 값의 변경을 감지하면 getTextValue함수가 실행되도록 한다.</p>
+
+<p>자식에서 getTextValue(selectValue)를 실행시키도록 해주면, 부모에서 getTextValue 함수가 실행되면서 setTextValue(text)를
+<span style="color:gray; font-size:13px"><em>(자식에서의 selectValue가 부모의 text에 들어오는 것)</em></span>
+통해 textValue에 값에 text(selectValue)가 들어가게 된다.<br />
+<strong>해당 코드를 적용하면 textValue가 <code class="language-plaintext highlighter-rouge">.cl-location</code>에 바로 적용된다!</strong></p>
+
+<p><strong>위에 설명한 코드 로직은 다음과 같다.</strong></p>
+
+<ul>
+  <li>자식에서 값 선택(setSelectValue 실행)</li>
+  <li>selectValue의 변화를 useEffect가 감지</li>
+  <li>부모로 값 전달 (getTextValue 실행)</li>
+  <li>부모에서 getTextValue 실행 (setTextValue 실행)</li>
+  <li><code class="language-plaintext highlighter-rouge">.cl-location</code>에 textValue 반영</li>
+</ul>
+
+<p><strong>ButtonSelect(자식) 코드는 위에 이미지 참고</strong><br />
+<strong>CourseList(부모) 코드</strong><br />
+<del>주석은 치열한 오류잡기의 흔적..이므로 무시할 것</del>
+<img width="404" alt="스크린샷 2023-10-15 12 15 57" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/0ac1ab57-eeaf-4fa4-af3d-0fad5335674f" />
+<img width="557" alt="스크린샷 2023-10-15 12 16 13" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/e2b52825-c480-40c1-8b33-c48f87c93389" /></p>
+
+<h3 id="마치며">마치며</h3>
+
+<hr />
+
+<p>select 태그 기능을 직접 구현해봤는데, 처음에 생각한 것 보다는 엄청 어렵지는 않았다. 1편의 부분은 구현하는데 힘들기는 했어도 못할 정도는 아니었는데, 2편의 부분이.. 특히 getTextValue 부분이 정말.. 기능 오류..잡는게 너무 힘들고 어려웠다.. 포기할까 생각도 했지만, 그건 찝찝하고… 그리고 이렇게 오래 붙들고 있었는데 그 시간들이 아까웠달까<br />
+그래도 결론적으로는 잘 구현해서 정말 뿌듯했다. 완성한 결과물을 보니.. 그간 고생하고 힘들었던게 싹 사라진달까..<br />
+한달 후에 적고 있는 지금도 그때 생각하니 정말 감격스러운 감정이 든다..</p>
+
+<p>해당 기능을 구현하면서 useEffect가 이런 거구나!!를 완벽히 깨달았고, useState 또한 완벽히 이해할 수 있었다.<br />
+그전에 강의를 보면서 할때는 useEffect랑 useState는 이런거구나..를 머리로만 이해했는데, 해당 기능을 구현하기 위해 별 자료를 다 찾아보고 내 프로젝트에 맞게 변경하려다보니 해당 기능들을 완벽히 이해할 수 있었다.<br />
+이래서.. 개발은 직접 원하는 프로젝트를 진행하면서 공부하라는 말이 이런거구나! 를 깨달았다.<br />
+이제 다음번에 select 태그 구현한다면 좀 더 빨리 잘 할 수 있을 것 같다.</p>
+
+<blockquote>
+  <p>참고
+<a href="https://webaura.tistory.com/entry/Reactjs-%EB%B6%80%EB%AA%A8%EC%97%90%EC%84%9C-%EC%9E%90%EC%8B%9D-%EC%9E%90%EC%8B%9D%EC%97%90%EC%84%9C-%EB%B6%80%EB%AA%A8-%EA%B0%92-%EC%A0%84%EB%8B%AC%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95-props-function">부모에서 자식, 자식에서 부모 값 전달하는 방법 prose, function</a><br />
+<a href="https://squirmm.tistory.com/entry/React-%EB%8B%A4%EB%A5%B8-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8%EC%97%90-%EC%A0%95%EB%B3%B4-%EC%A0%84%EB%8B%AC">부모에서 자식, 자식에서 부모 값 전달하는 방법</a><br />
+<a href="https://andwinter.tistory.com/301">useEffect 변화의 감지</a><br />
+<a href="https://webruden.tistory.com/655">css에서 텍스트 ellipsis(‘…‘)말줄임 표시 처리하는 방법</a><br />
+<a href="https://velog.io/@kyh196201/%EC%95%8C%EC%95%84%EB%91%90%EB%A9%B4-%EC%9C%A0%EC%9A%A9%ED%95%9C-%EC%9E%A1%EB%8B%A4%ED%95%9C-CS">알아두면 유용한 잡다한 CSS</a></p>
+</blockquote>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#drawmap">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">DrawMap</span>
+    </a>
+  
+    
+    <a href="/tags.html#error">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">Error</span>
+    </a>
+  
+    
+    <a href="/tags.html#react">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">React</span>
+    </a>
+  
+    
+    <a href="/tags.html#css">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">CSS</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

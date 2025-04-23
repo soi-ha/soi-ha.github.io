@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 TypeScript: Type System Ep.1 작성자와 사용자의 관점으로 코드 바라보기 &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">TypeScript: Type System Ep.1 작성자와 사용자의 관점으로 코드 바라보기</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">07 Nov 2022</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h2 id="작성자와-사용자의-관점으로-코드-바라보기"><strong>작성자와 사용자의 관점으로 코드 바라보기</strong></h2>
+<hr />
+
+<h3 id="타입시스템"><strong>타입시스템</strong></h3>
+
+<ul>
+  <li>두가지 형태
+    <ul>
+      <li>컴파일러에게 사용하는 타입을 명시적으로 지정하는 시스템</li>
+      <li>컴파일러가 자동으로 타입을 추론하는 시스템</li>
+    </ul>
+  </li>
+  <li>타입스크립트의 타입 시스템
+    <ul>
+      <li>타입을 명시적으로 지정할 수 있다.</li>
+      <li>타입을 명시적으로 지정하지 않으면, 타입스크립트 컴파일러가 자동으로 타입을 추론한다. 타입스크립트의 타입 추론이라고 부른다.</li>
+    </ul>
+  </li>
+  <li>
+    <p>함수 사용법에 대한 오해를 야기하는 자바스크립트</p>
+
+    <p>타입은 해당 변수가 할 수 있는 일을 결정한다. 따라서 a가 할 수 있는 일은 a의 타입이 결정한다.</p>
+
+    <p>해당 함수의 작성자는 매개변수 a가 number 타입이라는 가정으로 함수를 작성했다. 하지만 사용자는 사용법을 숙지하지 않은 채, 문자열을 사용하여 함수를 실행했다. 그래서 의도하지 않은 NaN 결과가 나오게 되었다.</p>
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">f2</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">a</span> <span class="o">*</span> <span class="mi">38</span><span class="p">;</span>
+<span class="p">}</span>
+  
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">f2</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span> <span class="c1">// 380</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">f2</span><span class="p">(</span><span class="dl">'</span><span class="s1">Mark</span><span class="dl">'</span><span class="p">));</span> <span class="c1">// NaN</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>타입스크립트의 추론에 의지하는 경우</p>
+
+    <p>타입스크립트는 타입을 지정하지 않으면 추론을 한다. a의 타입을 명시적으로 지정하지 않았기에 a는 any로 추론된다. 그래서 a 인자는 어떤 형태이던지 다 사용이 되는 형태로 볼 수 있다.</p>
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">f3</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">a</span> <span class="o">*</span> <span class="mi">38</span><span class="p">;</span>
+<span class="p">}</span>
+  
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">f3</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span> <span class="c1">// 380</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">f3</span><span class="p">(</span><span class="dl">'</span><span class="s1">Mark</span><span class="dl">'</span><span class="p">)</span> <span class="o">+</span> <span class="mi">5</span><span class="p">);</span> <span class="c1">// NaN</span>
+</code></pre></div>    </div>
+    <p>사용자 입장에서 a가 any이기 때문에, 사용법에 맞게 문자열을 사용하여 함수를 실행했다. 해당 결과로 NaN(NaN도 number의 하나)이 나왔는데, 만약 해당 결과가 작성자가 의도한 것이 아니라면 해당 함수는 올바르지 않은 함수이다. <br />
+따라서 해당 함수의 작성자는 함수의 올바른 사용법을 사용자에게 전달하지 못한 것이다.<br />
+해당 함수에서 a가 타입을 지정하지 않았기에 any로 추론이 되면서 위험한 요소가 되어버린다. 위험한 요소를 없애기 위해서 컴파일러에게 이러한 형태를 작성자가 사용할 수 없도록 하는 방식이 있다. 해당 방식이 nolmplicitAny.</p>
+  </li>
+  <li>
+    <p><strong>nolmplicitAny</strong></p>
+
+    <p>타입을 명시적으로 지정하지 않은 경우, 타입스크립트가 추론 중 <strong>any</strong>라고 판단하게 되면, 컴파일 에러를 발생시켜 명시적으로 지정하도록 유도한다.</p>
+    <ul>
+      <li>nolmplicitAny에 의한 방어
+        <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// error TS7006: Parameter 'a' implicitly has an 'any' type.</span>
+    
+<span class="kd">function</span> <span class="nf">f3</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">a</span> <span class="o">*</span> <span class="mi">38</span><span class="p">;</span>
+<span class="p">}</span>
+    
+<span class="c1">// 사용자의 코드를 실행할 수 없습니다. 컴파일이 정상적으로 마무리 될 수 있도록 수정해야 합니다.</span>
+    
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">f3</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span> 
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">f3</span><span class="p">(</span><span class="dl">'</span><span class="s1">Mark</span><span class="dl">'</span><span class="p">)</span> <span class="o">+</span> <span class="mi">5</span><span class="p">);</span> 
+</code></pre></div>        </div>
+        <p>작성자의 코드 자체가 에러이기 때문에 f3(10)과 같은 것들 조차 사용할 수 없게 된다. 코드에서 a의 타입을 any라고 지정해주거나 다른 타입을 지정해줘야만 사용할 수 있게된다.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>number 타입으로 추론된 리턴 타입</p>
+
+    <p>매개변수 a의 타입을 number라고 명시적으로 지정했으며, 명시적으로 지정하지 않은 함수의 리턴 타입은 number로 추론된다.</p>
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">f4</span><span class="p">(</span><span class="nx">a</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">a</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">*</span> <span class="mi">38</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+  
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">f4</span><span class="p">(</span><span class="mi">5</span><span class="p">));</span> <span class="c1">// 190</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">f4</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="mi">5</span><span class="p">);</span> <span class="c1">// NaN</span>
+</code></pre></div>    </div>
+    <p>a의 타입을 number로 지정했기 때문에 인수에 숫자가 아닌 다른 타입을 넣게 된다면 error가 발생할 것이다. 그래서 다른 형태를 넣었을 때는 해당 함수를 사용할 수 없다.</p>
+
+    <p>런타임상에서 a의 인자가 숫자형이면서 양수의 값일때 a*38이 되고, 아닐 경우에는 리턴되지 않기 때문에 undefined형태로 리턴될 것을 알 수 있다.
+<code class="language-plaintext highlighter-rouge">console.log(f4(-5) + 5);</code>해당 코드에서는 음수값 -5를 인수로 넣었기 때문에 undefined가 리턴되고 + 5 (숫자)가 더해지면서 숫자가 아닌 의미로 NaN(타입 number)이 출력된다. 해당 결과는 의도한 것이 아니기 때문에 런타임 상에서 오류가 발생하게 된다.</p>
+
+    <p><strong>추가)</strong> undefined는 number가 아닌데 왜 둘이 더해서 number(NaN)이 나온 것일까?<br />
+타입스크립트가 undefined를 number로 퉁쳐버렸다.<br />
+해당 결과로 인해 타입스크립트에서 number에 undefined가 포함되어 있다는 사실을 알 수 있다.</p>
+  </li>
+  <li>
+    <p><strong>strictNullChecks</strong></p>
+
+    <p>모든 타입에 자동으로 포함되어 있는 <strong>null</strong>과 <strong>undefined</strong>를 제거해준다.<br />
+해당 옵션을 키지 않으면 위 함수와 같이 number에도 null, undefined를 넣을 수 있게 된다..!</p>
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// strictNullChecks</span>
+  
+<span class="kd">function</span> <span class="nf">f4</span><span class="p">(</span><span class="nx">a</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">a</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">*</span> <span class="mi">38</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+  
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">f4</span><span class="p">(</span><span class="mi">5</span><span class="p">));</span> <span class="c1">// 190</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">f4</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="mi">5</span><span class="p">);</span> 
+<span class="c1">// error TS2532: object is possibly 'undefined'.</span>
+</code></pre></div>    </div>
+    <p>매개변수의 타입을 number로 지정, 명시적으로 지정하지 않은 함수의 리턴 타입은 number 혹은 undefined로 추론된다.</p>
+
+    <p><code class="language-plaintext highlighter-rouge">console.log(f4(-5) + 5);</code> 해당 코드에서 f4(-5)의 값은 undefined이면서 숫자 5와 더할 수 없게 된다. 옵션을 킴으로 undefined가 number로 퉁칠 수 없게 되었다.</p>
+
+    <p>그런데, f4(5)의 값이 190 혹은 undefined가 되어버렸다. f4를 실행하면 무조건 number 혹은 undefined로 판단하는 것이다. 이것이 문제는 아니다.
+컴파일 타입에서는 number | undefined로 판단되는 것이 맞고 런타임 상에서 해당 결과물이 undefined인 경우에는 error를 throw하고 number일때만 연산을 하도록 조정을 해야 한다.</p>
+  </li>
+  <li>
+    <p>명시적으로 리턴 타입을 지정해야 할까?</p>
+
+    <p>명시적으로 지정해주는 것을 추천한다. <br />
+작성자 입장에서 코드를 작성할 때 number를 인자로 받고 리턴할 걸 계획을 하고 코드를 작성하면 지정해둔 리턴 타입과 실제 결과가 일치하는지를 타입스크립트가 확인해주기 때문에 검토하면서 작업할 수 있어서 좋다.</p>
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// error</span>
+<span class="kd">function</span> <span class="nf">f5</span><span class="p">(</span><span class="nx">a</span><span class="p">:</span> <span class="kr">number</span><span class="p">):</span> <span class="kr">number</span> <span class="p">{</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">a</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">*</span> <span class="mi">38</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <p>해당 코드는 error가 발생한다. if 범위 내에 있지 않은 부분은 리턴되지 않기 때문에  작업이 덜 되었다고 알려준다.</p>
+  </li>
+  <li>
+    <p><strong>nolmplicitReturns</strong></p>
+
+    <p>nolmplicitReturns 옵션을 키면 함수 내에서 모든 코드가 값을 리턴하지 않으면, 컴파일 에러를 발생시킨다.</p>
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// error: Not all code paths return a value.</span>
+  
+<span class="kd">function</span> <span class="nf">f5</span><span class="p">(</span><span class="nx">a</span><span class="p">:</span> <span class="kr">number</span><span class="p">){</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">a</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">*</span> <span class="mi">38</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <p>해당 옵션은 리턴 타입을 지정했는지 안 했는지는 중요하지 않다.<br />
+내부 코드가 모든 경우에 리턴을 하는지 안 하는지가 중요하다. 해당 코드는 if인 경우에만 리턴을 하고 if 범위 밖의 경우에는 리턴을 하지 않기 때문에 error가 발생한다.</p>
+  </li>
+  <li>
+    <p>매개변수에 object가 들어오는 경우</p>
+
+    <p>a는 object로 매개변수에 object가 들어오는 경우에는 어떤 object가 들어오는지 자바스크립트에는 명시되어 있지 않다. 그래서 다양한 object 형태가 들어오면서 의도하지 않은 결과가 발생하기도 한다.</p>
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">f6</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="s2">`이름은 </span><span class="p">${</span><span class="nx">a</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2"> 이고, 연령대는 
+  </span><span class="p">${</span><span class="nb">Math</span><span class="p">.</span><span class="nf">floor</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">age</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span><span class="p">}</span><span class="s2">대 입니다.`</span><span class="p">;</span>
+<span class="p">}</span>
+  
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">f6</span><span class="p">({</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Mark</span><span class="dl">'</span><span class="p">,</span> <span class="na">age</span><span class="p">:</span> <span class="mi">38</span><span class="p">}));</span>
+<span class="c1">// 이름은 Mark 이고, 연령대는 30대 입니다.</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">f6</span><span class="p">(</span><span class="dl">'</span><span class="s1">Mark</span><span class="dl">'</span><span class="p">));</span>
+<span class="c1">// 이름은 undefined 이고, 연령대는 NaN대 입니다.</span>
+</code></pre></div>    </div>
+
+    <ul>
+      <li>
+        <p>object literal type</p>
+
+        <p>object literal type으로 a의 타입을 지정해줄 수 있다. <br />
+작성자가 의도한 바와 다르게 작성하여 사용할 경우에 error를 발생시켜 사용자에게 알려준다.</p>
+        <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">f7</span><span class="p">(</span><span class="nx">a</span><span class="p">:</span> <span class="p">{</span> <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span> <span class="nl">age</span><span class="p">:</span> <span class="kr">number</span> <span class="p">}):</span> <span class="kr">string</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="s2">`이름은 </span><span class="p">${</span><span class="nx">a</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2"> 이고, 연령대는 
+  </span><span class="p">${</span><span class="nb">Math</span><span class="p">.</span><span class="nf">floor</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">age</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span><span class="p">}</span><span class="s2">대 입니다.`</span><span class="p">;</span>
+<span class="p">}</span>
+    
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">f6</span><span class="p">({</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Mark</span><span class="dl">'</span><span class="p">,</span> <span class="na">age</span><span class="p">:</span> <span class="mi">38</span><span class="p">}));</span>
+<span class="c1">// 이름은 Mark 이고, 연령대는 30대 입니다.</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">f6</span><span class="p">(</span><span class="dl">'</span><span class="s1">Mark</span><span class="dl">'</span><span class="p">));</span>
+<span class="c1">// error: Argument of type 'string' is not assignable to parameter of type '{ name: string; age: number }'.</span>
+</code></pre></div>        </div>
+        <p>그런데, object litetal type을 매번 길게 작성하기에 불편하니 특정한 타입으로 뽑아서 타이핑을 만들어둔다.</p>
+      </li>
+      <li>
+        <p>나만의 타입 만들기</p>
+
+        <p>interface, type, class을 사용해서 이름을 지정하여 사용할 수 있다.</p>
+        <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">PersonInterface</span> <span class="p">{</span>
+  <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+  <span class="nl">age</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+<span class="p">}</span>
+    
+<span class="kd">type</span> <span class="nx">PersonTypeAlias</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+  <span class="nl">age</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+<span class="p">}</span>
+    
+<span class="kd">function</span> <span class="nf">f8</span><span class="p">(</span><span class="nx">a</span><span class="p">:</span> <span class="nx">PersonInterface</span><span class="p">):</span> <span class="kr">string</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="s2">`이름은 </span><span class="p">${</span><span class="nx">a</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2"> 이고, 연령대는 
+  </span><span class="p">${</span><span class="nb">Math</span><span class="p">.</span><span class="nf">floor</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">age</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span><span class="p">}</span><span class="s2">대 입니다.`</span><span class="p">;</span>
+<span class="p">}</span>
+    
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">f6</span><span class="p">({</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Mark</span><span class="dl">'</span><span class="p">,</span> <span class="na">age</span><span class="p">:</span> <span class="mi">38</span><span class="p">}));</span>
+<span class="c1">// 이름은 Mark 이고, 연령대는 30대 입니다.</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">f6</span><span class="p">(</span><span class="dl">'</span><span class="s1">Mark</span><span class="dl">'</span><span class="p">));</span>
+<span class="c1">// error: Argument of type 'string' is not assignable to parameter of type 'PersonInterface'.</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#ts">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TS</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

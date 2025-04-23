@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 JavaScript: JS 함수 (화살표 함수, 즉시실행함수, 호이스팅, 타이머함수, 콜백) &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">JavaScript: JS 함수 (화살표 함수, 즉시실행함수, 호이스팅, 타이머함수, 콜백)</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">11 Aug 2022</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h2 id="화살표-함수---"><strong>화살표 함수 **() ⇒ {}**</strong></h2>
+<hr />
+<p><strong>() ⇒ {}</strong> vs <strong>function () {}</strong></p>
+
+<p>화살표 함수는 일부 내용들을 생략해서 축약형으로 함수를 최소화할 수 있다.</p>
+
+<p>화살표 함수 사용시 {}를 사용하게 되는데, 이때 객체 데이터를 나타내는 기호와 겹치게 된다.<br />
+<code class="language-plaintext highlighter-rouge">() ⇒ ({ })</code>형태로 사용하면 객체 데이터도 사용할 수 있다!</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 일반함수</span>
+<span class="kd">const</span> <span class="nx">double</span> <span class="o">=</span> <span class="nf">function </span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="nx">x</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">double: </span><span class="dl">'</span><span class="p">,</span> <span class="nf">double</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
+
+<span class="c1">// 화살표 함수</span>
+<span class="kd">const</span> <span class="nx">doubleArrow</span> <span class="o">=</span> <span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="nx">x</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="p">}</span>
+
+<span class="c1">// 화살표 함수 축약형</span>
+<span class="kd">const</span> <span class="nx">doubleArrow</span> <span class="o">=</span> <span class="nx">x</span> <span class="o">=&gt;</span> <span class="nx">x</span> <span class="o">*</span> <span class="mi">2</span> <span class="c1">// 14</span>
+<span class="kd">const</span> <span class="nx">doubleArrow</span> <span class="o">=</span> <span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="nx">y</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">x</span> <span class="o">*</span> <span class="nx">y</span> <span class="o">*</span> <span class="mi">2</span> <span class="c1">// {}생략 가능</span>
+<span class="kd">const</span> <span class="nx">doubleArrow</span> <span class="o">=</span> <span class="nx">x</span> <span class="o">=&gt;</span> <span class="dl">'</span><span class="s1">123</span><span class="dl">'</span> <span class="c1">// 123</span>
+<span class="kd">const</span> <span class="nx">doubleArrow</span> <span class="o">=</span> <span class="nx">x</span> <span class="o">=&gt;</span> <span class="kc">false</span> <span class="c1">// false</span>
+<span class="kd">const</span> <span class="nx">doubleArrow</span> <span class="o">=</span> <span class="nx">x</span> <span class="o">=&gt;</span> <span class="mi">1234</span> <span class="c1">//1234</span>
+<span class="kd">const</span> <span class="nx">doubleArrow</span> <span class="o">=</span> <span class="nx">x</span> <span class="o">=&gt;</span> <span class="kc">null</span> <span class="c1">//null</span>
+<span class="kd">const</span> <span class="nx">doubleArrow</span> <span class="o">=</span> <span class="nx">x</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="c1">// [1, 2, 3]</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">doubleArrow</span><span class="dl">'</span><span class="p">,</span> <span class="nf">doubleArrow</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
+</code></pre></div></div>
+<ul>
+  <li>
+    <p><strong>객체데이터 {}</strong><br />
+객체데이터의 기호는 {}로, 화살표 함수의 사용 기호와 동일하다.<br />
+ 그냥 사용하게 되면 객체데이터로 인식하지 못한다.</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">doubleArrow</span> <span class="o">=</span> <span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="nx">y</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Heropy</span><span class="dl">'</span><span class="p">}</span> 
+  <span class="c1">//undefined (블록으로 인식한다)</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>
+        <p>해결방법<br />
+객체데이터를 나타내고 싶을 때 밖에 () 사용한다.<br />
+원하던 객체 데이터가 잘 나오는 것을 볼 수 있다.</p>
+
+        <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">doubleArrow</span> <span class="o">=</span> <span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="nx">y</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Heropy</span><span class="dl">'</span><span class="p">})</span> 
+  <span class="c1">// name: 'Heropy'</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="즉시실행함수-iife"><strong>즉시실행함수 IIFE</strong></h2>
+<hr />
+
+<p>Immediately-Invoked Function Expression</p>
+
+<p>함수를 사용하는데 <strong>한번</strong>만 사용하고 더이상 사용할 일이 없다면, 굳이 이름을 만들어서 아래에 호출할 필요가 없다. 이럴 때, 즉시실행함수를 사용한다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">7</span>
+
+<span class="c1">// 일반함수</span>
+<span class="kd">function</span> <span class="nf">double</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">a</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nf">double</span><span class="p">();</span>
+</code></pre></div></div>
+<ul>
+  <li>
+    <p><strong>소괄호 이중 사용 (함수)()</strong></p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 즉시실행함수 - 소괄호 이중 사용 (함수)()</span>
+<span class="p">(</span><span class="nf">function </span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">a</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">})();</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>소괄호 사이에 소괄호 (함수()) =&gt; 권장</strong></p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nf">function </span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">a</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">}());</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="호이스팅-hoisting"><strong>호이스팅 (Hoisting)</strong></h2>
+<hr />
+
+<p>함수 선언부가 유효범위 최상단으로 끌어올려지는 현상</p>
+
+<ul>
+  <li><strong>함수 표현</strong>
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">7</span>
+
+<span class="kd">const</span> <span class="nx">double</span> <span class="o">=</span> <span class="nf">function </span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">a</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nf">double</span><span class="p">()</span>
+<span class="c1">// 14</span>
+<span class="o">---------------------</span>
+
+<span class="nf">double</span><span class="p">()</span>
+
+<span class="kd">const</span> <span class="nx">double</span> <span class="o">=</span> <span class="nf">function </span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">a</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// TypeError</span>
+</code></pre></div>    </div>
+    <p>함수 표현을 사용했을 때는 <code class="language-plaintext highlighter-rouge">함수(double())</code>를 먼저 호출하는 것이 불가능하다.</p>
+  </li>
+  <li><strong>함수 선언</strong>
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">7</span>
+
+<span class="nf">double</span><span class="p">()</span> 
+
+<span class="kd">function</span> <span class="nf">double</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">a</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// 14</span>
+</code></pre></div>    </div>
+    <p>우리가 만든 함수 선언부가 유효범위 최상단으로 끌어졌기에 오류 발생하지 않는다. 이것이 <strong>호이스팅</strong>이다.</p>
+  </li>
+  <li>
+    <p><strong>호이스팅이 유용할 때</strong><br />
+만든 복잡한 함수를 위에서 선언하게 되면 실행하기 전에 굉장히 많은 로직을 거쳐서 실행된다. 그렇기에 해석하기가 비교적 좋지 않다.</p>
+
+    <p>자바스크립트 호이스팅 현상을 사용하여 해석을 용이하게 한다.<br />
+만들어진 함수 선언부는 전체 코드 최하단에 작성한다. 실행하고자 하는 로직은 상단에 작성한다.<br />
+이렇게 하면 어떤 것이 실행되는지 해석하기가 용이하고 함수의 이름으로 기능을 유츄할 수 있다.</p>
+  </li>
+</ul>
+
+<h2 id="타이머-함수"><strong>타이머 함수</strong></h2>
+<hr />
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">setTimeout(함수, 시간)</code><br />
+일정 시간 후 함수 실행<br />
+시간단위는 ms. 1000ms -&gt; 1초</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">setTimeout</span><span class="p">(</span><span class="nf">function </span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">SOHA</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">},</span> <span class="mi">3000</span><span class="p">)</span> <span class="c1">// 3000 -&gt; 3초</span>
+<span class="c1">// 3초뒤 SOHA 출력</span>
+  
+<span class="nf">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">SOHA</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">},</span> <span class="mi">3000</span><span class="p">)</span>
+<span class="c1">// 3초뒤 SOHA 출력</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">clearTimeout()</code><br />
+  설정된 Timeout 함수를 종료</p>
+
+    <p><strong>Hello world! 클릭시 timer 종료하기</strong></p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">src=</span><span class="s">"./main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;h1&gt;</span>Hello world!<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;ul&gt;&lt;/ul&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+  <span class="nt">&lt;/html&gt;</span>
+</code></pre></div>    </div>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">const</span> <span class="nx">timer</span> <span class="o">=</span> <span class="nf">setTimeout</span><span class="p">(</span><span class="nf">function </span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">SOHA</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">},</span> <span class="mi">3000</span><span class="p">)</span>
+    
+  <span class="kd">const</span> <span class="nx">h1El</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">h1</span><span class="dl">'</span><span class="p">)</span>
+  <span class="nx">h1El</span><span class="p">.</span><span class="nf">addEventListner</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nf">clearTimeout</span><span class="p">(</span><span class="nx">timer</span><span class="p">)</span>
+  <span class="p">})</span>
+  <span class="c1">// Hello world! 클릭 -&gt; 3초가 지나도 아무것도 뜨지 않음</span>
+  <span class="c1">// 기존에는 3초뒤에 SOHA 출력해야 됨</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">setInterval(함수, 시간)</code><br />
+  시간 간격마다 함수 실행</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">const</span> <span class="nx">timer</span> <span class="o">=</span> <span class="nf">setInterval</span><span class="p">(</span><span class="nf">function </span><span class="p">()</span> <span class="p">{</span>
+  	<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">SOHA</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">},</span> <span class="mi">3000</span><span class="p">)</span>
+  <span class="c1">// 3초마다 SOHA 출력</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">clearInterval()</code><br />
+  설정된 Interval 함수를 종료</p>
+
+    <p><strong>Hello world! 클릭시 출력 종료하기</strong></p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">src=</span><span class="s">"./main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;h1&gt;</span>Hello world!<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;ul&gt;&lt;/ul&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+  <span class="nt">&lt;/html&gt;</span>
+</code></pre></div>    </div>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">const</span> <span class="nx">timer</span> <span class="o">=</span> <span class="nf">setInterval</span><span class="p">(</span><span class="nf">function </span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">SOHA</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">},</span> <span class="mi">3000</span><span class="p">)</span>
+    
+  <span class="kd">const</span> <span class="nx">h1El</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">h1</span><span class="dl">'</span><span class="p">)</span>
+  <span class="nx">h1El</span><span class="p">.</span><span class="nf">addEventListner</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nf">clearInterval</span><span class="p">(</span><span class="nx">timer</span><span class="p">)</span>
+  <span class="p">})</span>
+  <span class="c1">// 3초마다 SOHA 출력</span>
+  <span class="c1">// Hello world! 클릭하면 출력이 종료 됨</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="콜백-callback"><strong>콜백 (Callback)</strong></h2>
+<hr />
+<p>함수의 인수로 사용되는 함수이다.<br />
+<code class="language-plaintext highlighter-rouge">setTimeout(함수, 시간)</code>에서 인수로 함수가 사용이 되는데 이 함수를 <strong>콜백</strong>이라고 부른다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">timeout</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nf">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+		<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">SOHA</span><span class="dl">'</span><span class="p">)</span>
+	<span class="p">},</span> <span class="mi">3000</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nf">timeout</span><span class="p">()</span>
+<span class="c1">// 3초뒤 SOHA 출력</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Done</span><span class="dl">'</span><span class="p">)</span>
+<span class="c1">// Done 출력 후 SOHA 출력</span>
+</code></pre></div></div>
+
+<p><strong>SOHA 출력 후 Done 출력하기 -&gt; 콜백</strong> <br />
+<em>단, timeout 함수는 건들지 않는다.</em></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">timeout</span><span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nf">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">SOHA</span><span class="dl">'</span><span class="p">)</span>
+    <span class="nf">callback</span><span class="p">()</span>
+  <span class="p">},</span> <span class="mi">3000</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// 콜백 함수</span>
+<span class="c1">// 인수로 화살표 함수 넣어줌</span>
+<span class="nf">timeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Done</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">})</span>
+
+<span class="c1">// SOHA 출력 후 Done 출력</span>
+</code></pre></div></div>
+<ul>
+  <li>timeout 함수 인수로 화살표 함수를 넣어 Done 출력을 넣는다.</li>
+  <li>timeout함수의 내부에서 해당 인수를 받아줄 매개변수로 callback을 넣어준다.</li>
+  <li>
+    <p>매개변수를 실행을 <strong>보장</strong>하고 싶은 장소에 함수 호출하듯이 넣는다.</p>
+
+    <p><em>함수 내부에서 매개변수를 부를 때 함수 호출하듯이 사용하는 이유!<br />
+  timeout 함수의 인수로 사용된 것은 콜백 <strong>함수</strong>이다.<br />
+  timeout 함수 내부에서 매개변수 이름은 callback으로 지어주었지만 실제로 사용할때, 해당 매개변수는 <strong>함수</strong>이기에 함수를 호출하는 것처럼 사용한다.</em></p>
+  </li>
+  <li>즉, timeout이라는 전체함수에 내가 실행을 보장하고 싶은 곳에서 하나의 함수를 실행할 수 있다.</li>
+</ul>
+
+<h3 id="활용"><strong>활용</strong></h3>
+<p>특정한 실행 위치를 보장해주는 방법으로 활용할 수 있다.</p>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#js">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">JS</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

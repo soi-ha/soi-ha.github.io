@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 영화 검색 사이트: 시작하기, VueRouter, Bootstrap &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">영화 검색 사이트: 시작하기, VueRouter, Bootstrap</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">11 Feb 2023</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/project.html">
+          Project
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h2 id="사이트-소개"><strong>사이트 소개</strong></h2>
+<hr />
+
+<p>OMDb API 활용한 영화를 검색해주는 사이트이다.</p>
+
+<p>페이지는 총 3페이지로 구성되어 있다.</p>
+
+<ul>
+  <li>
+    <p>영화 검색 페이지 (Search, 메인)</p>
+
+    <p>영화를 검색할 수 있는 페이지이다. 
+원하는 키워드로 영화 검색이 가능하며, 3가지 조건을 설정하여 영화를 검색할 수 있다.</p>
+  </li>
+  <li>
+    <p>영화 페이지 (Movie)</p>
+
+    <p>검색을 통해 나타난 영화를 클릭하면 해당 영화의 상세 설명을 확인할 수 있는 페이지이다.</p>
+  </li>
+  <li>
+    <p>개발자 소개 페이지 (About)</p>
+
+    <p>해당 페이지를 만든 개발자를 소개한 페이지이다.</p>
+  </li>
+  <li>
+    <p>기술</p>
+
+    <p>비동기, 백엔드 API, Vuex, Vue Router 등의 기술등을 적용해서 페이지를 제작할 것이다.</p>
+  </li>
+</ul>
+
+<h2 id="vue-router-구성"><strong>Vue Router 구성</strong></h2>
+<hr />
+
+<p><strong>Router</strong></p>
+
+<p>특정한 페이지를 만들때, 페이지를 구분하기 위해서 사용한다.</p>
+
+<blockquote>
+  <p><a href="https://router.vuejs.kr/introduction.html">Vue Router: 소개</a></p>
+</blockquote>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm i vue-router@4
+</code></pre></div></div>
+
+<p>vue router은 실제 브라우저에서 페이지 관리를 해줘야 하기 때문에 개발의존성이 아닌 일반의존성 모드로 설치한다.</p>
+
+<ul>
+  <li>
+    <p>src/main.js</p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">createApp</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">vue</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">App</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./App.vue</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">router</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./routes/index.js</span><span class="dl">'</span>
+  
+<span class="nf">createApp</span><span class="p">(</span><span class="nx">App</span><span class="p">)</span>
+  <span class="p">.</span><span class="nf">use</span><span class="p">(</span><span class="nx">router</span><span class="p">)</span> 
+  <span class="p">.</span><span class="nf">mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div>    </div>
+
+    <p>use()는 플러그인을 연결할때 사용한다.</p>
+  </li>
+  <li>
+    <p>index.js</p>
+
+    <p>페이지를 관리하는 구성파일이 된다.</p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">createRouter</span><span class="p">,</span> <span class="nx">createWebHashHistory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">vue-router</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">Home</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./Home</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">About</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./About</span><span class="dl">'</span>
+  
+<span class="k">export</span> <span class="k">default</span> <span class="nf">createRouter </span><span class="p">({</span>
+  <span class="c1">// Hash</span>
+  <span class="c1">// https://google.com/#/search</span>
+  <span class="na">history</span><span class="p">:</span> <span class="nf">createWebHashHistory</span><span class="p">(),</span>
+  <span class="c1">// pages</span>
+  <span class="c1">// https://google.com/</span>
+  <span class="na">routes</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="na">path</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">component</span><span class="p">:</span> <span class="nx">Home</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">path</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/about</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">component</span><span class="p">:</span> <span class="nx">About</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">})</span>
+</code></pre></div>    </div>
+
+    <ul>
+      <li>
+        <p>routes</p>
+
+        <p>routes 옵션은 페이지를 구분해주는 개념이다.</p>
+      </li>
+      <li>
+        <p>history</p>
+
+        <p>history 옵션은 hash 모드와 history 모드로 설정이 가능하다.<br />
+우리는 hash 모드를 사용할 건데, hash 모드는 ‘#’이라는 기호와 함께 슬래쉬를 붙여서 해당 페이지에 접근하는 모드이다.<br />
+<code class="language-plaintext highlighter-rouge">https://google.com/#/search</code><br />
+해쉬모드를 사용해야지만 특정 페이지에서 새로고침을 했을 때, 페이지를 찾을 수 없다는 메세지를 방지할 수 있다.<br />
+history 모드는 서버에 세팅을 해야하기 때문에 이번 프로젝트에서 사용하는 것은 보류한다.</p>
+      </li>
+      <li>
+        <p>path</p>
+
+        <p>path는 페이지를 구분해주는 경로를 의미한다.<br />
+path 부분의 슬래쉬는 해당 페이지의 가장 메인 페이지에 접근을 하겠다는 의미이다.</p>
+      </li>
+      <li>
+        <p>component</p>
+
+        <p>메인페이지에 접근했을 때, 어떤 vue.js의 컴포넌트를 사용할 것인지 명시한다.</p>
+      </li>
+    </ul>
+
+    <h3 id="유용한-컴포넌트">유용한 컴포넌트</h3>
+
+    <ul>
+      <li>
+        <p>RouterLink</p>
+
+        <p>a태그를 대신하여 사용할 수 있는 컴포넌트이다. <br />
+’to’를 사용하여 이동하길 원하는 링크 작성한다.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="bootstrap-구성"><strong>Bootstrap 구성</strong></h2>
+<hr />
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm i bootstrap
+</code></pre></div></div>
+
+<blockquote>
+  <p><a href="https://getbootstrap.com/docs/5.2/customize/sass/">Bootstrap: Sass</a></p>
+</blockquote>
+
+<p><strong>!default</strong></p>
+
+<p>!default 플래그는 scss에서 제공하는 기능으로, 새롭게 지정되는 값이 있으면 기존 값을 무시한다는 의미이다. <br />
+bootstrap에서 지정한 파란색의 Primary 색상을 우리가 외부에서 수정하면 수정한 내용이 출력된다는 (즉, 커스터마이징) 것이다.</p>
+
+<ul>
+  <li>
+    <p>변수 재정의</p>
+
+    <p>재정의 하려는 색상(스타일)은 꼭, required보다 위에 적용해야 한다. 
+해당 import가 실행되기 전에 정의를 해야 bootstrap에서 기존에 정의해둔 기본값을 무시할 수 있기 때문이다.</p>
+
+    <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Default variable overrides</span>
+<span class="nv">$primary</span><span class="p">:</span> <span class="mh">#FDC000</span><span class="p">;</span>
+  
+<span class="c1">// Required</span>
+<span class="k">@import</span> <span class="s2">"../../node_modules/bootstrap/scss/functions"</span><span class="p">;</span>
+<span class="k">@import</span> <span class="s2">"../../node_modules/bootstrap/scss/variables"</span><span class="p">;</span>
+<span class="k">@import</span> <span class="s2">"../../node_modules/bootstrap/scss/maps"</span><span class="p">;</span>
+<span class="k">@import</span> <span class="s2">"../../node_modules/bootstrap/scss/mixins"</span><span class="p">;</span>
+<span class="k">@import</span> <span class="s2">"../../node_modules/bootstrap/scss/root"</span><span class="p">;</span>
+  
+<span class="k">@import</span> <span class="s2">"../../node_modules/bootstrap/scss/bootstrap"</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>$theme-colors</p>
+
+    <p>해당 변수 안에 있는 값들을 모두 변경했다면, 위의 $primary와 같이 상단에 작성해준다.<br />
+만약, 일부만 변경하고 다른 info, warning 등은 변경하지 않았다면, required 부분 뒤에 정의해야 한다. 따로 재정의를 하지 않았기에 앞에 사용하면 에러가 발생하게 된다.</p>
+  </li>
+</ul>
+
+<h2 id="bt-containers"><strong>BT: Containers</strong></h2>
+<hr />
+
+<blockquote>
+  <p><a href="https://getbootstrap.com/docs/5.2/layout/containers/">BootStrap: Containers</a></p>
+</blockquote>
+
+<p>가운데 정렬을 시켜주는 레이아웃이다.<br />
+특정 사이즈에서 가운데 정렬을 시켜준다.</p>
+
+<ul>
+  <li>
+    <p>XX-Large &gt; 1400px 과 1320px의 의미</p>
+
+    <p>최대 화면 크기가 1400px일때 우리가 사용하는 <code class="language-plaintext highlighter-rouge">.container</code>의 가로 사이즈는 1320px이라는 의미이다.<br />
+따라서 화면 크기가 1400px 이상일 때,1320px에서 가운데 정렬이 된다.</p>
+
+    <p>만약 1200px과 1400px 사이라면 가로 사이즈는 1140px이 된다.</p>
+  </li>
+</ul>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#vue-js">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">Vue.js</span>
+    </a>
+  
+    
+    <a href="/tags.html#project">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">project</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

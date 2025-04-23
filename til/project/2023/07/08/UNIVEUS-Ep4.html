@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 UNIVE.US: React, "\n" 개행적용 불가 해결 &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">UNIVE.US: React, "\n" 개행적용 불가 해결</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">08 Jul 2023</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/project.html">
+          Project
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <p>리액트에서만 이러는 건지는 모르겠지만, modal의 title 부분에 개행(‘\n’)을 적용하려 하는데 적용이 안됐다…</p>
+
+<p>따라서 서칭끝에 해결 방법을 찾았다.</p>
+
+<h3 id="해결방법"><strong>해결방법</strong></h3>
+
+<hr />
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">div</span> <span class="p">{</span>
+	<span class="nl">white-space</span><span class="p">:</span> <span class="n">pre-wrap</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>바로 스타일을 통해서 개행이 작동하도록 해주는 것이다.<br />
+<code class="language-plaintext highlighter-rouge">white-space</code>는 공백문자를 처리하는 방법을 설정한다.<br />
+다양한 설정값이 존재하지만 나는 그 중에서도 개행을 해주는 것만 필요하기에 pre-wrap을 적용했다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">pre-wrap</code>은 띄어쓰기, 들여쓰기, 줄바꿈을 그대로 적용시켜준다. 이러한 점은 <code class="language-plaintext highlighter-rouge">pre</code> 속성값과 동일한데, <code class="language-plaintext highlighter-rouge">pre</code>와 달리 <code class="language-plaintext highlighter-rouge">pre-wrap</code>은 텍스트 안에서 긴 행이 존재할 때 자동으로 줄바꿈을 적용시켜준다는 것이다. 따라서 좌우 스크롤바가 존재하지 않아도 그대로 화면에서 잘리지 않고 보이게 된다. (<code class="language-plaintext highlighter-rouge">pre</code>는 긴 행이 존재해도 그대로 출력한다.)</p>
+
+<h3 id="적용-결과-화면"><strong>적용 결과 화면</strong></h3>
+
+<hr />
+
+<h4 id="1-white-space를-작성하지-않았을-때-결과화면--개행적용-x">1. <code class="language-plaintext highlighter-rouge">white-space</code>를 작성하지 않았을 때, 결과화면 =&gt; 개행적용 X</h4>
+
+<p><strong><code class="language-plaintext highlighter-rouge">white-space</code> 적용 안 한 modal 소스코드</strong>
+<img width="350" alt="white-space 적용안한 모달 소스코드" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/ce3f5170-d887-49ec-85cb-4ad65a07ae46" /></p>
+
+<p><strong>개행 추가 소스코드</strong>
+<img width="394" alt="개행있는 타이틀 소스코드" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/cf849cc4-8b81-4e47-96c6-878ca5c5cb76" /></p>
+
+<p><strong>적용 결과 화면(개행 적용 안됨)</strong>
+<img width="585" alt="개행 안된 화면" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/58c929be-515c-4c07-8a67-87553275fd03" /></p>
+
+<hr />
+
+<h4 id="2-white-space를-작성했을-때-결과화면--개행-적용-o">2. <code class="language-plaintext highlighter-rouge">white-space</code>를 작성했을 때, 결과화면 =&gt; 개행 적용 O</h4>
+
+<p><strong><code class="language-plaintext highlighter-rouge">white-space</code> 적용한 modal 소스코드</strong>
+<img width="388" alt="white-space 적용한 모달 소스코드" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/30f30f4b-5452-4410-8046-11af129a98eb" /></p>
+
+<p><strong>개행 추가 소스코드</strong>
+<img width="394" alt="개행있는 타이틀 소스코드" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/cf849cc4-8b81-4e47-96c6-878ca5c5cb76" /></p>
+
+<p><strong>적용 결과 화면(개행 적용 됨)</strong>
+<img width="572" alt="개행된 화면" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/7abda48e-5fae-40fc-b7a6-0b39a749724f" /></p>
+
+<hr />
+
+<h4 id="3-white-space를-작성했지만-개행을-작성하지-않았을-때-결과화면--개행적용-x">3. <code class="language-plaintext highlighter-rouge">white-space</code>를 작성했지만, 개행을 작성하지 않았을 때, 결과화면 =&gt; 개행적용 X</h4>
+
+<p><strong><code class="language-plaintext highlighter-rouge">white-space</code> 적용한 modal 소스코드</strong>
+<img width="388" alt="white-space 적용한 모달 소스코드" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/30f30f4b-5452-4410-8046-11af129a98eb" /></p>
+
+<p><strong>개행 추가 없는 소스코드</strong>
+<img width="379" alt="개행없는 타이틀 소스코드" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/e16786f4-6b2f-42a2-a3a5-52fc2cddbf25" /></p>
+
+<p><strong>적용 결과 화면(개행 적용 안됨)</strong>
+<img width="585" alt="개행 안된 화면" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/58c929be-515c-4c07-8a67-87553275fd03" /></p>
+
+<h3 id="결론"><strong>결론</strong></h3>
+
+<hr />
+
+<p><code class="language-plaintext highlighter-rouge">white-space</code>를 추가해도 글에 개행(‘\n’)을 넣지 않으면 어엄청 긴 행이 아닌 이상 개행 적용이 안된다!</p>
+
+<blockquote>
+  <p>참고<br />
+<a href="https://amkorousagi-money.tistory.com/entry/html-%EB%98%90%EB%8A%94-react%EC%97%90%EC%84%9C-r-%EB%98%90%EB%8A%94-n-%EC%9C%BC%EB%A1%9C-%EC%A4%84%EB%B0%94%EA%BF%88%EA%B0%9C%ED%96%89%EC%9D%B4-%EC%95%88%EB%90%A8">html 또는 react에서 /r 또는 /n으로 줄바꿈(개행)이 안됨</a><br />
+<a href="https://www.daleseo.com/css-white-space/">CSS의 white-space 속성 사용법</a></p>
+</blockquote>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#unive-us">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">UNIVE.US</span>
+    </a>
+  
+    
+    <a href="/tags.html#react">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">React</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

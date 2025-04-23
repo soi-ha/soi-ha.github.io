@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 Trip or Travel: 나의 첫번째 프로젝트 &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">Trip or Travel: 나의 첫번째 프로젝트</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">30 Oct 2021</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/project.html">
+          Project
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h2 id="나의-첫번째-프로젝트"><strong>나의 첫번째 프로젝트</strong></h2>
+<hr />
+<p>이번 년도 1월에 처음으로 웹 개발이라는 것을 접하게 되면서 드디어 시작하게 나의 첫 프로젝트이다. 처음으로 내가 처음부터 끝까지 제작해보는 것이기에 설레이기도 하면서 걱정이 많이 되기도 하다.</p>
+
+<p>일단 이 프로젝트를 진행하면서 나의 최종 목표는 완성하기…! 완벽하게 만들지는 못하더라도 일단 처음부터 끝까지 목표한 것을 완성하는 것이 최종 목표이다. 디자인이나 기능들은 나중에 수정하면 되니까~</p>
+
+<h2 id="trip-or-travel"><strong>Trip Or Travel</strong></h2>
+<hr />
+<p>나의 첫번째 프로젝트의 이름은 <strong>Trip Or Travel</strong> 이다.<br />
+  부제목은 <strong>여행을 가거나 여행을 떠나거나!</strong> 로, 여행일지를 작성할 수 있는 서비스이다.</p>
+<h3 id="여행기록-서비스로-한-이유"><strong>여행기록 서비스로 한 이유</strong></h3>
+<p>일단, 나는 여행을 굉장히 좋아한다. 평소와는 다른 풍경과 경험을 할 수 있기 때문이다. 그래서 여행다닐 때 마다 항상 영상을 많이 찍어두는데, 영상을 편집해야지~ 항상 생각은 하지만 10분 영상 하나 만드는데 최소 24시간은 투자를 해야하기 때문에 쉽지가 않다. 편집을 하지 않고 있으니 영상들은 쌓여가고 결국 클라우드 용량이 부족하기에 이르게 되었다. 클라우드를 늘리기에는 매달 나가는 비용이 조금 부담이기도 하고… 편집을 하기에는 학기중이라 시간이 없고…</p>
+
+<p>그래서 생각한 것을 어디에라도 기록은 해야겠다! 생각이 들었다. sns에 하기에는 남들이 본다는 시선 때문에 쓰고 싶은 말이나 사진들을 막 올릴 수가 없다. (내 성격이 그렇다..)   <br />
+  그리고 2022년에 휴학하고 3월에 친구들과 제주도 한 달 살기를 할 것이기 때문에 이 한 달을 제대로 기록하고, 내가 직접 사용하면서 유지,보수도 해볼 겸! <del>이게 진짜 목적</del> <br />
+  프로젝트 주제를 여행 일지로 정했다.</p>
+
+<h3 id="기능-설명"><strong>기능 설명</strong></h3>
+<ul>
+  <li><strong>post box</strong><br />
+  여행 기록을 작성하는 박스<br />
+  사진 업로드, Trip버튼으로 post box를 열고 닫을 수 있게 구현한다.</li>
+  <li><strong>여행 발자국</strong><br />
+  여행 다닌 곳들을 한눈에 볼 수 있도록 시각화<br />
+  posting을 하면 자동으로 지도에 마커가 찍히고, 한국 뿐 아니라 다른 나라를 여행 갔을 때도 입력할 수 있도록 Google Map API를 사용한다.</li>
+  <li><strong>여행 일지</strong><br />
+  posting한 내용 카드<br />
+  인스타그램처럼 사진 업로드를 필수적이게 하면서 제한된 글자 안에 여행 일지를 작성하도록 한다. 사진은 1개만을 업로드 할 수 있다. 글자수를 제한한 이유는 카드의 사이즈를 일정하게 만들고 싶어서 제한하였다.<br />
+  <img src="/assets/images/139686279-faefb02b-4397-4473-aa51-df3e6d127429.jpg" />
+  <img src="/assets/images/139686654-b0431a64-4530-4069-8354-e47bdef82a37.jpg" />
+  <img src="/assets/images/139686678-887ed3b2-3928-445a-b558-3d0d86854f08.jpg" /></li>
+</ul>
+
+<h3 id="레이아웃"><strong>레이아웃</strong></h3>
+<p>나는 미술적인 감각이 zero인 사람으로… 일단 나의 나름 대로 깔끔하게 정리를 해 보았다. 그저 위에 그렸던 것을 CSS작성할 때 조금이라도.. 편하라고.. 정리했달까… <br />
+  웹 페이지의 디자인은 음… 직접 만들면서 계속 변경할 것 같다! 딱히 크게 정해둔 건 없고, 여러 영상이나 사진들을 참고해서 만들 것 같다.<br />
+  일단 생각해둔 웹 서비스의 느낌은 바다 느낌? 청량하고 힐링되는 느낌으로 만들고 싶다. 시그니쳐 색은 당연히 파랑으로 갈 것이다.<br />
+  <img src="/assets/images/139686773-0c9f6918-5abd-4f74-b7af-ff20324ed24c.png" alt="레이아웃1" />
+  <img src="/assets/images/139686780-9a07d864-9e9a-4988-8c15-808ce987a531.png" alt="레이아웃2" />
+  <img src="/assets/images/139686789-080bf820-7d58-4dc1-973e-a034ad19858e.png" alt="레이아웃3" />
+  <img src="/assets/images/139686797-5610304f-80e0-4762-939e-4445f5bb92eb.png" alt="레이아웃4" /></p>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#triportravel">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TripOrTravel</span>
+    </a>
+  
+    
+    <a href="/tags.html#project">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">project</span>
+    </a>
+  
+    
+    <a href="/tags.html#스파르타코딩클럽">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">스파르타코딩클럽</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

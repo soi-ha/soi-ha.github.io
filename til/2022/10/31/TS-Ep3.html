@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 TypeScript: Basic Types Ep.3 (string,symbol,null & undefined, object, array, tuple) &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">TypeScript: Basic Types Ep.3 (string,symbol,null & undefined, object, array, tuple)</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">31 Oct 2022</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h2 id="string"><strong>string</strong></h2>
+<hr />
+<p>텍스트 형식을 참조하기 위해 ‘string’ 형식을 사용한다.</p>
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">name</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">mark</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="nx">name</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">anna</span><span class="dl">'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>Template String</p>
+
+    <p>행에 걸쳐 있거나, 표현식을 넣을 수 있는 문자열이다.
+이 문자열은 backtick() 기호에 둘러쌓여 있다.</p>
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">fullName</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="s2">`Bob Bobbington`</span>
+<span class="kd">let</span> <span class="nx">age</span><span class="p">:</span> <span class="kr">number</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+  
+<span class="kd">let</span> <span class="nx">sentence</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="s2">`Hello, my name is </span><span class="p">${</span> <span class="nx">fullName</span><span class="p">}</span><span class="s2">.
+I'll be </span><span class="p">${</span> <span class="nx">age</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">}</span><span class="s2"> years old next month.`</span><span class="p">;</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>Template string을 사용하지 않을 경우
+        <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">sentence</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Hello, my name is </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">fullName</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">.</span><span class="se">\n\n</span><span class="dl">"</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">I'll be</span><span class="dl">"</span> <span class="o">+</span> <span class="p">(</span><span class="nx">age</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">years old next month.</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="symbol"><strong>symbol</strong></h2>
+<hr />
+<p>ECMAScript 2015의 Symbol이다.<br />
+new Symbol로 사용할 수 없다.<br />
+Symbol을 함수로 사용해서 symbol 타입을 만들어 내서 사용한다.</p>
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nc">Symbol</span><span class="p">(</span><span class="dl">'</span><span class="s1">foo</span><span class="dl">'</span><span class="p">)</span> <span class="o">===</span> <span class="nc">Symbol</span><span class="p">(</span><span class="dl">'</span><span class="s1">foo</span><span class="dl">'</span><span class="p">));</span>
+<span class="c1">// false</span>
+</code></pre></div></div>
+<p>같은 함수의 같은 인자를 넣어도 독립적으로 완전히 다르기 때문에 둘이 동일한지 물어보면 동일하지 않다고 말하는 것이다.</p>
+<ul>
+  <li>
+    <p>Symbol 사용</p>
+
+    <p>프리미티브 타입의 값을 담아서 사용한다.<br />
+Symbol로 인해 생성된 값은 고유하고 수정 불가능한 값으로 만들어준다.<br />
+그래서 주로 접근을 제어하는데 사용하는 경우가 많다. (문자열만 사용해서 접근할 때 사용할 수 없고 꼭, 심볼을 얻어야만 사용할 수 있도록 할때 사용하는 경우가 많다.)</p>
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">sym</span> <span class="o">=</span> <span class="nc">Symbol</span><span class="p">()</span>
+  
+<span class="kd">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">[</span><span class="nx">sym</span><span class="p">]:</span> <span class="dl">"</span><span class="s2">value</span><span class="dl">"</span>
+<span class="p">};</span>
+  
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">[</span><span class="nx">sym</span><span class="p">]);</span> <span class="c1">// "value"</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>주의!</p>
+
+    <p>함수로 사용할 때는 대문자 심볼 Symbol<br />
+(함수 심볼로 인해 만들어진)타입으로 사용할 때는 소문자 심볼 symbol</p>
+  </li>
+</ul>
+
+<h2 id="null--undefined"><strong>null &amp; undefined</strong></h2>
+<hr />
+
+<ul>
+  <li>
+    <p>null</p>
+
+    <p>null 이라는 값으로 할당 된 것을 null이라고 한다.<br />
+null은 무언가 있는데 사용할 준비가 덜 된상태를 말한다.<br />
+null 타입은 null이라는 값만 가질 수 있다.<br />
+런타임에서 typeof 연산자를 사용해보면 object라고 나온다.</p>
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">n</span><span class="p">:</span> <span class="kc">null</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+  
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">n</span><span class="p">);</span>  <span class="c1">// null</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">n</span><span class="p">);</span> <span class="c1">// object</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>undefined</p>
+
+    <p>undefined는 값을 할당하지 않은 변수의 값이다.<br />
+undefined는 무언가가 <strong>아예</strong> 준비가 안된 상태이다.<br />
+object의 property가 없을 때에도 undefined이다.<br />
+typeof 연산자를 사용하면 undefined라고 나온다.</p>
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">u</span><span class="p">:</span> <span class="kc">undefined</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>
+  
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">u</span><span class="p">);</span> <span class="c1">// undefined</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">u</span><span class="p">);</span> <span class="c1">// undefined</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>null과 undefined</p>
+
+    <p>각각 unll, undefined라는 타입을 가지며 void같이 그 자체로는 유용하지 않다.<br />
+null과 undefined는 타입과 값 모두 소문자로 작성해야 한다.</p>
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">u</span><span class="p">:</span> <span class="kc">undefined</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">n</span><span class="p">:</span> <span class="kc">null</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<span class="c1">// 해당 변수에 할당할 수 있는 것들이 거의 없다.</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>
+        <p>설정을 통해 유용하게 사용하기</p>
+
+        <p>null과 undefined는 다른 모든 타입의 서브타입으로 존재한다.<br />
+설정을 통해 number에 null 또는 undefined를 할당할 수 있게 된다. <br />
+그런데, 컴파일 옵션에서 <code class="language-plaintext highlighter-rouge">--strictNullChecks</code> 사용하면, 다른 모든 타입의 서브타입으로 사용할 수 없게 된다. 즉, null과 undefined는 void나 자기 자신들에게만 할당할 수 있게 된다.<br />
+반대로, null과 undefined를 할당할 수 있게 하려면 union type을 이용해야 한다.</p>
+        <ul>
+          <li>
+            <p>strictNullChecks =&gt; false (끄기)</p>
+
+            <p>null, undefined 사용가능</p>
+            <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">name</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">age</span><span class="p">:</span> <span class="kr">number</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>
+</code></pre></div>            </div>
+          </li>
+          <li>strictNullChecks =&gt; true (키기) 혹은 strict == true
+            <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">name</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span> <span class="p">(</span><span class="nx">x</span><span class="p">)</span>
+<span class="c1">// Type 'null' is not assignable to type 'string'</span>
+
+<span class="kd">let</span> <span class="nx">u</span><span class="p">:</span> <span class="kc">undefined</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span> <span class="c1">// (x)</span>
+<span class="c1">// Type 'null' is not assignable to type 'undefined'</span>
+      
+<span class="kd">let</span> <span class="nx">nu</span><span class="p">:</span> <span class="kc">null</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span> <span class="c1">// (o)</span>
+
+<span class="c1">// void의 값으로는 오로지 undefined만 가능. null, void는 불가</span>
+<span class="kd">let</span> <span class="nx">v</span><span class="p">:</span> <span class="k">void</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span> <span class="c1">// (o)</span>
+</code></pre></div>            </div>
+          </li>
+          <li>
+            <p>strictNullChecks =&gt; true 상태에서 primitive type 사용하기</p>
+
+            <p>union 형태로 작성하면 사용이 가능하다.</p>
+            <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">union</span><span class="p">:</span> <span class="kr">string</span> <span class="o">|</span> <span class="kc">null</span> <span class="o">|</span> <span class="kc">undefined</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">str</span><span class="dl">'</span><span class="p">;</span> <span class="c1">// union 형태</span>
+</code></pre></div>            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="object"><strong>object</strong></h2>
+<hr />
+<p>우리가 흔히 아는 object와 typescript의 object는 약간 다르다.<br />
+typescript의 object는 primitive type이 아닌 것이다. 즉, primitive 타입을 사용할 수 없는 곳에는 object를 사용한다고 생각하면 된다.<br />
+(primitive type ⇒ number, string, boolean, bigint, symbol, null, or undefined)<br />
+단, null은 object로 사용 가능 (null 설명 참고)</p>
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">obj</span><span class="p">:</span> <span class="nx">object</span> <span class="o">=</span> <span class="p">{};</span>
+
+<span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Mark</span><span class="dl">'</span><span class="p">};</span>
+<span class="nx">obj</span> <span class="o">=</span> <span class="p">[{</span><span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Mark</span><span class="dl">'</span><span class="p">}];</span>
+<span class="nx">obj</span> <span class="o">=</span> <span class="mi">39</span><span class="p">;</span> <span class="c1">// Error</span>
+<span class="nx">obj</span> <span class="o">=</span> <span class="nx">Mark</span><span class="p">;</span> <span class="c1">// Error</span>
+<span class="nx">obj</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span> <span class="c1">// Error</span>
+<span class="nx">obj</span> <span class="o">=</span> <span class="mi">100</span><span class="nx">n</span><span class="p">;</span> <span class="c1">// Error</span>
+<span class="nx">obj</span> <span class="o">=</span> <span class="nc">Symbol</span><span class="p">();</span> <span class="c1">// Error</span>
+<span class="nx">obj</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span> <span class="c1">// Error</span>
+<span class="nx">obj</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span> <span class="c1">// Error</span>
+</code></pre></div></div>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">declare</span> <span class="kd">function</span> <span class="nf">create</span><span class="p">(</span><span class="nx">o</span><span class="p">:</span> <span class="nx">object</span> <span class="o">|</span> <span class="kc">null</span><span class="p">):</span> <span class="k">void</span><span class="p">;</span>
+<span class="c1">// primitive type을 넣으면 Error을 뱉어낸다.</span>
+
+<span class="nf">create</span><span class="p">({</span> <span class="na">prop</span><span class="p">:</span> <span class="mi">0</span><span class="p">});</span>
+<span class="nf">create</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+<span class="nf">create</span><span class="p">(</span><span class="mi">42</span><span class="p">);</span> <span class="c1">// Error</span>
+<span class="nf">crate</span><span class="p">(</span><span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// Error</span>
+<span class="nf">crate</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span> <span class="c1">// Error</span>
+<span class="nf">crate</span><span class="p">(</span><span class="kc">undefined</span><span class="p">);</span> <span class="c1">// Error</span>
+
+<span class="c1">// Object.create</span>
+<span class="nb">Object</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="nx">o</span><span class="p">);</span> <span class="c1">// Error</span>
+</code></pre></div></div>
+
+<ul>
+  <li>오브젝트 리터럴 (object literal)
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">person1</span> <span class="o">=</span> <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Mark</span><span class="dl">'</span><span class="p">,</span> <span class="na">age</span><span class="p">:</span> <span class="mi">39</span><span class="p">};</span>
+  
+<span class="c1">// person1 is not "object" type.</span>
+<span class="c1">// person1 is "{name: 'Mark', age: 39}" type.</span>
+</code></pre></div>    </div>
+  </li>
+  <li>전역개체 Object
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">person2</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nf">create</span><span class="p">({</span><span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Mark</span><span class="dl">'</span><span class="p">,</span> <span class="na">age</span><span class="p">:</span> <span class="mi">39</span><span class="p">});</span>
+  
+<span class="kd">const</span> <span class="nx">person3</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="mi">39</span><span class="p">)</span> <span class="c1">// 사용불가</span>
+</code></pre></div>    </div>
+    <p>Object라는 전역개체를 통해 .create를 하면 안에 들어있는 오브젝트 리터럴을 통해 객체를 만들어 낸다.</p>
+
+    <p>Object.create 함수 안에 object type의 형태를 넣어야 한다. 즉, primitive type이 아닌 것을 넣어야 한다. <br />
+따라서 해당 함수의 인자에는 object 타입이거나 null을 넣을 수 있다.</p>
+  </li>
+</ul>
+
+<h2 id="array"><strong>Array</strong></h2>
+<hr />
+<p>object의 일종이며, 같은 타입의 자료형을 모아둔 것을 의미한다.<br />
+주의할 점은, 배열 안의 요소들은 동일한 타입이어야 한다. 하나의 타입으로 묶을 수 없다면 array가 아닌 것이다.</p>
+<ul>
+  <li>array를 표현하는 두가지 방법
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 선호하는 방법</span>
+<span class="kd">let</span> <span class="nx">list</span><span class="p">:</span> <span class="kr">number</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+  
+<span class="kd">let</span> <span class="nx">list</span><span class="p">:</span> <span class="nb">Array</span><span class="o">&lt;</span><span class="kr">number</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>다른 타입의 요소들 사용하기</p>
+
+    <p>또는 ( | )을 사용하여 타입이 다른 요소들을 하나로 묶는다.<br />
+따라서, 각 요소들은 number이거나, string이다.<br />
+해당 방법은 요소들이 무슨 타입인지 정확히 모를때에도 사용할 수 있다.</p>
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">list</span><span class="p">:</span> <span class="p">(</span><span class="kr">number</span> <span class="o">|</span> <span class="kr">string</span><span class="p">)[]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="dl">"</span><span class="s2">4</span><span class="dl">"</span><span class="p">];</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>타입을 정확히 알고 있을 때 (tuple)</p>
+
+    <p>첫번째 타입이 무엇이고 두번째 타입이 무엇인지 정확히 알고 있을 때가 있다. 그럴때는 array가 아닌, tuple을 사용한다.</p>
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="mi">39</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Mark</span><span class="dl">"</span><span class="p">];</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="tuple"><strong>Tuple</strong></h2>
+<hr />
+<p>앞, 뒤로 다른 타입을 넣고 싶을 때, 그런데 해당 타입들이 오는 순서를 알고 있을 때 사용한다. 단, 항상 타입과 순서, 길이가 맞아야 한다.</p>
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">x</span><span class="p">:</span> <span class="p">[</span><span class="kr">string</span><span class="p">,</span> <span class="kr">number</span><span class="p">];</span>
+
+<span class="nx">x</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">hello</span><span class="dl">'</span><span class="p">,</span> <span class="mi">39</span><span class="p">];</span>
+
+<span class="nx">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">];</span> <span class="c1">// Error, 타입 안 맞음</span>
+<span class="nx">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="dl">'</span><span class="s1">anna</span><span class="dl">'</span><span class="p">];</span> <span class="c1">// Error, 순서 안 맞음</span>
+<span class="nx">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">world</span><span class="dl">'</span><span class="p">;</span> <span class="c1">// Error, 길이 안 맞음</span>
+</code></pre></div></div>
+
+<ul>
+  <li>구조분해할당(destructuring)을 해도 해당 타입이 정해져 있다.
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">person</span><span class="p">:</span> <span class="p">[</span><span class="kr">string</span><span class="p">,</span> <span class="kr">number</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">mark</span><span class="dl">"</span><span class="p">,</span> <span class="mi">39</span><span class="p">];</span>
+  
+<span class="kd">const</span> <span class="p">[</span><span class="nx">first</span><span class="p">,</span> <span class="nx">second</span><span class="p">]</span> <span class="o">=</span> <span class="nx">person</span><span class="p">;</span> 
+<span class="c1">// first = string, seconed = number</span>
+  
+<span class="kd">const</span> <span class="p">[</span><span class="nx">first</span><span class="p">,</span> <span class="nx">second</span><span class="p">,</span> <span class="nx">third</span><span class="p">]</span> <span class="o">=</span> <span class="nx">person</span><span class="p">;</span> <span class="c1">// Error, 길이 안 맞음</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#ts">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TS</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

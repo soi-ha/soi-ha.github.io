@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 UMC: 마켓컬리 클론코딩, 라이프사이클 &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">UMC: 마켓컬리 클론코딩, 라이프사이클</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">08 May 2023</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h2 id="useeffect를-사용하여-팝업창-띄우기"><strong>useEffect를 사용하여 팝업창 띄우기</strong></h2>
+
+<h3 id="팝업창-만들기-스타일"><strong>팝업창 만들기 (스타일)</strong></h3>
+
+<hr />
+
+<p>팝업창은 position을 fixed로 설정하여 스크롤을 해도 화면에 고정되도록 한다.</p>
+
+<p>z-index를 사용하여 화면의 최상단에 위치하도록 한다. (z-index는 position 값이 존재해야 적용된다. 단, position:static은 불가)</p>
+
+<p><img width="278" alt="스크린샷 2023-05-04 00 49 26" src="https://user-images.githubusercontent.com/77609591/236725855-07b6c95b-ee33-452c-9d28-a09c742ee926.png" /></p>
+
+<h3 id="팝업창-만들기-기능"><strong>팝업창 만들기 (기능)</strong></h3>
+
+<hr />
+
+<p>팝업창의 닫기와 오늘 하루 안 보기 기능을 만들기 위해서는 localStorage에 대해 알아야 한다.</p>
+
+<ul>
+  <li>
+    <p>localStorage</p>
+
+    <p>localStorage는 웹 스토리지 객체이다. 브라우저 내에서 키-값 형태로 저장할 수 있다.
+sessionStorage는 페이지를 새로고침하기 전까지의 정보를 저장하고, localStorage는 브라우저를 다시 실행해도 정보를 저장한다.</p>
+
+    <ul>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">setItem()</code></p>
+
+        <p>localStorage에 아이템을 추가할 때 사용한다. 즉, 데이터를 저장한다.</p>
+
+        <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">localStorage</span><span class="p">.</span><span class="nf">setItem</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">getItem()</code></p>
+
+        <p>localStorage의 아이템을 읽기 위해서 사용한다. 즉, 데이터를 불러온다.</p>
+
+        <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">localStorage</span><span class="p">.</span><span class="nf">getItem</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">removeItem()</code></p>
+
+        <p>localStorage에 있는 아이템을 삭제한다. 데이터를 골라서 삭제한다.</p>
+
+        <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">localStorage</span><span class="p">.</span><span class="nf">removeItem</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">clear()</code></p>
+
+        <p>localStorage에 있는 모든 데이터를 지운다.</p>
+
+        <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">localStorage</span><span class="p">.</span><span class="nf">clear</span><span class="p">();</span>
+</code></pre></div>        </div>
+
+        <blockquote>
+          <p><a href="https://hianna.tistory.com/697">[Javascript] localStorage 사용법 (읽기, 쓰기, 삭제, 키목록 등)</a><br />
+<a href="https://velog.io/@exoluse/React-15.-리액트에서-간단하게-로그인-구현해보자">[React] #15. 리액트에서 간단하게 로그인 구현해보자</a></p>
+        </blockquote>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>localStorage를 사용하여 브라우저를 다시 실행해도 정보를 저장하도록 한다. <code class="language-plaintext highlighter-rouge">localStorage.setItem</code>으로 데이터를 저장하는데, key는 homeVisited로 value는 팝업창을 띄운 시간에 24시를 더한 값(expires)이다.</p>
+
+<p><img width="565" alt="스크린샷 2023-05-04 01 39 37" src="https://user-images.githubusercontent.com/77609591/236725864-6bd2cc84-2426-44ed-b452-93e38625e7e4.png" /></p>
+
+<p><img width="976" alt="스크린샷 2023-05-04 01 38 52" src="https://user-images.githubusercontent.com/77609591/236725863-7b5a3314-b215-4fd9-b143-c7e4cb5817a1.png" /></p>
+
+<p>useState를 통해 state를 관리한다.<br />
+기본값은 false로 setShowMainPop(false)가 되면서 팝업창 노출이 없다.<br />
+만약, 기본 값을 true로 할 경우, ‘오늘 하루 안보기’를 클릭하여도 리렌더링을 하면 팝업창이 나타난다.</p>
+
+<p>HOME_VISITED 정수에 localStorage에서 homeVisited를 가져온다.</p>
+
+<p>useEffect를 사용하여 ‘오늘 하루 안보기’ 버튼을 클릭하면, 리렌더링을 하여도 팝업창이 뜨지 않도록 한다.</p>
+
+<p>today는 오늘의 시간(즉, 현재 시간)을 담은 정수이다.</p>
+
+<p>handleMainPop은 화살표 함수에서 실행한 값을 저장한다.<br />
+만약, localStorage에 저장된 시간이 존재(true)하고 현재 시간(today)이 localStorage의 시간보다 작다면(true) return을 한다.<br />
+이때, return은 useState에서 기본값으로 세팅한 false이다. 즉, setShowMainPop(false)가 되면서 팝업창 노출이 없다.</p>
+
+<p><em>localStorage의 시간: 이전에 팝업창이 떴을 때, ‘오늘 하루 보지 않기’를 클릭한 시간 + 24시간</em></p>
+
+<p>다른 조건으로는, 만약 localStorage에 저장된 시간이 없거나(false) localStorage에 저장된 시간이 현재 시간(today)보다 작다면 setShowMainPop(true)를 실행하여 팝업창이 노출된다.</p>
+
+<p>window.setTimeout에 실행할 함수는 handleMainPop이며 지연 시간은 0.1초이다. 0.1초 후에 해당 함수를 실행하도록 한다.</p>
+
+<p><em>setTimeout()은 코드를 바로 실행하지 않고 일정 시간을 기다린 후에 실행할 때 사용한다. 첫번째 인자는 실행할 코드를 담은 함수, 두번째 인자는 지연 시간(ms)</em></p>
+
+<blockquote>
+  <p>❤️‍🔥 <strong>한 줄 요약</strong><br />
+setShowMainPop(false) → 팝업창 노출 X<br />
+setShowMainPop(true) → 팝업창 노출 O<br />
+localStorage를 통해 ‘오늘 하루 안 보기’를 클릭한 시간 저장</p>
+</blockquote>
+
+<blockquote>
+  <p>참고<br />
+<a href="https://jinist.tistory.com/76">[React] 오늘 하루 안보기/ 24시간 동안 안보기 팝업 구현</a><br />
+<a href="https://www.daleseo.com/js-timer/">자바스크립트의 setTimeout()과 setInterval() 함수</a><br />
+<a href="https://darrengwon.tistory.com/1100">React ‘n일 동안 보지 않기’ 팝업 만들기</a></p>
+</blockquote>
+
+<h3 id="종합-소감"><strong>종합 소감</strong></h3>
+
+<p>마켓컬리 클론코딩에 어떤 라이프사이클을 적용할 지 고민을 많이 했다.<br />
+그래서 라이프사이클을 통해 팝업창을 띄우기로 했다.
+사실 직접 만들어서 해보려고 했지만… 나의 능력 부족으로 인해 ㅎ.. 다른 분의 코드를 참고하여 작성하였다.
+대신의 해당 코드를 면밀히 이해하려고 했다. 그래서 내가 작성한 코드는 아니지만 어느정도 나의 지식으로 습득할 수 있었다.</p>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#umc">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">UMC</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

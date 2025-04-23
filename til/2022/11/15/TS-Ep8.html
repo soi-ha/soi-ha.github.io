@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 TypeScript: TypeScript Compiler Ep.2 compileOptions &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">TypeScript: TypeScript Compiler Ep.2 compileOptions</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">15 Nov 2022</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h2 id="compileoptions---typeroots-types"><strong>compileOptions - typeRoots, types</strong></h2>
+<hr />
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"typeRoots"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+	</span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Specify multiple folders that act like `./node_modules/@types`."</span><span class="p">,</span><span class="w">
+	</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"array"</span><span class="p">,</span><span class="w">
+	</span><span class="nl">"uniqueItems"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+	</span><span class="nl">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+	</span><span class="p">},</span><span class="w">
+	</span><span class="nl">"markdownDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Specify multiple folders that act like `./node_modules/@types`."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="nl">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+	</span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Specify type package names to be included without being referenced in a source file."</span><span class="p">,</span><span class="w">
+	</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"array"</span><span class="p">,</span><span class="w">
+	</span><span class="nl">"uniqueItems"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+	</span><span class="nl">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+	</span><span class="p">},</span><span class="w">
+	</span><span class="nl">"markdownDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Specify type package names to be included without being referenced in a source file."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p><strong>@types</strong></p>
+<ul>
+  <li>TypeScript 2.0부터 사용 가능해진 내장 type definition 시스템이다.<br />
+이전에는 내장이 아닌 서드파티 type definition이었다. 이제는 내장으로 통합.</li>
+  <li>아무 설정을 하지 않으면
+    <ul>
+      <li>node_modules/@types 라는 모든 경로를 찾아서 사용한다.</li>
+    </ul>
+  </li>
+  <li>typeRoots를 사용하면
+    <ul>
+      <li>배열 안에 들어있는 경로들 아래에서만 가져온다.
+  나는 node_modules 안의 @types 도 쓰겠지만 내 프로젝트 안의 @types도 쓸거라면 typeRoots를 지정해 주면 편하게 사용할 수 있다.</li>
+    </ul>
+  </li>
+  <li>types를 사용하면
+    <ul>
+      <li>배열 안의 모듈 혹은 ./node_modules/@types/ 안의 모듈 이름에서 찾아온다.</li>
+      <li>빈 배열을 넣는다는 건 이 시스템을 이용하지 않겠다는 것이다.</li>
+    </ul>
+  </li>
+  <li>typeRoots 와 types를 같이 사용하지 않는다.</li>
+</ul>
+
+<h2 id="compileoptions---target-과-lib"><strong>compileOptions - target 과 lib</strong></h2>
+<hr />
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"target"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+	</span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Set the JavaScript language version for emitted JavaScript and include compatible library declarations."</span><span class="p">,</span><span class="w">
+	</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+	</span><span class="nl">"default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ES3"</span><span class="p">,</span><span class="w">
+	</span><span class="nl">"anyOf"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+		</span><span class="p">{</span><span class="w">
+			</span><span class="nl">"enum"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+				</span><span class="s2">"ES3"</span><span class="p">,</span><span class="w">
+				</span><span class="s2">"ES5"</span><span class="p">,</span><span class="w">
+				</span><span class="s2">"ES6"</span><span class="p">,</span><span class="w">
+				</span><span class="s2">"ES2015"</span><span class="p">,</span><span class="w">
+				</span><span class="s2">"ES2016"</span><span class="p">,</span><span class="w">
+				</span><span class="s2">"ES2017"</span><span class="p">,</span><span class="w">
+				</span><span class="s2">"ES2018"</span><span class="p">,</span><span class="w">
+				</span><span class="s2">"ES2019"</span><span class="p">,</span><span class="w">
+				</span><span class="s2">"ES2020"</span><span class="p">,</span><span class="w">
+				</span><span class="s2">"ES2021"</span><span class="p">,</span><span class="w">
+				</span><span class="s2">"ES2022"</span><span class="p">,</span><span class="w">
+				</span><span class="s2">"ESNext"</span><span class="w">
+			</span><span class="p">]</span><span class="w">
+		</span><span class="p">},</span><span class="w">
+		</span><span class="p">{</span><span class="w">
+			</span><span class="nl">"pattern"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^([Ee][Ss]([356]|(20(1[56789]|2[012]))|[Nn][Ee][Xx][Tt]))$"</span><span class="w">
+		</span><span class="p">}</span><span class="w">
+	</span><span class="p">],</span><span class="w">
+	</span><span class="nl">"markdownDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Set the JavaScript language version for emitted JavaScript and include compatible library declarations."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="nl">"lib"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+	</span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Specify a set of bundled library declaration files that describe the target runtime environment."</span><span class="p">,</span><span class="w">
+	</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"array"</span><span class="p">,</span><span class="w">
+	</span><span class="nl">"uniqueItems"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+	</span><span class="nl">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+		</span><span class="nl">"anyOf"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+			</span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+		</span><span class="p">]</span><span class="w">
+	</span><span class="p">},</span><span class="w">
+	</span><span class="nl">"markdownDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Specify a set of bundled library declaration files that describe the target runtime environment."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p><strong>target</strong></p>
+<ul>
+  <li>빌드의 결과물을 어떤 버전으로 할 것인지 설정한다.</li>
+  <li>지정은 안하면 es3이다.</li>
+</ul>
+
+<p><strong>lib</strong></p>
+<ul>
+  <li>기본 type definition 라이브러리를 어떤 것을 사용할 것인지 결정한다.</li>
+  <li>lib를 지정하지 않을 때, (target에 따라 자동으로 설정됨)
+    <ul>
+      <li>target이 ‘es3’이고, default로 lib.d.ts 를 사용한다.</li>
+      <li>target이 ‘es5’이면, default로 dom, es5, scripthost 를 사용한다.</li>
+      <li>target이 ‘es6’이면, default로 dom, es6, dom.iterable, scripthost 를 사용한다.</li>
+    </ul>
+  </li>
+  <li>lib를 지정하면 그 lib 배열로만 라이브러리를 사용한다.
+    <ul>
+      <li>빈 [ ] (배열) ⇒ error! ‘no definition found ~~’</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="compileoptions---outdir-outfile-rootdir"><strong>compileOptions - outDir, outFile, rootDir</strong></h2>
+<hr />
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"outFile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+	</span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Specify a file that bundles all outputs into one JavaScript file. If `declaration` is true, also designates a file that bundles all .d.ts output."</span><span class="p">,</span><span class="w">
+	</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+	</span><span class="nl">"markdownDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Specify a file that bundles all outputs into one JavaScript file. If `declaration` is true, also designates a file that bundles all .d.ts output."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="nl">"outDir"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+	</span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Specify an output folder for all emitted files."</span><span class="p">,</span><span class="w">
+	</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+	</span><span class="nl">"markdownDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Specify an output folder for all emitted files."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="nl">"rootDirs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+	</span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow multiple folders to be treated as one when resolving modules."</span><span class="p">,</span><span class="w">
+	</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"array"</span><span class="p">,</span><span class="w">
+	</span><span class="nl">"uniqueItems"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+	</span><span class="nl">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+		</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+	</span><span class="p">},</span><span class="w">
+	</span><span class="nl">"markdownDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow multiple folders to be treated as one when resolving modules."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p><strong>outFile</strong></p>
+
+<p>단일 파일로 합쳐서 출력한다.</p>
+
+<p><strong>outDir</strong></p>
+
+<p>해당 디렉토리로 결과 구조를 보낸다.</p>
+
+<p><strong>rootDir</strong></p>
+
+<p>입력 파일의 루트 디렉토리 설정으로, –outDir로 결과 디렉토리 구조를 조작할 때 사용됩니다.</p>
+
+<ul>
+  <li>
+    <p>rootDir 설정했을 때</p>
+
+    <p>파일 구조 설명</p>
+    <ul>
+      <li>src/test.ts</li>
+      <li>src/hello.ts</li>
+    </ul>
+
+    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"rootDir"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./src"</span><span class="w">
+</span><span class="nl">"outDir"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./dist"</span><span class="w">
+</span></code></pre></div>    </div>
+
+    <p>컴파일 시(npx tsc), dist 폴더가 생성되면 해당 폴더 안에 test.js와 hello.js 파일이 생성된다.</p>
+  </li>
+  <li>
+    <p>rootDir 설정하지 않을 때</p>
+
+    <p>파일 구조 설명</p>
+
+    <ul>
+      <li>src/test.ts</li>
+      <li>./hello.ts</li>
+    </ul>
+
+    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">//</span><span class="w"> </span><span class="nl">"rootDir"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./src"</span><span class="w">
+</span><span class="nl">"outDir"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./dist"</span><span class="w">
+</span></code></pre></div>    </div>
+
+    <p>컴파일 시, dist 폴더가 생성되면서 해당 폴더 안에 src폴더가 만들어진다.</p>
+
+    <p>컴파일 이후, 폴더 구조 설명</p>
+    <ul>
+      <li>dist/src/tset.js</li>
+      <li>dist/hello.js</li>
+    </ul>
+
+    <p>rootDir을 따로 설정하지 않았기 때문에 루트(시작점)이 해당 폴더(compilation-context, 최상위)가 된 것이다. rootDir을 설정했을 때에는 해당 설정이 루트(시작점)이 된다.</p>
+  </li>
+</ul>
+
+<h2 id="compileoptions---strict"><strong>compileOptions - strict</strong></h2>
+<hr />
+<p>앞으로 작업할때는 strict를 true로 설정하고 작업하는 것이 기본이다.</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"strict"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+	</span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enable all strict type checking options."</span><span class="p">,</span><span class="w">
+	</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span><span class="p">,</span><span class="w">
+	</span><span class="nl">"default"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+	</span><span class="nl">"markdownDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enable all strict type checking options."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>모든 <strong>strict type checking option을 모두 키는 것</strong></p>
+<ul>
+  <li>—nolmplicitAny</li>
+  <li>—nolmplicitThis</li>
+  <li>—strictNullChecks</li>
+  <li>—strictFunctionTypes</li>
+  <li>—strictPropertyInitialization</li>
+  <li>—strictBindCallApply</li>
+  <li>—alwaysStrict</li>
+</ul>
+
+<p><br /></p>
+
+<ul>
+  <li>
+    <p><strong>–nolmplicitAny</strong></p>
+
+    <p>명시적이지 않게 any 타입을 사용하여 표현식과 선언에 사용하면 에러를 발생시킨다. (직접으로 any로 표현하지 않았는데 any로 추론이 되는 것)</p>
+
+    <ul>
+      <li>타입스크립트가 추론을 실패한 경우(추론 결과가 어떤 것이든 들어올 수 있는 상황) any가 맞으면 any라고 지정하라는 의미를 가지고 있다.</li>
+      <li>아무것도 쓰지 않으면 에러를 발생시킨다.</li>
+      <li>해당 오류를 해결하면, 타입 추론이 되었으므로 any라고 지정되어 있지 않은 경우는 any가 아닌 것이다.</li>
+    </ul>
+
+    <p>nolmplicitAny를 사용할 때, 인덱스 객체에 인덱스 signature가 없는 경우 오류가 발생하는데 이를 예외처리하는 옵션이 있다.</p>
+
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">obj</span><span class="p">[</span><span class="dl">'</span><span class="s1">foo</span><span class="dl">'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">// Error: Index signature of ~~</span>
+</code></pre></div>    </div>
+    <p>obj[’foo’] 로 사용할 때, 인덱스 객체라 판단하여 타입에 인덱스 시그니처가 없는 경우, 에러를 발생시킨다.<br />
+이때, suppressImplictitAntIndexErrors 옵션을 사용하면 해당 경우는 예외로 간주하여 에러를 발생시키지 않는다.</p>
+  </li>
+  <li>
+    <p><strong>–noImplicitThis</strong></p>
+
+    <p>명시적이지 않게 any 타입을 사용하여, this 표현식에 사용하면 에러를 발생시킨다.<br />
+(this에 아무거나 들어올 수 없게 들어올 수 있는 형태를 제한해주는 것이 좋다.)</p>
+    <ul>
+      <li>첫번째 매개변수 자리에 this를 놓고, this에 대한 타입을 어떤 것이라도 표현하지 않으면 nolmplicitAny가 오류를 발생시킨다.</li>
+      <li>JavaScript 에서는 매개변수에 this를 넣으면 이미 예약된 키워드라 SyntaxError를 발생시킨다.</li>
+      <li>call / apply / bind와 같이 this를 대체하여 함수 콜 용도로도 쓰인다.</li>
+      <li>그래서 this를 any로 명시적으로 지정하는 것이 합리적이다. (단, 구체적인 사용처가 있는 경우 타입을 표현하기도 한다.)</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>–strictNullChecks</strong></p>
+
+    <p>strictNullChecks에서는 null 및 undefined 값이 모든 유형의 도메인에 속하지 않으며, 그 자신을 타입으로 가지거나 any일 경우에만 할당이 가능하다.<br />
+즉, 해당 옵션을 키지 않으면 모든 타입에 null과 undefined가 포함된 상태로 사용하게 되는 것이다.<br />
+한가지 예외는 undeifined에 void 할당이 가능하다.</p>
+
+    <ul>
+      <li>strictNullChecks를 적용하지 않으면,
+        <ul>
+          <li>모든 타입은 null, undefined 값을 가질 수 있다.</li>
+          <li>string으로 타입을 지정해도 null 혹은 undefined 값을 할당할 수 있다. → 엄청 큰 오류</li>
+        </ul>
+      </li>
+      <li>strictNullChecks 적용하면,
+        <ul>
+          <li>모든 타입은 null, undefined 값을 가질 수 없고, 가지려면 union type을 이용해서 직접 명시 해야 한다.</li>
+          <li>any 타입은 null과 undifined를 가진다. 예외적으로 void 타입의 경우 undefined를 가진다.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>–strictFunctionTypes</strong></p>
+
+    <p>함수 타입에 대한 bivariant 매개변수 검사를 비활성화한다.</p>
+
+    <p><code class="language-plaintext highlighter-rouge">( Animal → Greyhound ) &lt;: (Dog → Dog)</code></p>
+    <ul>
+      <li>반환 타입은 공변적(covariant)</li>
+      <li>인자 타입은 반공변적(contravariant)</li>
+      <li>타입스크립트에서 인자 타입은 공변적이면서, 반공변적이다 → 문제!</li>
+      <li>해당 문제를 해결하는 옵션이 strictFunctionTypes이다.</li>
+      <li>옵션을 키면, 에러가 나지 않던 걸 나게 한다.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>–strictPropertyInitialization</strong></p>
+
+    <p>정의되지 않은 클래스의 속성이 생성자에게 초기화되었는지 확인한다.<br />
+해당 옵션을 사용하려면 —strictNullChecks를 사용하도록 설정해야 한다.</p>
+    <ul>
+      <li>constructor에서 초기값을 할당한 경우 ⇒ 정상</li>
+      <li>constructor에서 안하는 경우
+        <ul>
+          <li>보통 다른 함수로 이니셜라이즈 하는 경우 (async 함수)</li>
+          <li>constructor에는 async를 사용할 수 없다.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>–strictBindCallApply</strong></p>
+
+    <p>bind, call, apply에 대한 더 엄격한 검사 수행을 한다.</p>
+    <ul>
+      <li>Function의 내장 함수인 bind, call, apply를 사용할 때 엄격하게 체크하도록 하는 옵션이다.</li>
+      <li>bind는 해당 함수안에서 사용할 this와 인자를 설정해주는 역할을 하고, call과 apply는 this와 인자를 설정한 후 실행까지 한다.</li>
+      <li>call과 apply는 인자를 설정하는 방식에서 차이점이 있다.<br />
+call은 함수의 인자를 <strong>여러 인자의 나열</strong>로 넣어서 사용하고, apply는 <strong>모든 인자를 배열 하나</strong>로 넣어서 사용한다.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>–alwaysStrict</strong></p>
+
+    <p>각 소스파일에 대해 자바스크립트의 strict mode로 코드를 분석하고 “엄격하게 사용”을 해제한다.<br />
+그렇게 하면 syntax에러가 ts error로 나오고, 컴파일된 자바스크립트 파일에 “use strict”가 추가된다.</p>
+  </li>
+</ul>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#ts">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TS</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

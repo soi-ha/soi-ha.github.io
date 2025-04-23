@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 UNIVE.US: React, 이미지 미리보기 구현(FileReader API) &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">UNIVE.US: React, 이미지 미리보기 구현(FileReader API)</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">30 Jun 2023</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/project.html">
+          Project
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <p>이번 프로젝트에서 프로필 관리의 기능 중에 프로필 이미지를 입력하면 해당 이미지가 어떻게 적용되는지 미리보는 기능이 필요했다. 해당 기능은 글 가장 하단의 블로그 내용을 참고하여 구현하였다.</p>
+
+<h3 id="input-typefile"><strong>input type=’file’</strong></h3>
+
+<hr />
+
+<p>일단 이미지 파일을 받기 위해서 input 태그의 type을 file로 하여 이미지를 받는다.<br />
+이때, label도 같이 작성해주는데 input 태그의 기본 스타일을 안보이게 하고 내가 원하는 스타일의 버튼을 label에 적용해주기 위해서이다. 그렇게에 label의 htmlFor의 값과 input의 id 값을 동일하게 작성해줘야 한다. 그래야 label을 클릭했을 때, input 태그를 누르는 것과 동일한 액션을 취한다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;label</span> <span class="na">htmlFor=</span><span class="s">"mypage-profile-img"</span><span class="nt">&gt;</span>
+  프로필 수정
+<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;input</span>
+  <span class="na">type=</span><span class="s">"file"</span>
+  <span class="na">accept=</span><span class="s">"image/*"</span>
+  <span class="na">id=</span><span class="s">"mypage-profile-img"</span>
+</code></pre></div></div>
+
+<p>input 태그의 속성으로 accept을 작성해준다. accept 속성은 input 태그의 type이 file인 경우에만 작성이 가능하며, 해당 속성은 파일의 타입을 명시한다.<br />
+위의 코드에서 작성한 accept의 값인 <code class="language-plaintext highlighter-rouge">image/*</code>는 모든 타입의 이미지 파일의 업로드가 허용됨을 뜻한다.</p>
+
+<h3 id="스타일-수정"><strong>스타일 수정</strong></h3>
+
+<hr />
+
+<p>input 태그를 보이지 않게 하고, label에 원하는 스타일을 적용시킨다.<br />
+input 태그에 <code class="language-plaintext highlighter-rouge">display:none;</code> 를 작성하여 보이지 않게 하였다.</p>
+
+<ul>
+  <li>
+    <p>프로필 관리 (이미지 업로드 전)</p>
+
+    <p><img width="258" alt="이미지 미리보기 스타일" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/1523f156-395c-4b5e-af29-648a06500cca" /></p>
+  </li>
+</ul>
+
+<h3 id="미리보기-기능-구현"><strong>미리보기 기능 구현</strong></h3>
+
+<hr />
+
+<h4 id="이미지-업로드-input-태그에-넣을-onchange"><strong>이미지 업로드 input 태그에 넣을 onChange</strong></h4>
+
+<p><code class="language-plaintext highlighter-rouge">saveImgFile</code> 함수는 FileReader API를 사용하여 이미지를 업로드하는 input 태그의 onChange 이벤트로 넣을 함수이다.<br />
+이때, <code class="language-plaintext highlighter-rouge">readAsDataURL</code>은 파일을 URL로 만들어준다(FileReader API).</p>
+
+<p><em><strong>FileReader API?</strong></em><br />
+<em>웹 API로, 비동기적으로 데이터를 읽기 위하여 File(읽을 파일을 가리킴) 혹은 Blob 객체를 이용해 파일의 내용을 읽고 사용자의 컴퓨터에 저장하는 것을 가능하게 함</em><br />
+<em>즉, 클라이언트단에서 file이랑 blob 사용할 수 있게 해주는 것</em></p>
+
+<p><em>onChange?</em><br />
+<em>input 태그의 포커스에서 벗어났을 때 (즉, 입력이 종료했을 때) 발생하는 이벤트</em></p>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">saveImgFile</code></p>
+
+    <p>imgRef에서 가장 최근의 파일을 불러와 file에 저장<br />
+reader은 FileReader 객체 생성<br />
+reader에 readAsDataURL 함수를 통해 file을 URL로 반환(즉, 해당 이미지 파일의 링크가 생성됨)<br />
+읽기 성공, 실패 여부 상관없이 동작이 끝났을때 마다(reader.onloadend), 파일의 내용을 반환(reader.result)</p>
+  </li>
+</ul>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">useState</span><span class="p">,</span> <span class="nx">useRef</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">defaultImg</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">default 이미지 경로</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="p">[</span><span class="nx">imgFile</span><span class="p">,</span> <span class="nx">setImgFile</span><span class="p">]</span> <span class="o">=</span> <span class="nf">useState</span><span class="p">(</span><span class="dl">''</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">imgRef</span> <span class="o">=</span> <span class="nf">useRef</span><span class="p">();</span>
+
+<span class="p">...</span>
+
+<span class="c1">// 이미지 업로드 input 태그에 넣을 onChange</span>
+<span class="kd">const</span> <span class="nx">saveImgFile</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">file</span> <span class="o">=</span> <span class="nx">imgRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">files</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+  <span class="kd">const</span> <span class="nx">reader</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileReader</span><span class="p">();</span>
+  <span class="nx">reader</span><span class="p">.</span><span class="nf">readAsDataURL</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
+  <span class="nx">reader</span><span class="p">.</span><span class="nx">onloadend</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nf">setImgFile</span><span class="p">(</span><span class="nx">reader</span><span class="p">.</span><span class="nx">result</span><span class="p">);</span>
+  <span class="p">};</span>
+<span class="p">};</span>
+
+<span class="p">...</span>
+
+<span class="c1">// 이미지 미리보기</span>
+<span class="o">&lt;</span><span class="nx">img</span>
+  <span class="nx">src</span><span class="o">=</span><span class="p">{</span><span class="nx">imgFile</span> <span class="p">?</span> <span class="nx">imgFile</span> <span class="p">:</span> <span class="nx">defaultImg</span><span class="p">}</span>
+  <span class="nx">alt</span><span class="o">=</span><span class="dl">"</span><span class="s2">프로필 이미지</span><span class="dl">"</span>
+<span class="o">/&gt;</span>
+
+<span class="p">...</span>
+
+<span class="c1">// 이미지 업로드</span>
+<span class="o">&lt;</span><span class="nx">label</span> <span class="nx">htmlFor</span><span class="o">=</span><span class="dl">"</span><span class="s2">mypage-profile-img</span><span class="dl">"</span><span class="o">&gt;</span>
+  <span class="nx">프로필</span> <span class="nx">수정</span>
+<span class="o">&lt;</span><span class="sr">/label</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="nx">input</span>
+  <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">file</span><span class="dl">"</span>
+  <span class="nx">accept</span><span class="o">=</span><span class="dl">"</span><span class="s2">image/*</span><span class="dl">"</span>
+  <span class="nx">id</span><span class="o">=</span><span class="dl">"</span><span class="s2">mypage-profile-img</span><span class="dl">"</span>
+  <span class="nx">onChange</span><span class="o">=</span><span class="dl">"</span><span class="s2">{saveImgFile}</span><span class="dl">"</span>
+  <span class="nx">ref</span><span class="o">=</span><span class="dl">"</span><span class="s2">{imgRef}</span><span class="dl">"</span>
+<span class="o">/&gt;</span>
+</code></pre></div></div>
+
+<h4 id="이미지-미리보기"><strong>이미지 미리보기</strong></h4>
+
+<p>img 태그의 src 속성 값으로 삼항연산자를 사용했다. imgFile의 값이 true일 경우 <code class="language-plaintext highlighter-rouge">imgFile</code>을 src 속성의 값으로 한다. 그러나 false일 경우에는 <code class="language-plaintext highlighter-rouge">defaultImg</code>를 src 속성의 값으로 한다.<br />
+이 말인 즉, 이미지를 업로드 하면 해당 이미지를 보여주고 이미지를 업로드 하지 않았다면 기본 이미지(defaultImg)를 보여준다는 뜻이다.</p>
+
+<h4 id="이미지-업로드"><strong>이미지 업로드</strong></h4>
+
+<p>input 태그에 위의 코드에 새로운 속성을 더 추가를 해준다. onChange 속성을 추가하여 input 태그의 입력이 종료했을 경우 <code class="language-plaintext highlighter-rouge">saveImgFile</code> 함수를 실행한다. ref 속성의 값은 <code class="language-plaintext highlighter-rouge">imgRef</code> 를 작성한다.</p>
+
+<ul>
+  <li>
+    <p>이미지 업로드</p>
+
+    <p><img width="929" alt="이미지 파일 선택" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/a6fe4bc4-7f78-49b3-a3a4-cec09bf0d316" /></p>
+  </li>
+  <li>
+    <p>이미지 미리보기 구현 완료</p>
+
+    <p><img width="277" alt="이미지 미리보기 구현 완료" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/d523bb06-9d7b-4092-b6ab-82ab716bbefe" /></p>
+  </li>
+</ul>
+
+<h3 id="마치며"><strong>마치며</strong></h3>
+
+<hr />
+
+<p>다른 분의 코드를 참고하여 구현하긴 했지만, 정상적으로 기능이 작동하도록 만들어서 뿌듯했다.<br />
+구현을 완료하고 이미지가 이쁘게 잘 들어가는 모습을 보니 매우 기쁘달까..! 이렇게 새로운 것을 알게되어서 재밌다.<br />
+개발 공부는 힘들고 어렵지만 완벽히 습득을 하고 나면 정말 무궁무진하게 활용할 수 있어서 질리지 않고 재밌는 것 같다.</p>
+
+<blockquote>
+  <p>참고<br />
+<a href="https://velog.io/@hye_rin/React-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%97%85%EB%A1%9C%EB%93%9C%ED%95%98%EA%B3%A0-%EB%AF%B8%EB%A6%AC%EB%B3%B4%EA%B8%B0">React : 이미지 업로드하고 미리보기</a><br />
+<a href="https://darrengwon.tistory.com/1256">FileReader로 브라우저에서 file 다루기</a><br />
+<a href="https://www.habonyphp.com/2019/03/js-api-filereader.html">파일API : FileReader() 객체</a></p>
+</blockquote>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#unive-us">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">UNIVE.US</span>
+    </a>
+  
+    
+    <a href="/tags.html#react">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">React</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

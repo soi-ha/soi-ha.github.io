@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie) &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">28 Feb 2025</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h2 id="-session-storage">📄 Session Storage</h2>
+
+<p><strong>Session Storage(세션 스토리지)</strong> 는 탭(세션) 단위로 데이터를 저장하는 저장소이다. 브라우저 탭을 닫으면 데이터가 사라진다.</p>
+
+<ul>
+  <li>데이터 지속성: <strong>브라우저 탭을 닫으면 삭제.</strong> (세션 동안만 유지)</li>
+  <li>저장 용량: 약 5MB</li>
+  <li>도메인 단위 저장: 같은 도메인 내에서만 접근 가능하지만, <strong>탭별로 구분됨.</strong></li>
+  <li>보안: 서버와 자동으로 주고받지 않음.</li>
+  <li>사용 예시: 임시 로그인 정보, 폼 데이터 임시 저장 (탭을 닫으면 사라지는 데이터)</li>
+</ul>
+
+<h3 id="️-예제-코드">⚒️ 예제 코드</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 데이터 저장</span>
+<span class="nx">sessionStorage</span><span class="p">.</span><span class="nf">setItem</span><span class="p">(</span><span class="dl">'</span><span class="s1">sessionKey</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">123456</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="c1">// 데이터 가져오기</span>
+<span class="kd">const</span> <span class="nx">sessionData</span> <span class="o">=</span> <span class="nx">sessionStorage</span><span class="p">.</span><span class="nf">getItem</span><span class="p">(</span><span class="dl">'</span><span class="s1">sessionKey</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">sessionData</span><span class="p">);</span> <span class="c1">// "123456"</span>
+
+<span class="c1">// 데이터 삭제</span>
+<span class="nx">sessionStorage</span><span class="p">.</span><span class="nf">removeItem</span><span class="p">(</span><span class="dl">'</span><span class="s1">sessionKey</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="c1">// 전체 삭제</span>
+<span class="nx">sessionStorage</span><span class="p">.</span><span class="nf">clear</span><span class="p">();</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-local-storage">🏠 Local Storage</h2>
+
+<p><strong>Local Storage(로컬 스토리지)</strong> 는 브라우저에 데이터를 영구적으로 저장하는 저장소이다. 사용자가 브라우저를 닫고 다시 열어도 데이터가 유지된다.</p>
+
+<ul>
+  <li>데이터 지속성: 브라우저를 닫아도 유지. (영구 저장)</li>
+  <li>저장 용량: 약 5MB</li>
+  <li>도메인 단위 저장: 같은 도메인 내에서는 모든 페이지에서 접근 가능, <strong>탭 별로 공유 가능.</strong></li>
+  <li>보안: 서버와 자동으로 주고받지 않음. → 보안이 비교적 높음</li>
+  <li>사용 예시: 사용자의 다크 모드 설정, 자동 로그인 유지</li>
+</ul>
+
+<h3 id="️-예제-코드-1">⚒️ 예제 코드</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 데이터 저장</span>
+<span class="nx">localStorage</span><span class="p">.</span><span class="nf">setItem</span><span class="p">(</span><span class="dl">'</span><span class="s1">username</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">soha</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="c1">// 데이터 가져오기</span>
+<span class="kd">const</span> <span class="nx">username</span> <span class="o">=</span> <span class="nx">localStorage</span><span class="p">.</span><span class="nf">getItem</span><span class="p">(</span><span class="dl">'</span><span class="s1">username</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">username</span><span class="p">);</span> <span class="c1">// "soha"</span>
+
+<span class="c1">// 데이터 삭제</span>
+<span class="nx">localStorage</span><span class="p">.</span><span class="nf">removeItem</span><span class="p">(</span><span class="dl">'</span><span class="s1">username</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="c1">// 전체 삭제</span>
+<span class="nx">localStorage</span><span class="p">.</span><span class="nf">clear</span><span class="p">();</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-cookie">🍪 Cookie</h2>
+
+<p><strong>Cookie(쿠키)</strong> 는 작은 데이터를 클라이언트에 저장하고 서버와 자동으로 주고받을 수 있는 저장소이다. 주로 사용자 인증과 세션 관리를 위해 사용된다.</p>
+
+<ul>
+  <li>데이터 지속성: 유효기간 설정 가능. (기본적으로 브라우저 종료 시 삭제)</li>
+  <li>저장 용량: 약 4KB (가장 작음)</li>
+  <li>도메인 단위 저장: 특정 도메인 및 경로에서만 접근 가능, <strong>탭 별로 공유 가능.</strong></li>
+  <li>보안: 기본적으로 HTTP 요청마다 서버와 자동으로 주고받음. → 보안 설정이 중요함 (<code class="language-plaintext highlighter-rouge">Secure</code>, <code class="language-plaintext highlighter-rouge">HttpOnly</code>, <code class="language-plaintext highlighter-rouge">SameSite</code> 등 옵션 활용)</li>
+  <li>사용 예시: 세션 유지, 사용자 인증 (JWT 토큰), 방문 기록</li>
+</ul>
+
+<h3 id="️-예제-코드-프론트엔드에서-쿠키-저장">⚒️ 예제 코드 (프론트엔드에서 쿠키 저장)</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 쿠키 저장 (expires로 유효기간 설정 가능)</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">username=soha; expires=Fri, 31 Dec 2025 23:59:59 GMT; path=/</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="c1">// 쿠키 가져오기</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span><span class="p">);</span> <span class="c1">// "username=soha"</span>
+
+<span class="c1">// 쿠키 삭제 (유효기간을 과거로 설정)</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">username=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/</span><span class="dl">'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>이 쿠키는 <code class="language-plaintext highlighter-rouge">example.com(현재 실행한 도메인)</code> 내 모든 페이지에서 접근 가능하다. 다른 탭에서 <code class="language-plaintext highlighter-rouge">document.cookie</code>를 실행해도 같은 <code class="language-plaintext highlighter-rouge">username=soha</code> 값을 얻을 수 있다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">expires(유효 일자)</code>나 <code class="language-plaintext highlighter-rouge">max-age(만료 기간)</code> 옵션이 지정되어있지 않으면 브라우저가 닫힐 때 쿠키도 함께 삭제된다. 이런 쿠키를 <strong>세션 쿠키(session cookie)</strong> 라고 한다.</p>
+
+<p>⛔️ <strong>도메인 제한 (domain 속성)</strong></p>
+
+<ul>
+  <li>
+    <p><strong>서브 도메인까지 공유하기</strong></p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">user=soha; domain=example.com</span><span class="dl">'</span><span class="p">;</span>
+</code></pre></div>    </div>
+
+    <p><code class="language-plaintext highlighter-rouge">example.com</code>뿐만 아니라 <code class="language-plaintext highlighter-rouge">sub.example.com</code>에서도 이 쿠키를 사용할 수 있다.</p>
+  </li>
+  <li>
+    <p><strong>서브도메인에서는 쿠키를 못 쓰게 하기</strong></p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">user=soha; domain=example.com</span><span class="dl">'</span><span class="p">;</span>
+<span class="c1">// 혹은</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">user=soha;</span><span class="dl">'</span><span class="p">;</span> <span class="c1">// 실행한 도메인(example.com)에서만 사용 가능</span>
+</code></pre></div>    </div>
+
+    <p><code class="language-plaintext highlighter-rouge">example.com</code>에서만 쿠키를 사용할 수 있고, <code class="language-plaintext highlighter-rouge">sub.example.com</code>에서는 사용할 수 없다.</p>
+  </li>
+</ul>
+
+<p>⛔️ <strong>경로 제한 (path 속성)</strong></p>
+
+<ul>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">/admin</code> 경로에서만 쿠키 사용하기</strong></p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">role=admin; path=/admin</span><span class="dl">'</span><span class="p">;</span>
+</code></pre></div>    </div>
+
+    <p>이 쿠키는 <code class="language-plaintext highlighter-rouge">https://example.com/admin</code> 페이지에서만 접근 가능하고,
+<code class="language-plaintext highlighter-rouge">https://example.com/user</code>에서는 <code class="language-plaintext highlighter-rouge">document.cookie</code>로 가져올 수 없다.</p>
+  </li>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">/(루트)</code>에서 설정하면 모든 경로에서 사용 가능</strong></p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">theme=dark; path=/</span><span class="dl">'</span><span class="p">;</span>
+</code></pre></div>    </div>
+
+    <p><code class="language-plaintext highlighter-rouge">example.com</code>의 모든 경로에서 쿠키를 사용할 수 있다.</p>
+  </li>
+</ul>
+
+<p>⛔️ <strong>https 통신 제한 (secure 속성)</strong></p>
+
+<ul>
+  <li>
+    <p><strong>https로 통신하는 경우에만 쿠키 전송</strong></p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// (https:// 로 통신하고 있다고 가정 중)</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">user=soha; secure</span><span class="dl">'</span><span class="p">;</span>
+</code></pre></div>    </div>
+
+    <p><code class="language-plaintext highlighter-rouge">secure</code> 옵션을 설정한 경우 <code class="language-plaintext highlighter-rouge">https://example.com</code>에서 설정한 쿠키는<code class="language-plaintext highlighter-rouge"> http://example.com</code>에서 접근할 수 없다. 쿠키에 민감한 내용이 저장되어 암호화되지 않은 HTTP 연결을 통해 전달되는 걸 원치 않을 경우 사용하면 좋다.</p>
+  </li>
+  <li>
+    <p><strong>프로토콜 상관 없이 쿠키 전송</strong></p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">user=soha;</span><span class="dl">'</span><span class="p">;</span>
+</code></pre></div>    </div>
+
+    <p><code class="language-plaintext highlighter-rouge">secure</code> 옵션이 없으면 <code class="language-plaintext highlighter-rouge">http://example.com</code>에서 생성한 쿠키를 <code class="language-plaintext highlighter-rouge">https://example.com</code>에서 읽을 수 있다. 즉, 서로 쿠키를 공유하게 된다. 쿠키는 도메인만 확인하고 프로토콜을 따지지 않기 때문이다.</p>
+  </li>
+</ul>
+
+<h3 id="-주의">🚨 주의</h3>
+
+<p>쿠키 저장은 프론트엔드에서도 가능하고, 백엔드에서도 가능하다.
+하지만 <strong>보안이 중요한 쿠키 (예: 로그인 토큰) 는 보통 백엔드에서 설정</strong>하는게 안전하다. 브라우저에서 <code class="language-plaintext highlighter-rouge">document.cookie</code>로 쉽게 접근할 수 있기 때문에, <strong>악성 스크립트(XSS 공격)에 노출될 위험이 있기 때문</strong>이다.</p>
+
+<h3 id="️-예제-코드-백엔드에서-쿠키-저장-예제--expressjs">⚒️ 예제 코드 (백엔드에서 쿠키 저장 예제 / Express.js)</h3>
+
+<p>백엔드에서는 응답 헤더에 Set-Cookie를 추가해서 쿠키를 저장한다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">res</span><span class="p">.</span><span class="nf">cookie</span><span class="p">(</span><span class="dl">'</span><span class="s1">token</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">secureToken123</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+	<span class="na">httpOnly</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+	<span class="na">secure</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+	<span class="na">sameSite</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Strict</span><span class="dl">'</span><span class="p">,</span>
+	<span class="na">maxAge</span><span class="p">:</span> <span class="mi">1000</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">24</span><span class="p">,</span> <span class="c1">// 1일 동안 유지</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">httpOnly: true</code> → JS에서 접근 불가능 (XSS 공격 방지)</li>
+  <li><code class="language-plaintext highlighter-rouge">secure: true</code> → HTTPS에서만 쿠키 전송</li>
+  <li><code class="language-plaintext highlighter-rouge">sameSite: "Strict"</code> → CSRF 공격 방지</li>
+  <li><code class="language-plaintext highlighter-rouge">maxAge</code> → 쿠키 유효 시간 설정 (밀리초 단위)</li>
+</ul>
+
+<p>백엔드에서 이렇게 설정하면 클라이언트에서는 <code class="language-plaintext highlighter-rouge">document.cookie</code>로 접근할 수 없고, HTTP 요청 시 자동으로 쿠키가 전송된다.</p>
+
+<hr />
+
+<h2 id="-정리">📝 정리</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>특징</th>
+      <th>Session Storage</th>
+      <th>Local Storage</th>
+      <th>Cookie</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>데이터 지속성</strong></td>
+      <td>탭을 닫으면 삭제</td>
+      <td>브라우저 닫아도 유지</td>
+      <td>설정한 유효기간까지 유지</td>
+    </tr>
+    <tr>
+      <td><strong>저장 용량</strong></td>
+      <td>약 5MB</td>
+      <td>약 5MB</td>
+      <td>약 4KB (가장 작음)</td>
+    </tr>
+    <tr>
+      <td><strong>브라우저에서 접근</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">sessionStorage</code> API 사용</td>
+      <td><code class="language-plaintext highlighter-rouge">localStorage</code> API 사용</td>
+      <td><code class="language-plaintext highlighter-rouge">document.cookie</code> 사용</td>
+    </tr>
+    <tr>
+      <td><strong>서버와의 통신</strong></td>
+      <td>서버로 전송되지 않음</td>
+      <td>서버로 전송되지 않음</td>
+      <td>HTTP 요청 시 자동 전송 가능</td>
+    </tr>
+    <tr>
+      <td><strong>보안</strong></td>
+      <td>비교적 안전</td>
+      <td>비교적 안전</td>
+      <td><code class="language-plaintext highlighter-rouge">HttpOnly</code>, <code class="language-plaintext highlighter-rouge">Secure</code> 설정 필요</td>
+    </tr>
+    <tr>
+      <td><strong>사용 예시</strong></td>
+      <td>임시 데이터 저장, 입력 폼 보존</td>
+      <td>사용자 설정 저장, 다크 모드</td>
+      <td>로그인 세션 유지, 인증 토큰 저장</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="-어떤-걸-써야-할까">🤔 어떤 걸 써야 할까?</h3>
+
+<ul>
+  <li><strong>탭을 닫으면 사라져야 하는 데이터</strong> → <code class="language-plaintext highlighter-rouge">Session Storage</code></li>
+  <li><strong>장기적인 데이터 저장</strong> → <code class="language-plaintext highlighter-rouge">Local Storage</code></li>
+  <li><strong>서버와 자동으로 데이터를 주고받아야 하는 경우</strong> → <code class="language-plaintext highlighter-rouge">Cookie</code></li>
+</ul>
+
+<h2 id="-참고">📚 참고</h2>
+
+<ul>
+  <li><a href="https://ko.javascript.info/localstorage">localStorage와 sessionStorage</a></li>
+  <li><a href="https://ko.javascript.info/cookie">쿠키와 document.cookie</a></li>
+  <li><a href="https://velog.io/@abcwockd95/%EA%B8%B0%EC%88%A0%EB%A9%B4%EC%A0%91-%EB%A1%9C%EC%BB%AC%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80-%EC%84%B8%EC%85%98%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80-%EC%BF%A0%ED%82%A4">기술면접: 로컬스토리지, 세션스토리지, 쿠키</a></li>
+  <li><a href="https://erwinousy.medium.com/%EC%BF%A0%ED%82%A4-vs-%EB%A1%9C%EC%BB%AC%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80-%EC%B0%A8%EC%9D%B4%EC%A0%90%EC%9D%80-%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C-28b8db2ca7b2">쿠키 vs 로컬스토리지: 차이점은 무엇일까?</a></li>
+</ul>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#매3개">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">매3개</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/25/M3D-Git-Merge.html">
+            매3개 | Git의 다양한 Merge 방법 (merge, rebase, squash)
+            <small>25 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

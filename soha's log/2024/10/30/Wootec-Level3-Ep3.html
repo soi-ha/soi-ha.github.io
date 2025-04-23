@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 우테코: Level3 3,4차 스프린트 회고 &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">우테코: Level3 3,4차 스프린트 회고</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">30 Oct 2024</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/sohaLog.html">
+          Soha's Log
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <p>이것 참.. 회고라고 하기에 좀 뭐하긴 하지만 ^^… level4도 끝나가는 이 시점에 저번에 다 못적은 level3 회고를 마무리해볼까 한다…<br />
+기억이 많이 휘발되어 따로 휘갈기는 노트를 참고하여 글을 적는다.</p>
+
+<h1 id="발전한-나의-소프트-스킬">발전한 나의 소프트 스킬</h1>
+
+<p>다들 참 많이 지쳐있었을 때였다. 이때 러기와 렛서가 많이 지쳐보였다. 그래서 집 방향이 같은 러기와 짧은 시간이지만 많은 이야기를 했었다. level3에 오면서 개인 시간을 낼 수 없어 약간의 번아웃이 온 듯 했다. 그래서 작은 위로일 지라도 용기를 내어 중문의 카톡을 보냈었다. 나의 카톡을 읽고 힘이 된 듯 해서 뿌듯했다.</p>
+
+<p>우테코에 오기 이전의 나라면 아니, 불과 몇달 전의 나라면 이런 카톡을 보내지 않았을 것이다. 누군가를 위하는 말 일지라도 상대방에게 돌아오는 답변이 무서웠기 때문이다. 꼭 하지 않아도 되는 것에 대한 연락은 상대 답변이 어떻게 올지 참 무섭다. 이건 아직도 여전한 것 같다. 그러나, 우테코에 오면서 조금씩 이런 부분에 대해 용기를 내보고 있다. 이런 부분을 소프트 스킬 수업 시간에 알려주지는 않지만, 우테코라는 환경이 나를 조금씩 나도 모르게 변화시키고 있다.</p>
+
+<p style="display:flex; gap:10px; overflow-x: auto;">
+  <img width="50%" alt="이미지1" src="https://github.com/user-attachments/assets/660f86db-0f02-48df-a052-c8997195e5a0" />
+  <img width="50%" alt="이미지2" src="https://github.com/user-attachments/assets/23ee59bf-52b8-44d7-957c-fbce37faede6" />
+</p>
+
+<p><em>우테코에서 받은 키트(좌), 공구한 행성이 키링(우)</em></p>
+
+<h1 id="새로운-경험">새로운 경험</h1>
+
+<p>우테코에 와서 새로 시작하게 된게 뭐야? 라고 누군가 나에게 묻는다면 나는 단연 <strong>“야구!”</strong> 를 외칠 수 있다. 최강야구를 보진 않았지만, 집 가는 길에 심심해서 티빙으로 야구를 봤던 것이 나의 야구 인생이 시발점이다. 그래도 야구가 있었기에 집 가는 어두컴컴한 길이 덜 지루했던 것 같다. 또한, 유튜브로 채우던 도파민을 스포츠로 나름 건강하게(?) 채우고 있다. 참 잘 선택한 취미라고 생각한다.</p>
+
+<h2 id="야구-단체-관람">야구 단체 관람?!</h2>
+
+<p><img width="352" alt="이미지" src="https://github.com/user-attachments/assets/99289d50-8236-412f-8fee-82010d6d992a" /></p>
+
+<p>그래서 나는 야구에 미쳐버린 나머지 우테코에서 야구 단체 관람까지 진행하게 되었다. 하하! 자세한 이야기는 <a href="https://blog.naver.com/soy2302ten/223550718572">여기서</a>.. 확인이 가능하다.<br />
+사실 나는 뭔가를 기획하거나 운영, 주최하는 것을 좋아한다. 그래서 배드민턴 동아리도 4년씩이나 임원진을 했던 것이다.. 우테코에 와서 FE 걸스나잇 이후에는 또 이런 이벤트를 주최할 일이 없을 줄 알았는데.. 이렇게 야구 단체 관람을 하게 되었다. 핳</p>
+
+<h2 id="인생-첫-커피-챗">인생 첫 커피 챗</h2>
+
+<p style="display:flex; gap:10px; overflow-x: auto;">
+  <img width="50%" alt="이미지1" src="https://github.com/user-attachments/assets/16e303ec-7adb-4c0e-bcf6-35234f41912f" />
+  <img width="50%" alt="이미지2" src="https://github.com/user-attachments/assets/915e2cd4-378a-4b94-961d-57e6d40c6284" />
+</p>
+
+<p>지난 번에 용기를 내어 가브리엘에게 커피챗을 신청했다. 가브리엘은 흔쾌히 받아 주셨고 엘버도 함께 커피챗에 응해주셨다. 회사 일로 인해 굉장히 바쁘실텐데도 불구하고 커피챗 신청에 응해주셔서 너무 감사했다.</p>
+
+<p>커피챗의 주된 내용은 아무래도 level3-4 팀 프로젝트와 취업이었다. level3 커피챗 당시에는 취업에 대한 걱정은 있어도 큰 고민은 없었다. 아직은 조금 더 남았다고 생각했기 때문이다. <del>(응.. 근데.. 지금은 현실이야..)</del><br />
+가브리엘과 엘버 덕분에 맛있는 저녁도 먹고 toss에도 와 볼 수 있었다. 확실히 IT 업계 탑이 맞다..<br />
+그렇게 유익한 커피챗 시간을 보냈다. 고민도 많이 해결됐고, 새로운 시각을 얻을 수도 있었다.</p>
+
+<p>당시에 나는 팀 프로젝트에 굉장히 지친 상태였다. 1차 스프린트까지는 내 시간이 있어서 아침에 개인 공부도 꾸준히 해왔고 집에 돌아간 후에도 내 일을 할 수 있었기 때문이다. 근데, 2차 스프린트에 들어서면서 그런 것이 싸그리 사라져버렸다. 이게 나에게 너무나도 힘들었다. 그러면서 또 취업 걱정은 들고.. 그래서 당시에 개인 시간을 확보할 수 있도록 하고, 미리 취업 준비도 시작해야 겠다 생각했다. 또한, 왜 이런 코드를 작성했는지 블로그에 꾸준히 기록하자고 생각했다. <del>정말 생각만 해버렸다. 이거 적으면서 안 했다는 것을 깨달았다..ㅋㅋ</del> -&gt;</p>
+
+<p>그리고 나는 다음날 행동대장 팀원들에게 이 이야기들을 공유해줬다.<br />
+음.. 근데 이게 사실 약이 아니라 독을 풀었던 것 같다. 이 프로젝트가 협업을 위한 것도 맞지만 우리의 취업에 가장 큰 포트폴리오 자산이 될 것이다. 그렇기에 포트폴리오에 우리 프로젝트를 넣었을 때 괜찮을 것인지 생각하면서 프로젝트를 진행해야 할 것 같다고 말했다. 이런 뉘앙스의 말로 인해 팀원들에게 혼란을 가중시켰다. 절반의 팀원은 동의했지만 절반의 팀원은 기술적인 것 보다 사용자를 더 중시하기 때문이다.<br />
+사실 나도 사용자를 중시하는 측이었지만 <strong>취업!!</strong> 이라는 큰 고민 때문에 휙-하고 태도를 달리 바꿔버렸던 것 같다. <del>그리고 후에는 다시 사용자 중심으로 돌아왔다ㅎ</del><br />
+당시에는 여차저차 이쪽 방향으로 팀원들이 따라주려고 했다. 아무래도 다들 지쳤으니까, 더이상 논의하기에는 힘들어서이지 않았을까? 생각한다. 그래서 대충 쓰던 PR 리뷰도 구현 목적과 방법, 결과를 꼼꼼하게 작성하기로 했다. 그리고 꼭 필요한 것이 아니라면 UI/UX에 큰 욕심을 부리지 말자고 했다. 그리고 3차 스프린트에 들어와서 하나의 Task를 페어프로그래밍으로 하고 있던 것을 다시 개인이 task를 가져가는 방식으로 전환했다. 페어 프로그래밍으로 진행하니 진도가 너무 나가지 않는 문제가 발생했기 때문이다.<br />
+여튼 참.. 커피챗 하나로 많은 것들이 변화되었던 것 같다. 당시에는 당장 긍정적으로 변화하진 않았을 지라도 점점 우리만의 방식을 찾아가며 협업 방식이 안정적이게 되었다.</p>
+
+<h1 id="이제-level3는-끝이다">이제 level3는 끝이다!</h1>
+
+<p style="display:flex; gap:10px; overflow-x: auto;">
+  <img width="50%" alt="이미지1" src="https://github.com/user-attachments/assets/6c936e22-2f8f-4928-96af-32aabe78951d" />
+  <img width="50%" alt="이미지2" src="https://github.com/user-attachments/assets/3a0dceee-3cfd-43bd-aa84-25d98943f4b2" />
+</p>
+
+<p>위에서 말했듯이 4차 스프린트는 우리만의 방식을 찾으면서 매우 안정적이게 협업이 진행되었다. 개인이 task를 맡아 진행하는 방식으로 변경했다. 대신 이 task의 규모를 작게 나누었다. 이전에는 하나의 기능을 task로 뒀다면, 이번에는 이 하나의 기능에 대한 a,b,c를 각각의 task로 두는 것이다. 또한, 원활한 merge를 위해 리뷰 제출 시간을 18시로 제한하였다. 그리고 PR 내용을 상세하게 작성해 다른 팀원들이 코드를 리뷰하는데 시간을 덜 들일 수 있도록 했다.</p>
+
+<p>이런 협업의 형태가 우리에게 가장 잘 맞았던 것 같다. 비록 4차 스프린트까지 와서야 찾게 되었지만, level3에서 끝이 아니니까 이제라도 찾은 것이 다행이라고 생각한다. 그리고 이런 방식이 다른 팀원들에게도 시간비용을 절약할 수 있어서 좋았지만, 기능을 구현한 본인 또한 왜 이런 방식으로 구현했는지 생각해보는 기회를 주게 되었다. 즉, 왜 이 기능이 필요했지? 이런 방식으로 구현한 이유는? 이게 최선이었나? 등을 개발하면서 생각할 수 있었다.</p>
+
+<p>level3 런칭페스티벌 전 날에는 프론트는 거진 밤을 샜다. 새벽 4시까지 디스코드로 회의하고 merge하고 디자인 손보고.. 여러가지를 했기 때문이다. 새벽까지 진행해서 지쳤긴 했지만 뿌듯하고 재밌다!라는 감정이 가장 크게 들었다.</p>
+
+<p>그리고 이렇게 노력한 것에 대한 보상은 역시 런칭 페스티벌에 나타났다. 내가 편집한 행동대장의 level3 개발 과정과 토다리가 만들어준 서비스 소개 화면.. 그리고 다양한 피드백 등..<br />
+아직은 부족한 부분이 너무 많았어서 부끄럽기도 했지만 열심히 테스트해주는 크루들과 코치님들 덕분에 즐겁게 런칭 페스티벌을 마무리할 수 있었다.</p>
+
+<h1 id="level3를-마치며">Level3를 마치며</h1>
+
+<p>Level4를 마치고 있는 지금 Level3를 마치며를 적는게 조금 웃기지만ㅋㅋ level3는 참 우여곡절이 많았다. 여러번 변경한 협업 방식과 팀의 방향성 변경 번아웃 대처 등등.. 이렇게 제대로 된 프로젝트를 하는 것이 거진 처음이라.. 재밌기도 했고 힘들기도 했고 뿌듯하기도 했다!</p>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#wooteco">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">Wooteco</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

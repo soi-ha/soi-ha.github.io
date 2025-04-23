@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 JavaScript: JS 데이터 Ep.4 (전개연산자, 불변성, 얕은복사, 깊은 복사) &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">JavaScript: JS 데이터 Ep.4 (전개연산자, 불변성, 얕은복사, 깊은 복사)</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">05 Sep 2022</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h2 id="전개-연산자-spread"><strong>전개 연산자 (Spread)</strong></h2>
+<hr />
+<p>마침표 3개 (…)가 전개 연산자의 기호이다.</p>
+
+<p>전개연산자는 하나의 배열데이터를 <strong>쉼표로 구분된</strong> 각각의 아이템으로 전개해서 출력한다.</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">Apple</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Banana</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Cherry</span><span class="dl">'</span><span class="p">]</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">fruits</span><span class="p">)</span>
+
+<span class="c1">// 전개 연산자</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(...</span><span class="nx">fruits</span><span class="p">)</span>
+<span class="c1">// 'Apple', 'Banana', 'Cherry'</span>
+<span class="c1">// 아래의 방법으로 출력하는 것과 동일한 모양으로 나온다.</span>
+<span class="c1">// console.log('Apple', 'Banana', 'Cherry')</span>
+
+<span class="kd">function</span> <span class="nf">toObject</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="p">{</span>
+		<span class="na">a</span><span class="p">:</span> <span class="nx">a</span><span class="p">,</span>
+		<span class="na">b</span><span class="p">:</span> <span class="nx">b</span><span class="p">,</span>
+		<span class="na">c</span><span class="p">:</span> <span class="nx">c</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">toObject</span><span class="p">(...</span><span class="nx">fruits</span><span class="p">))</span>
+<span class="c1">// {a: "Apple", b: "Banana", c: "Cherry"}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>전개연산자를 사용하지 않았을 때<br />
+아래와 같이 작성해야 동일한 형태로 출력이 된다.
+하나씩 수동으로 작성해야 하기 때문에 번거롭다. 또, 갯수가 많아질 수록 비효율적이게 된다.
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">toObject</span><span class="p">(</span><span class="nx">fruits</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">fruits</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nx">fruits</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+<span class="c1">// {a: "Apple", b: "Banana", c: "Cherry"}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>매개변수에 전개연산자 사용하기 → <strong>나머지 매개변수(rest parameter)</strong><br />
+Apple은 a로, Banana는 b로 들어가게 된다. 나머지 Cherry와 Orange는 c로 들어간다.
+매개변수의 전개연산자는 나머지의 모든 인수들을 다 받아내는 역할을 한다. 이것을 <strong>나머지 매개변수(rest parameter)</strong>이라고 부른다.</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">Apple</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Banana</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Cherry</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Orange</span><span class="dl">'</span><span class="p">]</span>
+  
+<span class="kd">function</span> <span class="nf">toObject</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="p">...</span><span class="nx">c</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">a</span><span class="p">:</span> <span class="nx">a</span><span class="p">,</span>
+    <span class="na">b</span><span class="p">:</span> <span class="nx">b</span><span class="p">,</span>
+    <span class="na">c</span><span class="p">:</span> <span class="nx">c</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">toObject</span><span class="p">(...</span><span class="nx">fruits</span><span class="p">))</span>
+<span class="c1">// {a: "Apple", b: "Banana", c: Array(2) </span>
+<span class="c1">// 0: "Cherry" 1: "Orange"}</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>축약형</strong>으로 만들기
+    <ul>
+      <li>속성의 이름 = 변수의 이름 (데이터의 이름) <br />
+속성의 이름과 변수의 이름이 같을 때, 하나만 남겨두어도 된다.
+        <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">Apple</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Banana</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Cherry</span><span class="dl">'</span><span class="p">]</span>
+    
+<span class="kd">function</span> <span class="nf">toObject</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">a</span><span class="p">,</span>
+    <span class="nx">b</span><span class="p">,</span>
+    <span class="nx">c</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">toObject</span><span class="p">(...</span><span class="nx">fruits</span><span class="p">))</span>
+<span class="c1">// {a: "Apple", b: "Banana", c: "Cherry"}</span>
+</code></pre></div>        </div>
+      </li>
+      <li>화살표 함수로 만들기<br />
+객체데이터를 사용시에는 중괄호를 사용하는데, 중괄호는 화살표함수에서 함수의 범위를 나타내는 블럭의 의미로 해석이 된다. 
+중괄호가 블럭이 아닌 객체 데이터의 의미로 사용하기 위해서는 소괄호를 밖에 사용해주고 중괄호(객체 데이터 의미)를 사용해 주면 된다.
+        <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">Apple</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Banana</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Cherry</span><span class="dl">'</span><span class="p">]</span>
+    
+<span class="kd">const</span> <span class="nx">toObject</span> <span class="o">=</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">})</span>
+    
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">toObject</span><span class="p">(...</span><span class="nx">fruits</span><span class="p">))</span>
+<span class="c1">// {a: "Apple", b: "Banana", c: "Cherry"}</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="불변성-immutability"><strong>불변성 (Immutability)</strong></h2>
+<hr />
+
+<h3 id="원시데이터">원시데이터</h3>
+<p>JS에서 사용할 수 있는 <strong>기본 데이터</strong>들을 의미한다.<br />
+  String, Number, Boolean, undefined, null</p>
+<h3 id="참조형-데이터">참조형 데이터</h3>
+<p>Object, Array, Function</p>
+
+<h3 id="원시-데이터의-불변성"><strong>원시 데이터</strong>의 <strong>불변성</strong></h3>
+<ul>
+  <li>생김새가 달라서 false가 아닌, 메모리의 주소가 다르기 때문에 일치하지 않는다.
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// main.js</span>
+    
+<span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="kd">let</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">a</span> <span class="o">===</span> <span class="nx">b</span><span class="p">)</span> <span class="c1">// 1, 4, false</span>
+    
+<span class="c1">// ----------------------------------------</span>
+<span class="c1">// |1: 1    |2:  4   |3:    |4:   </span>
+<span class="c1">// ----------------------------------------</span>
+</code></pre></div>    </div>
+  </li>
+  <li>b 는 기존에 2번 메모리의 주소를 가지고 있었다. 그러나 b = a로 인해 b는 더이상 2번 메모리 주소가 아닌 1번 메모리 주소를 가지고 있게 되었다. 그렇기에 b와 a가 가지고 있는 주소가 동일해 지면서 true가 나온다.<br />
+  2번 메모리의 값은 4로 변하지 않는다. 변하는 것은 오직 b가 가지고 있는 메모리 주소값!
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// main.js</span>
+    
+<span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="kd">let</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">4</span>
+    
+<span class="nx">b</span> <span class="o">=</span> <span class="nx">a</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">a</span> <span class="o">===</span> <span class="nx">b</span><span class="p">)</span> <span class="c1">// 1, 1, true</span>
+    
+<span class="c1">// ----------------------------------------</span>
+<span class="c1">// |1: 1    |2:  4   |3:    |4:   </span>
+<span class="c1">// ----------------------------------------</span>
+</code></pre></div>    </div>
+  </li>
+  <li>a = 7이라는 새로운 데이터가 생성된다. 숫자 데이터 7은 메모리 3번에 들어가면서 a는 1번 메모리 주소가 아닌 3번 메모리 주소를 갖게 된다.
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// main.js</span>
+    
+<span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="kd">let</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">4</span>
+    
+<span class="nx">a</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">a</span> <span class="o">===</span> <span class="nx">b</span><span class="p">)</span> <span class="c1">// 7, 1, false</span>
+    
+<span class="c1">// ----------------------------------------</span>
+<span class="c1">// |1: 1    |2:  4   |3: 7   |4:   </span>
+<span class="c1">// ----------------------------------------</span>
+</code></pre></div>    </div>
+  </li>
+  <li>변수 c에는 숫자 데이터 1을 할당했다. c에 할당된 숫자 데이터 1이 4번째 메모리에 들어가는 것이 아니라, c는 기존 숫자 데이터 1이 있는 1번 메모리 주소를 갖게 된다.
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// main.js</span>
+    
+<span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="kd">let</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">4</span>
+    
+<span class="kd">let</span> <span class="nx">c</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">,</span> <span class="nx">b</span> <span class="o">===</span> <span class="nx">c</span><span class="p">)</span> <span class="c1">// 1, 1, true</span>
+    
+<span class="c1">// ----------------------------------------</span>
+<span class="c1">// |1: 1    |2:  4   |3: 7   |4:   </span>
+<span class="c1">// ----------------------------------------</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>생긴것이 다르면 다른 데이터!</strong><br />
+새로운 원시데이터를 사용했을 때, 원시 데이터가 기존에 메모리 주소에 들어있다면 해당 원시데이터를 새로운 메모리에 새롭게 만드는 것이 아니다. 기존에 존재하는 메모리 주소만 바라보도록 만들어 준다. <br />
+즉, 원시데이터들은 새롭게 만들어 지는 것이 아닌 한번 만들어 지면 <strong>항상 불변한다</strong>는 개념이다. (<strong>기존에 데이터들은 변하지 않는다</strong>!)<br />
+간단히 말하면, 원시형 데이터들은 <strong>생긴것이 다르면 다른 데이터</strong>라고 이해하면 된다. 생긴 것이 같으면 같은 데이터!</li>
+</ul>
+
+<h3 id="참조형-데이터의-가변성"><strong>참조형 데이터</strong>의 <strong>가변성</strong></h3>
+<p>참조형 데이터는 원시형 데이터와 다르게 새로운 값을 만들때 마다 새로운 메모리 주소에 할당되는 구조를 가지고 있다.<br />
+  따라서, 참조형 데이터는 불변성이 없다. 즉, <strong>가변성</strong>이다!</p>
+
+<ul>
+  <li>a와 b는 생김새는 같아도 서로 다른 메모리 주소를 바라보고 있기 때문에 false가 출력된다.
+  a는 1번 메모리, b는 2번 메모리 주소를 갖고 있다.
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">{</span> <span class="na">k</span><span class="p">:</span> <span class="mi">1</span> <span class="p">}</span>
+<span class="kd">let</span> <span class="nx">b</span> <span class="o">=</span> <span class="p">{</span> <span class="na">k</span><span class="p">:</span> <span class="mi">1</span> <span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">a</span> <span class="o">===</span> <span class="nx">b</span><span class="p">)</span>
+<span class="c1">// { k: 1 } { k: 1 } false</span>
+    
+<span class="c1">// ---------------------------------------------------</span>
+<span class="c1">// |1:  { k: 1 } |2: { k: 1 } |3: {     } |4: {     }</span>
+<span class="c1">// ---------------------------------------------------</span>
+    
+</code></pre></div>    </div>
+  </li>
+  <li>a가 가지고 있는 메모리 주소의 데이터 k의 값을 7로 변경했다.<br />
+  b는 2번 메모리 주소를 가지고 있었지만, b = a로 인해 b는 a가 가지고 있는 메모리 주소 (1번 메모리)를 갖게 된다. <br />
+  동일한 메모리 주소를 가지고 있기 때문에 true값이 출력된다.
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">{</span> <span class="na">k</span><span class="p">:</span> <span class="mi">1</span> <span class="p">}</span>
+<span class="kd">let</span> <span class="nx">b</span> <span class="o">=</span> <span class="p">{</span> <span class="na">k</span><span class="p">:</span> <span class="mi">1</span> <span class="p">}</span>
+    
+<span class="nx">a</span><span class="p">.</span><span class="nx">k</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="nx">b</span> <span class="o">=</span> <span class="nx">a</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">a</span> <span class="o">===</span> <span class="nx">b</span><span class="p">)</span>
+<span class="c1">// { k: 7 } { k: 7 } true</span>
+    
+<span class="c1">// ---------------------------------------------------</span>
+<span class="c1">// |1:  { k: 7 } |2: { k: 1 } |3: {     } |4: {     }</span>
+<span class="c1">// ---------------------------------------------------</span>
+    
+</code></pre></div>    </div>
+  </li>
+  <li>a.k = 2를 통해 a의 메모리 주소의 값 (1번 메모리)이 2로 변경된다. <br />
+  b는 a와 동일한 주소를 가지고 있기 때문에 b도 1번 메모리 주소를 가지고 있다.<br />
+  a와 b의 값을 출력하면 k:2가 출력되면서 동일한 메모리 주소를 갖기에 true가 반환된다.
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">{</span> <span class="na">k</span><span class="p">:</span> <span class="mi">1</span> <span class="p">}</span>
+<span class="kd">let</span> <span class="nx">b</span> <span class="o">=</span> <span class="p">{</span> <span class="na">k</span><span class="p">:</span> <span class="mi">1</span> <span class="p">}</span>
+    
+<span class="nx">a</span><span class="p">.</span><span class="nx">k</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">a</span> <span class="o">===</span> <span class="nx">b</span><span class="p">)</span>
+<span class="c1">// { k: 2 } { k: 2 } true</span>
+    
+<span class="c1">// ---------------------------------------------------</span>
+<span class="c1">// |1:  { k: 2 } |2: { k: 1 } |3: {     } |4: {     }</span>
+<span class="c1">// ---------------------------------------------------</span>
+  <span class="o">****</span>
+</code></pre></div>    </div>
+    <p>주의할 점은, a의 k 속성값만을 바꾼 것인데 의도하지 않게 b의 k값도 변경이 된다. b가 a와 동일한 주소를 가지고 있기 때문이다.</p>
+  </li>
+  <li>a는 1번 메모리 주소, b도 1번 메모리 주소를 가지고 있다. <br />
+  c도 b를 할당 했기 때문에 c도 1번 메모리 주소를 갖게 된다.<br />
+  a, b, c 모두 동일한 메모리 주소를 갖게 되었다.
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">{</span> <span class="na">k</span><span class="p">:</span> <span class="mi">1</span> <span class="p">}</span>
+<span class="kd">let</span> <span class="nx">b</span> <span class="o">=</span> <span class="p">{</span> <span class="na">k</span><span class="p">:</span> <span class="mi">1</span> <span class="p">}</span>
+    
+<span class="kd">let</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">b</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">,</span> <span class="nx">a</span> <span class="o">===</span> <span class="nx">c</span><span class="p">)</span>
+<span class="c1">// { k: 2 } { k: 2 } { k: 2 } true</span>
+    
+<span class="c1">// ---------------------------------------------------</span>
+<span class="c1">// |1:  { k: 2 } |2: { k: 1 } |3: {     } |4: {     }</span>
+<span class="c1">// ---------------------------------------------------</span>
+  <span class="o">****</span>
+</code></pre></div>    </div>
+  </li>
+  <li>수정한 것은 a변수의 k속성이지만 a, b, c 모두가 동일한 1번 메모리 주소 (a의 메모리 주소)를 가지고 있기 때문에 동일한 값이 출력된다.
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">{</span> <span class="na">k</span><span class="p">:</span> <span class="mi">1</span> <span class="p">}</span>
+<span class="kd">let</span> <span class="nx">b</span> <span class="o">=</span> <span class="p">{</span> <span class="na">k</span><span class="p">:</span> <span class="mi">1</span> <span class="p">}</span>
+    
+<span class="nx">a</span><span class="p">.</span><span class="nx">k</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">,</span> <span class="nx">a</span> <span class="o">===</span> <span class="nx">c</span><span class="p">)</span>
+<span class="c1">// { k: 9 } { k: 9 } { k: 9 } true</span>
+    
+<span class="c1">// ---------------------------------------------------</span>
+<span class="c1">// |1:  { k: 9 } |2: { k: 1 } |3: {     } |4: {     }</span>
+<span class="c1">// ---------------------------------------------------</span>
+</code></pre></div>    </div>
+  </li>
+  <li>a = b (참조형 데이터에서 할당연산자 사용)<br />
+  a가 가지고 있는 데이터가 복사되는 개념이 아닌 메모리의 주소만 같은 곳을 바라보도록 만들어 주는 것이기 때문에 a를 수정하면 b도 수정되고, b를 수정하면 a도 수정되는 현상이 발생한다.<br />
+  위의 방식은 의도한 것이 아니라면 일반적인 경우에는 <strong>복사</strong>를 사용하여 a 와 b를 메모리 상에서 분리해줘야 생각한 방식으로 사용이 가능하다.</li>
+</ul>
+
+<h2 id="얕은-복사shallow-copy와-깊은-복사deep-copy"><strong>얕은 복사(Shallow copy)와 깊은 복사(Deep copy)</strong></h2>
+<hr />
+
+<h3 id="복사를-사용하기-전">복사를 사용하기 전</h3>
+<ul>
+  <li>copyUser과 user는 같은 메모리 주소를 가지고 있다.
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Soha</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">age</span><span class="p">:</span> <span class="mi">45</span><span class="p">,</span>
+  <span class="na">email</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">soha@gmail.com</span><span class="dl">'</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="kd">const</span> <span class="nx">copyUser</span> <span class="o">=</span> <span class="nx">user</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">copyUser</span> <span class="o">===</span> <span class="nx">user</span><span class="p">)</span> <span class="c1">// true</span>
+    
+<span class="c1">// |1:     |2:     |3:      |4:     </span>
+</code></pre></div>    </div>
+  </li>
+  <li>user.age의 값은 22로 변경했는데 copyUser의 age값도 22로 변경됐다.
+  둘이 동일한 메모리 주소를 바라보고 있기 때문이다.
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Soha</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">age</span><span class="p">:</span> <span class="mi">45</span><span class="p">,</span>
+  <span class="na">email</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">soha@gmail.com</span><span class="dl">'</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="kd">const</span> <span class="nx">copyUser</span> <span class="o">=</span> <span class="nx">user</span>
+    
+<span class="nx">user</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="mi">22</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">user</span><span class="dl">'</span><span class="p">,</span> <span class="nx">user</span><span class="p">)</span> 
+<span class="c1">// { name: 'Soha', age: 22, email: ['soha@gmail.com']}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">copyUser</span><span class="dl">'</span><span class="p">,</span> <span class="nx">copyUser</span><span class="p">)</span>
+<span class="c1">// { name: 'Soha', age: 22, email: ['soha@gmail.com']}</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="복사-사용하기">복사 사용하기</h3>
+<ul>
+  <li>메소드 assign을 사용한 복사 → 얕은 복사<br />
+Object에 assign 메소드를 실행해서 첫번째 인수로 빈 객체 데이터, 두번째 인수로 복사한 user변수를 넣는다. <br />
+첫번째 인수는 대상객체, 두번째 인수부터는 출처객체. 출처객체를 대상객체에 담아 반환한다.
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Soha</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">age</span><span class="p">:</span> <span class="mi">45</span><span class="p">,</span>
+  <span class="na">email</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">soha@gmail.com</span><span class="dl">'</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="kd">const</span> <span class="nx">copyUser</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nf">assign</span><span class="p">({},</span> <span class="nx">user</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">copyUser</span> <span class="o">===</span> <span class="nx">user</span><span class="p">)</span> <span class="c1">// false</span>
+    
+<span class="nx">user</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="mi">22</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">user</span><span class="dl">'</span><span class="p">,</span> <span class="nx">user</span><span class="p">)</span>
+<span class="c1">// { name: 'Soha', age: 22, email: ['soha@gmail.com']}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">copyUser</span><span class="dl">'</span><span class="p">,</span> <span class="nx">copyUser</span><span class="p">)</span>
+<span class="c1">// { name: 'Soha', age: 45, email: ['soha@gmail.com']}</span>
+    
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">------</span><span class="dl">'</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">------</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div>    </div>
+    <p>중괄호를 사용한 객체 리터럴도 데이터이기 때문에 새로운 메모리 주소에 할당된다. 2번 메모리에 user가 가지고 있는 속성과 값이 들어가게 된다.</p>
+
+    <p>따라서 user은 1번 메모리 주소, copyUser은 2번 메모리 주소를 갖고 있다. user.age를 22로 변경했을 때, copyUser의 age는 변경되지 않는 것을 볼 수 있다.</p>
+  </li>
+  <li>전개 연사자를 사용한 복사 → 얕은 복사<br />
+<code class="language-plaintext highlighter-rouge">const copyUser = {...user}</code>를 통해 copyUser가 새로운 메모리 주소에 할당되었다.<br />
+하나의 빈 객체 데이터 내부에 user라는 객체 데이터가 가지고 있는 속성과 값들을 <strong>전개</strong>해서 집어넣게 된다.
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Soha</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">age</span><span class="p">:</span> <span class="mi">45</span><span class="p">,</span>
+  <span class="na">email</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">soha@gmail.com</span><span class="dl">'</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="kd">const</span> <span class="nx">copyUser</span> <span class="o">=</span> <span class="p">{...</span><span class="nx">user</span><span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">copyUser</span> <span class="o">===</span> <span class="nx">user</span><span class="p">)</span> <span class="c1">// false</span>
+    
+<span class="nx">user</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="mi">22</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">user</span><span class="dl">'</span><span class="p">,</span> <span class="nx">user</span><span class="p">)</span>
+<span class="c1">// { name: 'Soha', age: 22, email: ['soha@gmail.com']}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">copyUser</span><span class="dl">'</span><span class="p">,</span> <span class="nx">copyUser</span><span class="p">)</span>
+<span class="c1">// { name: 'Soha', age: 45, email: ['soha@gmail.com']}</span>
+    
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">------</span><span class="dl">'</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">------</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <h3 id="얕은-복사shallow-copy"><strong>얕은 복사(Shallow copy)</strong></h3>
+    <p>user 부분에 emails라는 배열 데이터 부분에 push 메소드를 사용했다.
+push 메소드는 배열 데이터의 가장 뒷부분에 새로운 아이템으로 push 부분의 인수를 밀어 넣는다.</p>
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Soha</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">age</span><span class="p">:</span> <span class="mi">45</span><span class="p">,</span>
+  <span class="na">email</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">soha@gmail.com</span><span class="dl">'</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="kd">const</span> <span class="nx">copyUser</span> <span class="o">=</span> <span class="p">{...</span><span class="nx">user</span><span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">copyUser</span> <span class="o">===</span> <span class="nx">user</span><span class="p">)</span> <span class="c1">// false</span>
+  
+<span class="nx">user</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="mi">22</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">user</span><span class="dl">'</span><span class="p">,</span> <span class="nx">user</span><span class="p">)</span>
+<span class="c1">// { name: 'Soha', age: 22, email: ['soha@gmail.com']}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">copyUser</span><span class="dl">'</span><span class="p">,</span> <span class="nx">copyUser</span><span class="p">)</span>
+<span class="c1">// { name: 'Soha', age: 45, email: ['soha@gmail.com']}</span>
+  
+<span class="nx">user</span><span class="p">.</span><span class="nx">emails</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="dl">'</span><span class="s1">noha@naver.com</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div>    </div>
+
+    <ul>
+      <li>user.emails 와 copyUser.emails가 동일하다는 값이 나온다.<br />
+복사를 통해 user와 copyUser는 달라졌는데 왜 일까?
+        <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">emails</span> <span class="o">===</span> <span class="nx">copyUser</span><span class="p">.</span><span class="nx">emails</span><span class="p">)</span> <span class="c1">// true</span>
+<span class="c1">// console.log('user', user)</span>
+<span class="c1">// console.log('copyUser', copyUser)</span>
+</code></pre></div>        </div>
+        <p>user.emails는 배열데이터로 배열 데이터는 참조형 데이터이다. <br />
+우리는 user.emails 배열데이터를 따로 복사처리를 한 적이 없다.   우리는 user라는 객체 데이터 하나를 복사처리 한 것이지 user.  emails 배열 데이터를 복사한 것은 아니라는 것! 그래서 true값이 나오는 것이다.</p>
+        <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">emails</span> <span class="o">===</span> <span class="nx">copyUser</span><span class="p">.</span><span class="nx">emails</span><span class="p">)</span> <span class="c1">// true</span>
+    
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">user</span><span class="dl">'</span><span class="p">,</span> <span class="nx">user</span><span class="p">)</span>
+<span class="c1">// { name: 'Soha', age: 22, email: </span>
+<span class="c1">// Array(2) 0: 'soha@gmail.com' 1: 'noha@naver.com'}</span>
+    
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">copyUser</span><span class="dl">'</span><span class="p">,</span> <span class="nx">copyUser</span><span class="p">)</span>
+<span class="c1">// { name: 'Soha', age: 45, email: </span>
+<span class="c1">// Array(2) 0: 'soha@gmail.com' 1: 'noha@naver.com'}</span>
+</code></pre></div>        </div>
+        <p>copyUser의 emails에 추가한 적은 없지만, 따로 복사를 하지 않았기 때문에 같은 메모리 주소를 바라보게 되면서 copyUser의 emails와 user의 emails가 동일하게 변경되었다.</p>
+      </li>
+      <li><strong>얕은 복사</strong><br />
+겉 표면만 복사가 되었고 내부의 깊은 부분(email 배열 데이터)은 복사가 되지 않았다. 이것을 얕은 복사라고 한다.</li>
+    </ul>
+  </li>
+  <li>
+    <h3 id="깊은-복사deep-copy"><strong>깊은 복사(Deep copy)</strong></h3>
+    <p>JS만으로는 깊은 복사를 구현하기 어렵기 때문에 Lodash를 사용하여 깊은 복사를 할 것이다.</p>
+
+    <ul>
+      <li>_ (언더바) 기호가 하나의 객체 데이터이다. (lodash 패키지 기능)</li>
+      <li>lodash 기능 뒤에 lodash 메소드인 cloneDeep() 메소드를 작성한다. 인수로 user라는 객체를 넣어주면서 깊은 복사가 된다.
+        <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">_</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">lodash</span><span class="dl">'</span>
+    
+<span class="kd">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Soha</span><span class="dl">'</span><span class="p">,</span>
+	<span class="na">age</span><span class="p">:</span> <span class="mi">45</span><span class="p">,</span>
+	<span class="na">email</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">soha@gmail.com</span><span class="dl">'</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="kd">const</span> <span class="nx">copyUser</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nf">cloneDeep</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">copyUser</span> <span class="o">===</span> <span class="nx">user</span><span class="p">)</span> <span class="c1">// false</span>
+    
+<span class="nx">user</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="mi">22</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">user</span><span class="dl">'</span><span class="p">,</span> <span class="nx">user</span><span class="p">)</span>
+<span class="c1">// { name: 'Soha', age: 22, email: ['soha@gmail.com']}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">copyUser</span><span class="dl">'</span><span class="p">,</span> <span class="nx">copyUser</span><span class="p">)</span>
+<span class="c1">// { name: 'Soha', age: 45, email: ['soha@gmail.com']}</span>
+</code></pre></div>        </div>
+      </li>
+      <li>user부분의 emails만 새로운 값이 push된다.
+        <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nx">user</span><span class="p">.</span><span class="nx">emails</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="dl">'</span><span class="s1">noha@naver.com</span><span class="dl">'</span><span class="p">)</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">emails</span> <span class="o">===</span> <span class="nx">copyUser</span><span class="p">.</span><span class="nx">emails</span><span class="p">)</span> <span class="c1">// false</span>
+      
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">user</span><span class="dl">'</span><span class="p">,</span> <span class="nx">user</span><span class="p">)</span>
+  <span class="c1">// { name: 'Soha', age: 22, email: </span>
+  <span class="c1">// Array(2) 0: 'soha@gmail.com' 1: 'noha@naver.com'}</span>
+      
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">copyUser</span><span class="dl">'</span><span class="p">,</span> <span class="nx">copyUser</span><span class="p">)</span>
+  <span class="c1">// { name: 'Soha', age: 45, email: </span>
+  <span class="c1">// Array(1) 0: 'soha@gmail.com'}</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <h3 id="총-정리"><strong>총 정리</strong></h3>
+    <ul>
+      <li>얕은 복사<br />
+대표적인 참조형 데이터 (객체, 배열)를 복사할때는 내부에 또 다른 참조형 데이터가 없다는 전재하에 사용하기.</li>
+      <li>깊은 복사<br />
+내부에 또 다른 참조형 데이터가 있을 때 사용하기.</li>
+    </ul>
+  </li>
+</ul>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#js">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">JS</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

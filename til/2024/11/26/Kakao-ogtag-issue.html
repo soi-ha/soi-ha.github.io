@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 카카오톡 수정한 OGTag 미반영 문제 해결 방법 &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">카카오톡 수정한 OGTag 미반영 문제 해결 방법</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">26 Nov 2024</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <p>오랜만에 블로그를 조금 손 보기로 했다.<br />
+검정색이던 블로그 색상을 파랑으로 바꾸고, favicon이랑 OGTag도 수정해줬다.<br />
+수정하는 것은 매우 수월했다. 그리 어려운 작업도 아니었으니까. 그러나, 문제는 수정한 내용을 확인하는 과정에서 발생했다.</p>
+
+<p><em>글을 읽기 전 OG가 뭔지 모르겠다면? 간단하게 <a href="#틈새-학습-og-open-graph란">여기</a>를 읽고 오자.</em></p>
+
+<h2 id="문제">문제</h2>
+
+<p>블로그 색상과 favicon은 정상적으로 반영되었고 OGTag 또한 잘 반영됐다. 근데, 카카오톡에 해당 url을 공유하면 수정 전의 OG로 나타나는 것이다! 다른 곳에서는 모두 정상적으로 새롭게 반영한 OG로 나타났지만 오직 카카오톡에서만 이전 값으로 나타났다.</p>
+
+<h2 id="원인">원인</h2>
+
+<p>그래서 나는 카카오톡에 원인이 있다고 판단했다. 아마도 캐시가 남아서 그런거지 않을까?하고 PC 카톡과 모바일 카톡의 캐시를 지워보고자 했다. 지운것 같은데도 여전히 이전 OG로 나타났다!ㅜㅜ</p>
+
+<p><img width="315" alt="카카오톡_og태그_문제2" src="https://github.com/user-attachments/assets/123a78ad-cfe6-4b37-a563-be670e2c31e9" /></p>
+
+<p>여러 서칭을 통해 카카오톡(카카오스토리)의 캐시는 kakao developer 페이지에 접속해서 지울 수 있다는 것을 알게 되었다. 서버 효율을 높이기 위해서 일정기간 OG를 캐싱하여 OGTag를 수정해도 이전 데이터 값으로 나왔던 것이었다.</p>
+
+<p><img width="612" alt="카카오 Dev Talk 캐싱 삭제 방법 설명" src="https://github.com/user-attachments/assets/2777191f-cab9-4f7f-a326-eee817a4ce8c" /></p>
+
+<p><em><a href="https://devtalk.kakao.com/t/topic/16724">🔗 이미지 내용 원본 링크</a></em></p>
+
+<h2 id="해결">해결</h2>
+
+<p><a href="https://developers.kakao.com/tool/debugger/sharing">해당 링크</a>에 접속하여 URL란에 캐시 초기화를 하고 싶은 url을 입력하면 끝이다!</p>
+
+<p><img width="666" alt="카카오톡_og태그_문제해결2" src="https://github.com/user-attachments/assets/71fa4ce1-928a-4b4b-bfd1-d88e13929811" /></p>
+
+<p>단, 해당 서비스를 이용하려면 카카오 로그인이 필수이다.</p>
+
+<h2 id="결과">결과</h2>
+
+<p><code class="language-plaintext highlighter-rouge">https://soi-ha.github.io/</code> url과 그 하위 url까지 모두 정상적으로 변경한 OG가 잘 반영된 것을 확인할 수 있다!</p>
+
+<p style="display:flex; gap:10px; overflow-x: auto;">
+  <img width="50%" alt="카카오톡_og태그_문제해결" src="https://github.com/user-attachments/assets/ecfe09e7-79e7-4429-ac6c-5a230d591f03" />
+  <img width="50%" alt="카카오톡_og태그_문제해결2" src="https://github.com/user-attachments/assets/b5b9e834-72c1-43b4-9560-da8c423d7216" />
+</p>
+
+<h2 id="틈새-학습-og-open-graph란">틈새 학습: OG (Open Graph)란?</h2>
+
+<p>Open Graph란, SNS로 웹 페이지를 공유할 때 해당 페이지를 미리 볼 수 있도록 해주는 것이다.<br />
+Open Graph 설정을 통해 페이지의 이미지, 내용, 제목이 미리보기 형식으로 확인할 수 있다.</p>
+
+<h3 id="og-왜-사용함">OG 왜 사용함?</h3>
+
+<p>Open Graph 사용을 통해 사용자의 클릭률을 높일 수 있기 때문이다. 미리보기를 통해 웹 페이지의 내용을 추측하여 사용자가 원하는 글에 접근할 확률을 높여준다. 만약 OG가 없는 상황에서 사용자가 url을 클릭했는데 원했던 내용이 아니라면? 사용자는 더이상 공유된 url을 클릭할 확률이 줄어든다. 그렇기에 OG로 사용자의 클릭률을 높일 수 있다.</p>
+
+<p>또한, 미리보기를 통해 url만 존재할 때 보다 사용자의 눈길을 끌기 쉽다. 미리보기 이미지가 같이 제공되기 때문에 사용자의 눈길을 잡기 수월할 것이다.</p>
+
+<h2 id="참고">참고</h2>
+
+<ul>
+  <li><a href="https://devtalk.kakao.com/t/topic/16724">카카오스토리 공유시 이미지 캐쉬는 어떻게 지우나요?</a></li>
+  <li><a href="https://idearabbit.co.kr/%ea%b2%80%ec%83%89-%ec%97%94%ec%a7%84-%ec%b5%9c%ec%a0%81%ed%99%94-%eb%b0%a9%eb%b2%95/open-graph/">오픈 그래프(Open Graph) 개념부터 적용 후 확인까지 총정리</a></li>
+  <li><a href="https://www.freecodecamp.org/news/what-is-open-graph-and-how-can-i-use-it-for-my-website/">What is Open Graph and how can I use it for my website?</a></li>
+</ul>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#카카오톡">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">카카오톡</span>
+    </a>
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 UMC: 마켓컬리 클론코딩, 카카오 소셜로그인 구현 &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">UMC: 마켓컬리 클론코딩, 카카오 소셜로그인 구현</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">24 May 2023</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h2 id="카카오-소셜로그인-구현하기"><strong>카카오 소셜로그인 구현하기</strong></h2>
+
+<hr />
+
+<h3 id="1-인가코드-받기-및-플랫폼-추가">1. 인가코드 받기 및 플랫폼 추가</h3>
+
+<p>kakao develpoers에서 인가 코드를 받을 수 있으며 플랫폼을 추가할 수 있다.</p>
+
+<blockquote>
+  <p><a href="https://developers.kakao.com/docs/latest/ko/kakaosync/design-guide">kakao developers 링크</a></p>
+</blockquote>
+
+<h3 id="2-redirect-uri-설정">2. Redirect URI 설정</h3>
+
+<p>로그인 성공시 Redirect할 URI의 주소를 작성한다.</p>
+
+<p><img width="896" alt="스크린샷 2023-05-18 01 22 13" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/a218727b-4689-42f2-be24-92abf0af0d4d" /></p>
+
+<h3 id="3-인가코드-받기">3. 인가코드 받기</h3>
+
+<p>인가코드는 Redirect URI를 통해서 받을 수 있다.<br />
+KAKAO_AUTH_URL의 경로로 요청을 보내면, Redirect URI로 이동하면서 인가 코드를 발급 받는다.</p>
+
+<p>이때, client_id, redirect_uri, response_type이 필수로 담겨야 한다.
+client_id는 REST API키, redirect_uri에는 <strong>2. Redirect URI 설정</strong>에서 작성한 URI, reponse_type에는 code 고정 값을 담으면 된다.</p>
+
+<p><img width="1033" alt="스크린샷 2023-05-18 01 06 38" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/8ecdef86-4fff-4ec8-915f-04ddc906143a" /></p>
+
+<p>Key는 공개되지 않는 것이 보안에 좋으므로 따로 파일을 생성하여 관리한다. 해당 파일은 <code class="language-plaintext highlighter-rouge">.gitignore</code>에 작성하여 깃허브에 업로드되지 않도록 한다.</p>
+
+<p><img width="587" alt="스크린샷 2023-05-18 01 03 51" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/db150b2d-e686-4117-86d4-4f68bbda5fba" /></p>
+
+<p>카카오로 시작하기 버튼을 클릭하면 지정한 Redirect URI로 이동하여 인가코드를 얻을 수 있다.</p>
+
+<h3 id="4-redirect-주소-router-설정">4. Redirect 주소 Router 설정</h3>
+
+<p>Redirect URI에 작성했던 successlogin으로 이동할 수 있도록 라우터를 설정해준다. 라우터를 설정하지 않으면 페이지가 존재하지 않아서 이동할 수 없다.</p>
+
+<p><img width="437" alt="스크린샷 2023-05-18 01 06 08" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/8f2282c8-79c7-44e0-8aa4-fc80a3d9a89f" /></p>
+
+<h3 id="5-사용자-토큰-받기">5. 사용자 토큰 받기</h3>
+
+<p>버튼을 클릭하면 <code class="language-plaintext highlighter-rouge">localhost:3000/successogin?code=-4Wr…</code>로 이동하는데 -4Wr…부분은 카카오에서 제공한 인가코드이다. 해당 인가코드는 매번 변경된다. 따라서 인가코드를 사용하여 토큰을 가져온다.</p>
+
+<p>토큰은 POST 방식으로 카카오에서 얻을 수 있다. 파라미터에 인가 코드가 필요한데, 이 인가 코드를 사용하기 위해서 URL에 담겨있는 뒷부분을 추출한다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">location</span> <span class="o">=</span> <span class="nf">useLocation</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">KAKAO_CODE</span> <span class="o">=</span> <span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="dl">'</span><span class="s1">=</span><span class="dl">'</span><span class="p">)[</span><span class="mi">1</span><span class="p">];</span>
+</code></pre></div></div>
+
+<p>fetch 함수를 이용하여 POST 방식으로 요청을 보내 localstorage에 토큰을 저장한다.</p>
+
+<p>토큰을 정상적으로 잘 받아서 로그인이 되었다면 자동으로 Redirect로 설정한 페이지로 이동한다.</p>
+
+<p>로그인에 실패했다면 else 부분의 <code class="language-plaintext highlighter-rouge">navigate(’주소’)</code>로 이동한다.</p>
+
+<p><img width="919" alt="스크린샷 2023-05-18 01 26 58" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/0b8dd2bb-552b-42df-b5e7-944f3192f5d8" /></p>
+
+<h3 id="4-여러-페이지-생성">4. 여러 페이지 생성</h3>
+
+<ul>
+  <li>
+    <p>로그인 실패 페이지</p>
+
+    <p><img width="426" alt="스크린샷 2023-05-18 01 05 28" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/befa2568-a7c6-4a41-a730-3ac9dcd8af2a" /></p>
+  </li>
+  <li>
+    <p>로그인 성공 페이지</p>
+
+    <p><img width="432" alt="스크린샷 2023-05-18 01 05 48" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/7147faf4-c525-4f33-9c71-3a64390fd279" /></p>
+  </li>
+</ul>
+
+<h3 id="5-실제-구현된-페이지">5. 실제 구현된 페이지</h3>
+
+<p><img width="1509" alt="스크린샷 2023-05-24 15 14 43" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/6efc6654-5402-4c6e-af9f-5da055fb47c9" /></p>
+
+<p><em>로그인 페이지</em></p>
+
+<p><img width="1510" alt="스크린샷 2023-05-24 15 15 03" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/e49d8fb1-24b0-499f-b0f9-84653be3ddeb" /></p>
+
+<p><em>카카오 소셜 로그인</em></p>
+
+<p><img width="1509" alt="스크린샷 2023-05-24 15 16 00" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/b08c5ba7-913d-478a-8288-b251b08dbef5" /></p>
+
+<p><em>카카오 소셜 로그인 정보 제공 동의</em></p>
+
+<p><img width="1496" alt="스크린샷 2023-05-24 15 16 21" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/32d725d0-a60e-4ecf-be04-56a1c7fe734f" /></p>
+
+<p><em>로그인 성공 페이지</em></p>
+
+<p><img width="1501" alt="스크린샷 2023-05-24 15 16 51" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/3f80d981-d12e-4857-8555-c621aaa6febe" /></p>
+
+<p><em>로그인 실패 페이지</em></p>
+
+<h2 id="트러블-슈팅"><strong>트러블 슈팅</strong></h2>
+
+<hr />
+
+<h4 id="localstorage에-토큰-저장-안됨"><strong>localStorage에 토큰 저장 안됨</strong></h4>
+
+<ul>
+  <li>
+    <p>문제</p>
+
+    <p>localStorage에 토큰이 저장 안된다…<br />
+에러 코드도 따로 발생하지 않아서 어떤게 원인인지는 잘 모르겠다…
+ERR_SSL_PROTOCOL_ERROR를 검색했을때, 크롬 문제일 수도 있다고 해서 사파리로 접속했으나 똑같이 에러 발생. 모바일로 접속해도 똑같이 에러 발생..<br />
+캐시 삭제 및 강한 새로고침을 해도 똑같이 에러가 발생한다.<br />
+KakaoLoginData.js에 담아둔 값들도 정상적으로 넘어온다. 코드도 참고 자료를 바탕으로 작성했으나, 토큰이 localStorage에 저장이 안된다.</p>
+  </li>
+  <li>
+    <p>해결</p>
+
+    <p><code class="language-plaintext highlighter-rouge">REDIRECT_URI</code>의 주소를 https로 설정해둬서 안됐다.. localhost라 http로 했어야 했는데..ㅋ</p>
+  </li>
+</ul>
+
+<h2 id="종합소감"><strong>종합소감</strong></h2>
+
+<p>카카오에서 REST API KEY 발급받아 카카오 소셜 로그인을 구현해보았다. 이전에, MOA WEBTOON 프로젝트를 진행했을 때, 네이버와 카카오 소셜 로그인을 구현했었다. 하지만, 나는 그저 버튼만 만들었을 뿐 실제로 기능 구현은 백엔드 분이 했었다. 그때 옆에서 보았던 것을 되새기고 참고 자료의 글을 읽고 공부하면서 구현해 보았다.<br />
+간단하게 생각했지만.. 전혀 간단하지만은 않았다 ^^.. 물론 다 하고 느낀 것은 내가 능숙해지면 이건 쉽게 할 수 있을 것이다! 라는 건 느껴졌다. 다음 번에는 더욱 빠르게 구현 할 수 있을 것 같다!</p>
+
+<blockquote>
+  <p><strong>참고자료</strong><br />
+<a href="https://velog.io/@milmilkim/카카오-소셜로그인-프론트엔드-리액트-파트">카카오 소셜로그인 프론트엔드 (리액트) 파트</a><br />
+<a href="https://developers.kakao.com/docs/latest/ko/kakaosync/design-guide">Kakao Developers</a><br />
+<a href="https://hymndev.tistory.com/72">[React] 카카오 소셜 로그인 구현하기</a></p>
+</blockquote>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#umc">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">UMC</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

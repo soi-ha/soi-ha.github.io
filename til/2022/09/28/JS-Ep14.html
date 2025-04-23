@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 JavaScript: 정규표현식 Ep.1 (정규식 생성) &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">JavaScript: 정규표현식 Ep.1 (정규식 생성)</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">28 Sep 2022</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h2 id="정규식-생성"><strong>정규식 생성</strong></h2>
+<hr />
+
+<p><strong>정규표현식 (Regular Expression)</strong>
+문자열을 검색하고 대체하는데 사용 가능한 일종의 형식언어(패턴)이다.<br />
+간단한 문자 검색부터 이메일, 패스워드 검사 등의 복잡한 문자 일치 기능등을 정규식 패턴으로 빠르게 수행할 수 있다.<br />
+정규표현식은 자바스크립트에서만 사용할 수 있는 것이 아니기에 다른 프로그래밍 언어나 특정한 환경에서도 사용할 수 있다. <br />
+주의해야 할 점은, 자바스크립트에서는 동작하지만 다른 언어나 환경에서는 동작하지 않을 수도 있다. 반대로 다른 프로그래밍 언어에서는 동작을 하는데 자바스크립트 환경에서는 동작하지 않는 내용이 있을 수도 있다.</p>
+
+<p><strong>정규표현식 역할</strong></p>
+<ul>
+  <li>문자 검색 (search)</li>
+  <li>문자 대체 (replace)</li>
+  <li>문자 추출 (extract)</li>
+</ul>
+
+<p><strong>정규표현식 테스트 사이트</strong><br />
+해당 사이트를 이용하여 정규표현식을 빠르게 테스트할 수 있다.<br />
+<a href="https://regex101.com/">regex101</a> <br />
+<a href="https://regexr.com/">regexr</a><br />
+<a href="https://regexper.com/">regexper</a></p>
+
+<h3 id="자바스크립트-정규식정규표현식-생성">자바스크립트 정규식(=정규표현식) 생성</h3>
+
+<ul>
+  <li>
+    <p><strong>생성자 함수 방식</strong></p>
+
+    <p>new라는 키워드와 함께 전역에서 사용할 수 있는 전역개체로 RegExp라는 객체를 제공한다. <br />
+해당 객체를 생성자함수로 만들면 정규표현식을 생성할 수 있다. <br />
+이렇게 생성된 결과를 특정한 변수에 받아서 활용할 수 있다.</p>
+
+    <p>첫번째 인수, 특정한 표현의 패턴<br />
+두번째 인수, 해당 패턴을 어떤 방식으로 검색할 것인지에 대한 옵션</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">new</span> <span class="nc">RegExp</span><span class="p">(</span><span class="dl">'</span><span class="s1">표현</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">옵션</span><span class="dl">'</span><span class="p">)</span>
+<span class="k">new</span> <span class="nc">RegExp</span><span class="p">(</span><span class="dl">'</span><span class="s1">[a-z]</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">gi</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>리터럴 방식</strong></p>
+
+    <p>생성자 함수 방식은 패턴부분을 따옴표로 묶어서 문자데이터로 인수를 넣어서 사용했지만 리터럴 방식은 패턴부분 양옆에 /(슬래쉬)기호를 붙여서 작성한다.</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">/</span><span class="nx">표현</span><span class="o">/</span><span class="nx">옵션</span>
+<span class="o">/</span><span class="p">[</span><span class="nx">a</span><span class="o">-</span><span class="nx">z</span><span class="p">]</span><span class="o">/</span><span class="nx">gi</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="두-정규식-생성-비교-실습"><strong>두 정규식 생성 비교 실습</strong></h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">str</span> <span class="o">=</span> <span class="s2">`
+010-1234-5678
+thesoha@gmail.com
+https://soi-ha.github.io/
+The quick brown fox jumps over the lazy dog.
+abbcccdddd
+`</span>
+</code></pre></div></div>
+
+<ul>
+  <li>실습 - 생성자 함수 방식
+    <ul>
+      <li>the라는 문자 검색하기
+        <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">regexp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RegExp</span><span class="p">(</span><span class="dl">'</span><span class="s1">the</span><span class="dl">'</span><span class="p">,</span><span class="dl">''</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">str</span><span class="p">.</span><span class="nf">match</span><span class="p">(</span><span class="nx">regexp</span><span class="p">))</span>
+</code></pre></div>        </div>
+        <p>첫번째 인수에 검색하고자 하는 문자, the를 입력한다.<br />
+검색하고자 하는 변수 str에 match라는 메소드를 사용해서 첫번째 인수로 생성자함수를 통해서 생성된 인스턴스가 담겨져 있는 변수(regexp)를 넣는다.</p>
+        <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">0</span><span class="p">:</span> <span class="dl">"</span><span class="s2">the</span><span class="dl">"</span>
+<span class="nx">groups</span><span class="p">:</span> <span class="kc">undefined</span>
+<span class="nx">index</span><span class="p">:</span> <span class="mi">87</span>
+<span class="nx">input</span><span class="p">:</span> <span class="dl">"</span><span class="se">\n</span><span class="s2">010-1234-5678</span><span class="se">\n</span><span class="s2">soha@gmail.com</span><span class="se">\n</span><span class="s2">https://soi-ha.github.io/</span><span class="se">\n</span><span class="s2">The quick brown fox jumps over the lazy dog.</span><span class="se">\n</span><span class="s2">abbcccdddd</span><span class="se">\n</span><span class="dl">"</span>
+<span class="nx">length</span><span class="p">:</span> <span class="mi">1</span>
+</code></pre></div>        </div>
+        <p>인덱스가 0번인 데이터를 확인하면 정규표현식의 패턴으로 입력한 단어(the)가 보인다.<br />
+input 부분에는 검색하려 했던 변수 str의 내용이 들어가 있다.</p>
+
+        <p>str이라는 input부분에 입력된 문장에서 the라는 단어를 찾아서 배열데이터로 만들어 주는데 기본적으로는 제일 처음에 찾아진 the라는 단어만 배열로 만들어준다.</p>
+      </li>
+      <li>모든 the 문자 검색하기
+        <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">regexp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RegExp</span><span class="p">(</span><span class="dl">'</span><span class="s1">the</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">g</span><span class="dl">'</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">str</span><span class="p">.</span><span class="nf">match</span><span class="p">(</span><span class="nx">regexp</span><span class="p">))</span>
+</code></pre></div>        </div>
+        <p>두번째 인수에 <strong>g</strong>라는 옵션(플래그)을 추가해준다.<br />
+g는 검색하고자 하는 모든 문자열을 불러온다.<br />
+옵션을 플래그라고도 부른다.</p>
+        <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="p">[</span><span class="dl">'</span><span class="s1">the</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">the</span><span class="dl">'</span><span class="p">]</span>
+<span class="mi">0</span><span class="p">:</span> <span class="dl">"</span><span class="s2">the</span><span class="dl">"</span>
+<span class="mi">1</span><span class="p">:</span> <span class="dl">"</span><span class="s2">the</span><span class="dl">"</span>
+<span class="nx">length</span><span class="p">:</span> <span class="mi">2</span>
+</code></pre></div>        </div>
+      </li>
+      <li>대소문자 상관없이 모든 the 문자 검색하기
+        <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">regexp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RegExp</span><span class="p">(</span><span class="dl">'</span><span class="s1">the</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">gi</span><span class="dl">'</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">str</span><span class="p">.</span><span class="nf">match</span><span class="p">(</span><span class="nx">regexp</span><span class="p">))</span>
+</code></pre></div>        </div>
+        <p>두번째 인수에 <strong>g와i</strong>라는 옵션(플래그)을 추가해준다.<br />
+i는 대소문자 모두를 검색한다.</p>
+        <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">[</span><span class="dl">'</span><span class="s1">the</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">The</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">the</span><span class="dl">'</span><span class="p">]</span>
+<span class="mi">0</span><span class="p">:</span> <span class="dl">"</span><span class="s2">the</span><span class="dl">"</span>
+<span class="mi">1</span><span class="p">:</span> <span class="dl">"</span><span class="s2">The</span><span class="dl">"</span>
+<span class="mi">2</span><span class="p">:</span> <span class="dl">"</span><span class="s2">the</span><span class="dl">"</span>
+<span class="nx">length</span><span class="p">:</span> <span class="mi">3</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>실습 - 리터럴 방식
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">regexp</span> <span class="o">=</span> <span class="sr">/the/gi</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">str</span><span class="p">.</span><span class="nf">match</span><span class="p">(</span><span class="nx">regexp</span><span class="p">))</span>
+</code></pre></div>    </div>
+    <p>슬래쉬 사이에 검색하고자 하는 문자를 입력하고 슬래쉬 뒤에는 원하는 옵션을 작성한다.</p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">[</span><span class="dl">'</span><span class="s1">the</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">The</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">the</span><span class="dl">'</span><span class="p">]</span>
+<span class="mi">0</span><span class="p">:</span> <span class="dl">"</span><span class="s2">the</span><span class="dl">"</span>
+<span class="mi">1</span><span class="p">:</span> <span class="dl">"</span><span class="s2">The</span><span class="dl">"</span>
+<span class="mi">2</span><span class="p">:</span> <span class="dl">"</span><span class="s2">the</span><span class="dl">"</span>
+<span class="nx">length</span><span class="p">:</span> <span class="mi">3</span>
+</code></pre></div>    </div>
+    <p>검색 결과는 생성자함수 방식과 동일하게 나온다.<br />
+리터럴 방식이 생성자함수보다 더 간결하게 검색할 수 있어서 앞으로는 주로 리터럴방식을 통해서 정규표현식을 사용한다.</p>
+  </li>
+</ul>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#js">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">JS</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

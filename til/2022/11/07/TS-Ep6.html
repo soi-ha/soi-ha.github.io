@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 TypeScript: Type System Ep.2 Structural Type System vs Nominal Type System, 타입 호환성, 타입 별칭 &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">TypeScript: Type System Ep.2 Structural Type System vs Nominal Type System, 타입 호환성, 타입 별칭</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">07 Nov 2022</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h2 id="structural-type-system-vs-nominal-type-system"><strong>Structural Type System vs Nominal Type System</strong></h2>
+<hr />
+
+<ul>
+  <li>
+    <p>Structural Type System</p>
+
+    <p>구조가 같으면 같은 타입으로 취급하는 방식이다.<br />
+대표적인 언어로 타입스크립트가 있다.</p>
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">IPerson</span> <span class="p">{</span>
+  <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+  <span class="nl">age</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+  <span class="nf">speak</span><span class="p">():</span> <span class="kr">string</span><span class="p">;</span>
+<span class="p">}</span>
+  
+<span class="kd">type</span> <span class="nx">PersonType</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+  <span class="nl">age</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+  <span class="nf">speak</span><span class="p">():</span> <span class="kr">string</span><span class="p">;</span>
+<span class="p">}</span>
+  
+<span class="kd">let</span> <span class="nx">personInterface</span><span class="p">:</span> <span class="nx">Iperson</span> <span class="o">=</span> <span class="p">{}</span> <span class="kd">as </span><span class="kr">any</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">personType</span><span class="p">:</span> <span class="nx">PersonType</span> <span class="o">=</span> <span class="p">{}</span> <span class="kd">as </span><span class="kr">any</span><span class="p">;</span>
+  
+<span class="nx">personInterface</span> <span class="o">=</span> <span class="nx">personType</span><span class="p">;</span> <span class="c1">// 문제 없음</span>
+<span class="nx">personType</span> <span class="o">=</span> <span class="nx">personInterface</span><span class="p">;</span> <span class="c1">// 구조가 동일하기 때문</span>
+</code></pre></div>    </div>
+    <p>Iperson과 PersonType은 똑같은 구조를 가지고 있기 때문에 한쪽 타입을 한쪽 타입으로 대입할 수 있다.</p>
+
+    <p>이러한 원리를 이용해서 타입스크립트에서는 해당 타입이 무엇인지 명시적으로 설정할 필요 없이 있던 것을 사용해도 된다. 구조가 동일하면 그냥 가져다가 쓰면 되기 때문이다.</p>
+  </li>
+  <li>
+    <p>Nominal Type System</p>
+
+    <p>구조가 같아도 이름이 다르면 다른 타입이다.<br />
+대표적인 언어로 C, Java가 있다.</p>
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">type</span> <span class="nx">PersonID</span> <span class="o">=</span> <span class="kr">string</span> <span class="o">&amp;</span> <span class="p">{</span> <span class="k">readonly</span> <span class="na">brand</span><span class="p">:</span> <span class="nx">unique</span> <span class="nx">symbol</span> <span class="p">};</span>
+  
+<span class="kd">function</span> <span class="nf">PersonID</span><span class="p">(</span><span class="nx">id</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="nx">PersonID</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">id</span> <span class="kd">as </span><span class="nx">PersonID</span><span class="p">;</span>
+<span class="p">}</span>
+  
+<span class="kd">function</span> <span class="nf">getPersonById</span><span class="p">(</span><span class="nx">id</span><span class="p">:</span> <span class="nx">PersonID</span><span class="p">)</span> <span class="p">{}</span>
+  
+<span class="nf">getPersonById</span><span class="p">(</span><span class="nc">PersonID</span><span class="p">(</span><span class="dl">'</span><span class="s1">id-aaaaaa</span><span class="dl">'</span><span class="p">);</span>
+<span class="nf">getPersonById</span><span class="p">(</span><span class="dl">'</span><span class="s1">id-aaaaaa</span><span class="dl">'</span><span class="p">);</span>
+<span class="c1">// error: 아무 문자열이나 넣을 수 없고 PersonID 형식으로 치환된 타입만 넣을 수 있다.</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Duck Typing</p>
+
+    <p>런타임에 발생하는 타이핑방식이다.<br />
+만약 어떤 새가 오리처럼 걷고, 헤엄치고, 소리를 낸다면 우리는 그 새를 오리라고 부를 것이다. 라는 철학을 가지고 만든 것이다.<br />
+대표적으로 Python이 있다.</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Duck</span><span class="p">:</span>
+  <span class="k">def</span> <span class="nf">sound</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+    <span class="k">print</span> <span class="sa">u</span><span class="sh">"</span><span class="s">꽥꽥</span><span class="sh">"</span>
+  
+<span class="k">class</span> <span class="nc">Dog</span><span class="p">:</span>
+  <span class="k">def</span> <span class="nf">sound</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+    <span class="k">print</span> <span class="sa">u</span><span class="sh">"</span><span class="s">멍멍</span><span class="sh">"</span>
+  
+<span class="k">def</span> <span class="nf">get_sound</span><span class="p">(</span><span class="n">animal</span><span class="p">):</span>
+  <span class="n">animal</span><span class="p">.</span><span class="nf">sound</span><span class="p">()</span>
+  
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+  <span class="n">bird</span> <span class="o">=</span> <span class="nc">Duck</span><span class="p">()</span>
+  <span class="n">dog</span> <span class="o">=</span> <span class="nc">Dog</span><span class="p">()</span>
+  <span class="nf">get_sound</span><span class="p">(</span><span class="n">bird</span><span class="p">)</span>
+  <span class="nf">get_sound</span><span class="p">(</span><span class="n">dog</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="타입-호환성-type-compatibility"><strong>타입 호환성 (Type Compatibility)</strong></h2>
+<hr />
+
+<ul>
+  <li>서브타입
+    <ul>
+      <li>
+        <p>같거나 서브타입인 경우에는 할당이 가능하다. 이러한 것을 <strong>공변</strong>이라고 부른다.</p>
+
+        <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// primitive type</span>
+<span class="kd">let</span> <span class="nx">sub7</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">sup7</span><span class="p">:</span> <span class="kr">string</span> <span class="o">|</span> <span class="kr">number</span> <span class="o">=</span> <span class="nx">sub7</span><span class="p">;</span>
+</code></pre></div>        </div>
+        <p>sup7은 string과 number의 조합이기 때문에 sub7보다 더 넓은 개념이다. 따라서 sub7을 넣을 수 있다. 이것이 공변이다.</p>
+
+        <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// object - 각각의 프로퍼티가 대응하는 프로퍼티와 같거나 서브타입이어야 한다.</span>
+<span class="kd">let</span> <span class="nx">sub8</span><span class="p">:</span> <span class="p">{</span> <span class="nl">a</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span> <span class="nl">b</span><span class="p">:</span> <span class="kr">number</span> <span class="p">}</span> <span class="o">=</span> <span class="p">{</span> <span class="na">a</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span> <span class="na">b</span><span class="p">:</span> <span class="mi">1</span> <span class="p">};</span>
+<span class="kd">let</span> <span class="nx">sup8</span><span class="p">:</span> <span class="p">{</span> <span class="nl">a</span><span class="p">:</span> <span class="kr">string</span> <span class="o">|</span> <span class="kr">number</span><span class="p">;</span> <span class="nl">b</span><span class="p">:</span> <span class="kr">number</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">sub8</span><span class="p">;</span>
+</code></pre></div>        </div>
+        <p>a끼리 비교하고 b끼리 비교했을 때, sup8의 a가 더 넓은 개념을 가진다. 따라서 sub8을 sup8에 넣을 수 있다.</p>
+
+        <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// array - object와 마찬가지</span>
+<span class="kd">let</span> <span class="nx">sub9</span><span class="p">:</span> <span class="nb">Array</span><span class="o">&lt;</span><span class="p">{</span> <span class="na">a</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span> <span class="nl">b</span><span class="p">:</span> <span class="kr">number</span> <span class="p">}</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[{</span> <span class="na">a</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span> <span class="na">b</span><span class="p">:</span> <span class="mi">1</span> <span class="p">}];</span>
+<span class="kd">let</span> <span class="nx">sup9</span><span class="p">:</span> <span class="nb">Array</span><span class="o">&lt;</span><span class="p">{</span> <span class="na">a</span><span class="p">:</span> <span class="kr">string</span> <span class="o">|</span> <span class="kr">number</span><span class="p">;</span> <span class="nl">b</span><span class="p">:</span> <span class="kr">number</span> <span class="p">}</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nx">sub9</span><span class="p">;</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>슈퍼타입
+    <ul>
+      <li>함수의 매개변수 타입만 같거나 슈퍼타입인 경우 할당이 가능하다. 이것을 <strong>반변</strong>이라고 부른다.
+        <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Person</span> <span class="p">{}</span> <span class="c1">// 가장 적다. 최상위</span>
+<span class="kd">class</span> <span class="nc">Developer</span> <span class="kd">extends</span> <span class="nc">Person</span> <span class="p">{</span>
+  <span class="nf">coding</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">}</span> <span class="c1">// 두번째로 많다.</span>
+<span class="kd">class</span> <span class="nc">StartupDeveloper</span> <span class="kd">extends</span> <span class="nc">Developer</span> <span class="p">{</span>
+  <span class="nf">burning</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">}</span> <span class="c1">// 안에 들은 함수가 가장 많다. 최하위</span>
+    
+<span class="c1">// 인자 f에 함수가 들어간다. Developer를 인자로 받고 Developer를 리턴하는 형태</span>
+<span class="kd">function</span> <span class="nf">tellme</span><span class="p">(</span><span class="nx">f</span><span class="p">:</span> <span class="p">(</span><span class="nx">d</span><span class="p">:</span> <span class="nx">Developer</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">Developer</span><span class="p">)</span> <span class="p">{}</span>
+    
+<span class="c1">// Developer =&gt; Developer에다가 Developer =&gt; Developer를 할당하는 경우</span>
+<span class="nf">tellme</span><span class="p">(</span><span class="kd">function</span> <span class="nf">dToD</span><span class="p">(</span><span class="nx">d</span><span class="p">:</span> <span class="nx">Developer</span><span class="p">):</span> <span class="nx">Developer</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">new</span> <span class="nc">Developer</span><span class="p">();</span>
+<span class="p">});</span>
+    
+<span class="c1">// Developer =&gt; Developer에다가 Person =&gt; Developer를 할당하는 경우</span>
+<span class="nf">tellme</span><span class="p">(</span><span class="kd">function</span> <span class="nf">pToD</span><span class="p">(</span><span class="nx">d</span><span class="p">:</span> <span class="nx">Person</span><span class="p">):</span> <span class="nx">Developer</span> <span class="p">{</span> <span class="c1">// Person이 슈퍼타입인 경우</span>
+  <span class="k">return</span> <span class="k">new</span> <span class="nc">Developer</span><span class="p">();</span>
+<span class="p">});</span>
+    
+<span class="c1">// Developer =&gt; Developer에다가 StartupDeveloper =&gt; Developer를 할당하는 경우</span>
+<span class="nf">tellme</span><span class="p">(</span><span class="kd">function</span> <span class="nf">sToD</span><span class="p">(</span><span class="nx">d</span><span class="p">:</span> <span class="nx">StartupDeveloper</span><span class="p">):</span> <span class="nx">Developer</span> <span class="p">{</span> <span class="c1">// StartupDeveloper 서브타입</span>
+  <span class="k">return</span> <span class="k">new</span> <span class="nc">Developer</span><span class="p">();</span>
+<span class="p">});</span>
+</code></pre></div>        </div>
+
+        <p>tellme에 인수 Developer와 Person이 들어왔을 때는 문제가 없다. Developer와 Developer는 같고 Person은 Developer보다 상위이기 때문이다.<br />
+인수가 StartupDeveloper는 코드 자체에는 문제가 없다. 그러나 해당 코드를 <code class="language-plaintext highlighter-rouge">function tellme~~</code> 코드에 넣었을 때 f에 맞지 않다.   StartupDeveloper는 Developer보다 하위이기 때문에 해당 코드의 f는 burning()을 모른다. 그렇기에 논리적으로 문제가 있다.<br />
+하지만, 타입스크립트는 해당 부분에 대해서 사용자에게 선택을 준다.</p>
+      </li>
+      <li>
+        <p><strong>strictFunctionTypes</strong></p>
+
+        <p>해당 옵션을 키면, 함수를 할당할 때 함수의 매개변수 타입이 같거나 슈퍼타입이 아닌 경우(서브타입인 경우)에 에러를 통해서 경고한다.<br />
+strictFunctionTypes 옵션을 키지 않으면 해당 코드 정도는 에러가 발생하지 않는다. (융통성을 준달까)</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="타입-별칭별명-type-alias"><strong>타입 별칭(별명) (Type Alias)</strong></h2>
+<hr />
+<p>어떤 타입에 이름을 붙여준 것이다.<br />
+Interface와 비슷하지만 다르다.<br />
+Primitive Type, Union Type, Tuple, Function 등 어떤 형태의 타입을 길게 작성하지 않고 따로 빼서 이름을 만들어서 사용하는 것이다.<br />
+만들어진 타입의 별명(refer)으로 사용하는 것이지 타입을 만드는 것은 아니다.</p>
+
+<ul>
+  <li>
+    <p>Aliasing Primitive</p>
+
+    <p>Primitive Type을 다른 이름으로 불러 보는 것이다.<br />
+별다른 의미는 없다..</p>
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">type</span> <span class="nx">MyStringType</span> <span class="o">=</span> <span class="kr">string</span><span class="p">;</span>
+  
+<span class="kd">const</span> <span class="nx">str</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">world</span><span class="dl">'</span><span class="p">;</span>
+  
+<span class="kd">let</span> <span class="nx">mystr</span><span class="p">:</span> <span class="nx">MyStringType</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">hello</span><span class="dl">'</span><span class="p">;</span>
+<span class="nx">mystr</span> <span class="o">=</span> <span class="nx">str</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Aliasing Union Type</p>
+
+    <p>유니온 타입은 A도 가능하고 B도 가능한 타입이다.<br />
+길게 쓰는걸 짧게 쓸 수 있고 반복되는 것을 줄여준다.</p>
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 사용 x</span>
+<span class="kd">let</span> <span class="nx">person</span><span class="p">:</span> <span class="kr">string</span> <span class="o">|</span> <span class="kr">number</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="nx">person</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Mark</span><span class="dl">'</span><span class="p">;</span>
+  
+<span class="c1">// 사용 o</span>
+<span class="kd">type</span> <span class="nx">StringOrNumber</span> <span class="o">=</span> <span class="kr">string</span> <span class="o">|</span> <span class="kr">number</span><span class="p">;</span>
+  
+<span class="kd">let</span> <span class="nx">another</span><span class="p">:</span> <span class="nx">StringOrNumber</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="nx">another</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Anna</span><span class="dl">'</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Aliasing Tuple</p>
+
+    <p>튜플 타입에 별칭을 줘서 여러군데서 사용할 수 있게 한다.<br />
+반복과 타이핑을 줄여준다.</p>
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">person</span><span class="p">:</span> <span class="p">[</span><span class="kr">string</span><span class="p">,</span> <span class="kr">number</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">Mark</span><span class="dl">'</span><span class="p">,</span> <span class="mi">35</span><span class="p">];</span>
+  
+<span class="c1">// 사용 o</span>
+<span class="kd">type</span> <span class="nx">PersonTuple</span> <span class="o">=</span> <span class="p">[</span><span class="kr">string</span><span class="p">,</span> <span class="kr">number</span><span class="p">];</span>
+  
+<span class="kd">let</span> <span class="nx">another</span><span class="p">:</span> <span class="nx">PersoonTuple</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">Anna</span><span class="dl">'</span><span class="p">,</span> <span class="mi">24</span><span class="p">];</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Aliasing Fuction</p>
+
+    <p>매개변수를 별명을 만들어서 사용해준다.</p>
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">type</span> <span class="nx">EatType</span> <span class="o">=</span> <span class="p">(</span><span class="nx">food</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Aliasing과 Interface 구분</p>
+
+    <p>어떤 타입이 목적이나 존재가치나 명확하면 interface.<br />
+그렇지 않고, 어떤 대상을 가리키거나 별명으로서만 존재하면 type aliasing.</p>
+  </li>
+</ul>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#ts">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TS</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

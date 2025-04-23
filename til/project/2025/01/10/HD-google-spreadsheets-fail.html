@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 행동대장: Google 스프레드시트 사용 실패 경험 정리 &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">행동대장: Google 스프레드시트 사용 실패 경험 정리</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">10 Jan 2025</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/project.html">
+          Project
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <p><strong>🚨 해당 <a href="https://github.com/woowacourse-teams/2024-haeng-dong/pull/913">issue</a>는 구현에 실패했으며, 해당 PR은 실패 사유에 대해 공유하는 글입니다.</strong></p>
+
+<h2 id="구현-목적">구현 목적</h2>
+
+<h3 id="회원-탈퇴-기능을-왜-구현해야-하죠">회원 탈퇴 기능을 왜 구현해야 하죠?</h3>
+
+<p>행동대장 서비스는 카카오로 회원가입 및 로그인이 도입되면서, 회원 탈퇴에 대한 기능이 필수적으로 필요하게 되었습니다(개인정보보호법). 따라서 회원 탈퇴 기능을 구현하게 되었습니다. 그리고 <a href="https://github.com/woowacourse-teams/2024-haeng-dong/pull/858">이전 이슈</a>에서 언급한 것처럼 회원가입을 진행한 유저가 탈퇴를 하는 사유에 대해 트래킹을 해야 한다고 생각했습니다. 탈퇴 사유를 수집함으로 우리 서비스의 문제를 보완해 나갈 수 있기 때문입니다.</p>
+
+<h3 id="구글-스프레드시트를-데이터베이스로-사용한-이유">구글 스프레드시트를 데이터베이스로 사용한 이유</h3>
+
+<p>탈퇴 사유를 백엔드의 api를 통해 저장할 수 있지만, 저희에게는 현재 서버 비용에 한계가 존재합니다. 서비스를 통해 금전적인 이득을 취하는 상황이 아니기 때문이죠. 그렇기에 회원 탈퇴 이용에 큰 영향을 끼치지 않는 선에서 서비 비용을 줄여야 한다고 생각했습니다. 이렇게 생각하여 찾은 방법이 구글의 스프레드시트 api를 활용하는 것이었습니다.</p>
+
+<p>구글 스프레드시트를 데이터베이스로 활용하여 회원 사용자의 탈퇴 사유를 저장합니다. 구글 스프레드시트는 잘 만들어진 서비스로 우리가 추후 탈퇴 사유에 대한 데이터를 분석하고 싶을 때 쉽게 확인할 수 있을 것입니다.</p>
+
+<h2 id="구현-방법">구현 방법</h2>
+
+<p>해당 파트는 이런 프로세스로 구글 스프레드시트를 활용할 수 있음을 정리한 것입니다. 아래 설명 할 방법처럼 구현을 하려고 했으나 제 판단으로는 프론트엔드만으로는 구현이 불가능하였다는 점..</p>
+
+<h3 id="구글-spreadsheet-api-사용을-위한-단계">구글 spreadsheet api 사용을 위한 단계</h3>
+
+<ol>
+  <li>구글 클라우드 프로젝트 생성 및 서비스 계정 생성</li>
+  <li>스프레드 시트에 접근할 수 있도록 구글 계정 인증</li>
+  <li>http 요청</li>
+</ol>
+
+<h3 id="1-구글-클라우드-프로젝트-생성">1. 구글 클라우드 프로젝트 생성</h3>
+
+<ul>
+  <li>구글 클라우드에서 프로젝트를 생성합니다.</li>
+  <li>해당 프로젝트의 API에 Google Sheets를 추가합니다.</li>
+  <li>서비스 계정을 생성합니다.</li>
+  <li>계정 생성으로 얻게된 credential 파일을 클라이언트 폴더에 추가합니다.
+해당 파일에는 구글 스프레드시트에 접근하고 편집 가능할 수 있도록 하는 다양한 인증 id, key 등이 존재합니다.</li>
+  <li>구글 스프레드시트에서 연결하고자 하는 시트를 생성합니다.</li>
+  <li>해당 시트에 편집자로 서비스 계정 생성을 통해 얻은 이메일을 등록하고 편집자 권한을 부여합니다.</li>
+  <li>해당 시트의 url에서 sheet id를 가져와 클라이언트 파일에서 사용할 수 있도록 저장해둡니다.</li>
+</ul>
+
+<h3 id="2-스프레드-시트에-접근--두가지-방법-근데-에러를-곁들인">2. 스프레드 시트에 접근 | 두가지 방법 (근데 에러를 곁들인..)</h3>
+
+<p>스프레드 시트에 접근하기 위해서 다음 범위(scope) 중 하나가 필요합니다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">https://www.googleapis.com/auth/drive</code></li>
+  <li><code class="language-plaintext highlighter-rouge">https://www.googleapis.com/auth/drive.file</code></li>
+  <li><code class="language-plaintext highlighter-rouge">https://www.googleapis.com/auth/spreadsheets</code></li>
+</ul>
+
+<p>우리는 위에 언급한 범위를 승인 받기 위해서 아까 위에서 생성된 서비스 계정의 이메일로 접근해야 합니다. 이때 우리는 이 승인을 각각 다른 라이브러리를 활용하여 진행할 수 있습니다.</p>
+
+<p><strong><a href="https://www.npmjs.com/package/googleapis?activeTab=readme">googleapis</a> 라이브러리 활용</strong></p>
+
+<ul>
+  <li>googleapis 라이브러리에서 google import</li>
+  <li>google.auth를 사용하여 인증</li>
+</ul>
+
+<p><strong><a href="https://www.npmjs.com/package/google-auth-library">google-auth-library</a> 활용</strong></p>
+
+<ul>
+  <li>google-auth-library에서 JWT import</li>
+  <li>new JWT를 생성하여 인증</li>
+  <li>단, 해당 라이브러리를 사용하여 구글 스프레드시트에 인증을 받을 때는 <a href="https://www.npmjs.com/package/google-spreadsheet?activeTab=readme">google-spreadsheet</a> 라이브러리를 활용합니다.
+google-spreadsheet는 외부에서 제작한 라이브러리이기 때문에 변화에 즉각 대응하기 어렵습니다. 하지만 비교적 구현하기 쉽습니다.</li>
+</ul>
+
+<p><strong>🚨두 방법 모두 공통적인 문제 발생</strong></p>
+
+<p>두가지 방법을 각각 시도하면서 공통적인 문제가 발생했습니다. 무려 에러의 갯수는 총 35개…</p>
+
+<p><img width="611" alt="webpack_v5_error_1" src="https://github.com/user-attachments/assets/f330e54d-8d03-42e4-87d0-bb2976e7c266" /></p>
+
+<p>에러의 유형은 다음과 같습니다.</p>
+
+<ul>
+  <li>webpack 버전 5 사용으로 인해 폴리필 에러<br />
+<code class="language-plaintext highlighter-rouge">webpack &lt; 5 used to include polyfills for node.js core modules by default</code></li>
+  <li>child_process를 찾을 수 없는 에러<br />
+<code class="language-plaintext highlighter-rouge">Module not found: Error: Can't resolve 'child_process’</code></li>
+  <li>net, tls를 찾을 수 없는 에러
+<code class="language-plaintext highlighter-rouge">Module not found: Error: Can't resolve 'net’</code></li>
+</ul>
+
+<p><strong><a href="https://soi-ha.github.io/2025/01/10/2025-01-10-HD-child-process-not-find-module.html">폴리필 에러는 해결이 가능했습니다만</a></strong>… 남은 두 에러는 해결이 불가능했습니다..
+위의 두 에러는 <strong>Node.js 환경에서 동작해야 할 코드가 브라우저 환경에서 실행</strong>하려고 할 때 발생하는 것이기 때문이었죠..<br />
+<a href="https://soi-ha.github.io/til/project/2025/01/10/HD-polyfills-error.html">(이 에러를 발견한 상황을 보고 싶다면 여기를 클릭..)</a></p>
+
+<p>네.. 저는 클라이언트에서 서버 코드를 실행하고 있었던 것이었스빈다!!ㅜ</p>
+
+<p><strong>👉결론👈</strong></p>
+
+<p>구글 스프레드시트 api를 사용하고 싶으면 백엔드가 필요하다… 입니다…</p>
+
+<h3 id="3-http-요청">3. http 요청</h3>
+
+<p>해당 코드가 실행되면 403에러가 발생하는 것을 보아하니 제대로 된 코드는 맞는 것 같습니다. 아까워서… 이렇게라도 남겨봐요…</p>
+
+<p>잘 작동하는지 테스트하기 위해서 값들은 냅다 넣었습니다. <del>흐린눈.. 부탁드립니다.</del><br />
+(참고로 아래 코드에서 사용한 requestPostWithResponse는 행동대장 클라이언트 코드에서 제작한 api 요청을 위한 메서드입니다.)</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">const</span> <span class="nx">requestPostGoogleSpreadSheets</span> <span class="o">=</span> <span class="k">async </span><span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+	<span class="k">await</span> <span class="nf">requestPostWithResponse</span><span class="p">({</span>
+		<span class="na">baseUrl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://sheets.googleapis.com/v4/spreadsheets</span><span class="dl">'</span><span class="p">,</span>
+		<span class="na">endpoint</span><span class="p">:</span> <span class="s2">`/</span><span class="p">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">GOOGLE_SPREADSHEET_ID</span><span class="p">}</span><span class="s2">/values/Sheet1!A1:E1:append`</span><span class="p">,</span>
+		<span class="na">queryParams</span><span class="p">:</span> <span class="p">{</span>
+			<span class="na">valueInputOption</span><span class="p">:</span> <span class="dl">'</span><span class="s1">RAW</span><span class="dl">'</span><span class="p">,</span>
+		<span class="p">},</span>
+		<span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+			<span class="dl">'</span><span class="s1">Access-Control-Allow-Credentials</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">true</span><span class="dl">'</span><span class="p">,</span>
+		<span class="p">},</span>
+		<span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+			<span class="na">range</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Sheet1!A1:E1</span><span class="dl">'</span><span class="p">,</span>
+			<span class="na">majorDimension</span><span class="p">:</span> <span class="dl">'</span><span class="s1">ROWS</span><span class="dl">'</span><span class="p">,</span>
+			<span class="na">values</span><span class="p">:</span> <span class="p">[</span>
+				<span class="p">[</span><span class="dl">'</span><span class="s1">Door</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">$15</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">2</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">3/15/2016</span><span class="dl">'</span><span class="p">],</span>
+				<span class="p">[</span><span class="dl">'</span><span class="s1">Engine</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">$100</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">1</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">3/20/2016</span><span class="dl">'</span><span class="p">],</span>
+			<span class="p">],</span>
+		<span class="p">},</span>
+	<span class="p">});</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h2 id="참고">참고</h2>
+
+<ul>
+  <li><a href="https://developers.google.com/sheets/api/samples/writing?hl=ko#append_values">기본 쓰기 : Google Sheets : Google for Developers</a></li>
+</ul>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#wooteco">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">Wooteco</span>
+    </a>
+  
+    
+    <a href="/tags.html#행동대장">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">행동대장</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 React: React Router &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">React: React Router</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">26 Mar 2023</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h2 id="react-라우팅"><strong>React 라우팅</strong></h2>
+
+<blockquote>
+  <p><a href="https://reactrouter.com/en/main">React Router: Home v6.9.0</a></p>
+</blockquote>
+
+<h3 id="spa-라우팅-과정"><strong>SPA 라우팅 과정</strong></h3>
+
+<ul>
+  <li>브라우저에서 최초에 ‘/’ 경로로 요청</li>
+  <li>React Web App을 내려줌</li>
+  <li>내려받은 React App에서 ‘/’경로에 맞는 컴포넌트를 보여줌</li>
+  <li>React App에서 다른 페이지로 이동하는 동작 수행</li>
+  <li>새로운 경로에 맞는 컴포넌트를 보여줌</li>
+</ul>
+
+<h3 id="react-router-설치"><strong>React Router 설치</strong></h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm i react-router-dom
+</code></pre></div></div>
+
+<ul>
+  <li>CRA에 긱본 내장된 패키지가 아니다.</li>
+  <li>react-router-dom은 페이스북 공식 패키지가 아니지만 가장 대표적인 라우팅 패키지이다.</li>
+</ul>
+
+<h3 id="router-component"><strong>Router Component</strong></h3>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">&lt;BrowserRouter&gt;</code></p>
+
+    <p>브라우저 History API를 사용해 현재 위치의 URL을 저장해주는 역할이다.<br />
+웹에 HTML5 History API를 사용하여 페이지를 새로고침 하지 않아도 주소를 변경하고, 현재 주소에 관련된 정보를 props로 쉽게 조회하거나 사용할 수 있도록 한다.</p>
+
+    <Route>와 <link /> 컴포넌트가 함께 유기적으로 동작할 수 있도록 묶어주는데 사용한다.
+
+</Route>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">&lt;Route&gt;</code></p>
+
+    <p>컴포넌트의 속성에 설정된 URL과 현재 경로가 일치하면 해당하는 컴포넌트, 함수를 렌더링 한다.</p>
+
+    <p>path를 통해 URL을 분기시킨다. 중첩이 가능하다.<br />
+exact는 path 속성에 넣은 경로값이 <strong>정확히</strong> 일치해야 랜더링되도록 한다. exact를 사용하지 않으면 “/profile”경로가 “/”경로에도 반응하게 된다.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">&lt;Link&gt;</code></p>
+
+    <p>HTML의 <code class="language-plaintext highlighter-rouge">&lt;a&gt;</code>태그와 유사한 기능을 한다.<br />
+to 속성에 설정된 링크로 이동한다.</p>
+
+    <p>react router에서는 <code class="language-plaintext highlighter-rouge">&lt;a&gt;</code>태그를 사용할 수 없기에 해당 컴포넌트를 사용한다. <code class="language-plaintext highlighter-rouge">&lt;a&gt;</code>태그는 모두 새로 가져오기 때문에 해당 태그는 사용할 수가 없다.</p>
+
+    <p>Link를 통해 페이지를 전환하면 새로운 페이지를 부르지 않아도 애플리케이션은 그대로 유지한 채, HTML5 History API를 사용하여 페이지의 주소만 변경한다.</p>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;NavLink&gt;</code>
+activeClassName, activeStyle 처럼 active 상태에 대한 스타일 지정이 가능하다.<br />
+Route의 path처럼 동작하기 때문에 exact가 있다.</li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">&lt;Switch&gt;</code></p>
+
+    <p>자식 컴포넌트 <route> 또는 <redirect>중 매치되는 첫번째 요소를 렌더링한다. 작성할때 순서는 좁은 범위 ~ 넓은 범위로 작성한다. (순서가 중요하니 유의하도록 하자)  
+Switch를 사용하면 BrowserRouter만 사용할 때와 다르게 **하나**의 매칭되는 요소만 렌더링한다.  
+Switch로 감싸고 있기 때문에 Route가 중복되는 것이 있으면 첫번째 요소만 렌더링한다.  
+가장 마지막에 어느 path에도 맞지 않으면 보여지는 컴포넌트를 설정해서 “Not Found” 페이지를 만들 수 있다.</redirect></route></p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">&lt;Redirect&gt;</code></p>
+
+    <p><code class="language-plaintext highlighter-rouge">&lt;Redirect&gt;</code>가 렌더링되면 to가 가리키는 링크로 바로 연결된다.</p>
+  </li>
+</ul>
+
+<h3 id="router-적용-순서"><strong>Router 적용 순서</strong></h3>
+
+<p>BrowserRouter 연결 → 페이지 컴포넌트 만들기 → Route path 연결 → Link 컴포넌트 연결</p>
+
+<blockquote>
+  <p>참고 자료 링크<br />
+<a href="https://goddino.tistory.com/160">react-router-dom 설치, 라우팅하기</a><br />
+<a href="https://jinyisland.kr/post/react-router/">리액트 라우터 기본 사용방법</a><br />
+<a href="https://velog.io/@kwonh/React-react-router-dom-시작하기">react-router-dom 시작하기</a></p>
+</blockquote>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#react">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">React</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

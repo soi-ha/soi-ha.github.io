@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 행동대장: 각 행사 url로 QR코드 생성하기 (qrcode.react, react-qr-code, qr.js 비교하기) &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">행동대장: 각 행사 url로 QR코드 생성하기 (qrcode.react, react-qr-code, qr.js 비교하기)</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">07 Nov 2024</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/project.html">
+          Project
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h2 id="행동대장-서비스에-qr코드를-도입한-이유">행동대장 서비스에 QR코드를 도입한 이유</h2>
+
+<p>행동대장 서비스는 sns 친구가 아니어도 정산을 할 수 있도록 하는 것이 목적이다. 그러나 기존에는 최초의 목적에 부합하지 않았다. 카톡이 아니더라도 최소 하나의 SNS의 친구가 되어있어야 했다. 따라서, 각 행사의 고유 QR코드를 생성하여 SNS가 없어도 사용할 수 있고 대면에서 바로 행사 페이지에 접속할 수 있도록 했다.</p>
+
+<h2 id="어떻게-qr코드를-생성할까">어떻게 QR코드를 생성할까?</h2>
+
+<p>QR코드를 만드는 방법은 다양하게 있을 것이다. 직접 구현하거나, 라이브러리를 활용하거나.</p>
+
+<ol>
+  <li>
+    <p>직접 만들기<br />
+가능한 일이지만 시간 제약이 존재하며 리소스가 넘쳐나는 세상에서는 너무 비효율적인 일이라고 생각한다.<br />
+ QR코드를 생성하기 위한 알고리즘을 직접 구현하는 것은 매우 복잡하고 수학적인 연산이 필요할 것이다. 따라서, 해당 방법은 바로 목록에서 지워버렸다.</p>
+  </li>
+  <li>
+    <p>라이브러리 활용하기<br />
+우리는 시간과 인적 자원을 아끼기 위해 손쉽게 QR코드를 생성해주는 라이브러리를 활용할 것이다.<br />
+다음 이미지는 NPM에 등록된 QR코드를 생성해주는 라이브러리를 다운로드 순으로 정렬한 것이다.</p>
+
+    <p><img width="932" alt="NPM QR코드 생성 패키지 다운로드 순위로 정렬" src="https://github.com/user-attachments/assets/58cf5fc9-6445-4927-9bfc-7c614f0e86f4" /></p>
+
+    <p>가장 많이 사용된 3가지는 <code class="language-plaintext highlighter-rouge">qrcode.react</code>, <code class="language-plaintext highlighter-rouge">qr.js</code>, <code class="language-plaintext highlighter-rouge">react-qr-code</code>이다. 이 3가지 라이브러리 중 어떤 것을 사용할지 비교를 통해 선택해보자.</p>
+  </li>
+</ol>
+
+<h2 id="qrcodereact-react-qr-code-qrjs-비교하기"><code class="language-plaintext highlighter-rouge">qrcode.react</code>, <code class="language-plaintext highlighter-rouge">react-qr-code</code>, <code class="language-plaintext highlighter-rouge">qr.js</code> 비교하기</h2>
+
+<h3 id="qrcodereact">qrcode.react</h3>
+
+<ul>
+  <li>
+    <p>성능</p>
+
+    <p>React 환경에 최적화되어 있어 QR 코드 생성 속도가 빠르고 효율적이다. 이 라이브러리는 React의 렌더링 방식에 맞게 설계되었기 때문에 대규모 애플리케이션에서도 안정적인 성능을 제공한다. 이는 React의 Virtual DOM을 효과적으로 활용하여 불필요한 재렌더링을 최소화하기 때문이다.</p>
+  </li>
+  <li>
+    <p>커스터마이징</p>
+
+    <p>색상, 크기, 배경색 등 기본적인 커스터마이징이 가능하지만, 로고 삽입이나 복잡한 디자인 커스터마이징은 지원하지 않는다.</p>
+  </li>
+  <li>
+    <p>사용성</p>
+
+    <p>React 개발자라면 쉽게 사용할 수 있으며, 설치 및 사용법이 직관적이다. 별도의 복잡한 설정 없이도 간단히 QR 코드를 생성할 수 있다.</p>
+  </li>
+  <li>
+    <p>문서화</p>
+
+    <p>문서화가 잘 되어 있어 이해하기 쉽고, 예제 코드가 풍부하여 다양한 사용 사례를 참고할 수 있다. 지속적인 업데이트로 최신 기능을 반영한다.</p>
+  </li>
+  <li>
+    <p>안정성</p>
+
+    <p>널리 사용되는 라이브러리로 안정적이며, 다양한 프로젝트에서 검증되었다. 활발한 커뮤니티 지원으로 문제 발생 시 빠른 해결이 가능하다.</p>
+  </li>
+  <li>
+    <p><a href="https://www.npmjs.com/package/qrcode.react">qrcode.react NPM 문서</a></p>
+  </li>
+</ul>
+
+<h3 id="react-qr-code">react-qr-code</h3>
+
+<ul>
+  <li>
+    <p>성능</p>
+
+    <p>성능이 뛰어나 React 애플리케이션에서 빠르게 QR 코드를 생성할 수 있다. 특히 동적 데이터와 연동하여 실시간으로 QR 코드를 생성할 때 유리하다. 이는 이 라이브러리가 React의 상태 관리와 연동이 잘 되어 있어, 상태 변화에 따라 QR 코드가 즉시 업데이트되기 때문이다.</p>
+  </li>
+  <li>
+    <p>커스터마이징</p>
+
+    <p>기본적인 커스터마이징 옵션을 제공하며, 색상, 크기, 스타일 등을 쉽게 변경할 수 있다. 다만, 고급 커스터마이징 옵션은 제한적이다.</p>
+  </li>
+  <li>
+    <p>사용성</p>
+
+    <p>React 개발 환경에서 쉽게 사용할 수 있도록 설계되어 있으며, 직관적인 사용법을 제공한다. 사용법이 간단해 초보자도 쉽게 사용할 수 있다.</p>
+  </li>
+  <li>
+    <p>문서화</p>
+
+    <p>잘 정리된 문서화로 쉽게 시작할 수 있으며, 예제 코드와 함께 제공되어 실습하며 배울 수 있다. 지속적인 업데이트를 통해 최신 기능을 지원한다.</p>
+  </li>
+  <li>
+    <p>유연성</p>
+
+    <p>다양한 QR 코드 생성 요구사항을 충족시킬 수 있는 유연성을 제공하며, 다양한 크기와 스타일의 QR 코드를 생성할 수 있다.</p>
+  </li>
+  <li>
+    <p><a href="https://www.npmjs.com/package/react-qr-code">react-qr-code NPM 문서</a></p>
+  </li>
+</ul>
+
+<h3 id="qrjs">qr.js</h3>
+
+<ul>
+  <li>
+    <p>성능</p>
+
+    <p>경량 라이브러리로 QR 코드 생성 속도가 매우 빠르다. 성능이 중요한 경우에 적합하며, 서버 사이드 렌더링(SSR)에도 유리하다. 이는 이 라이브러리가 독립적인 JavaScript로 동작하여 Node.js 환경에서도 쉽게 통합될 수 있기 때문이다.</p>
+  </li>
+  <li>
+    <p>커스터마이징</p>
+
+    <p>기본적인 QR 코드 생성 기능만 제공하며, 고급 커스터마이징 기능은 부족하다. 색상, 크기 등 제한적인 커스터마이징만 가능하다.</p>
+  </li>
+  <li>
+    <p>사용성</p>
+
+    <p>경량 라이브러리로 간단한 API를 제공하여 사용이 쉽다. 설치 및 사용법이 매우 직관적이며, 작은 프로젝트에 적합하다.</p>
+  </li>
+  <li>
+    <p>문서화</p>
+
+    <p>간단한 문서화가 되어 있어 기본적인 사용법을 이해하기 쉽다. 다만, 업데이트가 자주 이루어지지 않으며, 최신 기능 지원이 제한적이다.</p>
+  </li>
+  <li>크기
+라이브러리 크기가 작아 애플리케이션의 전체 크기에 부담을 주지 않으며, 빠른 로딩 속도를 유지할 수 있다.</li>
+  <li><a href="https://www.npmjs.com/package/qr.js">qr.js NPM 문서</a></li>
+</ul>
+
+<h2 id="어떤-라이브러리를-선택">어떤 라이브러리를 선택?</h2>
+
+<p>라이브러리를 선택하기에 앞서, 행동대장 서비스에서 QR코드를 생성할 때 필요한 조건들을 나열해보자.</p>
+
+<ol>
+  <li>QR 코드의 색상 변경이 가능할 것</li>
+  <li>QR 코드의 사이즈 변경이 가능할 것</li>
+  <li>하나의 행사. 즉, 하나의 url에 하나의 QR코드가 생성될 것</li>
+</ol>
+
+<p>위 조건 말고는 다른 것은 크게 중요하지 않았다. 하나의 행사에 url이 동적으로 계속 변경되는 것이 아니었기 때문이다. 위 조건에 맞춰 3가지 라이브러리 중 하나를 선택해보자.<br />
+일단,<code class="language-plaintext highlighter-rouge"> qr.js</code> 제외. 업데이트가 12년 전이고.. 아직도 버전이 0.0.0이기 때문이다. 12년전보다 웹 생태계는 많이 바뀌었다고 들었기에 오래된 라이브러리 사용은 좋지 않다고 판단했다.
+그리고 남은 두 라이브러리.. <code class="language-plaintext highlighter-rouge">react-qr-code</code>와 <code class="language-plaintext highlighter-rouge">qrcode.react</code>는 모든 측면에서 우수하고 비슷한 스펙을 가지고 있다. 그래서 뭘 선택해야 하나 고민이 많이 들었는데.. 둘 중 하나를 제외하자면 <code class="language-plaintext highlighter-rouge">react-qr-code</code>였다. url의 상태가 지속적으로 변하는 서비스가 아니였기 때문에 동적 데이터에 장점을 둔 해당 라이브러리의 사용은 굳이였다.</p>
+
+<p>따라서, QR코드 생성도 빠르면서 간단한 커스터마이징이 가능하고 지속적으로 배포가 이뤄지고 있는 <code class="language-plaintext highlighter-rouge">qrcode.react</code>를 선택했다. 그리고 무엇보다 <code class="language-plaintext highlighter-rouge">qrcode.react</code>는 가장 많이 사용되고 있기 때문에 자료를 찾기가 수월했다. 문서화도 매우 친절하게 잘 되어있고! <del>← 이게 가장 크다.</del></p>
+
+<h2 id="qrcodereact를-사용하여-행동대장-서비스에-qr코드-기능-추가하기">qrcode.react를 사용하여 행동대장 서비스에 QR코드 기능 추가하기</h2>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">QRCodeSVG</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">qrcode.react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">getEventPageUrlByEnvironment</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@utils/getEventPageUrlByEnvironment</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">getEventIdByUrl</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@utils/getEventIdByUrl</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="c1">// ...</span>
+
+<span class="kd">const</span> <span class="nx">QRCodePage</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+	<span class="kd">const</span> <span class="nx">eventId</span> <span class="o">=</span> <span class="nf">getEventIdByUrl</span><span class="p">();</span>
+
+	<span class="k">return </span><span class="p">(</span>
+		<span class="c1">// ...</span>
+		<span class="p">&lt;</span><span class="nt">div</span> <span class="na">css</span><span class="p">=</span><span class="si">{</span><span class="nc">QRCodeStyle</span><span class="p">()</span><span class="si">}</span><span class="p">&gt;</span>
+			<span class="p">&lt;</span><span class="nc">QRCodeSVG</span> <span class="na">value</span><span class="p">=</span><span class="si">{</span><span class="nf">getEventPageUrlByEnvironment</span><span class="p">(</span><span class="nx">eventId</span><span class="p">,</span> <span class="dl">'</span><span class="s1">home</span><span class="dl">'</span><span class="p">)</span><span class="si">}</span> <span class="na">size</span><span class="p">=</span><span class="si">{</span><span class="mi">240</span><span class="si">}</span> <span class="na">fgColor</span><span class="p">=</span><span class="si">{</span><span class="s2">`</span><span class="p">${</span><span class="nx">theme</span><span class="p">.</span><span class="nx">colors</span><span class="p">.</span><span class="nx">black</span><span class="p">}</span><span class="s2">`</span><span class="si">}</span> <span class="p">/&gt;</span>
+		<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+		<span class="c1">// ...</span>
+	<span class="p">);</span>
+<span class="p">};</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">QRCodePage</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>qrcode.react의 QRCodeSVG 컴포넌트를 사용한다.</li>
+  <li>QRCodeSVG 컴포넌트의 value로 QR 코드를 생성할 url를 넣어준다. 그러면 QR코드가 생성된다.(초간단!) 해당 QR코드는 동일한 url이라면 변하지 않는다.</li>
+</ul>
+
+<h3 id="데스크탑-qr-코드로-초대하기">데스크탑 QR 코드로 초대하기</h3>
+
+<p>현재 데스크탑에서 header의 정산 초대하기 버튼을 클릭하면 내용 및 url 복사만 가능하다. 데스크탑에서도 QR code 기능을 추가하는 것이 좋을 것이라고 판단했다.
+따라서, 데스크탑에 정산 초대하기 버튼을 클릭하면 DropDown을 통해 <code class="language-plaintext highlighter-rouge">링크 복사하기</code>와 <code class="language-plaintext highlighter-rouge">QR코드로 초대하기</code>를 선택할 수 있도록 했습니다.</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">useNavigate</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-router-dom</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Dropdown</span><span class="p">,</span> <span class="nx">DropdownButton</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@components/Design</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">getEventIdByUrl</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@utils/getEventIdByUrl</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="c1">// ...</span>
+
+<span class="kd">const</span> <span class="nx">DesktopShareEventButton</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">onCopy</span> <span class="p">}:</span> <span class="nx">DesktopShareEventButtonProps</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+	<span class="c1">// ...</span>
+
+	<span class="kd">const</span> <span class="nx">navigate</span> <span class="o">=</span> <span class="nf">useNavigate</span><span class="p">();</span>
+	<span class="kd">const</span> <span class="nx">eventId</span> <span class="o">=</span> <span class="nf">getEventIdByUrl</span><span class="p">();</span>
+
+	<span class="kd">const</span> <span class="nx">navigateQRPage</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+		<span class="nf">navigate</span><span class="p">(</span><span class="s2">`/event/</span><span class="p">${</span><span class="nx">eventId</span><span class="p">}</span><span class="s2">/qrcode`</span><span class="p">);</span>
+	<span class="p">};</span>
+
+	<span class="k">return </span><span class="p">(</span>
+		<span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="p">=&gt;</span>
+			<span class="p">&lt;</span><span class="nc">Dropdown</span> <span class="na">base</span><span class="p">=</span><span class="s">"button"</span> <span class="na">baseButtonText</span><span class="p">=</span><span class="s">"정산 초대하기"</span><span class="p">&gt;</span>
+				<span class="p">&lt;</span><span class="nc">DropdownButton</span> <span class="na">text</span><span class="p">=</span><span class="s">"링크 복사하기"</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="nx">copyAndToast</span><span class="si">}</span> <span class="p">/&gt;</span>
+				<span class="p">&lt;</span><span class="nc">DropdownButton</span> <span class="na">text</span><span class="p">=</span><span class="s">"QR코드로 초대하기"</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="nx">navigateQRPage</span><span class="si">}</span> <span class="p">/&gt;</span>
+			<span class="p">&lt;/</span><span class="nc">Dropdown</span><span class="p">&gt;</span>
+		<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+	<span class="p">);</span>
+<span class="p">};</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">DesktopShareEventButton</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h2 id="구현-결과">구현 결과</h2>
+
+<ul>
+  <li>
+    <p>변경된 행동대장 모바일 버전: 정산 초대하기</p>
+
+    <p><img width="290" alt="모바일 버전 QR코드 초대하기1" src="https://github.com/user-attachments/assets/6e3e114b-58bf-4c5c-82bc-118588fcafe4" />
+<img width="297" alt="모바일 버전 QR코드 초대하기2" src="https://github.com/user-attachments/assets/cf9eba10-4b0e-4bfd-befc-63c8df43040d" /></p>
+  </li>
+  <li>
+    <p>변경된 행동대장 데스크탑 버전: 정산 초대하기</p>
+
+    <p><img width="566" alt="데스크탑 버전 QR코드 초대하기1" src="https://github.com/user-attachments/assets/24d0ffe8-87eb-4dee-852a-99c34a0de9d2" />
+<img width="584" alt="데스크탑 버전 QR코드 초대하기2" src="https://github.com/user-attachments/assets/15046f7e-b88b-45b2-826e-d0872640ad5b" /></p>
+  </li>
+</ul>
+
+<h2 id="참고자료">참고자료</h2>
+
+<ul>
+  <li><a href="https://npm-compare.com/ko-KR/qr-code-styling,qr.js,qrcode.react,qrious,react-qr-code">어느 것이 더 나은 QR 코드 생성 라이브러리?</a></li>
+</ul>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#wooteco">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">Wooteco</span>
+    </a>
+  
+    
+    <a href="/tags.html#행동대장">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">행동대장</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

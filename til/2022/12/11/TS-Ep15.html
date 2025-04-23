@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 TypeScript: Generics Ep.1 &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">TypeScript: Generics Ep.1</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">11 Dec 2022</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h2 id="generics-any와-다른-점"><strong>Generics, Any와 다른 점</strong></h2>
+<hr />
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">helloString</span><span class="p">(</span><span class="nx">message</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="kr">string</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">message</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nf">helloNumber</span><span class="p">(</span><span class="nx">message</span><span class="p">:</span> <span class="kr">number</span><span class="p">):</span> <span class="kr">number</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">message</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>어떤 함수가 들어오는 인자와 나가는 return 타입이 일정한 규칙을 이루면서 같은 로직을 반복하는 함수 → 더 많이 반복되는 함수들이 생긴다.</li>
+  <li>해당 문제 해결을 위해서, any 사용 (모든 타입을 받고 리턴할 수 있기 때문이다.) 그러나 우리의 의도와는 다르게 다른 결과를 가져오게 된다.</li>
+</ul>
+
+<h3 id="any-사용">Any 사용</h3>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">hello</span><span class="p">(</span><span class="nx">message</span><span class="p">:</span> <span class="kr">any</span><span class="p">):</span> <span class="kr">any</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">message</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">hello</span><span class="p">(</span><span class="dl">"</span><span class="s2">Mark</span><span class="dl">"</span><span class="p">).</span><span class="nx">length</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">hello</span><span class="p">(</span><span class="mi">19</span><span class="p">).</span><span class="nx">length</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>문자열에서 사용하는 length를 사용하게 되면 any 형식으로 결과가 나오게 된다.</li>
+  <li>심지어, length를 사용할 수 없는 number 타입도 사용할 수 있게 된다. any 타입이 되기 때문이다. 대신 런타임에 결과는 undefined이다.</li>
+  <li>이때 “Mark”와 19같이 들어가는 타입을 변수 같은 것으로 활용해서 리턴되는 되는 타입과 연관을 시켜주면 좋겠다는 아이디어에서 나온 것이 <strong>Generic</strong>이다.</li>
+</ul>
+
+<h3 id="generic"><strong>Generic</strong></h3>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">helloGeneric</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">message</span><span class="p">:</span> <span class="nx">T</span><span class="p">):</span> <span class="nx">T</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">message</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">helloGeneric</span><span class="p">(</span><span class="dl">"</span><span class="s2">Mark</span><span class="dl">"</span><span class="p">));</span> <span class="c1">// "Mark"</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">helloGeneric</span><span class="p">(</span><span class="dl">"</span><span class="s2">Mark</span><span class="dl">"</span><span class="p">).</span><span class="nx">length</span><span class="p">);</span> <span class="c1">// number로 인식. String.length</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">helloGeneric</span><span class="p">(</span><span class="mi">19</span><span class="p">));</span> <span class="c1">// 19</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">helloGeneric</span><span class="p">(</span><span class="mi">19</span><span class="p">).</span><span class="nx">length</span><span class="p">);</span> <span class="c1">// number로 인식했기 때문에 length 사용 불가</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">helloGeneric</span><span class="p">(</span><span class="kc">true</span><span class="p">));</span> <span class="c1">// true</span>
+</code></pre></div></div>
+
+<ul>
+  <li>괄호를 사용해서 해당 괄호 안에 <strong>T</strong>라는 단어를 사용한다. 이때, T는 Type을 의미한다.</li>
+  <li>추가적인 변수(?)를 더 넣고 싶다면 <code class="language-plaintext highlighter-rouge">&lt;T, U, K&gt;</code> 이런 식으로 추가해주면 된다.</li>
+  <li>message가 받은 인자를 T로 한다.</li>
+  <li>인자로 “Mark”를 넣으면 string으로 인식, 19를 넣으면 number로 인식한다.</li>
+  <li>문자열을 리터럴로 작성 ⇒ T가 문자열이 아닌 리터럴 타입으로 인식. 즉, 문자열 리터럴 타입으로 인식되었다.</li>
+  <li>19를 넣으면 number로 인식.
+string에서만 사용 가능한 length를 사용하려면 사용이 불가능 하다고 나온다.</li>
+  <li>true를 넣으면 true로 결과물이 나온다. true 타입으로 인식했다.</li>
+  <li>따라서 T를 변수처럼 사용할 수 있게 된다.</li>
+</ul>
+
+<h2 id="generics-basic"><strong>Generics Basic</strong></h2>
+<hr />
+
+<p><strong>generic 사용방법</strong></p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">helloBasic</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">message</span><span class="p">:</span> <span class="nx">T</span><span class="p">):</span> <span class="nx">T</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">message</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>타입 지정</p>
+
+    <p>괄호안에 원하는 타입을 지정해서 사용한다.<br />
+해당 타입이 아닌 값을 넣게 되면 에러가 발생한다.</p>
+
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">helloBasic</span><span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span><span class="p">(</span><span class="dl">'</span><span class="s1">number</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// string</span>
+<span class="nx">helloBasic</span><span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">19</span><span class="p">);</span> <span class="c1">// error</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>타입 미지정</p>
+
+    <p>타입을 지정하지 않기 위해서 괄호를 사용하지 않으며, 값을 넣는다.<br />
+T에 들어간 값에 따라서 타입을 추론하여 결과를 도출한다.</p>
+
+    <p>따라서 T의 값을 number가 아닌 36으로 추론한다.<br />
+타입스크립트 입장에서 가장 좁은 범위 내에서 타입을 추론해야 하기 때문에 number가 아닌 36 그 자체로 결과를 나타낸다.<br />
+number(더 넓은 범위) &gt; 36(numebr 안에 속함)</p>
+
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">helloBasic</span><span class="p">(</span><span class="mi">36</span><span class="p">);</span> <span class="c1">// 36</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>generic 변수 한개 이상 사용</p>
+
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">helloBasic</span><span class="o">&lt;</span><span class="nx">T</span><span class="p">,</span> <span class="nx">U</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">message</span><span class="p">:</span> <span class="nx">T</span><span class="p">,</span> <span class="nx">comment</span><span class="p">:</span> <span class="nx">U</span><span class="p">):</span> <span class="nx">T</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">message</span><span class="p">;</span>
+<span class="p">}</span>
+  
+<span class="nx">helloBasic</span><span class="o">&lt;</span><span class="kr">string</span><span class="p">,</span> <span class="kr">number</span><span class="o">&gt;</span><span class="p">(</span><span class="dl">'</span><span class="s1">number</span><span class="dl">'</span><span class="p">,</span> <span class="mi">19</span><span class="p">);</span> <span class="c1">// string</span>
+<span class="c1">// helloBasic&lt;string&gt;(19); // error</span>
+  
+<span class="nf">helloBasic</span><span class="p">(</span><span class="mi">36</span><span class="p">,</span> <span class="mi">19</span><span class="p">);</span> <span class="c1">// 36</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="generics-array--tuple"><strong>Generics Array &amp; Tuple</strong></h2>
+<hr />
+
+<h3 id="array">Array</h3>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">helloArray</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">message</span><span class="p">:</span> <span class="nx">T</span><span class="p">[]):</span> <span class="nx">T</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">message</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="nf">helloArray</span><span class="p">([</span><span class="dl">'</span><span class="s1">Hello</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">Array</span><span class="dl">'</span><span class="p">]);</span> <span class="c1">// "Hello"</span>
+<span class="nf">helloArray</span><span class="p">([</span><span class="dl">'</span><span class="s1">Hello</span><span class="dl">'</span><span class="p">,</span> <span class="mi">5</span><span class="p">]);</span> <span class="c1">// string이거나 number?</span>
+</code></pre></div></div>
+
+<ul>
+  <li>T뒤에 배열로 받겠다는 표시로 대괄호를 붙여준다.</li>
+  <li>문자열 두개를 넣었을 때, return message[0]이기 때문에 “Hello” return</li>
+  <li>문자열과 숫자를 넣었을 때, string과 number가 들어갔기 때문에 결과는 “Hello”이겠지만, 추론 과정에서는 union으로 string이거나 number로 추론한다.</li>
+</ul>
+
+<h3 id="tuple">Tuple</h3>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">helloTuple</span><span class="o">&lt;</span><span class="nx">T</span><span class="p">,</span> <span class="nx">K</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">message</span><span class="p">:</span> <span class="p">[</span><span class="nx">T</span><span class="p">,</span> <span class="nx">K</span><span class="p">]):</span> <span class="nx">T</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">message</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="nf">helloTuple</span><span class="p">([</span><span class="dl">'</span><span class="s1">Hello</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">Array</span><span class="dl">'</span><span class="p">]);</span> <span class="c1">// string</span>
+<span class="nf">helloTuple</span><span class="p">([</span><span class="dl">'</span><span class="s1">Hello</span><span class="dl">'</span><span class="p">,</span><span class="mi">5</span><span class="p">]);</span> <span class="c1">// 0번째 index는 string</span>
+</code></pre></div></div>
+
+<ul>
+  <li>message를 튜플 형태의 타입으로 처리한다. <br />
+따라서 0번째 요소를 return한다면 T가 return된다.</li>
+  <li>문자열 두개를 넣었을 때는 string으로 return</li>
+  <li>문자열과 숫자를 넣었을 때, 0번째는 string, 1번째는 number로 <strong>지정</strong>되면서  0번째에대한 return값은 string이라고 나오게된다. 만약 1번째 return값을 물어봤다면 number로 나올 것이다.</li>
+</ul>
+
+<h2 id="generics-function"><strong>Generics Function</strong></h2>
+<hr />
+
+<p>함수의 타입 선언 방식</p>
+
+<p>함수의 타입만 정의하고 정의에 generic만 추가한다면 type alias, interface 방식으로 정의하고 사용하면 된다.<br />
+기존 함수에 generic 부분만 추가하면 되는 것이기에 간편하다.</p>
+
+<ul>
+  <li>
+    <p>type alias</p>
+
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">type</span> <span class="nx">HelloFunctionGeneric1</span> <span class="o">=</span> <span class="p">&lt;</span><span class="nc">T</span><span class="p">&gt;</span>(message: T) =&gt; T;
+  
+const helloFunction1: HelloFunctionGeneric1 = <span class="p">&lt;</span><span class="nc">T</span><span class="p">&gt;</span>(message: T) =&gt; <span class="si">{</span>
+  <span class="k">return</span> <span class="nx">message</span><span class="p">;</span>
+<span class="si">}</span>;
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>interface</p>
+
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">HelloFunctionGeneric2</span> <span class="p">{</span>
+  <span class="p">&lt;</span><span class="nc">T</span><span class="p">&gt;</span>(message: T): T;
+}
+  
+const helloFunction2: HelloFunctionGeneric2 = <span class="p">&lt;</span><span class="nc">T</span><span class="p">&gt;</span>(message: T) =&gt; <span class="si">{</span>
+  <span class="k">return</span> <span class="nx">message</span><span class="p">;</span>
+<span class="si">}</span>;
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#ts">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TS</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

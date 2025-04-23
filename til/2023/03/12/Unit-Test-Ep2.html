@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 Unit Test: Jest Globals, Matcher &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">Unit Test: Jest Globals, Matcher</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">12 Mar 2023</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h2 id="첫-테스트"><strong>첫 테스트</strong></h2>
+<hr />
+
+<ul>
+  <li>
+    <p>package.json</p>
+
+    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"dev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"webpack-dev-server --mode development"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"build"</span><span class="p">:</span><span class="w"> </span><span class="s2">"webpack --mode production"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"lint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eslint --fix --ext .js,.vue"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"test:unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jest --watchAll"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>    </div>
+
+    <p>test 스크립트를 추가한다. 단, 우리가 현재 진행할 테스트는 unit 테스트이기에 뒤에 unit 테스트임을 명시한다.</p>
+
+    <p>jest 명령을 사용하는데 테스트가 감시돼서 반복적으로 사용될 수 있도록 한다.<br />
+모든 테스트 파일의 변경사항을 감시해서 변경사항 발생시, 테스트 환경을 재동작 시킨다.</p>
+  </li>
+  <li>
+    <p>test 실행</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run <span class="nb">test</span>:unit
+</code></pre></div>    </div>
+
+    <p><strong>테스트가 통과됐을 때, 나타나는 화면</strong></p>
+
+    <p><img width="385" alt="테스트 통과" src="https://user-images.githubusercontent.com/77609591/224556216-6f5ca399-761a-434a-bda4-dcc966dde392.png" /></p>
+
+    <p><strong>테스트가 실패할 때, 나타나는 화면</strong></p>
+
+    <p><img width="443" alt="테스트 실패" src="https://user-images.githubusercontent.com/77609591/224556222-9d4c1abf-2bdc-4a38-9dea-1ca6b97aefd0.png" /></p>
+
+    <p>expect는 실제 받는 값(Received), toBe는 받을 것으로 기대되는 값(Expected)이다.<br />
+기대되는 값은 문자 123인데, 실제 받은 값은 숫자 123이기에, 일치하지 않아서 테스트가 실패한 것이다.</p>
+  </li>
+</ul>
+
+<h2 id="jest-globals"><strong>Jest Globals</strong></h2>
+<hr />
+
+<blockquote>
+  <p><a href="https://jestjs.io/docs/api">Globals · Jest</a></p>
+</blockquote>
+
+<h3 id="globals-methods"><strong>Globals Methods</strong></h3>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">double</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./example</span><span class="dl">'</span>
+
+<span class="nf">describe</span><span class="p">(</span><span class="dl">'</span><span class="s1">Group1</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nf">beforeAll</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">beforeAll!</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">})</span>
+  <span class="nf">afterAll</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">afterAll!</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">})</span>
+
+  <span class="nf">beforeEach</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">beforeEach!</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">})</span>
+  <span class="nf">afterEach</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">afterEach!</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">})</span>
+
+  <span class="nf">test</span><span class="p">(</span><span class="dl">'</span><span class="s1">첫 테스트</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">첫 테스트!</span><span class="dl">'</span><span class="p">)</span>
+    <span class="nf">expect</span><span class="p">(</span><span class="mi">123</span><span class="p">).</span><span class="nf">toBe</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+  <span class="p">})</span>
+  
+  <span class="nf">test</span><span class="p">(</span><span class="dl">'</span><span class="s1">인수가 숫자 데이터입니다</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">인수가 숫자 데이터입니다!</span><span class="dl">'</span><span class="p">)</span>
+    <span class="nf">expect</span><span class="p">(</span><span class="nf">double</span><span class="p">(</span><span class="mi">3</span><span class="p">)).</span><span class="nf">toBe</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+    <span class="nf">expect</span><span class="p">(</span><span class="nf">double</span><span class="p">(</span><span class="mi">10</span><span class="p">)).</span><span class="nf">toBe</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+  <span class="p">})</span>
+  
+  <span class="nf">test</span><span class="p">(</span><span class="dl">'</span><span class="s1">인수가 없습니다</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">인수가 없습니다!</span><span class="dl">'</span><span class="p">)</span>
+    <span class="nf">expect</span><span class="p">(</span><span class="nf">double</span><span class="p">()).</span><span class="nf">toBe</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+  <span class="p">})</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">test()</code></p>
+
+    <p>우리가 만들어내는 각각의 테스트를 구분해주는 용도로 사용한다.</p>
+
+    <p>첫번째 인수로는 테스트의 이름, 두번째 인수로는 콜백 함수를 작성하여 콜백 내부에서 실제 테스트를 진행한다.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">describe()</code></p>
+
+    <p>여러개의 test 함수들을 describe 함수로 묶을 수 있다. 일종의 test 그룹이라고 생각하면 된다.</p>
+
+    <p>첫번째 인수로는 해당 그룹의 이름, 두번째 인수로는 콜백함수를 작성하여 내부에는 여러가지 test 함수들을 넣어줄 수 있다.</p>
+
+    <p>그룹으로 묶는 이유는 before나 after 전역함수를 사용하기 위함이다.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">beforeAll()</code> <code class="language-plaintext highlighter-rouge">afterAll()</code></p>
+
+    <p>before, after를 가지는 전역함수로는 별도의 이름(첫번째 인수)을 작성해주지 않는다. 대신 첫번째 인수로 콜백을 명시한다.</p>
+
+    <ul>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">beforeAll()</code></p>
+
+        <p>그룹안에 있는 모든 테스트가 실행하기 전에, 단 한번만 실행이 된다.</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">afterAll()</code></p>
+
+        <p>그룹안에 있는 모든 테스트가 실행된 후에, 단 한번만 실행이 된다.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">beforeEach()</code> <code class="language-plaintext highlighter-rouge">afterEach()</code></p>
+
+    <ul>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">beforeEach()</code></p>
+
+        <p>각각의 테스트가 동작하기 직전에, 해당 메소드가 한 번 실행된다.</p>
+
+        <p>테스트가 3개라면, 각 테스트가 동작하기 전에 실행되므로 총 3번 실행된다.</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">afterEach()</code></p>
+
+        <p>각각의 테스트가 동작한 직후에, 해당 메소드가 한 번 실행된다.</p>
+
+        <p>테스트가 3개라면, 각 테스트가 동작한 후에 실행되므로 총 3번 실행된다.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="jest-matcher-이해"><strong>Jest Matcher 이해</strong></h2>
+<hr />
+
+<blockquote>
+  <p><a href="https://jestjs.io/docs/expect">Expect · Jest</a></p>
+</blockquote>
+
+<h3 id="expect-methods"><strong>Expect Methods</strong></h3>
+
+<p>기대값과 실제 주어진 값을 비교해주는 메소드들을 Matcher라고 부른다.
+한글로는 일치도구라고 할 수 있다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">userA</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Soha</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">age</span><span class="p">:</span> <span class="mi">39</span>
+<span class="p">}</span>
+<span class="kd">const</span> <span class="nx">userB</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Momo</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">age</span><span class="p">:</span> <span class="mi">23</span>
+<span class="p">}</span>
+
+<span class="nf">test</span><span class="p">(</span><span class="dl">'</span><span class="s1">데이터가 일치해야 합니다</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nf">expect</span><span class="p">(</span><span class="nx">userA</span><span class="p">.</span><span class="nx">age</span><span class="p">).</span><span class="nf">toBe</span><span class="p">(</span><span class="mi">39</span><span class="p">)</span>
+  <span class="nf">expect</span><span class="p">(</span><span class="nx">userA</span><span class="p">).</span><span class="nf">toEqual</span><span class="p">({</span>
+    <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Soha</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">age</span><span class="p">:</span> <span class="mi">39</span>
+  <span class="p">})</span>
+<span class="p">})</span>
+
+<span class="nf">test</span><span class="p">(</span><span class="dl">'</span><span class="s1">데이터가 일치하지 않아야 합니다</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nf">expect</span><span class="p">(</span><span class="nx">userB</span><span class="p">.</span><span class="nx">name</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nf">toBe</span><span class="p">(</span><span class="dl">'</span><span class="s1">Soha</span><span class="dl">'</span><span class="p">)</span>
+  <span class="nf">expect</span><span class="p">(</span><span class="nx">userB</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nf">toBe</span><span class="p">(</span><span class="nx">userA</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">.toBe()</code></p>
+
+    <p>값이 원시형데이터(string, number, boolean 등)인 것을 비교한다.</p>
+
+    <p>expect와 함께 사용되며, expect의 인수에는 실제 받은 값, toBe의 인수에는 기대되는 값을 작성한다.</p>
+
+    <p>두 값이 일치하는지 비교하고 일치하면 pass, 일치하지 않으면 fail이 뜬다.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">.toEqual()</code></p>
+
+    <p>참조형 데이터(객체, 배열데이터 등)를 비교할 때 사용한다.<br />
+데이터가 가지는 실제 값만 동일한지 확인 할때 사용한다. 실제 객체 데이터, 배열 데이터의 내부적인 구조만 비교해서 같은지 비교하는 것이다.</p>
+
+    <p>사용 방법은 toBe와 동일하다.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">.not</code></p>
+
+    <p>expect 함수 뒤에 not 속성을 추가하여 기대값을 일치시키는 메소드들의 반대값을 명시할 수 있다.</p>
+
+    <p>중간에 not이라는 키워드를 사용해서 부정된 결과를 확인할 수 있다.<br />
+<code class="language-plaintext highlighter-rouge">expect(can1).not.toBe(can2)</code></p>
+  </li>
+</ul>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#test">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">Test</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

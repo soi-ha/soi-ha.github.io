@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 UMC: 마켓컬리 클론코딩, react-hook-form & MUI &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">UMC: 마켓컬리 클론코딩, react-hook-form & MUI</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">31 May 2023</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h2 id="react-hook-form"><strong>react-hook-form</strong></h2>
+
+<hr />
+
+<h3 id="import-useform"><strong>import useform</strong></h3>
+
+<p>react-hook-form 패키지에서 <code class="language-plaintext highlighter-rouge">useForm()</code> 훅을 불러와, 컴포넌트 함수 안에서 훅을 호출한다.</p>
+
+<p><img width="382" alt="스크린샷 2023-05-29 03 08 31" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/d91e3cb4-d527-45d1-9114-5de17a67442b" /></p>
+
+<p>해당 결과로 <code class="language-plaintext highlighter-rouge">register()</code>과 <code class="language-plaintext highlighter-rouge">handleSubmit()</code>를 얻을 수 있다. (즉, 사용할 함수 적으라는 것)</p>
+
+<p><code class="language-plaintext highlighter-rouge">register()</code>로 입력란을 등록, <code class="language-plaintext highlighter-rouge">handleSubmit()</code>으로 submit 이벤트를 처리한다.</p>
+
+<p><img width="796" alt="스크린샷 2023-05-29 03 08 45" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/15ba24c2-fd2b-4118-83a1-ad2d8a178753" /></p>
+
+<p>입력한 내용을 alert로 브라우저에 띄운다. (잘 받았는지 확인하기 위해서)</p>
+
+<h3 id="중복-제출-방지"><strong>중복 제출 방지</strong></h3>
+
+<p>form에서 이벤트 처리가 종료되기 전에 다시 버튼을 클릭할 경우 양식이 중복 제출되는 문제를 막기 위한 코드이다.</p>
+
+<p>작성한 코드는 처음 제출 버튼을 클릭했을 때, 버튼을 비활성화 시킨다. 이후 이벤트가 종료되면 제출 버튼을 다시 활성화시키는 방식으로 중복 제출을 방지한다.</p>
+
+<p><img width="715" alt="스크린샷 2023-05-29 03 08 54" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/6c94922f-f59c-47e2-aa7a-404f6e33fd64" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">formState</code> 속성은 양식이 현재 어떤 상태인지를 담는다. <code class="language-plaintext highlighter-rouge">formState</code>에 <code class="language-plaintext highlighter-rouge">isSubmitting</code> 속성을 읽어서 양식이 제출중인 상태인지 아닌지를 알아낸다.</p>
+
+<p>제출 버튼의 <code class="language-plaintext highlighter-rouge">disabled</code> 속성에 <code class="language-plaintext highlighter-rouge">isSubmitting</code> 값을 설정하여, 회원가입 버튼의 양식 제출이 끝날때 까지 비활성화시킨다.</p>
+
+<h3 id="유효성-검사"><strong>유효성 검사</strong></h3>
+
+<p>이메일, 비밀번호와 같은 입력란은 필수 입력으로 하고, 이메일과 핸드폰번호는 유효한 형식이 정해져있기 때문에 해당 형식을 맞춰야 제출이 가능하도록 한다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">register()</code>의 두번째 인자로 옵션을 넘겨주면 유효성 검증이 가능하다.
+검증 타입은 <code class="language-plaintext highlighter-rouge">required</code>, <code class="language-plaintext highlighter-rouge">pattern</code>, <code class="language-plaintext highlighter-rouge">minLength</code> 등이 있다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">message</code>에는 유효하지 않은 형식일 경우 출력되는 오류 메세지를 담는다.</p>
+
+<p>입력한 값이 유효하지 않을 경우 form이 제출되지 않고, formState 속성의 errors 객체에 오류 내용이 저장된다. 이때, <code class="language-plaintext highlighter-rouge">error.phone&amp;&amp;&lt;Warning&gt;~</code> 코드로 저장된 에러 메세지를 출력하도록 했다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">aria-invalid</code>는 스크린리더 사용자를 위한 것으로 일단은…? 굳이 작성하지 않아도 된다.</p>
+
+<h2 id="mui"><strong>MUI</strong></h2>
+
+<hr />
+
+<p><a href="https://mui.com/">공식문서</a>를 참고하여 TextField와 Button 컴포넌트를 불러와 사용했다.</p>
+
+<p><img width="1512" alt="스크린샷 2023-05-29 03 12 12" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/5c8476cb-6795-469a-82ca-82bc45d66e44" /></p>
+
+<p><img width="1512" alt="스크린샷 2023-05-29 03 10 23" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/01f9c983-1120-4ab2-952b-ff5d0411c470" /></p>
+
+<blockquote>
+  <p>참고자료<br />
+<a href="https://www.daleseo.com/react-hook-form/">React Hook Form 라이브러리 사용법</a></p>
+</blockquote>
+
+<h2 id="종합소감"><strong>종합소감</strong></h2>
+
+<hr />
+
+<p>react-hook-form을 사용하여 form을 만들어 봤다. 이전에는 html로만 작업했다면 이번에는 해당 라이브러리 사용하여 작업했더니 좀 더 상세한 기능을 쉽게 작업할 수 있어서 좋았다.<br />
+그리고 MUI를 사용하여 디자인을 작업했는데, 디자인을 어떻게 할 지 크게 신경을 쓰지 않아서 좋았다. 다음번에 프로젝트 할 때에도 유용하게 사용이 가능 할 듯 싶다.</p>
+
+<h2 id="umc-web-스터디를-마치며"><strong>UMC, Web 스터디를 마치며</strong></h2>
+
+<hr />
+
+<p>해당 기록들은 UMC 동아리 활동 중 Web 스터디의 과제이다.<br />
+동아리가 신설되고 입부하면서 Web 스터디장을 맡게 되었다. 내가 적극적으로 스터디장을 하고 싶다는 어필을 통해 하게 되었다. 처음에는 원대한 꿈을 가지고.. 파트장을 했으나, 이후에 갈 수록 생각한 것 처럼 못한게 끝이 나니 아쉽게 느껴진다.<br />
+스터디를 진행하면서 본격적으로 React를 사용해보았다. 이전에는 강의를 보면서 따라만 했다면, 이번에는 직접 어떻게, 어디에 사용해야 하는지 고민을 하며 공부하고 적용하였다. 정말 쉽지 않았고 때려치고 싶었던 적이 한 두번이 아니지만, 파트장이라는 위치와 앞으로의 프로젝트들을 위해 대충하지 않고 정말 열심히 진행했다.<br />
+스터디를 진행하면서 새롭게 알게 된 지식도 있었고, 이름만 알았던 개념들의 상세 내용도 알 수 있었다. 단순히 글을 읽는 것이 아닌 직접 배우고 활용하면서 몸소 깨달을 수 있었다.<br />
+또한, 스터디를 통해 다른 사람에게 나의 지식을 공유하고, 질문하고, 같이 문제를 해결해 나가면서 역시 혼자 공부할 때보다 누군가 나의 문제를 듣고 같이 고심해줄 사람이 있다는 것에서 공부에 대한 불안감이 줄어들고 안정감을 얻을 수 있었다. 물론, 모두 해결할 수는 없었지만 같이 할 사람이 있다는 것에서 오는 안정감이 나를 편안하게 해주었다.<br />
+매주 과제를 하면서 힘들기도 많이 힘들었고, 짜증도 났지만 지금 그 시간들로 인해 내가 더 성장했다는 것은 부정할 수 없는 사실이다. 그리고 여름방학동안 진행해야 할 프로젝트 2개 모두, 이번 스터디의 과제들을 수행하면서 배운 지식들을 적극 활용하게 될 것이다. 대략 2달동안 매주 과제를 수행하느라 힘들기도 했지만..! 이로 인해 배운점도, 많았기 후회없는 정말 참여하기 잘 했다는 생각이 들었다.</p>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#umc">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">UMC</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

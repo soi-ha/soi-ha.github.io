@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 JavaScript: JS 기초 Ep.2 (예약어, 함수, 조건문) &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">JavaScript: JS 기초 Ep.2 (예약어, 함수, 조건문)</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">04 Aug 2022</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <h2 id="예약어"><strong>예약어</strong></h2>
+<hr />
+<p>예약어는 <strong>특별한 의미</strong>를 가지고 있어, 변수나 함수 이름 등으로 사용할 수 없는 단어이다.</p>
+<ul>
+  <li><strong>Reserved Word</strong>
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="k">this</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Hello</span><span class="dl">'</span><span class="p">;</span> <span class="c1">// SyntaxError</span>
+<span class="kd">let</span> <span class="k">if</span> <span class="o">=</span> <span class="mi">123</span><span class="p">;</span> <span class="c1">// SyntaxError</span>
+<span class="kd">let</span> <span class="k">break</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span> <span class="c1">// SyntaxError</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="함수"><strong>함수</strong></h2>
+<hr />
+<p>특정 동작(기능)을 수행하는 일부 코드의 <strong>집합</strong>(부분)이다.</p>
+<ul>
+  <li><strong>function</strong>
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 함수 선언</span>
+<span class="kd">function</span> <span class="nf">helloFunc</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// 실행 코드</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="mi">1234</span><span class="p">);</span>
+<span class="p">}</span>
+  
+<span class="c1">// 함수 호출</span>
+<span class="nf">helloFunc</span><span class="p">();</span> <span class="c1">// 1234</span>
+<span class="o">----------------------------------------</span>
+<span class="kd">function</span> <span class="nf">returnFunc</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="mi">123</span><span class="p">;</span> <span class="c1">// 숫자 데이터 123을 반환</span>
+<span class="p">}</span>
+<span class="c1">// return을 통해 데이터를 함수 밖으로 내보낼 수 있다.</span>
+  
+<span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="nf">returnFunc</span><span class="p">();</span> <span class="c1">// 함수가 호출(실행)되면서 변수 a에 할당된다.</span>
+  
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span> <span class="c1">// 123</span>
+  
+</code></pre></div>    </div>
+  </li>
+  <li><strong>매개변수(Parameters) 및 인수(Arguments</strong>)
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 함수 선언</span>
+<span class="kd">function</span> <span class="nf">sum</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// a와 b는 매개변수 (Parameters)</span>
+  <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span> 
+<span class="p">}</span>
+<span class="c1">// 매개변수: 함수 안에서 사용하는 데이터를 받아주는 매개체가 되어주는 변수</span>
+<span class="c1">// 함수 안에서만 사용이 가능하다</span>
+  
+<span class="c1">// 재사용</span>
+<span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span> <span class="c1">// 1과 2는 인수 (Arguments)</span>
+<span class="kd">let</span> <span class="nx">b</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span> <span class="c1">// sum이라는 함수 호출(실행)</span>
+<span class="kd">let</span> <span class="nx">c</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>
+  
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">);</span> <span class="c1">// 3, 19, 6</span>
+  
+<span class="c1">// 인수: 매개변수가 받아줄 특정한 데이터들</span>
+<span class="o">------------------------------------------</span>
+<span class="c1">// 기명(이름이 있는) 함수</span>
+<span class="c1">// 함수 선언: 함수의 이름이 명시되어져 있고 내가 원하는 이름을 명시</span>
+<span class="kd">function</span> <span class="nf">hello</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hello~</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">}</span>
+  
+<span class="c1">// 익명(이름이 없는) 함수</span>
+<span class="c1">// 함수 표현: 이름이 없는 상태로 소괄호 시작</span>
+<span class="c1">// 익명함수는 데이터로서 사용되거나 변수에 할당되어 사용함</span>
+<span class="kd">let</span> <span class="nx">world</span> <span class="o">=</span> <span class="nf">function </span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">World~</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">}</span>
+  
+<span class="c1">// 함수 호출</span>
+<span class="nf">hello</span><span class="p">();</span> <span class="c1">// Hello~</span>
+<span class="nf">world</span><span class="p">();</span> <span class="c1">// World~</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>메소드 (Method)</strong>
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 객체 데이터</span>
+<span class="kd">const</span> <span class="nx">soha</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">SOHA</span><span class="dl">'</span><span class="p">,</span> <span class="c1">//name, age은 속성</span>
+  <span class="na">age</span><span class="p">:</span> <span class="mi">85</span><span class="p">,</span>
+  <span class="c1">// getName, 속성 부분에 함수가 할당되어져 있음</span>
+  <span class="c1">// 메소드(Method): 속성부분에 일반적인 데이터가 아닌 함수가 할당되어져 있다</span>
+  <span class="na">getName</span><span class="p">:</span> <span class="nf">function </span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span> <span class="c1">// this는 this가 속해져있는 객체데이터를 의미함</span>
+    <span class="c1">// this.name = this가 속해져 있는 데이터의 name이라는 속성을 return 반환해주세요</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+<span class="c1">// soha 안에서 getName을 실행하게 되면 soha안에 있는 name이라는 속성의 값이</span>
+<span class="c1">// getName 밖으로 빠져나올 수 있게 됨.</span>
+  
+<span class="kd">const</span> <span class="nx">hisNmae</span> <span class="o">=</span> <span class="nx">soha</span><span class="p">.</span><span class="nf">getName</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">hisName</span><span class="p">);</span> <span class="c1">// SOHA</span>
+<span class="c1">// 혹은</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">soha</span><span class="p">.</span><span class="nf">getName</span><span class="p">());</span> <span class="c1">// SOHA</span>
+</code></pre></div>    </div>
+
+    <h2 id="조건문"><strong>조건문</strong></h2>
+    <hr />
+    <p>조건의 결과(truthy, falsy)에 따라 다른 코드를 실행하는 구문이다.</p>
+  </li>
+  <li><strong>if</strong>
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">isShow</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="kd">let</span> <span class="nx">checked</span> <span class="o">=</span> <span class="kc">false</span>
+  
+<span class="k">if </span><span class="p">(</span><span class="nx">isShow</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 조건 = isShow / isShow가 트루라면 실행</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Show!</span><span class="dl">'</span><span class="p">)</span> <span class="c1">// Show!</span>
+<span class="p">}</span>
+  
+<span class="k">if </span><span class="p">(</span><span class="nx">checked</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 조건 = checked / checked가 false이기에 실행되지 않음</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Checked!</span><span class="dl">'</span><span class="p">)</span>  
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>else</strong>
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">isShow</span> <span class="o">=</span> <span class="kc">true</span>
+  
+<span class="k">if </span><span class="p">(</span><span class="nx">isShow</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// true면 Show! 실행</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Show!</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="c1">// false라면 Hide? 실행</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hide?</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#js">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">JS</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>

@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+	<link href="https://gmpg.org/xfn/11" rel="profile" />
+	<link rel="canonical" href="https://soi-ha.github.io/" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="google-site-verification" content="qN4GDLliD7yUtladZQRlgUB6Xnm-2G2G0yEVA44Ls5k" />
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords" content="프론트엔드, frontend, FE, 개발자" />
+	<meta name="description" content="프론트엔드 개발자 소하의 개발 블로그" />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Soha의 develog" />
+	<meta property="og:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta property="og:image" content="https://soi-ha.github.io/favicon.png" />
+	<meta property="og:url" content="https://soi-ha.github.io/" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Soha의 develog" />
+	<meta name="twitter:description" content="프론트엔드 개발자 소하의 개발 블로그" />
+	<meta name="twitter:image" content="https://soi-ha.github.io/favicon.png" />
+
+	<title>
+		 우테코: 최종 코딩테스트 준비 TIL  &middot; Soha 
+	</title>
+
+	
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css" /> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+	<!-- RSS -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS"
+		href="/feed.xml"
+	/>
+
+	<!-- Additional head bits without overriding original head -->
+</head>
+
+
+	<body class="post">
+		<div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Soha
+      </a>
+    </div>
+    <p class="lead">프론트엔드 개발자가 되기 위한 발걸음 기록</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+    <a class="home-link "
+        href="/">Home</a>
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/TIL.html">TIL</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/project.html">Project</a>
+    
+  
+
+  
+    
+  
+
+  
+    
+      <a class="category-link "
+          href="/category/sohaLog.html">Soha's Log</a>
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+    <a id="tags-link"
+       class="icon"
+       title="Tags" aria-label="Tags"
+       href="/tags.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+    </a>
+  
+
+  
+    <a id="search-link"
+       class="icon"
+       title="Search" aria-label="Search"
+       href="/search.html">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+    </a>
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2025.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+		<main class="container"><header>
+  <h1 class="post-title">우테코: 최종 코딩테스트 준비 TIL </h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">15 Jan 2024</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/TIL.html">
+          TIL
+        </a>
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    <p>어쩌다 보니 2024년에 처음 쓰는 글이.. 한참..(대략 한달정도) 지난 우테코 최종 코딩테스트를 준비하면서 알게된 새로운 것들을 정리하는 글이다.</p>
+
+<p>연말 + 연초 버프로 매우 느슨해진 상태로.. 해당 글을 작성하는 걸 거의 한달정도…? 미룬 것 같다. 그래서 이제 다시 마음을 다 잡고자! 미루고 미뤘던 블로그 글을 다시 작성해보고자 한다.</p>
+
+<h2 id="새롭게-배운-것">새롭게 배운 것</h2>
+
+<p>5시간의 시간 제한을 두고 문제를 풀면서 새롭게 알게된 개념이 존재했다. 1,2주차는 Class도 잘 모르고 Test도 잘 모를때라.. 약간 뚱땅뚱땅 돌아가는 <del>쓰레기</del> 코드를 작성했는데, 이번에 최종 코딩테스트를 준비하면서 해당 문제를 성장한 현 상태에서 다시 풀다보니 기존에 풀던 방식과 다르게 생각하여 새롭게 알게된 개념이 존재했다.</p>
+
+<h3 id="숫자-배열-정렬">숫자 배열 정렬</h3>
+
+<p>Lotto 문제를 재풀이하면서, 숫자가 담긴 배열을 오름차순으로 정렬해야 하는 경우가 발생했다.<br />
+이때, <code class="language-plaintext highlighter-rouge">sort()</code>를 통해서 배열을 정렬하고자 했다. 그래서 해당 배열에 바로 <code class="language-plaintext highlighter-rouge">sort()</code>를 적용하였으나 정렬되지 않았다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 처음에 작성했던 코드</span>
+<span class="nx">lotto</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nx">ticket</span><span class="p">.</span><span class="nf">sort</span><span class="p">());</span>
+</code></pre></div></div>
+
+<p>그래서 도대체..? 왜 정렬이 되지 않을까? 아무리 봐도 이상한 코드는 존재하지 않았다.<br />
+그래서 역시나 오늘도 등장하는 나의 친구 ChatGPT에게 해당 코드를 던지고 정렬이 되지 않는 이유를 물어봤다.</p>
+
+<p><strong>결론은,</strong> js에서 숫자를 배열할 때는 그냥 <code class="language-plaintext highlighter-rouge">sort()</code>만 작성해서는 안된다는 것이었다..</p>
+
+<p><strong>js에서 숫자 배열을 정렬할때는 <code class="language-plaintext highlighter-rouge">sort((a,b)=&gt;a-b)</code>로 작성해야 한다.</strong><br />
+단순하게 <code class="language-plaintext highlighter-rouge">sort()</code>는 문자열을 정렬할 때만 적용이 된다..</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 수정한 코드</span>
+<span class="nx">lotto</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nx">ticket</span><span class="p">.</span><span class="nf">sort</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">a</span> <span class="o">-</span> <span class="nx">b</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p><strong>정렬 전 결과</strong><br />
+<img width="160" alt="정렬 전 결과" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/520914b5-2dd7-4bcc-b387-650132150a93" /></p>
+
+<p><strong>정렬 후 결과</strong><br />
+<img width="162" alt="정렬 후 결과" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/6cdba221-37e4-4eb1-88a6-b5766d52efa7" /></p>
+
+<h4 id="왜-이런-문제가-생기는-것일까">왜 이런 문제가 생기는 것일까?</h4>
+
+<p>js에서 <code class="language-plaintext highlighter-rouge">sort()</code>는 정렬하기 전에 <strong>배열 내부 값은 문자열로 변경</strong>하여 정렬을 하기 때문이다. 그렇기 때문에 1이 아니라 ‘1’로 변경해서 정렬을 한다. 숫자를 문자열로 변경하여 정렬을 진행하면 가장 첫번째 숫자(문자)의 크기로 정렬을 진행한다.</p>
+
+<p>예를 들어,
+<code class="language-plaintext highlighter-rouge">[1,200,3,100]</code>의 배열이 존재하고 여기에 <code class="language-plaintext highlighter-rouge">sort()</code>함수를 적용하면 결과는 <code class="language-plaintext highlighter-rouge">[1,100,200,3]</code>으로 정렬된다.</p>
+
+<p>그렇기 때문에 우리가 숫자 배열을 정렬할때는 꼭! 위에서 설명한 방식으로 정렬을 해야 한다.</p>
+
+<h4 id="sortaba-b는-무슨-의미일까"><code class="language-plaintext highlighter-rouge">sort((a,b)=&gt;a-b)</code>는 무슨 의미일까?</h4>
+
+<p><code class="language-plaintext highlighter-rouge">(a,b)</code>는 인자로, 정렬 기준을 나타내는 콜백함수이다.
+a와 b로 다음과 같은 규칙을 통해 숫자 배열을 정렬한다.</p>
+
+<p>a - b를 진행한다. 이때,</p>
+
+<ul>
+  <li>a가 b보다 작으면 음수(-) 반환</li>
+  <li>a가 b보다 크면 양수(+) 반환</li>
+  <li>a가 b와 같으면 0을 반환</li>
+</ul>
+
+<p>예를 들어보자!
+<code class="language-plaintext highlighter-rouge">[1,10,5]</code>의 배열이 존재한다.</p>
+
+<ul>
+  <li>1 - 10 = -9 =&gt; 음수이므로 그대로</li>
+  <li>10 - 5 = 5 =&gt; 양수이므로 둘이 순서 바꿈 <code class="language-plaintext highlighter-rouge">[1,5,10]</code></li>
+  <li>5 - 10 = -5 =&gt; 음수이므로 그대로</li>
+</ul>
+
+<p>나는 위와 같이 이해했다.<br />
+즉, <strong>버블 정렬</strong>의 방식으로 숫자 배열 정렬한다! 라고 이해하니 한번에 이해가 됐다.</p>
+
+<p>🔥 console에 직접 찍어본 결과 첫 a는 1, b는 10이 아니라 a는 10, b는 1이 된다!<br />
+근데, 똑같이 버블정렬로 이해하면 되는 것 같다. 단지 결과가 양수일 때 순서를 바꿀 것인지, 음수일 때 순서를 바꿀 것인지 정도의 차이가 생긴다.</p>
+
+<h2 id="오류-수정">오류 수정</h2>
+
+<p>자동차 경주를 다시 문제 풀이 하면서 발견한.. 엄청나게 중요하고 절대 하면 안되는 실수를 저질렀다..ㅎ</p>
+
+<p>그건 바로.. <strong>함수를 사용할 때 결과값을 반환하지 않는 것…!!!</strong></p>
+
+<p><strong>문제의 코드</strong><br />
+<img width="381" alt="문제의 코드" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/f6f0d5dd-70f6-4798-a6f8-7cd1d8a99565" /></p>
+
+<p>위 코드에서 뭐가 문제인지 알겠는가…?ㅎ..</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">return</code>이 존재하지 않아서 반환값이 없어서 문제가 생겼다.</strong><br />
+이런.. 멍청한.. 실수를 저질렀다.. 정말.. 왜 값이 안나오지? 이러고 엄청나게 삽질을 했는데, 연습을 하다가 자주 나올 것 같은 실수를 발견해서 정말 다행이었다.</p>
+
+<p><strong>수정한 코드</strong><br />
+<img width="373" alt="해결 코드" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/c1b36b2d-9807-4a81-ba9e-3d4d3b6ff688" /></p>
+
+<p>뭐가 문제인지를 찾아준 이번에도 한건 해주시는 ChatGPT…</p>
+
+<p><img width="637" alt="ChatGPT 답변" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/214a2fe2-3e4b-43e3-9b24-0ef9551addc8" /></p>
+
+<p>해당 실수는 생각보다 자주 나올 수 있다고 생각한다.<br />
+실제로 예전에도 이런 실수를 한번 저질렀었는데.. 이번에 또.. 해버렸다ㅜ.. 시간이 좀 지났다고 그새 까먹었냐..후..</p>
+
+<h2 id="마무리">마무리</h2>
+
+<p>드디어 우테코 프리코스 + 최종 코딩테스트에 관한 모든 글을 작성했다. 앞으로 우테코 관련 항목은 우아한 테크 코스를 진행하면서 새롭게 배운 점들이 올라올 것 같은데.. 열심히 블로그를 작성해야겠다..!</p>
+
+<blockquote>
+  <p>참고자료<br />
+<a href="https://www.daleseo.com/js-sort-to-sorted/">자바스크립트 배열 정렬: sort()와 toSorted() 함수</a><br />
+<a href="https://velog.io/@1106laura/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EB%AC%B8%EC%9E%90%EC%97%B4-%EC%88%AB%EC%9E%90-%EC%A0%95%EB%A0%AC%ED%95%98%EA%B8%B0">자바스크립트 문자열 &amp; 숫자 정렬하기</a></p>
+</blockquote>
+
+    
+
+
+
+<div class="post-tags">
+  
+    
+    <a href="/tags.html#til">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">TIL</span>
+    </a>
+  
+    
+    <a href="/tags.html#js">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">JS</span>
+    </a>
+  
+    
+    <a href="/tags.html#woowacourse">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">WoowaCourse</span>
+    </a>
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/til/2025/04/20/Creating-A-Discord-Music-Bot.html">
+            디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)
+            <small>20 Apr 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/03/06/M3D-Blog-Create-Sitemap-and-Error-Solution.html">
+            jekyll Github 블로그 sitemap 파일 생성하기 & `ERROR: While executing gem ... (Gem::FilePermissionError)` 에러 해결방법
+            <small>06 Mar 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/til/2025/02/28/M3D-Session-Local-Storage.html">
+            매3개 | 브라우저 저장소 (Session Storage, Local Storage, Cookie)
+            <small>28 Feb 2025</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+</div>
+</main>
+
+		<!-- Optional footer content -->
+
+	</body>
+</html>
