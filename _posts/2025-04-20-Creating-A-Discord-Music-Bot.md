@@ -13,7 +13,7 @@ tags:
 
 때는 4월 17일 20시.. 공부를 하기 위해 책상에 앉아 디스코드에 접속하여 서버에서 기존에 사용하던 노래봇을 실행하려 했는데.. 유튜브 검색이 제대로 작동하지 않았다. 그래서 나는 다른 노래봇을 새롭게 불러와 서버에 실행했지만? 또 안됐다. 그렇게 한국어를 지원하는 어느정도 인지도가 있는 노래봇만 6개를 실행해봤다. 근데, 내가 원하는 유튜브로 검색하여 실행이 제대로 돌아가지 않았다.
 
-<img width="519" alt="디스코드 노래봇 입장 채팅" src="https://github-production-user-asset-6210df.s3.amazonaws.com/77609591/435543059-d061e531-17d1-46e9-bd4f-c162037bf119.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250421%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250421T042705Z&X-Amz-Expires=300&X-Amz-Signature=cc38f1e4105eaa841ce31c3d2c2d185cefb0885e68af14b1a38418300f8805ef&X-Amz-SignedHeaders=host" />
+<img width="519" alt="디스코드 노래봇 입장 채팅" src="https://github.com/user-attachments/assets/7ebbd883-0215-4ab8-a9c8-1f4bd091c52b" />
 
 원하는대로 돌아가지 않아 약간 빡친(?) 나는, 너가 이기나 내가 이기나 해보자는 심보로 디스코드 노래봇을 어떻게 만드는지 찾아봤다. 어렵지 않으면 내가 만드는게 더 빠를 것 같다는 생각이 들었다. 오, 근데 간단하게 찾아보니 그리 어렵지 않고 주로 JS 혹은 Python으로 만드는 것 같았다. 직접 만드는게 진짜 더 좋겠는데...? 라는 생각에, 나는 계획에도 없던 디스코드 노래봇을 만들게 되었다 ^^!
 
@@ -48,15 +48,15 @@ tags:
 
 [디스코드 개발자 포털](https://discord.com/developers/applications)로 이동하여 로그인을 하고, 새 애플리케이션 생성 버튼을 클릭한다.
 
-<img width="812" alt="애플리케이션 생성" src="https://github-production-user-asset-6210df.s3.amazonaws.com/77609591/435542957-4d202238-57ea-42fe-aa71-efb2fa16e3c4.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250421%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250421T042842Z&X-Amz-Expires=300&X-Amz-Signature=40df6013e94452d0031b3aa848785e294821c6ffbb0540716c9d6a9ce2af8abf&X-Amz-SignedHeaders=host" />
+<img width="812" alt="애플리케이션 생성" src="https://github.com/user-attachments/assets/ae2d41cc-30fa-4b76-b304-bed69bd989ec" />
 
 애플리케이션의 이름을 작성하고 Create 버튼을 클릭하면,
 
-<img width="812" alt="애플리케이션 이름 작성" src="https://github-production-user-asset-6210df.s3.amazonaws.com/77609591/435543622-b43f3e37-6962-4878-a345-eab4af54b6d3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250421%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250421T042950Z&X-Amz-Expires=300&X-Amz-Signature=c38a627ec2f99eb51d5f9a9a4b7b3d0856c1cfce3e1cb521f31321cecd22a9f0&X-Amz-SignedHeaders=host" />
+<img width="812" alt="애플리케이션 이름 작성" src="https://github.com/user-attachments/assets/3f58d043-e641-429a-a3fe-d5163bfa02cb" />
 
 애플리케이션 생성이 완료된다.
 
-<img width="812" alt="애플리케이션 생성 완료" src="https://github-production-user-asset-6210df.s3.amazonaws.com/77609591/435543621-f604998d-6a71-4364-b4db-61a1c73b3952.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250421%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250421T043010Z&X-Amz-Expires=300&X-Amz-Signature=b0351b030244343026286708bb3b4bc739fb497d3c721a5f2a6e652f847dbb98&X-Amz-SignedHeaders=host" />
+<img width="812" alt="애플리케이션 생성 완료" src="https://github.com/user-attachments/assets/f28e097e-a775-42c7-8798-ff6bd256cb42" />
 
 Applicaion ID와 Public Key가 생성된 것을 확인할 수 있다. (이 두가지 정보는 이번 디스코드 노래봇 생성에는 사용되지 않음.)
 
@@ -66,13 +66,13 @@ Applicaion ID와 Public Key가 생성된 것을 확인할 수 있다. (이 두�
 그리고 Bot 생성하고 Reset Token 버턴을 클릭하면 토큰이 만들어진다.  
 이 토큰(Token)을 복사하여 저장해둔다. 혹은 `.env` 파일에 보관해두면 된다. (이건 뒤에서 또 설명)
 
-<img width="812" alt="봇 토큰" src="https://github-production-user-asset-6210df.s3.amazonaws.com/77609591/435543869-130f9e1e-d4f2-45d6-9a82-d85037e49c78.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250421%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250421T043104Z&X-Amz-Expires=300&X-Amz-Signature=d8f7ffe4d9613ff4b2d5543f73d167af42fd9eb5f1ba132ad3ed4a8eb958df3b&X-Amz-SignedHeaders=host" />
+<img width="812" alt="봇 토큰" src="https://github.com/user-attachments/assets/2dc422c8-4e94-4013-b2b6-50e65693c48c" />
 
 #### 3. “MESSAGE CONTENT INTENT” 옵션
 
 Bot 섹션(Bot 페이지)에서 **Privileged Gateway Intents** 소제목 아래의 “MESSAGE CONTENT INTENT” 토글을 켜준다.
 
-<img width="812" alt="message content intent 옵션" src="https://github-production-user-asset-6210df.s3.amazonaws.com/77609591/435544081-1bb16d3d-1cd0-4941-b0f6-d4259515dd1d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250421%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250421T043229Z&X-Amz-Expires=300&X-Amz-Signature=a526a2df3f202502fade66be80749dac57014e8676b073bfc4dfa0e8423ede7d&X-Amz-SignedHeaders=host" />
+<img width="812" alt="message content intent 옵션" src="https://github.com/user-attachments/assets/8d71367e-f023-4ed9-9924-af411fe1e442" />
 
 Message Content Intent는 봇에게 Prefix 명령어(!play, !stop 등/messageCreate) 실행 시, message.content를 받으려면 켜야 한다. 단, 해당 옵션은 100개 이상 서버에 배포하려면 검증 및 승인 필요하다.
 
@@ -103,14 +103,14 @@ OAuth2 섹션에 접속하여 아래 내용들을 켜준다.
 
 URL 생성 범위를 Bot으로 설정
 
-<img width="812" alt="OAuth2 bot 클릭" src="https://github-production-user-asset-6210df.s3.amazonaws.com/77609591/435543867-4e83cbcb-eb4e-476f-8ec5-8d72d6c4e846.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250421%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250421T043121Z&X-Amz-Expires=300&X-Amz-Signature=6187b6d83f13283ddd23f73d8d2c8b5341cf60736b77557f930e948899f39f07&X-Amz-SignedHeaders=host" />
+<img width="812" alt="OAuth2 bot 클릭" src="https://github.com/user-attachments/assets/2538966d-b578-4cbd-872e-33febeb28093" />
 
 permisson 설정
 
-<img width="812" alt="OAuth2 bot permission 선택" src="https://github-production-user-asset-6210df.s3.amazonaws.com/77609591/435543866-f5fb244d-d8eb-436b-b033-0797e83d4dd2.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250421%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250421T043142Z&X-Amz-Expires=300&X-Amz-Signature=9cb5881df6fd747f9951812907e7588ed83dc1d8d3e5925cf362fcc16fa005df&X-Amz-SignedHeaders=host" />
+<img width="812" alt="OAuth2 bot permission 선택" src="https://github.com/user-attachments/assets/bd7f7243-32ab-4d45-bd9b-24ac02e6715c" />
 
 위 설정들을 모두 완료했다면 생성된 ULR에 접속하여, 봇을 사용할 서버에 초대하면 끝!
-<img width="812" alt="OAuth2 bot 초대 링크 복사" src="https://github-production-user-asset-6210df.s3.amazonaws.com/77609591/435543868-44e04b5b-af90-4d43-9688-42b553dde88b.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250421%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250421T043155Z&X-Amz-Expires=300&X-Amz-Signature=24fa6aebef2acc1d86cc49d7cc368aea4f4eec648382ce1d603233cbcaf70f07&X-Amz-SignedHeaders=host" />
+<img width="812" alt="OAuth2 bot 초대 링크 복사" src="https://github.com/user-attachments/assets/aeb638ec-2924-457c-8c74-d195d6608150" />
 
 그러면 이렇게 디스코드 개발자 설정은 모두 완료되었다. 이제는 VScode를 실행하여 필요 패키지를 설치하고 코드를 작성하면 끝이다.
 
@@ -350,7 +350,7 @@ client.on('messageCreate', async (message) => {
   ```
 
   **결과**  
-  <img width="820" alt="재생" src="https://github-production-user-asset-6210df.s3.amazonaws.com/77609591/435541786-55649117-5b6f-402b-9a24-63462877e467.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250421%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250421T041943Z&X-Amz-Expires=300&X-Amz-Signature=4ac0f7f0e1a22684a705b4da944da9f21693f0261dc3f76d88370649ff2627dd&X-Amz-SignedHeaders=host" />
+  <img width="820" alt="재생" src="https://github.com/user-attachments/assets/a66466cb-3174-46c6-b94d-411bd214d0a4" />
 
 - 스킵
 
@@ -371,7 +371,7 @@ client.on('messageCreate', async (message) => {
   ```
 
   **결과**  
-  <img width="820" alt="스킵" src="https://github-production-user-asset-6210df.s3.amazonaws.com/77609591/435541950-baea9fd9-4a3f-417b-9169-e21a4be78d75.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250421%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250421T042049Z&X-Amz-Expires=300&X-Amz-Signature=e99f1364ea94ca48f6caa81edfa056201fbd24885e4cb76bb502aee8f983c471&X-Amz-SignedHeaders=host" />
+  <img width="820" alt="스킵" src="https://github.com/user-attachments/assets/691f94ad-eeb5-4c43-bd7a-eae6b5292320" />
 
 - 대기열
 
@@ -394,7 +394,7 @@ client.on('messageCreate', async (message) => {
   ```
 
   **결과**  
-  <img width="820" alt="대기열" src="https://github-production-user-asset-6210df.s3.amazonaws.com/77609591/435541876-6da0d31c-c948-4d3a-8c3b-7dd84bc6039d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250421%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250421T042015Z&X-Amz-Expires=300&X-Amz-Signature=351bee87c3efe748236114998a2fa82d285b4560ee68ec165f76b9cb6e198ebf&X-Amz-SignedHeaders=host" />
+  <img width="820" alt="대기열" src="https://github.com/user-attachments/assets/f7572bf1-e1af-47ec-880f-c3d429433177" />
 
 - 종료
 
@@ -420,7 +420,7 @@ client.on('messageCreate', async (message) => {
   ```
 
   **결과**  
-  <img width="820" alt="종료" src="https://github-production-user-asset-6210df.s3.amazonaws.com/77609591/435542037-86088ad1-073f-476f-983b-1b1882614a9a.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250421%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250421T042116Z&X-Amz-Expires=300&X-Amz-Signature=bae7b16f387eb75bd64076c1539bba61f10f97009d15cf8e13f8acf25cd5d740&X-Amz-SignedHeaders=host" />
+  <img width="820" alt="종료" src="https://github.com/user-attachments/assets/74c92d45-62ba-48e9-96a4-581af1d99dc1" />
 
 ## 🚨 내가 겪은 오류와 해결방법
 
