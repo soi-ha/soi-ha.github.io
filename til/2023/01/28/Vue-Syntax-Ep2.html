@@ -94,8 +94,6 @@
   
 
   
-
-  
     
   
 
@@ -278,8 +276,6 @@
 
   
     
-  
-
   
 
   
@@ -539,6 +535,7 @@
 
   <div class="post-body">
     <h2 id="computed"><strong>Computed</strong></h2>
+
 <hr />
 
 <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
@@ -619,6 +616,7 @@ export default <span class="si">{</span>
 배열 데이터 fruit를 각 알파벳으로 쪼개고 해당 배열을 뒤짚은 다음에 다시 이어준다.</p>
 
 <h2 id="computed-캐싱"><strong>Computed 캐싱</strong></h2>
+
 <hr />
 
 <ul>
@@ -629,11 +627,11 @@ export default <span class="si">{</span>
 즉, 같은 값을 계속 불러와도 같은 연산을 계속 반복하여 값을 출력하는 것이다.</p>
 
     <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span><span class="si">{</span><span class="p">{</span> <span class="nf">reverseMessage</span><span class="p">()</span> <span class="p">}</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span><span class="si">{</span><span class="p">{</span> <span class="nf">reverseMessage</span><span class="p">()</span> <span class="p">}</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span><span class="si">{</span><span class="p">{</span> <span class="nf">reverseMessage</span><span class="p">()</span> <span class="p">}</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
-  
+
 <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
 export default <span class="si">{</span>
   <span class="nf">data</span><span class="p">()</span> <span class="p">{</span>
@@ -643,7 +641,7 @@ export default <span class="si">{</span>
   <span class="p">},</span>
   <span class="nx">methods</span><span class="p">:</span> <span class="p">{</span>
     <span class="nf">reverseMessage</span><span class="p">()</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">msg</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="dl">''</span><span class="p">).</span><span class="nf">reverse</span><span class="p">().</span><span class="nf">join</span><span class="p">(</span><span class="dl">''</span><span class="p">)</span> 
+      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">msg</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="dl">''</span><span class="p">).</span><span class="nf">reverse</span><span class="p">().</span><span class="nf">join</span><span class="p">(</span><span class="dl">''</span><span class="p">)</span>
     <span class="p">}</span>
   <span class="si">}</span>
 }
@@ -665,7 +663,7 @@ export default <span class="si">{</span>
   <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
-  
+
 <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
 export default <span class="si">{</span>
   <span class="nf">data</span><span class="p">()</span> <span class="p">{</span>
@@ -675,7 +673,7 @@ export default <span class="si">{</span>
   <span class="p">},</span>
   <span class="nx">computed</span><span class="p">:</span> <span class="p">{</span>
     <span class="nf">reversedMessage</span><span class="p">()</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">msg</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="dl">''</span><span class="p">).</span><span class="nf">reverse</span><span class="p">().</span><span class="nf">join</span><span class="p">(</span><span class="dl">''</span><span class="p">)</span> 
+      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">msg</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="dl">''</span><span class="p">).</span><span class="nf">reverse</span><span class="p">().</span><span class="nf">join</span><span class="p">(</span><span class="dl">''</span><span class="p">)</span>
     <span class="p">}</span>
   <span class="si">}</span>
 }
@@ -685,6 +683,7 @@ export default <span class="si">{</span>
 </ul>
 
 <h2 id="getter-setter"><strong>Getter, Setter</strong></h2>
+
 <hr />
 
 <ul>
@@ -693,14 +692,14 @@ export default <span class="si">{</span>
 
     <p>값을 <strong>얻어 내는 것</strong>이다.</p>
 
-    <p>computed 옵션에 작성해둔 reversedMessage는 계산된 데이터로,  읽기 전용(Readonly)이다. <br />
-method의 add의 <code class="language-plaintext highlighter-rouge">+= ‘?!’</code>는 할당연산자로, 어떤 값을 할당하더라도 반응적으로 동작할 수 있는 구조가 아니다. <br />
+    <p>computed 옵션에 작성해둔 reversedMessage는 계산된 데이터로, 읽기 전용(Readonly)이다.<br />
+method의 add의 <code class="language-plaintext highlighter-rouge">+= ‘?!’</code>는 할당연산자로, 어떤 값을 할당하더라도 반응적으로 동작할 수 있는 구조가 아니다.<br />
 즉 reversedMessage는 내부의 기본 로직을 통해서 값을 얻어내는 용도로만 사용한다. <strong>이것이 Getter!</strong></p>
 
     <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">computed</span><span class="p">:</span> <span class="p">{</span>
-    <span class="c1">// Getter </span>
+    <span class="c1">// Getter</span>
     <span class="nf">reversedMessage</span><span class="p">()</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">msg</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="dl">''</span><span class="p">).</span><span class="nf">reverse</span><span class="p">().</span><span class="nf">join</span><span class="p">(</span><span class="dl">''</span><span class="p">)</span> 
+      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">msg</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="dl">''</span><span class="p">).</span><span class="nf">reverse</span><span class="p">().</span><span class="nf">join</span><span class="p">(</span><span class="dl">''</span><span class="p">)</span>
     <span class="p">}</span>
   <span class="p">}</span>
 </code></pre></div>    </div>
@@ -717,7 +716,7 @@ method의 add의 <code class="language-plaintext highlighter-rouge">+= ‘?!’<
     <span class="nl">reversedMessage</span><span class="p">:</span> <span class="p">{</span>
       <span class="c1">// Getter</span>
       <span class="nf">get</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">msg</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="dl">''</span><span class="p">).</span><span class="nf">reverse</span><span class="p">().</span><span class="nf">join</span><span class="p">(</span><span class="dl">''</span><span class="p">)</span> 
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">msg</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="dl">''</span><span class="p">).</span><span class="nf">reverse</span><span class="p">().</span><span class="nf">join</span><span class="p">(</span><span class="dl">''</span><span class="p">)</span>
       <span class="p">},</span>
       <span class="c1">// Setter</span>
       <span class="nf">set</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
@@ -737,6 +736,7 @@ method의 add의 <code class="language-plaintext highlighter-rouge">+= ‘?!’<
 </ul>
 
 <h2 id="watch"><strong>Watch</strong></h2>
+
 <hr />
 
 <p>특정한 데이터들의 변경사항을 감시하는 용도의 옵션이다.</p>
@@ -752,7 +752,7 @@ export default <span class="si">{</span>
   <span class="p">},</span>
   <span class="nx">computed</span><span class="p">:</span> <span class="p">{</span>
     <span class="nf">reversedMessage</span><span class="p">()</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">msg</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="dl">''</span><span class="p">).</span><span class="nf">reverse</span><span class="p">().</span><span class="nf">join</span><span class="p">(</span><span class="dl">''</span><span class="p">)</span> 
+      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">msg</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="dl">''</span><span class="p">).</span><span class="nf">reverse</span><span class="p">().</span><span class="nf">join</span><span class="p">(</span><span class="dl">''</span><span class="p">)</span>
     <span class="p">}</span>
   <span class="si">}</span>,
   watch: <span class="si">{</span>
@@ -775,7 +775,7 @@ export default <span class="si">{</span>
 <p>watch를 통해서 msg 데이터는 감시되고 있는 상황이다.<br />
 감시가 되어있다가 변경사항이 있으니까, 감시되고 있는 해당 내용(콘솔에 msg 출력)의 로직을 실행한다.</p>
 
-<p>watch는 기존 데이터 뿐만이 아니라 계산된 데이터도 감시가 가능하다. <br />
+<p>watch는 기존 데이터 뿐만이 아니라 계산된 데이터도 감시가 가능하다.<br />
 changeMessage를 통해서 msg의 원본 데이터만 수정하더라도 계산된 데이터 부분의 내용도 변경된다.<br />
 따라서 watch의 reversedMessage의 변경이 감시되어 해당 내용의 로직이 실행된다.</p>
 

@@ -94,8 +94,6 @@
   
 
   
-
-  
     
   
 
@@ -278,8 +276,6 @@
 
   
     
-  
-
   
 
   
@@ -539,17 +535,17 @@
 
   <div class="post-body">
     <h2 id="클래스와-스타일-바인딩"><strong>클래스와 스타일 바인딩</strong></h2>
+
 <hr />
 
 <blockquote>
   <p><a href="https://v3-docs.vuejs-korea.org/guide/essentials/class-and-style.html">Vue.js: 클래스와 스타일 바인딩</a></p>
-
 </blockquote>
 
 <h3 id="html-클래스-바인딩"><strong>HTML 클래스 바인딩</strong></h3>
 
 <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">h1</span> 
+  <span class="p">&lt;</span><span class="nt">h1</span>
     <span class="err">:</span><span class="na">class</span><span class="p">=</span><span class="s">"{ active: isActive }"</span>
     <span class="err">@</span><span class="na">click</span><span class="p">=</span><span class="s">"activate"</span><span class="p">&gt;</span>
     Hello?!()
@@ -581,14 +577,14 @@ export default <span class="si">{</span>
 
 <p>class로 active를 추가하고 싶은데 class의 이름은 isActive의 영향을 받는다. boolean 데이터 true면 class에 active가 추가되고, false이면 class에 active가 추가될 수 없는 구조이다.</p>
 
-<p>현재 isActive default 값이 false로 style이 적용되지 않는다. <br />
+<p>현재 isActive default 값이 false로 style이 적용되지 않는다.<br />
 h1태그를 클릭하게 되면 메소드 activate로 인해 isActive의 값이 true로 변경된다. isActive 값이 true가 되면서 class 값 active가 활성화되어 style이 적용된다.</p>
 
 <ul>
   <li>
     <p>바인딩 객체 인라인</p>
 
-    <p>바인딩 객체는 인라인``일 필요가 없다!</p>
+    <p>바인딩 객체는 인라인 <code class="language-plaintext highlighter-rouge">{{ }}</code> 일 필요가 없다!</p>
 
     <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="nt">div</span> <span class="err">:</span><span class="na">class</span><span class="p">=</span><span class="s">"classObject"</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </code></pre></div>    </div>
@@ -609,7 +605,7 @@ h1태그를 클릭하게 되면 메소드 activate로 인해 isActive의 값이 
   <li>
     <p>배열 구문</p>
 
-    <p>배열을 <code class="language-plaintext highlighter-rouge">:class</code>에 전달하여 클래스 목록을 적용할 수 있다. <br />
+    <p>배열을 <code class="language-plaintext highlighter-rouge">:class</code>에 전달하여 클래스 목록을 적용할 수 있다.<br />
 배열로 특정한 클래스들을 추가할 수 있다.</p>
 
     <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="nt">div</span> <span class="err">:</span><span class="na">class</span><span class="p">=</span><span class="s">"[activeClass, errorClass]"</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>

@@ -94,8 +94,6 @@
   
 
   
-
-  
     
   
 
@@ -278,8 +276,6 @@
 
   
     
-  
-
   
 
   
@@ -554,7 +550,7 @@
 
 <p>로그인 성공시 Redirect할 URI의 주소를 작성한다.</p>
 
-<p><img width="896" alt="스크린샷 2023-05-18 01 22 13" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/a218727b-4689-42f2-be24-92abf0af0d4d" /></p>
+<p><img width="896" alt="스크린샷 2023-05-18 01 22 13" src="/assets/images/a218727b-4689-42f2-be24-92abf0af0d4d" /></p>
 
 <h3 id="3-인가코드-받기">3. 인가코드 받기</h3>
 
@@ -564,11 +560,11 @@ KAKAO_AUTH_URL의 경로로 요청을 보내면, Redirect URI로 이동하면서
 <p>이때, client_id, redirect_uri, response_type이 필수로 담겨야 한다.
 client_id는 REST API키, redirect_uri에는 <strong>2. Redirect URI 설정</strong>에서 작성한 URI, reponse_type에는 code 고정 값을 담으면 된다.</p>
 
-<p><img width="1033" alt="스크린샷 2023-05-18 01 06 38" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/8ecdef86-4fff-4ec8-915f-04ddc906143a" /></p>
+<p><img width="1033" alt="스크린샷 2023-05-18 01 06 38" src="/assets/images/8ecdef86-4fff-4ec8-915f-04ddc906143a" /></p>
 
 <p>Key는 공개되지 않는 것이 보안에 좋으므로 따로 파일을 생성하여 관리한다. 해당 파일은 <code class="language-plaintext highlighter-rouge">.gitignore</code>에 작성하여 깃허브에 업로드되지 않도록 한다.</p>
 
-<p><img width="587" alt="스크린샷 2023-05-18 01 03 51" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/db150b2d-e686-4117-86d4-4f68bbda5fba" /></p>
+<p><img width="587" alt="스크린샷 2023-05-18 01 03 51" src="/assets/images/db150b2d-e686-4117-86d4-4f68bbda5fba" /></p>
 
 <p>카카오로 시작하기 버튼을 클릭하면 지정한 Redirect URI로 이동하여 인가코드를 얻을 수 있다.</p>
 
@@ -576,7 +572,7 @@ client_id는 REST API키, redirect_uri에는 <strong>2. Redirect URI 설정</str
 
 <p>Redirect URI에 작성했던 successlogin으로 이동할 수 있도록 라우터를 설정해준다. 라우터를 설정하지 않으면 페이지가 존재하지 않아서 이동할 수 없다.</p>
 
-<p><img width="437" alt="스크린샷 2023-05-18 01 06 08" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/8f2282c8-79c7-44e0-8aa4-fc80a3d9a89f" /></p>
+<p><img width="437" alt="스크린샷 2023-05-18 01 06 08" src="/assets/images/8f2282c8-79c7-44e0-8aa4-fc80a3d9a89f" /></p>
 
 <h3 id="5-사용자-토큰-받기">5. 사용자 토큰 받기</h3>
 
@@ -594,7 +590,7 @@ client_id는 REST API키, redirect_uri에는 <strong>2. Redirect URI 설정</str
 
 <p>로그인에 실패했다면 else 부분의 <code class="language-plaintext highlighter-rouge">navigate(’주소’)</code>로 이동한다.</p>
 
-<p><img width="919" alt="스크린샷 2023-05-18 01 26 58" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/0b8dd2bb-552b-42df-b5e7-944f3192f5d8" /></p>
+<p><img width="919" alt="스크린샷 2023-05-18 01 26 58" src="/assets/images/0b8dd2bb-552b-42df-b5e7-944f3192f5d8" /></p>
 
 <h3 id="4-여러-페이지-생성">4. 여러 페이지 생성</h3>
 
@@ -602,34 +598,34 @@ client_id는 REST API키, redirect_uri에는 <strong>2. Redirect URI 설정</str
   <li>
     <p>로그인 실패 페이지</p>
 
-    <p><img width="426" alt="스크린샷 2023-05-18 01 05 28" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/befa2568-a7c6-4a41-a730-3ac9dcd8af2a" /></p>
+    <p><img width="426" alt="스크린샷 2023-05-18 01 05 28" src="/assets/images/befa2568-a7c6-4a41-a730-3ac9dcd8af2a" /></p>
   </li>
   <li>
     <p>로그인 성공 페이지</p>
 
-    <p><img width="432" alt="스크린샷 2023-05-18 01 05 48" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/7147faf4-c525-4f33-9c71-3a64390fd279" /></p>
+    <p><img width="432" alt="스크린샷 2023-05-18 01 05 48" src="/assets/images/7147faf4-c525-4f33-9c71-3a64390fd279" /></p>
   </li>
 </ul>
 
 <h3 id="5-실제-구현된-페이지">5. 실제 구현된 페이지</h3>
 
-<p><img width="1509" alt="스크린샷 2023-05-24 15 14 43" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/6efc6654-5402-4c6e-af9f-5da055fb47c9" /></p>
+<p><img width="1509" alt="스크린샷 2023-05-24 15 14 43" src="/assets/images/6efc6654-5402-4c6e-af9f-5da055fb47c9" /></p>
 
 <p><em>로그인 페이지</em></p>
 
-<p><img width="1510" alt="스크린샷 2023-05-24 15 15 03" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/e49d8fb1-24b0-499f-b0f9-84653be3ddeb" /></p>
+<p><img width="1510" alt="스크린샷 2023-05-24 15 15 03" src="/assets/images/e49d8fb1-24b0-499f-b0f9-84653be3ddeb" /></p>
 
 <p><em>카카오 소셜 로그인</em></p>
 
-<p><img width="1509" alt="스크린샷 2023-05-24 15 16 00" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/b08c5ba7-913d-478a-8288-b251b08dbef5" /></p>
+<p><img width="1509" alt="스크린샷 2023-05-24 15 16 00" src="/assets/images/b08c5ba7-913d-478a-8288-b251b08dbef5" /></p>
 
 <p><em>카카오 소셜 로그인 정보 제공 동의</em></p>
 
-<p><img width="1496" alt="스크린샷 2023-05-24 15 16 21" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/32d725d0-a60e-4ecf-be04-56a1c7fe734f" /></p>
+<p><img width="1496" alt="스크린샷 2023-05-24 15 16 21" src="/assets/images/32d725d0-a60e-4ecf-be04-56a1c7fe734f" /></p>
 
 <p><em>로그인 성공 페이지</em></p>
 
-<p><img width="1501" alt="스크린샷 2023-05-24 15 16 51" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/3f80d981-d12e-4857-8555-c621aaa6febe" /></p>
+<p><img width="1501" alt="스크린샷 2023-05-24 15 16 51" src="/assets/images/3f80d981-d12e-4857-8555-c621aaa6febe" /></p>
 
 <p><em>로그인 실패 페이지</em></p>
 

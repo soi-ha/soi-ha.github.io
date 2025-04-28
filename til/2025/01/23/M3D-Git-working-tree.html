@@ -94,8 +94,6 @@
   
 
   
-
-  
     
   
 
@@ -278,8 +276,6 @@
 
   
     
-  
-
   
 
   
@@ -556,13 +552,13 @@
 
 <p>작업 디렉터리는 Working Tree라고도 부르는데, 이 두 가지 용어는 동일한 의미로 사용된다. Git 공식 문서에서도 두 용어가 같은 의미로 사용되며 혼용된다.</p>
 
-<p><img width="641" alt="working tree Git 공식문서 설명" src="https://github.com/user-attachments/assets/21e9781e-d541-498e-a9c4-41dfc9f93a44" /></p>
+<p><img width="641" alt="working tree Git 공식문서 설명" src="/assets/images/21e9781e-d541-498e-a9c4-41dfc9f93a44" /></p>
 
 <p><em>working tree Git 공식문서 설명</em></p>
 
 <p>이는 Git의 상태를 트래킹하고 파일 시스템의 특정 상태를 나타내는데 있어서 같은 역할을 하기 때문이다. 따라서, 작업 디렉터리와 작업 트리 모두 “사용자가 직접 편집하는 파일들이 위치한 영역”을 지칭한다.</p>
 
-<p><img width="250" alt="Image" src="https://github.com/user-attachments/assets/3079a540-d67b-49ee-92b9-06ff3290ada0" /></p>
+<p><img width="250" alt="Image" src="/assets/images/3079a540-d67b-49ee-92b9-06ff3290ada0" /></p>
 
 <p><em>작업 내용이 없을 경우 <code class="language-plaintext highlighter-rouge">git status</code> 명령을 했을 때 띄워지는 문구</em></p>
 
@@ -597,7 +593,7 @@
 
 <p>Git 저장소에 대해 설명하면서 Git의 데이터 흐름에 대해서도 설명을 했다. 그러나 이렇게 글로 설명해서는 잘 이해되지 않을 것이다. 아래 그림을 보면서 간략하게 Git의 데이터 흐름에 대해서 다시 한번 살펴보자.</p>
 
-<p><img width="1392" alt="git 저장소의 구조와 흐름" src="https://github.com/user-attachments/assets/d51a1640-bbde-4cb7-ab3d-4b4a3d66a759" /></p>
+<p><img width="1392" alt="git 저장소의 구조와 흐름" src="/assets/images/d51a1640-bbde-4cb7-ab3d-4b4a3d66a759" /></p>
 
 <ol>
   <li><code class="language-plaintext highlighter-rouge">git init</code>을 통해 현재 디렉토리를 Git 저장소로 초기화하고 변경된 파일을 추적한다.</li>
@@ -618,13 +614,13 @@
 
 <p>아래 그림을 참고하여 어떻게 파일 상태 변화가 나타나는지 알아보자.</p>
 
-<p><img width="1312" alt="git의 파일 상태 변화" src="https://github.com/user-attachments/assets/fe95cc25-5171-4548-a9ce-8924aa7a350d" /></p>
+<p><img width="1312" alt="git의 파일 상태 변화" src="/assets/images/fe95cc25-5171-4548-a9ce-8924aa7a350d" /></p>
 
 <h3 id="1-untracked-상태">1. Untracked 상태</h3>
 
 <p>작업 디렉터리에 새로 추가된 파일은 처음에는 Git에 의해 추적되지 않는 상태인 <strong>Untracked</strong>로 분류된다. 이 상태는 Git이 파일을 아직 버전 관리에 포함하지 않았음을 의미한다.</p>
 
-<p><img width="483" alt="untracked file" src="https://github.com/user-attachments/assets/cd0296db-ae7c-4b6b-b3d4-70ed2c5a0e71" /></p>
+<p><img width="483" alt="untracked file" src="/assets/images/cd0296db-ae7c-4b6b-b3d4-70ed2c5a0e71" /></p>
 
 <ul>
   <li>
@@ -638,7 +634,7 @@
 
 <p>Tracked 상태는 Git이 해당 파일을 버전 관리하고 있음을 의미한다.</p>
 
-<p><img width="389" alt="tracked file" src="https://github.com/user-attachments/assets/2d396235-5f26-4182-acfb-464b1a2f3fe1" /></p>
+<p><img width="389" alt="tracked file" src="/assets/images/2d396235-5f26-4182-acfb-464b1a2f3fe1" /></p>
 
 <p>Tracked 상태의 파일은 아래 세 가지 하위 상태로 나뉜다.</p>
 
@@ -652,7 +648,7 @@
 
 <p>Tracked 상태의 파일이 수정되면, 파일은 <strong>Modified 상태</strong>로 변경된다. 이 상태는 파일이 변경되었으나 아직 스테이징 영역에 반영되지 않았음을 나타낸다.</p>
 
-<p><img width="456" alt="modified file" src="https://github.com/user-attachments/assets/ed1eb917-c86f-4b70-9fd7-3058383d9ace" /></p>
+<p><img width="456" alt="modified file" src="/assets/images/ed1eb917-c86f-4b70-9fd7-3058383d9ace" /></p>
 
 <h3 id="4--git-add-명령어">4. → <code class="language-plaintext highlighter-rouge">git add</code> 명령어</h3>
 

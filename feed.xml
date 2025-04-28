@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://soi-ha.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://soi-ha.github.io/" rel="alternate" type="text/html" /><updated>2025-04-23T07:46:11+00:00</updated><id>https://soi-ha.github.io/feed.xml</id><title type="html">Soha</title><subtitle>프론트엔드 개발자가 되기 위한 발걸음 기록</subtitle><author><name>soha</name></author><entry><title type="html">디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)</title><link href="https://soi-ha.github.io/til/2025/04/20/Creating-A-Discord-Music-Bot.html" rel="alternate" type="text/html" title="디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)" /><published>2025-04-20T00:00:00+00:00</published><updated>2025-04-20T00:00:00+00:00</updated><id>https://soi-ha.github.io/til/2025/04/20/Creating-A-Discord-Music-Bot</id><content type="html" xml:base="https://soi-ha.github.io/til/2025/04/20/Creating-A-Discord-Music-Bot.html"><![CDATA[<h2 id="나는-어쩌다가-디스코드-노래봇을-만들게-되었는가">나는 어쩌다가 디스코드 노래봇을 만들게 되었는가…</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://soi-ha.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://soi-ha.github.io/" rel="alternate" type="text/html" /><updated>2025-04-28T07:13:10+00:00</updated><id>https://soi-ha.github.io/feed.xml</id><title type="html">Soha</title><subtitle>프론트엔드 개발자가 되기 위한 발걸음 기록</subtitle><author><name>soha</name></author><entry><title type="html">디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)</title><link href="https://soi-ha.github.io/til/2025/04/20/Creating-A-Discord-Music-Bot.html" rel="alternate" type="text/html" title="디스코드(Discord) 노래봇 만들기 🎵 (with Node.js)" /><published>2025-04-20T00:00:00+00:00</published><updated>2025-04-20T00:00:00+00:00</updated><id>https://soi-ha.github.io/til/2025/04/20/Creating-A-Discord-Music-Bot</id><content type="html" xml:base="https://soi-ha.github.io/til/2025/04/20/Creating-A-Discord-Music-Bot.html"><![CDATA[<h2 id="나는-어쩌다가-디스코드-노래봇을-만들게-되었는가">나는 어쩌다가 디스코드 노래봇을 만들게 되었는가…</h2>
 
 <p>때는 4월 17일 20시.. 공부를 하기 위해 책상에 앉아 디스코드에 접속하여 서버에서 기존에 사용하던 노래봇을 실행하려 했는데.. 유튜브 검색이 제대로 작동하지 않았다. 그래서 나는 다른 노래봇을 새롭게 불러와 서버에 실행했지만? 또 안됐다. 그렇게 한국어를 지원하는 어느정도 인지도가 있는 노래봇만 6개를 실행해봤다. 근데, 내가 원하는 유튜브로 검색하여 실행이 제대로 돌아가지 않았다.</p>
 
@@ -742,17 +742,17 @@ Use <span class="sb">`</span>bundle info <span class="o">[</span>gemname]<span c
 
 <p>터미널에 bundle 실행이 정상적으로 진행됐을 때 결과 이미지:</p>
 
-<p><img width="450" alt="bundle 명령어 실행 결과" src="https://github.com/user-attachments/assets/41945983-54e0-4e37-ad38-135e9e484560" /></p>
+<p><img width="450" alt="bundle 명령어 실행 결과" src="/assets/images/41945983-54e0-4e37-ad38-135e9e484560" /></p>
 
 <p>위와 같이 명령어 실행 결과가 나타났다면, 와우! 당신은 이제 더이상 할게 없다. <a href="#4-jekyll-sitemap-설치">바로 4번을 실행</a>해주면 된다.</p>
 
 <p>그러나 만약 bundle 명령어를 실행했는데 아래 이미지와 같이 에러가 발생다면?</p>
 
-<p><img width="482" alt="bundle 명령어 실행 에러" src="https://github.com/user-attachments/assets/283232ee-7fbc-43aa-a1b9-522372f55917" /></p>
+<p><img width="482" alt="bundle 명령어 실행 에러" src="/assets/images/283232ee-7fbc-43aa-a1b9-522372f55917" /></p>
 
 <p>그리고 <code class="language-plaintext highlighter-rouge">gem install bundler</code> 명령어를 실행해봤는데 또 에러가 발생했다면? 글을 계속 내려 에러를 해결해보자.</p>
 
-<p><img width="506" alt="gem bundler 설치 에러" src="https://github.com/user-attachments/assets/2b60699b-08a3-48bb-8b97-7c63eb9753ae" /></p>
+<p><img width="506" alt="gem bundler 설치 에러" src="/assets/images/2b60699b-08a3-48bb-8b97-7c63eb9753ae" /></p>
 
 <hr />
 
@@ -769,7 +769,7 @@ Use <span class="sb">`</span>bundle info <span class="o">[</span>gemname]<span c
 
 <p>에러 발생 이미지:</p>
 
-<p><img width="506" alt="gem bundler 설치 에러" src="https://github.com/user-attachments/assets/2b60699b-08a3-48bb-8b97-7c63eb9753ae" /></p>
+<p><img width="506" alt="gem bundler 설치 에러" src="/assets/images/2b60699b-08a3-48bb-8b97-7c63eb9753ae" /></p>
 
 <p>해당 에러의 해결 방법은 두 가지가 있다.</p>
 
@@ -820,7 +820,7 @@ ruby 2.6.10p210
 
     <p>실제 터미널 실행 결과 이미지:</p>
 
-    <p><img width="438" alt="rbenv 설치 버전 없음" src="https://github.com/user-attachments/assets/68122962-4dd5-4f4a-969b-0cab7889ccb2" /></p>
+    <p><img width="438" alt="rbenv 설치 버전 없음" src="/assets/images/68122962-4dd5-4f4a-969b-0cab7889ccb2" /></p>
   </li>
   <li>
     <p><strong><code class="language-plaintext highlighter-rouge">rbenv</code>를 활용하여 Ruby 버전 설치 (버전: <code class="language-plaintext highlighter-rouge">3.4.2</code>)</strong></p>
@@ -830,7 +830,7 @@ ruby 2.6.10p210
 
     <p>실제 터미널 실행 결과 이미지:</p>
 
-    <p><img width="493" alt="rbenv 버전 설치" src="https://github.com/user-attachments/assets/a121d90d-9656-477c-b08f-5e794f83364a" /></p>
+    <p><img width="493" alt="rbenv 버전 설치" src="/assets/images/a121d90d-9656-477c-b08f-5e794f83364a" /></p>
 
     <p>설치가 정상적으로 되었다면, version 확인을 했을 때 아래와 같이 출력된다.</p>
 
@@ -857,7 +857,7 @@ global 버전 설정을 한 후 ruby 버전을 다시 확인하면 <code class="
 
     <p>실제 터미널 실행 결과 이미지:</p>
 
-    <p><img width="431" alt="ruby 설치 버전 확인" src="https://github.com/user-attachments/assets/e483ebe3-5600-46bc-8e74-05b62224b295" /></p>
+    <p><img width="431" alt="ruby 설치 버전 확인" src="/assets/images/e483ebe3-5600-46bc-8e74-05b62224b295" /></p>
   </li>
   <li>
     <p><strong>쉘 설정 파일에 <code class="language-plaintext highlighter-rouge">rbenv</code> 설정 추가</strong></p>
@@ -876,7 +876,7 @@ global 버전 설정을 한 후 ruby 버전을 다시 확인하면 <code class="
 
     <h4 id="코드-설명">코드 설명</h4>
 
-    <p><img width="506" alt="쉘 파일 코드 추가" src="https://github.com/user-attachments/assets/86e204d4-82f4-493b-bb28-94b7cb8866f2" /></p>
+    <p><img width="506" alt="쉘 파일 코드 추가" src="/assets/images/86e204d4-82f4-493b-bb28-94b7cb8866f2" /></p>
 
     <ul>
       <li><code class="language-plaintext highlighter-rouge">[[ -d ~/.rbenv ]]</code>: rbenv가 설치되어 있는지 확인한다. rbenv가 설치되어 있지 않다면 이후 명령어들이 실행되지 않아 불필요한 오류를 방지할 수 있다.</li>
@@ -926,14 +926,14 @@ Use <span class="sb">`</span>bundle info <span class="o">[</span>gemname]<span c
 
 <p>실제 실행 결과 이미지:</p>
 
-<p><img width="467" alt="jekyll-sitemap 플러그인 설치 성공" src="https://github.com/user-attachments/assets/30ca6dbf-1de7-4c34-a325-c094568aa018" /></p>
+<p><img width="467" alt="jekyll-sitemap 플러그인 설치 성공" src="/assets/images/30ca6dbf-1de7-4c34-a325-c094568aa018" /></p>
 
 <h3 id="5-github에-변경사항을-커밋하고-푸시하기">5. GitHub에 변경사항을 커밋하고 푸시하기</h3>
 
 <p>변경사항을 github에 push하면 자동으로 사이트맵이 생성된다.<br />
 로컬에서는 파일이 보이지 않을 수 있지만, 실제 블로그 사이트에서 확인을 해보면 <code class="language-plaintext highlighter-rouge">sitemap.xml</code> 파일이 정상적으로 생성된 것을 확인할 수 있다.</p>
 
-<p><img width="1415" alt="Image" src="https://github.com/user-attachments/assets/95ae0f25-87dd-4c01-92f1-8893e0d0efd2" /></p>
+<p><img width="1415" alt="Image" src="/assets/images/95ae0f25-87dd-4c01-92f1-8893e0d0efd2" /></p>
 
 <h2 id="-참고">📚 참고</h2>
 
@@ -1192,7 +1192,7 @@ Use <span class="sb">`</span>bundle info <span class="o">[</span>gemname]<span c
   <li><a href="https://erwinousy.medium.com/%EC%BF%A0%ED%82%A4-vs-%EB%A1%9C%EC%BB%AC%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80-%EC%B0%A8%EC%9D%B4%EC%A0%90%EC%9D%80-%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C-28b8db2ca7b2">쿠키 vs 로컬스토리지: 차이점은 무엇일까?</a></li>
 </ul>]]></content><author><name>soha</name></author><category term="TIL" /><category term="TIL" /><category term="매3개" /><summary type="html"><![CDATA[📄 Session Storage]]></summary></entry><entry><title type="html">매3개 | Git의 다양한 Merge 방법 (merge, rebase, squash)</title><link href="https://soi-ha.github.io/til/2025/02/25/M3D-Git-Merge.html" rel="alternate" type="text/html" title="매3개 | Git의 다양한 Merge 방법 (merge, rebase, squash)" /><published>2025-02-25T00:00:00+00:00</published><updated>2025-02-25T00:00:00+00:00</updated><id>https://soi-ha.github.io/til/2025/02/25/M3D-Git-Merge</id><content type="html" xml:base="https://soi-ha.github.io/til/2025/02/25/M3D-Git-Merge.html"><![CDATA[<p>github에서 pr을 생성하고 해당 pr들을 merge를 하려고 클릭하면 다양한 방식의 merge 방법이 존재하는 것을 볼 수 있다.</p>
 
-<p><img width="345" alt="깃허브 merge 선택 화면" src="https://github.com/user-attachments/assets/b99d46ee-0fda-43eb-8f08-0217892299f2" /></p>
+<p><img width="345" alt="깃허브 merge 선택 화면" src="/assets/images/b99d46ee-0fda-43eb-8f08-0217892299f2" /></p>
 
 <p>각 merge 방법들이 무엇인지 알아보도록 하자.</p>
 
@@ -1807,7 +1807,7 @@ Staged 상태까지 적용한다.<br />
 
 <h3 id="개발자-모드-토글을-클릭">개발자 모드 토글을 클릭</h3>
 
-<p><img width="1512" alt="확장 프로그램 적용 방법" src="https://github.com/user-attachments/assets/bd2b48af-de06-42ae-8816-281b02fcde8f" /></p>
+<p><img width="1512" alt="확장 프로그램 적용 방법" src="/assets/images/bd2b48af-de06-42ae-8816-281b02fcde8f" /></p>
 
 <h3 id="압축해제된-확장-프로그램을-로드합니다-클릭"><code class="language-plaintext highlighter-rouge">압축해제된 확장 프로그램을 로드합니다.</code> 클릭</h3>
 
@@ -1817,13 +1817,13 @@ Staged 상태까지 적용한다.<br />
 
 <p>위에서 수정을 진행해줬던 폴더를 업로드 한다. 그럼 끝이다.</p>
 
-<p><img width="824" alt="확장 프로그램 선택" src="https://github.com/user-attachments/assets/29824de3-f699-40a2-8b06-5fa87d048166" /></p>
+<p><img width="824" alt="확장 프로그램 선택" src="/assets/images/29824de3-f699-40a2-8b06-5fa87d048166" /></p>
 
 <h3 id="커스텀-폴더가-잘-적용되었는지-확인하기">커스텀 폴더가 잘 적용되었는지 확인하기</h3>
 
 <p>아래 이미지와 같이 이미지 하단에 빨간 아이콘이 존재하고 변경했던 확장 프로그램 이름이 잘 반영되어있다면? 커스텀했던 백준허브가 우리의 크롬 확장 프로그램으로 잘 들어온 것이다.</p>
 
-<p><img width="432" alt="커스텀 확장 프로그램 적용 확인" src="https://github.com/user-attachments/assets/bbfd3c4d-e160-42e6-a5bf-958337709cc7" /></p>
+<p><img width="432" alt="커스텀 확장 프로그램 적용 확인" src="/assets/images/bbfd3c4d-e160-42e6-a5bf-958337709cc7" /></p>
 
 <p>이후에는 기존에 백준허브를 사용했던 것과 동일하게 원하는 레포지토리를 생성 혹은 연결해주면 끝이다. 사용 방법은 기존 백준허브와 완전히 동일하다.</p>
 
@@ -1841,7 +1841,7 @@ Staged 상태까지 적용한다.<br />
 
 <p>위에 내가 설명한 대로 수정을 진행하면 아래와 같이 설정한 레포지토리에 정상적으로 커밋되지 않는 문제가 발생한다.</p>
 
-<p><img width="762" alt="버그1" src="https://github.com/user-attachments/assets/ec014a54-4a1b-4d9b-979c-722a965e405e" /></p>
+<p><img width="762" alt="버그1" src="/assets/images/ec014a54-4a1b-4d9b-979c-722a965e405e" /></p>
 
 <p>원인을 찾기 위해서 수정했던 파일 중에 문제를 일으킬 만한 것을 살펴보았지만 아무리 봐도 없었다.. 그러던 중…</p>
 
@@ -1849,9 +1849,9 @@ Staged 상태까지 적용한다.<br />
 
 <p>서얼마.. <strong><code class="language-plaintext highlighter-rouge">readme</code>를 주석처리 해서</strong>.. 이게 혹시 원인..?이란 생각이 들어서 주석을 해제하고 시도하니.. 다음과 같이 정상적으로 커밋이 되었다.</p>
 
-<p><img width="839" alt="커스텀 성공1" src="https://github.com/user-attachments/assets/9e20ec25-92d6-4bb7-9608-2a5f5c5c6400" /></p>
+<p><img width="839" alt="커스텀 성공1" src="/assets/images/9e20ec25-92d6-4bb7-9608-2a5f5c5c6400" /></p>
 
-<p><img width="729" alt="커스텀 성공2" src="https://github.com/user-attachments/assets/9ddea118-5757-4947-8761-f17860b6a6d5" /></p>
+<p><img width="729" alt="커스텀 성공2" src="/assets/images/9ddea118-5757-4947-8761-f17860b6a6d5" /></p>
 
 <h2 id="️-readme-파일을-업로드하지-않도록-하기-retry">♻️ Readme 파일을 업로드하지 않도록 하기 (Retry)</h2>
 
@@ -1889,7 +1889,7 @@ Staged 상태까지 적용한다.<br />
 
 <p>원하는 디렉토리 형태와 파일명, 그리고 Readme.md 없이 잘 커밋되어있는 것을 확인할 수 있다.</p>
 
-<p><img width="1477" alt="커스텀 결과" src="https://github.com/user-attachments/assets/27bb50ec-dc8c-4c08-be69-384e790f4c28" /></p>
+<p><img width="1477" alt="커스텀 결과" src="/assets/images/27bb50ec-dc8c-4c08-be69-384e790f4c28" /></p>
 
 <h3 id="실제-커스텀한-백준허브-깃허브-리포지토리">실제 커스텀한 백준허브 깃허브 리포지토리</h3>
 
@@ -1930,13 +1930,13 @@ Staged 상태까지 적용한다.<br />
 
 <p>작업 디렉터리는 Working Tree라고도 부르는데, 이 두 가지 용어는 동일한 의미로 사용된다. Git 공식 문서에서도 두 용어가 같은 의미로 사용되며 혼용된다.</p>
 
-<p><img width="641" alt="working tree Git 공식문서 설명" src="https://github.com/user-attachments/assets/21e9781e-d541-498e-a9c4-41dfc9f93a44" /></p>
+<p><img width="641" alt="working tree Git 공식문서 설명" src="/assets/images/21e9781e-d541-498e-a9c4-41dfc9f93a44" /></p>
 
 <p><em>working tree Git 공식문서 설명</em></p>
 
 <p>이는 Git의 상태를 트래킹하고 파일 시스템의 특정 상태를 나타내는데 있어서 같은 역할을 하기 때문이다. 따라서, 작업 디렉터리와 작업 트리 모두 “사용자가 직접 편집하는 파일들이 위치한 영역”을 지칭한다.</p>
 
-<p><img width="250" alt="Image" src="https://github.com/user-attachments/assets/3079a540-d67b-49ee-92b9-06ff3290ada0" /></p>
+<p><img width="250" alt="Image" src="/assets/images/3079a540-d67b-49ee-92b9-06ff3290ada0" /></p>
 
 <p><em>작업 내용이 없을 경우 <code class="language-plaintext highlighter-rouge">git status</code> 명령을 했을 때 띄워지는 문구</em></p>
 
@@ -1971,7 +1971,7 @@ Staged 상태까지 적용한다.<br />
 
 <p>Git 저장소에 대해 설명하면서 Git의 데이터 흐름에 대해서도 설명을 했다. 그러나 이렇게 글로 설명해서는 잘 이해되지 않을 것이다. 아래 그림을 보면서 간략하게 Git의 데이터 흐름에 대해서 다시 한번 살펴보자.</p>
 
-<p><img width="1392" alt="git 저장소의 구조와 흐름" src="https://github.com/user-attachments/assets/d51a1640-bbde-4cb7-ab3d-4b4a3d66a759" /></p>
+<p><img width="1392" alt="git 저장소의 구조와 흐름" src="/assets/images/d51a1640-bbde-4cb7-ab3d-4b4a3d66a759" /></p>
 
 <ol>
   <li><code class="language-plaintext highlighter-rouge">git init</code>을 통해 현재 디렉토리를 Git 저장소로 초기화하고 변경된 파일을 추적한다.</li>
@@ -1992,13 +1992,13 @@ Staged 상태까지 적용한다.<br />
 
 <p>아래 그림을 참고하여 어떻게 파일 상태 변화가 나타나는지 알아보자.</p>
 
-<p><img width="1312" alt="git의 파일 상태 변화" src="https://github.com/user-attachments/assets/fe95cc25-5171-4548-a9ce-8924aa7a350d" /></p>
+<p><img width="1312" alt="git의 파일 상태 변화" src="/assets/images/fe95cc25-5171-4548-a9ce-8924aa7a350d" /></p>
 
 <h3 id="1-untracked-상태">1. Untracked 상태</h3>
 
 <p>작업 디렉터리에 새로 추가된 파일은 처음에는 Git에 의해 추적되지 않는 상태인 <strong>Untracked</strong>로 분류된다. 이 상태는 Git이 파일을 아직 버전 관리에 포함하지 않았음을 의미한다.</p>
 
-<p><img width="483" alt="untracked file" src="https://github.com/user-attachments/assets/cd0296db-ae7c-4b6b-b3d4-70ed2c5a0e71" /></p>
+<p><img width="483" alt="untracked file" src="/assets/images/cd0296db-ae7c-4b6b-b3d4-70ed2c5a0e71" /></p>
 
 <ul>
   <li>
@@ -2012,7 +2012,7 @@ Staged 상태까지 적용한다.<br />
 
 <p>Tracked 상태는 Git이 해당 파일을 버전 관리하고 있음을 의미한다.</p>
 
-<p><img width="389" alt="tracked file" src="https://github.com/user-attachments/assets/2d396235-5f26-4182-acfb-464b1a2f3fe1" /></p>
+<p><img width="389" alt="tracked file" src="/assets/images/2d396235-5f26-4182-acfb-464b1a2f3fe1" /></p>
 
 <p>Tracked 상태의 파일은 아래 세 가지 하위 상태로 나뉜다.</p>
 
@@ -2026,7 +2026,7 @@ Staged 상태까지 적용한다.<br />
 
 <p>Tracked 상태의 파일이 수정되면, 파일은 <strong>Modified 상태</strong>로 변경된다. 이 상태는 파일이 변경되었으나 아직 스테이징 영역에 반영되지 않았음을 나타낸다.</p>
 
-<p><img width="456" alt="modified file" src="https://github.com/user-attachments/assets/ed1eb917-c86f-4b70-9fd7-3058383d9ace" /></p>
+<p><img width="456" alt="modified file" src="/assets/images/ed1eb917-c86f-4b70-9fd7-3058383d9ace" /></p>
 
 <h3 id="4--git-add-명령어">4. → <code class="language-plaintext highlighter-rouge">git add</code> 명령어</h3>
 
@@ -2526,7 +2526,7 @@ google-spreadsheet는 외부에서 제작한 라이브러리이기 때문에 변
 
 <p>두가지 방법을 각각 시도하면서 공통적인 문제가 발생했습니다. 무려 에러의 갯수는 총 35개…</p>
 
-<p><img width="611" alt="webpack_v5_error_1" src="https://github.com/user-attachments/assets/f330e54d-8d03-42e4-87d0-bb2976e7c266" /></p>
+<p><img width="611" alt="webpack_v5_error_1" src="/assets/images/f330e54d-8d03-42e4-87d0-bb2976e7c266" /></p>
 
 <p>에러의 유형은 다음과 같습니다.</p>
 

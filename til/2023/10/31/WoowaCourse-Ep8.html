@@ -94,8 +94,6 @@
   
 
   
-
-  
     
   
 
@@ -278,8 +276,6 @@
 
   
     
-  
-
   
 
   
@@ -550,7 +546,7 @@
 <p>다행이도.. 그간 코딩좀 타탁거렸던 실력으로.. 정말 많은 난관들이 있었지만.. 잘 해결해서 테스트 실행을 통과시킬 수 있었다.</p>
 
 <p><a href="https://github.com/soi-ha/javascript-baseball-6/tree/soi-ha">1주차: 숫자 야구 Repository</a>
-<img width="785" alt="스크린샷 2023-10-31 23 56 56" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/10ab6f0a-d828-413e-b601-b049de4f5b50" /></p>
+<img width="785" alt="스크린샷 2023-10-31 23 56 56" src="/assets/images/10ab6f0a-d828-413e-b601-b049de4f5b50" /></p>
 
 <p>서론은 여기서 마치고 1주차 미션을 진행하면서 발생했었던 일들에 대해 작성해보고자 한다.</p>
 
@@ -565,14 +561,14 @@
     <p><strong>pickUniqueNumbersInRange()의 달콤한 유혹</strong></p>
 
     <p>나는 처음에 랜덤 숫자를 추출할때 <code class="language-plaintext highlighter-rouge">pickUniqueNumbersInRange()</code>를 사용하였다.
-<img width="597" alt="pickUniqueNumbersInRange 사용 코드" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/7c73f89a-dbf6-4d04-a54f-18c6039f7297" /></p>
+<img width="597" alt="pickUniqueNumbersInRange 사용 코드" src="/assets/images/7c73f89a-dbf6-4d04-a54f-18c6039f7297" /></p>
 
     <p>모든 기능 구현을 완료한 후, 로컬에서 테스트를 실행하니 모든 테스트가 실패했다. 무엇이 문제일지 한참 고민하다가, ApplicatioinTest.js에 작성된 코드를 하나 하나 잘 읽어보니 랜덤 숫자를 추출할때 <code class="language-plaintext highlighter-rouge">pickNumberInRange()</code>를 사용하고 있었다.<br />
 설마..? 사용한 함수가 달라서 테스트가 실패하는 것은 아닐까..? 라는 생각에 <code class="language-plaintext highlighter-rouge">pickNumberInRange()</code>를 사용하도록 코드를 변경하니..<br />
 테스트가 잘 실행되어 테스트에 성공했다..</p>
 
     <p>그렇다. 이 사항은 README 프로그래밍 요구사항에 적혀있었다.
-<img width="852" alt="리드미파일 프로그래밍 요구사항" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/bd88798d-8229-4be1-a4d2-a973cd5d1a8b" />
+<img width="852" alt="리드미파일 프로그래밍 요구사항" src="/assets/images/bd88798d-8229-4be1-a4d2-a973cd5d1a8b" />
 … 꼭.. 요구사항은.. 진짜.. 꼼꼼히 살펴야 겠다고 몸소 느꼈다..<br />
 <del>이것때문에 몇시간을 버린거야 진짜…</del></p>
   </li>
@@ -581,11 +577,11 @@
 
     <p>이상하게 예외 테스트만 실행하면 아래 사진과 같은 에러가 계속 발생했다.</p>
 
-    <p><img width="460" alt="예외 테스트 실패" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/3522b123-ba42-4b4c-932a-797d37832da7" /></p>
+    <p><img width="460" alt="예외 테스트 실패" src="/assets/images/3522b123-ba42-4b4c-932a-797d37832da7" /></p>
 
     <p>이 에러만 이틀?정도 계속 찾았던 것 같은데, 에러의 원인은 정말^^.. 허무했다.</p>
 
-    <p><img width="550" alt="에러 원인 코드" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/ee800b2b-a640-48be-8b14-746f7b3ed6e6" /></p>
+    <p><img width="550" alt="에러 원인 코드" src="/assets/images/ee800b2b-a640-48be-8b14-746f7b3ed6e6" /></p>
 
     <p>위 사진에서 어떤 코드가 에러를 발생시킨 것일까?<br />
 두번째 else if문을 보면.. throw를 <code class="language-plaintext highlighter-rouge">new Exception</code>으로 던지고 있다. 여기서 Exception은 위에 내가 만들었던 것이다.<br />
@@ -661,7 +657,7 @@ user.js에서 User.js로 변경됨</p>
 그래서 확인하기 위해서 <code class="language-plaintext highlighter-rouge">typeof Number('string')</code>을 실행했더니 값이 NaN이 아니라 number로.. 나오는 것이다..?!<br />
 이 결과가 도저히 이해가 안돼서 우리의 영원한 두번째 친구, Bard에게 물어봤다.</p>
 
-    <p><img width="1020" alt="bard의 답변" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/ad673a6b-6189-44dd-9984-54881869690e" /></p>
+    <p><img width="1020" alt="bard의 답변" src="/assets/images/ad673a6b-6189-44dd-9984-54881869690e" /></p>
 
     <p>음 그렇다! <code class="language-plaintext highlighter-rouge">typeof Number(아무거나)</code> 실행하면 <code class="language-plaintext highlighter-rouge">Number()</code>로 인해 무조건 number로 결과가 나오는 것이다.</p>
 

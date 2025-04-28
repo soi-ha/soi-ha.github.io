@@ -94,8 +94,6 @@
   
 
   
-
-  
     
   
 
@@ -278,8 +276,6 @@
 
   
     
-  
-
   
 
   
@@ -539,13 +535,14 @@
 
   <div class="post-body">
     <h2 id="선언적-렌더링과-입력-핸들링"><strong>선언적 렌더링과 입력 핸들링</strong></h2>
+
 <hr />
 
 <ul>
   <li>
     <p>SFC (Single File Component)</p>
 
-    <p>단일 파일 컴포넌트이다. <br />
+    <p>단일 파일 컴포넌트이다.<br />
 Vue 확장자로 만들어져 있는 하나의 파일을 말한다.</p>
 
     <p>SFC는 template, script, style 3가지 태그로 구성할 수 있다.<br />
@@ -559,7 +556,7 @@ template에는 html(Vue 문법), script는 JS(Vue 문법), style에는 CSS(SCSS)
     <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span> 9 <span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
-  
+
 <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
 export default <span class="si">{</span>
   <span class="nf">data</span><span class="p">()</span> <span class="p">{</span>
@@ -569,7 +566,7 @@ export default <span class="si">{</span>
   <span class="p">}</span>
 <span class="si">}</span>
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-  
+
 <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
   h1 <span class="si">{</span>
     <span class="nx">font</span><span class="o">-</span><span class="nx">size</span><span class="p">:</span> <span class="mi">50</span><span class="nx">px</span><span class="p">;</span>
@@ -579,7 +576,7 @@ export default <span class="si">{</span>
 </code></pre></div>    </div>
 
     <ul>
-      <li>: 자바스크립트에서 오는 내용이다.</li>
+      <li><code class="language-plaintext highlighter-rouge">{{ }}</code>: 자바스크립트에서 오는 내용이다.</li>
       <li><code class="language-plaintext highlighter-rouge">data: function()</code>을 <code class="language-plaintext highlighter-rouge">data()</code>로 생략하여 사용할 수 있다.</li>
       <li>
         <p>서버를 열어 해당 내용을 확인할 때 <strong>styel 적용이 안된다면?</strong></p>
@@ -595,7 +592,7 @@ export default <span class="si">{</span>
 npm uninstall 다운그레이드_하려는_패키지명
 <span class="c"># 원하는 버전으로 재설치</span>
 npm <span class="nb">install </span>패키지명@원하는_버전
-    
+
 <span class="c"># 예시</span>
 npm uninstall vue-style-loader
 npm <span class="nb">install </span>vue-style-loader@4.1.2
@@ -611,7 +608,7 @@ npm <span class="nb">install </span>vue-style-loader@4.1.2
     9
   <span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
-    
+
 <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
 export default <span class="si">{</span>
   <span class="nf">data</span><span class="p">()</span> <span class="p">{</span>
@@ -649,6 +646,7 @@ methods() ⇒ 함수를 정의한다.</li>
 </ul>
 
 <h2 id="조건문과-반복문"><strong>조건문과 반복문</strong></h2>
+
 <hr />
 
 <ul>
@@ -680,7 +678,9 @@ methods() ⇒ 함수를 정의한다.</li>
 
     <p>style 태그에 lang 속성의 값으로 scss를 입력해주면 scss로 읽어들인다.</p>
   </li>
-  <li><strong>반복문 (v-for)</strong>
+  <li>
+    <p><strong>반복문 (v-for)</strong></p>
+
     <ul>
       <li>
         <p>fruits</p>
@@ -699,7 +699,7 @@ methods() ⇒ 함수를 정의한다.</li>
     <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
-    
+
 <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
 export default <span class="si">{</span>
   <span class="nf">data</span><span class="p">()</span> <span class="p">{</span>
@@ -722,19 +722,20 @@ export default <span class="si">{</span>
         <blockquote>
           <p><strong>참고!!</strong></p>
 
-          <p>vue.js, react, svelt, angular 같은 모던 웹 프론트엔드 프레임워크들은  데이터를 기반으로 해서 화면이 출력되는 것을 고려해야 한다.</p>
-
+          <p>vue.js, react, svelt, angular 같은 모던 웹 프론트엔드 프레임워크들은 데이터를 기반으로 해서 화면이 출력되는 것을 고려해야 한다.</p>
         </blockquote>
       </li>
     </ul>
   </li>
-  <li>별개의 components로 데이터 출력하기
+  <li>
+    <p>별개의 components로 데이터 출력하기</p>
+
     <ul>
       <li>components 폴더에 Fruit.vue 파일 생성</li>
       <li>
         <p>Fruit.vue</p>
 
-        <p>props 옵션을 설정한다. <br />
+        <p>props 옵션을 설정한다.<br />
 해당 객체 데이터 내부에는 name 이라는 이름으로 어떤 데이터를 받아낸다. name이라는 데이터의 타입은 String이다.</p>
 
         <p><strong>노란색 밑줄 발생!</strong><br />
@@ -744,7 +745,7 @@ name이라는 props는 필수로 default value를 제공해야 한다.<br />
         <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
-    
+
 <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
 export default <span class="si">{</span>
   <span class="nx">props</span><span class="p">:</span> <span class="p">{</span>
@@ -757,30 +758,32 @@ export default <span class="si">{</span>
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>        </div>
       </li>
-      <li>Fruit.vue 파일 App.vue 파일로 가져오기
+      <li>
+        <p>Fruit.vue 파일 App.vue 파일로 가져오기</p>
+
         <ul>
           <li>
             <p>App.vue</p>
 
-            <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
-      <span class="p">&lt;</span><span class="nt">hello</span>
-        <span class="na">v-for</span><span class="p">=</span><span class="s">"fruit in fruits"</span>
-        <span class="err">:</span><span class="na">key</span><span class="p">=</span><span class="s">"fruit"</span>
-        <span class="err">:</span><span class="na">name</span><span class="p">=</span><span class="s">"fruit"</span><span class="p">&gt;</span>
-              
-      <span class="p">&lt;/</span><span class="nt">hello</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
-        
-  <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-  import Fruit from '~/components/Fruit'
-        
-  export default <span class="si">{</span>
-    <span class="nx">components</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nl">hello</span><span class="p">:</span> <span class="nx">Fruit</span>
-    <span class="p">}</span>
-  <span class="p">&lt;</span><span class="err">/</span><span class="na">script</span><span class="p">&gt;</span>
+            <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">hello</span>
+      <span class="na">v-for</span><span class="p">=</span><span class="s">"fruit in fruits"</span>
+      <span class="err">:</span><span class="na">key</span><span class="p">=</span><span class="s">"fruit"</span>
+      <span class="err">:</span><span class="na">name</span><span class="p">=</span><span class="s">"fruit"</span><span class="p">&gt;</span>
+            
+    <span class="p">&lt;/</span><span class="nt">hello</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+import Fruit from '~/components/Fruit'
+
+export default <span class="si">{</span>
+  <span class="nx">components</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nl">hello</span><span class="p">:</span> <span class="nx">Fruit</span>
+  <span class="p">}</span>
+<span class="p">&lt;</span><span class="err">/</span><span class="na">script</span><span class="p">&gt;</span>
 </code></pre></div>            </div>
 
             <p>script 부분에 import를 사용하여 Fruit 라는 이름으로 파일을 가져온다.</p>
@@ -788,7 +791,7 @@ export default <span class="si">{</span>
             <p>Fruit 이름으로 가져온 파일을 사용하기 위해서는 components 옵션 부분에 등록을 해줘야 한다. 나는 hello 라는 이름으로 등록해줬다.</p>
 
             <p>template 부분에 li를 hello로 변경한다.<br />
-  key 속성 밑에 name 속성을 작성하고 값은 fruit를 명시한다.</p>
+ key 속성 밑에 name 속성을 작성하고 값은 fruit를 명시한다.</p>
 
             <ul>
               <li>Fruit라는 컴포넌트를 만들어서 해당 내용을 App.vue에 가져와서 활용을 한다.</li>
@@ -797,10 +800,10 @@ export default <span class="si">{</span>
 name이라는 이름으로 데이터를 받는데, 해당 데이터 타입이 문자열(String)데이터 이고, 여기에 데이터가 들어오지 않으면 빈 문자를 사용하겠다고 선언했다.</p>
 
                 <p>이렇게 받아진 name이라는 이름으로 데이터를 출력하게 된다.<br />
-이때 출력하는 name 뒤에 내용을 추가하면 해당 내용도 같이 출력된다.</p>
+ 이때 출력하는 name 뒤에 내용을 추가하면 해당 내용도 같이 출력된다.</p>
 
                 <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span> ?! <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+	<span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span> ?! <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
 </code></pre></div>                </div>
               </li>
@@ -814,9 +817,9 @@ name이라는 이름으로 데이터를 받는데, 해당 데이터 타입이 �
         <p>Fruit로 변경하면 컴포넌트 옵션에서 지정할 때 파일 이름과 지정해준 이름이 동일하다. 이럴때는 이름 하나만 작성해도 된다.</p>
 
         <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">components</span><span class="p">:</span> <span class="p">{</span>
-  <span class="c1">// Fruit: Fruit</span>
-  <span class="nx">Fruit</span>
-  <span class="p">}</span>
+	<span class="c1">// Fruit: Fruit</span>
+	<span class="nx">Fruit</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div>        </div>
       </li>
       <li>

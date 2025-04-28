@@ -94,8 +94,6 @@
   
 
   
-
-  
     
   
 
@@ -278,8 +276,6 @@
 
   
     
-  
-
   
 
   
@@ -543,7 +539,7 @@
 <p>이번 미션은 기능구현을 어떻게 해석하느냐도 중요했던 것 같고, 미션 제출을 fork가 아니라 개인 레포를 만들어서 private로 제한하는 등의 방식으로 진행했다. 여러모로 마지막을 이전과는 달리 새로운 방식으로 진행해서 색달랐다.</p>
 
 <p><a href="https://github.com/soi-ha/javascript-christmas-6-soi-ha">4주차: 크리스마스 프로모션 Repository</a>
-<img width="794" alt="4주차 프리코스 미션 성공" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/3ee8919f-b1c0-49d2-8fb0-16515815e280" /></p>
+<img width="794" alt="4주차 프리코스 미션 성공" src="/assets/images/3ee8919f-b1c0-49d2-8fb0-16515815e280" /></p>
 
 <hr />
 
@@ -554,7 +550,7 @@
 <p>해당 내용은 3,4주차의 가장 핵심이었던 목표였다고 생각한다.<br />
 1,2주차에서는 그냥 한 곳에 다 작성했다면, 3주차에서는 UI로직과 비즈니스 로직을 분리하는 것에만 그쳤고, 4주차에서는 비즈니스 로직을 더 쪼개려고 노력했다.</p>
 
-<p><img width="213" alt="4주차 미션 폴더" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/3f9db0f3-5a92-4839-849f-fe650228ae89" /></p>
+<p><img width="213" alt="4주차 미션 폴더" src="/assets/images/3f9db0f3-5a92-4839-849f-fe650228ae89" /></p>
 
 <p>하나의 파일/함수에 하나의 일만 책임질 수 있도록 적당한 선에서 로직들을 분리했고, 이 분리한 로직들을 하나의 파일에 다시 모아 하나의 기능을 하도록 했다. <br />
 이렇게 하다가 느낀것은 이게 MVC인건가? 라는 생각이 들었다. 이전에는 MVC가 머리로는 이해되지만.. 어떻게 하라는 건지 잘 모르겠었다. 그래서 적용해본적이 없었는데, 4주차 미션을 진행하면서 이렇게 로직을 분리하고 있는 것이 MVC인거구나를 깨달았다.</p>
@@ -600,7 +596,7 @@ this는 constructor 내부나 메소드내에서만 유효하다. constructor �
 
 <p>기능 요구사항에 평일 이벤트로 ‘디저트’ 주문시 수량만큼 할인을 하는 요구사항이 존재했다. 이때 ‘디저트’ 종류의 메뉴를 따로 배열로 관리하는 것이 아닌, 메뉴판을 객체로 저장해두고 해당 메뉴판에서 디저트에 해당하는 메뉴만 뽑아 쓰는 것이 좋다고 생각했다.</p>
 
-<p><img width="272" alt="MENU 객체" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/8285a934-6d9e-4ce6-aca7-6caa500341ac" /></p>
+<p><img width="272" alt="MENU 객체" src="/assets/images/8285a934-6d9e-4ce6-aca7-6caa500341ac" /></p>
 
 <p>나중에 유지보수를 진행하게 될 경우, 뽑아내고자 하는 음식의 종류만 변경하면 되기 때문이다.</p>
 
@@ -659,7 +655,7 @@ value의 값이 많이 존재했더라면 객체안에 객체가 훨씬 더 좋�
 <p>이때, 3주차와 같이 <code class="language-plaintext highlighter-rouge">await 재귀함수</code>를 사용하였는데 이렇게 되면 다시 입력받았던 값을 저장하지 못하고 undefined로 값이 변경되었다.<br />
 해당 오류를 수정하고자 챗GPT에게 물어본 결과.. await를 return으로 변경하기만 하면 되는 것이었다! return으로 변경하기 원하는 방향으로 잘 작동했다.</p>
 
-<p><img width="369" alt="return을 사용하여 재입력받기 코드" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/ec637fae-cfa5-4558-93c0-4b425fd080dd" /></p>
+<p><img width="369" alt="return을 사용하여 재입력받기 코드" src="/assets/images/ec637fae-cfa5-4558-93c0-4b425fd080dd" /></p>
 
 <p>3주차에서는 class 내부 함수로 생성했을 때는 await로 재호출하였지만 이번에는 Order이라는 함수를 새로운 파일에 생성하여 재호출을 진행하는 것이기 때문에 return을 사용해야 됐던 것이었다.<br />
 단순히 로직이 비슷하다고 해서 이전의 방식을 그대로 차용하는 것은 큰 위험이 될 수 있다는 것을 몸소 깨달았다.. <del>챗GPT 없었으면 하루종일 해당 에러를 잡고 있었을 생각을 하니..ㄷ</del></p>
@@ -672,7 +668,7 @@ value의 값이 많이 존재했더라면 객체안에 객체가 훨씬 더 좋�
 <p>해당 메서드는 객체를 얼릴때 사용하는 것으로 객체의 속성들을 수정할 수 없게 즉, 읽기 전용으로 만들어주는 메서드이다.<br />
 이 메서드를 활용하여 메뉴판 객체나 뱃지, 혜택 이름 리스트 등을 얼렸다. 해당 객체들을 외부에서 사용할 경우 변경되지 않는 데이터이기 때문에 <code class="language-plaintext highlighter-rouge">Object.freeze()</code>를 사용했다.</p>
 
-<p><img width="231" alt="Object.freeze() 사용한 코드" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/04a163a4-73db-42b5-9c73-fa24401f9056" /></p>
+<p><img width="231" alt="Object.freeze() 사용한 코드" src="/assets/images/04a163a4-73db-42b5-9c73-fa24401f9056" /></p>
 
 <p>객체를 얼리고 따로 파일을 생성하여 보관함으로, 반복되는 문구의 사용을 줄일 수 있어서 유지보수를 하는 것에 있어 큰 도움이 된다는 것을 알게되었다.</p>
 
@@ -682,36 +678,36 @@ value의 값이 많이 존재했더라면 객체안에 객체가 훨씬 더 좋�
 
 <p>객체에는 length를 바로 사용할 수 없다. 따라서 객체의 길이를 알고 싶다면 keys를 뽑아낸 배열에 length를 사용하는 방식으로 알 수 있다.</p>
 
-<p><img width="681" alt="객체 길이 구하기" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/96cbe24b-8f3a-47fd-8052-13747cb37a56" /></p>
+<p><img width="681" alt="객체 길이 구하기" src="/assets/images/96cbe24b-8f3a-47fd-8052-13747cb37a56" /></p>
 
 <h3 id="객체에-map함수-사용하기">객체에 map함수 사용하기</h3>
 
 <p>map, reduce와 같은 함수는 배열에 사용하는 것이기 때문에 객체에는 바로 사용이 불가능하다. 따라서 위에 길이를 구한 방식과 동일하게 키, 값, 키-값 쌍의 형태로 배열을 출력하여 map함수를 사용하면 된다.</p>
 
-<p><img width="679" alt="map함수를 객체에 사용하기" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/0207d429-d6b3-4d20-bd07-eb1867a42218" /></p>
+<p><img width="679" alt="map함수를 객체에 사용하기" src="/assets/images/0207d429-d6b3-4d20-bd07-eb1867a42218" /></p>
 
 <h3 id="tothrow는-직접-던지면-안된다">toThrow는 직접 던지면 안된다.</h3>
 
-<p><img width="452" alt="방문날짜 입력 테스트 실패" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/6583be10-e2b4-47a8-99b6-049c2414f52f" /></p>
+<p><img width="452" alt="방문날짜 입력 테스트 실패" src="/assets/images/6583be10-e2b4-47a8-99b6-049c2414f52f" /></p>
 
 <p>테스트코드를 작성할 때 <code class="language-plaintext highlighter-rouge">toThrow</code>를 사용했는데, 테스트 실패가 발생했다. 아무리 생각해도? 뭐가 이상한지 모르겠어서 영원한 친구 챗GPT에게 물어봤다.</p>
 
-<p><img width="663" alt="toThrow 사용 에러 해결방법" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/ab92cf28-a705-41c3-a2a5-839f6859c1c7" /></p>
+<p><img width="663" alt="toThrow 사용 에러 해결방법" src="/assets/images/ab92cf28-a705-41c3-a2a5-839f6859c1c7" /></p>
 
 <p>음.. 그렇다! 함수를 인수로 받아 실행해야 하는데, 클래스를 직접 생성하는 코드를 전달해서 발생한 문제였다.</p>
 
 <p><strong>문제가 발생한 코드</strong>
-<img width="452" alt="방문날짜 입력 잘못된 테스트코드" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/d0564b33-5c3a-4377-b334-e38fd60ba883" /></p>
+<img width="452" alt="방문날짜 입력 잘못된 테스트코드" src="/assets/images/d0564b33-5c3a-4377-b334-e38fd60ba883" /></p>
 
 <p>따라서 함수를 인수를 받아 실행하도록 화살표 함수를 추가하여 테스트코드를 변경하였다.</p>
 
 <p><strong>문제를 해결한 코드</strong>
-<img width="452" alt="방문날짜 입력 올바른 테스트코드" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/277ffbf0-52f6-4ac0-8cc7-e3d4e0313690" /></p>
+<img width="452" alt="방문날짜 입력 올바른 테스트코드" src="/assets/images/277ffbf0-52f6-4ac0-8cc7-e3d4e0313690" /></p>
 
 <p>어쩐지.. 다들 화살표함수를 추가하더니.. 다 이유가 있는 것이었다. 의문이 들때는 일단 실행해보고 왜 저렇게 사용하는지 알고 사용하도록 하자.</p>
 
 <p><strong>테스트코드 성공</strong>
-<img width="452" alt="방문날짜 입력 테스트 성공" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/61a09d17-112e-4195-9eec-cacd02921a35" /></p>
+<img width="452" alt="방문날짜 입력 테스트 성공" src="/assets/images/61a09d17-112e-4195-9eec-cacd02921a35" /></p>
 
 <hr />
 

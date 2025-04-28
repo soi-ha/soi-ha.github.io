@@ -94,8 +94,6 @@
   
 
   
-
-  
     
   
 
@@ -278,8 +276,6 @@
 
   
     
-  
-
   
 
   
@@ -542,7 +538,7 @@
 <hr />
 <p><code class="language-plaintext highlighter-rouge">npm run dev</code> 명령어를 실행하던 중 다음과 같은 에러가 발생했다.</p>
 
-<p><img width="520" alt="포트 에러 확인" src="https://user-images.githubusercontent.com/77609591/217744605-212453c7-9fba-43fe-8fa5-17d8cd4dc95e.png" /></p>
+<p><img width="520" alt="포트 에러 확인" src="/assets/images/217744605-212453c7-9fba-43fe-8fa5-17d8cd4dc95e.png" /></p>
 
 <p>해당 에러는 찾아본 결과 해당하는 포트가 사용중이라 실행할 수 없다는 내용이었다.<br />
 현재 내가 사용해야 하는 포트번호는 8080포트이다.<br />
@@ -558,7 +554,7 @@
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>lsof <span class="nt">-i</span> :8080<span class="o">(</span>찾고자하는 포트 번호<span class="o">)</span>
 </code></pre></div></div>
 
-<p><img width="503" alt="나의 포트 PID" src="https://user-images.githubusercontent.com/77609591/217743265-a2377f6b-7f73-4996-a1d7-4178fa9b7437.png" /></p>
+<p><img width="503" alt="나의 포트 PID" src="/assets/images/217743265-a2377f6b-7f73-4996-a1d7-4178fa9b7437.png" /></p>
 
 <p>나의 8080 포트는 PID는 71328이다.<br />
 이제 해당 포트를 비울 수 있게 된다.</p>
@@ -569,13 +565,13 @@
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo kill</span> <span class="nt">-9</span> 71328<span class="o">(</span>찾은 PID<span class="o">)</span>
 </code></pre></div></div>
 
-<p><img width="502" alt="포트 지우기" src="https://user-images.githubusercontent.com/77609591/217744046-56b56678-83ab-41db-81ba-11fa756d92ca.png" /></p>
+<p><img width="502" alt="포트 지우기" src="/assets/images/217744046-56b56678-83ab-41db-81ba-11fa756d92ca.png" /></p>
 
 <p>포트를 비워준 후, 잘 비워졌는지 다시 확인해 본 후, 아무 반응도 없다면 잘 비워진 것이다.</p>
 
 <p>다시 서버를 실행하면 서버가 잘 돌아가는 것을 확인할 수 있다.</p>
 
-<p><img width="493" alt="서버 실행 완료" src="https://user-images.githubusercontent.com/77609591/217744398-b1d0a537-8ddb-468b-8f03-5508f60c851a.png" /></p>
+<p><img width="493" alt="서버 실행 완료" src="/assets/images/217744398-b1d0a537-8ddb-468b-8f03-5508f60c851a.png" /></p>
 
     
 

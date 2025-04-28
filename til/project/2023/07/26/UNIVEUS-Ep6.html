@@ -94,8 +94,6 @@
   
 
   
-
-  
     
   
 
@@ -278,8 +276,6 @@
 
   
     
-  
-
   
 
   
@@ -557,11 +553,11 @@
 <p>값이 들어왔을 떄, 배경색을 변경시켜주는 걸 css로 구현하기 위해서는 일단 input에 required 속성을 추가해야 한다. <del>값으로 required를 넣어, <code class="language-plaintext highlighter-rouge">required="required"</code>를 input 태그 안에 추가한다.</del><br />
 글을 작성하다가, <code class="language-plaintext highlighter-rouge">required="required"</code>의 내용은 안 나와서.. 그냥 <code class="language-plaintext highlighter-rouge">required</code>를 작성하면 동작하지 않을까? 라는 의문이 들어서 테스트를 해본 결과 그냥 <code class="language-plaintext highlighter-rouge">required</code>를 작성해도 잘 작동된다…!</p>
 
-<p><img width="270" alt="input text 코드" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/1d463dd3-d334-4eca-a45c-7827bed3779e" /></p>
+<p><img width="270" alt="input text 코드" src="/assets/images/1d463dd3-d334-4eca-a45c-7827bed3779e" /></p>
 
 <p>해당 속성을 추가하고 css는 <code class="language-plaintext highlighter-rouge">input:valid</code>일시, 즉 input에 값이 들어있을 때 배경색상을 흰색으로 변경하게 한다.</p>
 
-<p><img width="344" alt="text valid css" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/4503cd31-f3f5-4c7f-9e3c-7ef19904e9f0" /></p>
+<p><img width="344" alt="text valid css" src="/assets/images/4503cd31-f3f5-4c7f-9e3c-7ef19904e9f0" /></p>
 
 <p>🚨주의🚨<br />
 input에 required 속성을 추가하지 않으면, 값을 입력했다가 다시 모든 값을 지우고 focus를 해제했을 때, 배경색상이 회색(값이 없을 때)으로 변경되지 않고 흰색(값이 있을 때)으로 유지된다.</p>
@@ -592,16 +588,16 @@ input에 required 속성을 추가하지 않으면, 값을 입력했다가 다�
 
 <p>Bard에 물어본 결과 다음과 같은 답을 받았다.</p>
 
-<p><img width="1115" alt="Bard 답변" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/5d79931c-b32b-42f8-b377-334433c72ce9" /></p>
+<p><img width="1115" alt="Bard 답변" src="/assets/images/5d79931c-b32b-42f8-b377-334433c72ce9" /></p>
 
 <p>그렇다고 한다… radio 앞에 label을 배치하게 되면 radio를 가리게 되어 작동하지 않는다고 한다..ㅜ<br />
 label을 앞에 했을 때, html은 잘 작동을 하는데 (label 클릭시, 연결된 radio가 체크되는) 스타일은 적용되지 않으니… 순서를 바꿔주기로 했다.</p>
 
-<p><img width="344" alt="input radio 코드" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/d763ea40-6b76-4494-a6e3-0b23fd8bfea5" /></p>
+<p><img width="344" alt="input radio 코드" src="/assets/images/d763ea40-6b76-4494-a6e3-0b23fd8bfea5" /></p>
 
 <p>순서를 변경해주니 css 코드가 잘 작동했다.</p>
 
-<p><img width="256" alt="radio checked css" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/fa68c277-43b8-48f1-be09-a074d513f0d7" /></p>
+<p><img width="256" alt="radio checked css" src="/assets/images/fa68c277-43b8-48f1-be09-a074d513f0d7" /></p>
 
 <p>그리고, checked일 때, radio 버튼의 색상을 변경할 때 그냥 color로 하면 스타일이 적용되지 않았다. 서칭을 해보니 <code class="language-plaintext highlighter-rouge">accent-color</code>로 적용하면 색상이 잘 적용되었다.<br />
 <code class="language-plaintext highlighter-rouge">accent-color</code>는 UI 컨트롤의 색상을 변경시켜줄 때 사용한다고 한다.</p>

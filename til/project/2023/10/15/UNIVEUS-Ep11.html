@@ -94,8 +94,6 @@
   
 
   
-
-  
     
   
 
@@ -278,8 +276,6 @@
 
   
     
-  
-
   
 
   
@@ -560,15 +556,15 @@
 <p>나는 총 3가지의 radio중 하나만 선택되도록 할 것이다.<br />
 3가지의 값은 성별무관(0), 남자만(1), 여자만(2)이다.</p>
 
-<p><img width="441" alt="코드1" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/ac3090a3-61ae-484a-bf75-cc1a41065ab3" /></p>
+<p><img width="441" alt="코드1" src="/assets/images/ac3090a3-61ae-484a-bf75-cc1a41065ab3" /></p>
 
 <p>useState를 사용하여 limitGender를 만들어주는데 기본값으로 아무것도 넣어주지 않는다. 백엔드에서 값을 받기 때문이다. (만약, 넘겨받는 값이 없다면 그냥 원하는 값으로 기본값을 넣어주면 된다.)</p>
 
-<p><img width="300" alt="코드2" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/ae671ebd-9d45-4aac-8da7-cc1ed1670591" /></p>
+<p><img width="300" alt="코드2" src="/assets/images/ae671ebd-9d45-4aac-8da7-cc1ed1670591" /></p>
 
 <p>각 radio 값마다 부여해준 값(0,1,2)으로 변경하기 위해서 함수를 총 3개를 만들어주었다. (지금 생각해보면 이럴 필요 없이 하나로 하면 됐을 듯 하다.)</p>
 
-<p><img width="379" alt="코드3" src="https://github.com/soi-ha/soi-ha.github.io/assets/77609591/6b9919fd-79fb-4bd9-b980-3518b7b37a9a" /></p>
+<p><img width="379" alt="코드3" src="/assets/images/6b9919fd-79fb-4bd9-b980-3518b7b37a9a" /></p>
 
 <p>onClick 이벤트를 통해서 해당 input 부분이 클릭되면 선택한 값(0,1,2)으로 limitGender이 변경된다.<br />
 그리고 각 radio 태그마다 삼항연산자를 사용하여 defaultChecked를 부여해줬다. 값이 0이라면 0 radio 부분에 <code class="language-plaintext highlighter-rouge">limitGender === 0</code> 의 조건이 성립하므로 defaultChecked가 true가 된다.<br />

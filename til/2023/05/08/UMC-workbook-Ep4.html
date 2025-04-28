@@ -94,8 +94,6 @@
   
 
   
-
-  
     
   
 
@@ -278,8 +276,6 @@
 
   
     
-  
-
   
 
   
@@ -563,7 +559,7 @@ BrowserRouter 연결 → 페이지 컴포넌트 만들기 → Route path 연결 
 
 <p>Route 컴포넌트로 해당하는 URL을 지정한다. URL 지정은 path를 통해 지정한다.</p>
 
-<p><img width="536" alt="스크린샷 2023-05-03 23 15 03" src="https://user-images.githubusercontent.com/77609591/236723918-b46412f9-1790-4828-9270-6f354a53e39e.png" /></p>
+<p><img width="536" alt="스크린샷 2023-05-03 23 15 03" src="/assets/images/236723918-b46412f9-1790-4828-9270-6f354a53e39e.png" /></p>
 
 <ol>
   <li><strong>Link 컴포넌트 연결</strong></li>
@@ -573,9 +569,9 @@ BrowserRouter 연결 → 페이지 컴포넌트 만들기 → Route path 연결 
 
 <p>나는 페이지를 이동할 버튼이 Header 컴포넌트에 존재하기 때문에 Header.js에서 Link 컴포넌트를 연결했다.</p>
 
-<p><img width="449" alt="스크린샷 2023-05-03 23 14 57" src="https://user-images.githubusercontent.com/77609591/236723932-3915583f-0298-489a-928d-e1bc070ceff0.png" /></p>
+<p><img width="449" alt="스크린샷 2023-05-03 23 14 57" src="/assets/images/236723932-3915583f-0298-489a-928d-e1bc070ceff0.png" /></p>
 
-<p><img width="586" alt="스크린샷 2023-05-03 23 14 51" src="https://user-images.githubusercontent.com/77609591/236723933-446473f4-af2e-4d09-ad50-c7ed2ee3f6bf.png" /></p>
+<p><img width="586" alt="스크린샷 2023-05-03 23 14 51" src="/assets/images/236723933-446473f4-af2e-4d09-ad50-c7ed2ee3f6bf.png" /></p>
 
 <h2 id="문제-및-해결"><strong>문제 및 해결</strong></h2>
 
@@ -585,7 +581,7 @@ BrowserRouter 연결 → 페이지 컴포넌트 만들기 → Route path 연결 
   <li>문제
 Link 컴포넌트를 사용하면 link 기본 스타일이 적용된다.</li>
   <li>해결
-Link 컴포넌트에 <code class="language-plaintext highlighter-rouge">style=</code> 을 사용하면 Link의 기본적인 스타일 속성이 사라진다.</li>
+Link 컴포넌트에 <code class="language-plaintext highlighter-rouge">style={{ textDecoration: “none”}}</code> 을 사용하면 Link의 기본적인 스타일 속성이 사라진다.</li>
 </ul>
 
 <blockquote>
