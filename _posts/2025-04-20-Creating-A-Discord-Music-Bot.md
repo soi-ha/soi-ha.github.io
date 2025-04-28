@@ -13,7 +13,7 @@ tags:
 
 때는 4월 17일 20시.. 공부를 하기 위해 책상에 앉아 디스코드에 접속하여 서버에서 기존에 사용하던 노래봇을 실행하려 했는데.. 유튜브 검색이 제대로 작동하지 않았다. 그래서 나는 다른 노래봇을 새롭게 불러와 서버에 실행했지만? 또 안됐다. 그렇게 한국어를 지원하는 어느정도 인지도가 있는 노래봇만 6개를 실행해봤다. 근데, 내가 원하는 유튜브로 검색하여 실행이 제대로 돌아가지 않았다.
 
-<img width="519" alt="디스코드 노래봇 입장 채팅" src="../assets/images/디스코드_노래봇_디코채팅.png" />
+<img width="519" alt="디스코드 노래봇 입장 채팅" src="/assets/images/디스코드_노래봇_디코채팅.png" />
 
 원하는대로 돌아가지 않아 약간 빡친(?) 나는, 너가 이기나 내가 이기나 해보자는 심보로 디스코드 노래봇을 어떻게 만드는지 찾아봤다. 어렵지 않으면 내가 만드는게 더 빠를 것 같다는 생각이 들었다. 오, 근데 간단하게 찾아보니 그리 어렵지 않고 주로 JS 혹은 Python으로 만드는 것 같았다. 직접 만드는게 진짜 더 좋겠는데...? 라는 생각에, 나는 계획에도 없던 디스코드 노래봇을 만들게 되었다 ^^!
 
@@ -48,15 +48,15 @@ tags:
 
 [디스코드 개발자 포털](https://discord.com/developers/applications)로 이동하여 로그인을 하고, 새 애플리케이션 생성 버튼을 클릭한다.
 
-<img width="812" alt="애플리케이션 생성" src="../assets/images/디스코드_노래봇_애플리케이션_생성1.png" />
+<img width="812" alt="애플리케이션 생성" src="/assets/images/디스코드_노래봇_애플리케이션_생성1.png" />
 
 애플리케이션의 이름을 작성하고 Create 버튼을 클릭하면,
 
-<img width="812" alt="애플리케이션 이름 작성" src="../assets/images/디스코드_노래봇_애플케이션_생성2.png" />
+<img width="812" alt="애플리케이션 이름 작성" src="/assets/images/디스코드_노래봇_애플케이션_생성2.png" />
 
 애플리케이션 생성이 완료된다.
 
-<img width="812" alt="애플리케이션 생성 완료" src="../assets/images/디스코드_노래봇_애플리케이션_생성3.png" />
+<img width="812" alt="애플리케이션 생성 완료" src="/assets/images/디스코드_노래봇_애플리케이션_생성3.png" />
 
 Applicaion ID와 Public Key가 생성된 것을 확인할 수 있다. (이 두가지 정보는 이번 디스코드 노래봇 생성에는 사용되지 않음.)
 
@@ -66,13 +66,13 @@ Applicaion ID와 Public Key가 생성된 것을 확인할 수 있다. (이 두�
 그리고 Bot 생성하고 Reset Token 버턴을 클릭하면 토큰이 만들어진다.  
 이 토큰(Token)을 복사하여 저장해둔다. 혹은 `.env` 파일에 보관해두면 된다. (이건 뒤에서 또 설명)
 
-<img width="812" alt="봇 토큰" src="../assets/images/디스코드_노래봇_봇토큰4.png" />
+<img width="812" alt="봇 토큰" src="/assets/images/디스코드_노래봇_봇토큰4.png" />
 
 #### 3. “MESSAGE CONTENT INTENT” 옵션
 
 Bot 섹션(Bot 페이지)에서 **Privileged Gateway Intents** 소제목 아래의 “MESSAGE CONTENT INTENT” 토글을 켜준다.
 
-<img width="812" alt="message content intent 옵션" src="../assets/images/디스코드_노래봇_intent설정_5.png" />
+<img width="812" alt="message content intent 옵션" src="/assets/images/디스코드_노래봇_intent설정_5.png" />
 
 Message Content Intent는 봇에게 Prefix 명령어(!play, !stop 등/messageCreate) 실행 시, message.content를 받으려면 켜야 한다. 단, 해당 옵션은 100개 이상 서버에 배포하려면 검증 및 승인 필요하다.
 
@@ -103,14 +103,14 @@ OAuth2 섹션에 접속하여 아래 내용들을 켜준다.
 
 URL 생성 범위를 Bot으로 설정
 
-<img width="812" alt="OAuth2 bot 클릭" src="../assets/images/디스코드_노래봇_봇옵션_6.png" />
+<img width="812" alt="OAuth2 bot 클릭" src="/assets/images/디스코드_노래봇_봇옵션_6.png" />
 
 permisson 설정
 
-<img width="812" alt="OAuth2 bot permission 선택" src="../assets/images/디스코드_노래봇_permission옵션_7.png" />
+<img width="812" alt="OAuth2 bot permission 선택" src="/assets/images/디스코드_노래봇_permission옵션_7.png" />
 
 위 설정들을 모두 완료했다면 생성된 ULR에 접속하여, 봇을 사용할 서버에 초대하면 끝!
-<img width="812" alt="OAuth2 bot 초대 링크 복사" src="../assets/images/디스코드_노래봇_봇_url생성8.png" />
+<img width="812" alt="OAuth2 bot 초대 링크 복사" src="/assets/images/디스코드_노래봇_봇_url생성8.png" />
 
 그러면 이렇게 디스코드 개발자 설정은 모두 완료되었다. 이제는 VScode를 실행하여 필요 패키지를 설치하고 코드를 작성하면 끝이다.
 
@@ -350,7 +350,7 @@ client.on('messageCreate', async (message) => {
   ```
 
   **결과**  
-  <img width="820" alt="재생" src="../assets/images/대하봇_재생.png" />
+  <img width="820" alt="재생" src="/assets/images/대하봇_재생.png" />
 
 - 스킵
 
@@ -371,7 +371,7 @@ client.on('messageCreate', async (message) => {
   ```
 
   **결과**  
-  <img width="820" alt="스킵" src="../assets/images/대하봇_스킵.png" />
+  <img width="820" alt="스킵" src="/assets/images/대하봇_스킵.png" />
 
 - 대기열
 
@@ -394,7 +394,7 @@ client.on('messageCreate', async (message) => {
   ```
 
   **결과**  
-  <img width="820" alt="대기열" src="../assets/images/대하봇_대기열.png" />
+  <img width="820" alt="대기열" src="/assets/images/대하봇_대기열.png" />
 
 - 종료
 
@@ -420,7 +420,7 @@ client.on('messageCreate', async (message) => {
   ```
 
   **결과**  
-  <img width="820" alt="종료" src="../assets/images/대하봇_종료.png" />
+  <img width="820" alt="종료" src="/assets/images/대하봇_종료.png" />
 
 ## 🚨 내가 겪은 오류와 해결방법
 
