@@ -91,16 +91,14 @@ Mixed Content로 인해 발생할 수 있는, 다양한 보안 위험성을 방�
 - **Content Security Policy(CSP) 적용**  
   브라우저가 모든 리소스를 HTTPS로만 로드(`default-src 'self' https:`)하거나, HTTP 요청을 자동으로 HTTPS로 업그레이드(`upgrade-insecure-requests`)하도록 CSP를 설정한다.
 
-  ```http
-    Content-Security-Policy:
-    default-src 'self' https:;
-    upgrade-insecure-requests;
+  ```plain text
+  Content-Security-Policy: default-src 'self' https:; upgrade-insecure-requests;
   ```
 
 - **HSTS 활성화**  
   브라우저가 해당 사이트는 무조건 HTTPS로 접속하도록 강제하는 HSTS 정책을 설정한다. 응답 헤더에 Strict-Transport-Security 헤더를 추가하여, 브라우저가 HTTPS를 사용하도록 강제한다.
 
-  ```http
+  ```plain text
   strict-transport-security: max-age=31536000; includeSubdomains; preload
   ```
 
