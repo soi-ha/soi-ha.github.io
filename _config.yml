@@ -36,3 +36,5 @@ sidebar_home_link: true
 # to enable a separate blog link.
 
 futrue: true
+
+excerpt_separator: '<!-- excerpt more -->'
