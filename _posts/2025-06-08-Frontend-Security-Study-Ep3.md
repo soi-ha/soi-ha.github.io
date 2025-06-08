@@ -212,7 +212,7 @@ DOMPurify는 보안성과 사용성이 뛰어나며 OWASP에서도 추천하는 
 
 CSP는 브라우저가 **스크립트 실행 정책을 제한**할 수 있도록 도와주는 HTTP 응답 헤더다. 이 설정을 통해 외부 스크립트, 인라인 자바스크립트, 동적 `eval()` 등을 차단할 수 있다.
 
-```http
+```
 Content-Security-Policy: default-src 'self'; script-src 'self'; object-src 'none';
 ```
 
@@ -222,7 +222,7 @@ Content-Security-Policy: default-src 'self'; script-src 'self'; object-src 'none
 
 XSS의 가장 큰 피해 중 하나는 **쿠키 탈취**이다. 이를 막기 위해 중요한 인증 쿠키에는 `HttpOnly` 속성을 반드시 설정해야 한다.
 
-```http
+```
 Set-Cookie: sessionId=abc123; HttpOnly; Secure; SameSite=Strict
 ```
 
