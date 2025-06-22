@@ -150,7 +150,7 @@ npm install discord.js @discordjs/voice @distube/ytdl-core yt-search dotenv @dis
 
 ### 5. 환경변수 설정 (.env)
 
-```env
+```js
 DISCORD_TOKEN=여기에_봇_토큰을_붙여넣기
 PREFIX=/
 GUILD_ID=여기에_서버_ID_입력
@@ -162,7 +162,7 @@ GUILD_ID=여기에_서버_ID_입력
 
 ### 5. gitignore 설정 (Github에 올릴 경우에만)
 
-```gitignore
+```js
 node_modules/
 .env
 ```
@@ -173,7 +173,7 @@ node_modules/
 
 #### 1. 환경 변수 및 모듈 임포트
 
-환경 변수를 로드하고 필요한 모듈을 불러옵니다.
+환경 변수를 로드하고 필요한 모듈을 불러온다.
 
 ```js
 require('dotenv').config(); // .env 불러오기
@@ -466,7 +466,7 @@ nvm use v22.14.0
 
 ## 📝 명령어 사용 방법
 
-- `/재생 [유튜브 링크 또는 제목]`
+- `/재생 [유튜브 링크 또는 제목]`: 입력한 링크 또는 제목을 검색하여 재생
 - `/스킵`: 현재 재생중인 노래를 스킵
 - `/대기열`: 재생 대기 중인 곡들을 리스트로 출력
 - `/종료`: 봇의 노래 재생 종료
@@ -484,7 +484,7 @@ nodemon index.js
 
 두 명령어로 실행이 가능한데 매번 저렇게 터미널에 작성하기 귀찮으니 package.json의 스크립트에 만들어두자.
 
-```json
+```js
 //...
 	"scripts": {
 		"start": "node index.js",
