@@ -27,13 +27,13 @@ tags:
 
 인증과 인가에 대해 이해한 방식을 그림으로 그려보았다.
 
-<img width="519" alt="인증과 인가" src="/assets/images/인증과인가.png" />
+<img width="1000px" alt="인증과 인가" src="/assets/images/인증과인가.png" />
 
 ---
 
 ## `<fieldset>`과 `<legend>`
 
-계정 생성 폼 구현 실습 부분에서 `fieldset`과 `legend` 태그를 보게 되었는데 form을 구현할 때 주로 사용하는 것처럼 보였다. 이게 뭔지 정확하게 알아보기 위해 간단하게 알아보았다.
+계정 생성 폼 구현 실습 부분에서 `fieldset`과 `legend` 태그를 보게 되었는데 form을 구현할 때 주로 사용하는 것처럼 보였다. 이게 뭔지 정확하게 알아보았다.
 
 HTML에서 `fieldset`과 `legend` 태그는 **`form` 안에서 구조를 명확하게 나누고 의미를 부여**할 때 유용하게 쓰이는 태그이다.
 
